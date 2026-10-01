@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulados AV1 — Epístolas Gerais</title>
+<meta name="description" content="Simulados para a AV1 de Epístolas Gerais (FABAT): Hebreus e os imperativos de Tiago.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F7F5F1;
+  --bg-soft:#EFEBE3;
+  --surface:#FFFFFF;
+  --surface-soft:#F3F0EA;
+  --ink:#23211D;
+  --ink-soft:#6B665C;
+  --ink-faint:#A39E92;
+  --teal:#1B5E5A;
+  --teal-soft:#2D7E79;
+  --teal-bg:#E8F2F1;
+  --terracotta:#BC5A3C;
+  --terracotta-bg:#FBEDE6;
+  --green:#3A8253;
+  --green-bg:#EAF5ED;
+  --red:#C0473D;
+  --red-bg:#FCEEEC;
+  --amber:#B8862E;
+  --amber-bg:#FBF3E4;
+  --border:#E2DDD3;
+  --shadow-sm:0 1px 3px rgba(35,33,29,0.05), 0 1px 2px rgba(35,33,29,0.04);
+  --shadow-md:0 4px 16px rgba(35,33,29,0.07), 0 2px 6px rgba(35,33,29,0.04);
+  --shadow-lg:0 12px 32px rgba(35,33,29,0.1), 0 4px 12px rgba(35,33,29,0.05);
+  --radius-sm:8px;
+  --radius-md:14px;
+  --radius-lg:20px;
+}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--surface-soft);color:var(--ink);font-family:'Inter',-apple-system,sans-serif;min-height:100vh;line-height:1.5}
+button{font-family:inherit}
+
+/* ===== TOPBAR ===== */
+.topbar{
+  background:var(--ink);
+  color:#fff;
+  padding:.85rem 1.25rem;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:1rem;flex-wrap:wrap;
+  position:sticky;top:0;z-index:100;
+}
+.topbar-left{display:flex;align-items:center;gap:.7rem;min-width:0}
+.topbar-title{font-size:.88rem;font-weight:700;white-space:nowrap}
+.topbar-right{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+
+.ring-wrap{position:relative;width:34px;height:34px;flex-shrink:0}
+.ring-wrap svg{transform:rotate(-90deg)}
+.ring-bg{fill:none;stroke:rgba(255,255,255,0.15);stroke-width:3}
+.ring-fg{fill:none;stroke:var(--teal-soft);stroke-width:3;stroke-linecap:round;transition:stroke-dashoffset .4s ease}
+.ring-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700}
+.completed-badge{
+  width:30px;height:30px;background:var(--green);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;
+}
+
+.select-pill{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.16);
+  color:#fff;font-size:.82rem;font-weight:600;
+  padding:.45rem .8rem;border-radius:999px;cursor:pointer;
+  appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='white' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right .7rem center;padding-right:1.8rem;
+}
+.select-pill option{
+  background:var(--surface);color:var(--ink);font-weight:500;
+}
+.btn-pill{
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#fff;
+  font-size:.82rem;font-weight:600;padding:.45rem .9rem;border-radius:999px;cursor:pointer;
+  transition:background .15s;white-space:nowrap;
+}
+.btn-pill:hover{background:rgba(255,255,255,.16)}
+.btn-pill.accent{background:var(--teal);border-color:var(--teal)}
+.btn-pill.accent:hover{background:var(--teal-soft)}
+
+/* ===== LAYOUT ===== */
+.wrap{max-width:720px;margin:0 auto;padding:1.75rem 1.25rem 4rem}
+
+.page-head{margin-bottom:1.75rem}
+.page-eyebrow{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--teal);background:var(--teal-bg);
+  padding:.3rem .7rem;border-radius:999px;margin-bottom:.9rem;
+}
+.page-title{font-size:1.6rem;font-weight:800;letter-spacing:-.02em;color:var(--ink);margin-bottom:.3rem}
+.page-sub{font-size:.92rem;color:var(--ink-soft)}
+
+.section-label{
+  display:flex;align-items:center;gap:.6rem;
+  font-size:.95rem;font-weight:800;color:var(--ink);
+  margin:2rem 0 1rem;
+}
+.section-label .count{
+  font-size:.72rem;font-weight:700;color:var(--ink-faint);
+  background:var(--surface-soft);padding:.15rem .55rem;border-radius:999px;
+}
+.section-hint{font-size:.82rem;color:var(--ink-soft);margin-bottom:1.1rem;margin-top:-.6rem}
+
+/* ===== CARDS ===== */
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  padding:1.3rem 1.4rem;
+  margin-bottom:.85rem;
+  box-shadow:var(--shadow-sm);
+  transition:box-shadow .15s, border-color .15s;
+}
+.card.correct{border-color:var(--green);box-shadow:0 0 0 3px var(--green-bg)}
+.card.incorrect{border-color:var(--red);box-shadow:0 0 0 3px var(--red-bg)}
+.card.pending{border-color:var(--border);background:var(--amber-bg)}
+
+.q-head{display:flex;gap:.85rem;align-items:flex-start;margin-bottom:.9rem}
+.q-num{
+  flex-shrink:0;width:28px;height:28px;border-radius:9px;
+  background:var(--ink);color:#fff;
+  font-size:.78rem;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+}
+.q-num.warn{background:var(--amber)}
+.q-enunciado{font-size:.96rem;line-height:1.55;color:var(--ink);font-weight:500;flex:1;padding-top:.1rem}
+.q-instrucao{font-size:.8rem;color:var(--ink-soft);font-style:italic;margin-top:.25rem}
+
+.warn-badge{
+  display:inline-flex;align-items:center;gap:.3rem;
+  background:var(--amber);color:#fff;font-size:.68rem;font-weight:800;
+  padding:.2rem .55rem;border-radius:999px;margin-bottom:.5rem;letter-spacing:.02em;
+}
+
+/* ===== TEXTAREA / GABARITO ===== */
+.q-textarea{
+  width:100%;border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:.7rem .85rem;font-family:inherit;font-size:.9rem;color:var(--ink);
+  background:var(--surface-soft);resize:vertical;outline:none;transition:border-color .15s;
+}
+.q-textarea:focus{border-color:var(--teal);background:var(--surface)}
+
+.btn-gab{
+  margin-top:.7rem;background:transparent;border:1.5px solid var(--border);
+  color:var(--ink-soft);font-size:.78rem;font-weight:700;
+  padding:.4rem .85rem;border-radius:999px;cursor:pointer;transition:all .15s;
+}
+.btn-gab:hover{border-color:var(--teal);color:var(--teal)}
+
+.gab-box{
+  margin-top:.8rem;padding:.8rem .95rem;border-radius:var(--radius-sm);
+  font-size:.87rem;line-height:1.5;background:var(--teal-bg);
+  border-left:3px solid var(--teal);display:none;color:var(--ink);
+}
+.gab-box.visible{display:block}
+.gab-label{font-weight:800;color:var(--teal);display:block;margin-bottom:.2rem;font-size:.78rem;text-transform:uppercase;letter-spacing:.03em}
+
+/* ===== LACUNA ===== */
+.lacuna-wrap{display:flex;align-items:center;flex-wrap:wrap;gap:.3rem;font-size:.95rem;line-height:2;font-weight:500}
+.lacuna-input{
+  border:none;border-bottom:2.5px solid var(--ink-faint);background:transparent;
+  font-family:inherit;font-size:.95rem;font-weight:700;color:var(--teal);
+  width:140px;outline:none;padding:.1rem .3rem;text-align:center;transition:border-color .15s;
+}
+.lacuna-input:focus{border-bottom-color:var(--teal)}
+.lacuna-input:disabled{opacity:.85}
+.lacuna-input.ok{border-bottom-color:var(--green)!important;color:var(--green)!important}
+.lacuna-input.err{border-bottom-color:var(--red)!important;color:var(--red)!important}
+.gab-lacuna{margin-top:.6rem;font-size:.85rem;font-weight:600;display:none}
+.gab-lacuna.visible{display:flex;align-items:center;gap:.4rem}
+.gab-lacuna.ok{color:var(--green)}
+.gab-lacuna.err{color:var(--red)}
+
+/* ===== ALTERNATIVAS ===== */
+.alt-list{display:flex;flex-direction:column;gap:.55rem}
+.alt{
+  display:flex;align-items:flex-start;gap:.75rem;
+  background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:.7rem .9rem;cursor:pointer;text-align:left;font-family:inherit;
+  font-size:.89rem;font-weight:500;color:var(--ink);transition:all .12s;width:100%;
+}
+.alt:hover{border-color:var(--teal-soft);background:var(--teal-bg)}
+.alt.sel{border-color:var(--teal);background:var(--teal-bg);font-weight:600}
+.alt.acerto{border-color:var(--green);background:var(--green-bg);font-weight:600}
+.alt.errada{border-color:var(--red);background:var(--red-bg);font-weight:600}
+.alt.perdida{border-color:var(--amber);background:var(--amber-bg);font-weight:600}
+
+.alt-letra{
+  flex-shrink:0;width:24px;height:24px;border-radius:7px;
+  background:var(--surface-soft);border:1.5px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.74rem;font-weight:800;color:var(--ink-soft);
+}
+.alt.sel .alt-letra{background:var(--teal);border-color:var(--teal);color:#fff}
+.alt.acerto .alt-letra{background:var(--green);border-color:var(--green);color:#fff}
+.alt.errada .alt-letra{background:var(--red);border-color:var(--red);color:#fff}
+.alt.perdida .alt-letra{background:var(--amber);border-color:var(--amber);color:#fff}
+.alt-texto{flex:1;line-height:1.5;padding-top:.05rem}
+.alt-badge{font-weight:800;margin-left:.5rem;font-size:.85rem}
+
+/* ===== PLACAR ===== */
+.placar{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:1.6rem;margin-bottom:1.75rem;box-shadow:var(--shadow-md);
+}
+.placar-top{display:flex;align-items:center;gap:.7rem;margin-bottom:1.2rem;padding-bottom:1.1rem;border-bottom:1px solid var(--border)}
+.placar-icon{
+  width:36px;height:36px;border-radius:10px;background:var(--green);
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;flex-shrink:0;
+}
+.placar-titulo{font-size:1.02rem;font-weight:800;color:var(--ink)}
+.placar-sub{font-size:.8rem;color:var(--ink-soft);margin-top:.1rem}
+
+.placar-row{display:flex;align-items:center;gap:.9rem;margin-bottom:.8rem}
+.placar-row-label{font-size:.84rem;font-weight:600;color:var(--ink-soft);width:115px;flex-shrink:0}
+.placar-bar-wrap{flex:1;height:8px;background:var(--surface-soft);border-radius:99px;overflow:hidden}
+.placar-bar{height:100%;border-radius:99px;transition:width .6s cubic-bezier(.4,0,.2,1)}
+.bar-mult{background:linear-gradient(90deg,var(--teal),var(--teal-soft))}
+.bar-lac{background:linear-gradient(90deg,var(--amber),#FBBF24)}
+.placar-score{font-weight:800;font-size:1rem;color:var(--ink);width:46px;text-align:right;flex-shrink:0}
+.placar-score small{font-weight:600;color:var(--ink-faint);font-size:.74rem}
+
+.placar-total{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);
+}
+.placar-total-label{font-size:.84rem;color:var(--ink-soft);font-weight:600}
+.placar-total-value{font-size:1.15rem;font-weight:800;color:var(--ink)}
+
+/* ===== BUTTONS ===== */
+.btn-block{
+  width:100%;border:none;border-radius:var(--radius-md);font-weight:800;font-size:1rem;
+  padding:1rem;cursor:pointer;transition:transform .1s, box-shadow .15s;
+}
+.btn-block:active{transform:scale(.98)}
+.btn-primary{background:var(--teal);color:#fff;box-shadow:0 4px 14px rgba(27,94,90,.3)}
+.btn-primary:hover{background:var(--teal-soft)}
+.btn-success{background:var(--green);color:#fff;box-shadow:0 4px 14px rgba(16,185,129,.3)}
+.btn-success:hover{filter:brightness(1.06)}
+.btn-ghost{background:var(--surface);color:var(--ink);border:1.5px solid var(--border)}
+.btn-ghost:hover{border-color:var(--ink-faint)}
+
+.action-card{
+  text-align:center;margin-top:1.75rem;padding:1.5rem;
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);
+}
+.action-card p{font-size:.85rem;color:var(--ink-soft);margin-bottom:1rem}
+.action-row{display:flex;gap:.7rem;flex-wrap:wrap}
+.action-row .btn-block{flex:1;min-width:160px}
+
+/* ===== HOME ===== */
+.home{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem 1.25rem;background:
+  radial-gradient(circle at 15% 0%, rgba(27,94,90,0.07), transparent 50%),
+  radial-gradient(circle at 85% 100%, rgba(188,90,60,0.06), transparent 50%),
+  var(--bg);
+}
+.home-inner{text-align:center;max-width:480px;width:100%}
+.home-badge{
+  display:inline-flex;align-items:center;gap:.4rem;
+  background:var(--surface);border:1px solid var(--border);
+  color:var(--teal);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:.4rem .9rem;border-radius:999px;margin-bottom:1.75rem;box-shadow:var(--shadow-sm);
+}
+.home-title{
+  font-size:clamp(2.2rem,7vw,3rem);font-weight:900;letter-spacing:-.03em;line-height:1.05;
+  color:var(--ink);margin-bottom:.6rem;
+}
+.home-title span{color:var(--terracotta)}
+.home-sub{color:var(--ink-soft);font-size:1rem;margin-bottom:2.2rem;font-weight:500}
+
+.format-pills{display:flex;gap:.55rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.2rem}
+.pill{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:999px;padding:.45rem .9rem;font-size:.78rem;color:var(--ink-soft);font-weight:600;
+  box-shadow:var(--shadow-sm);
+}
+
+/* ===== MATERIAL DE ESTUDO ===== */
+.materia-pdf-link{
+  display:flex;align-items:center;gap:.7rem;
+  background:var(--terracotta-bg);border:1px solid var(--terracotta);border-radius:var(--radius-md);
+  padding:.85rem 1.1rem;margin-bottom:1.5rem;text-decoration:none;
+  transition:all .12s;
+}
+.materia-pdf-link:hover{background:#F7DECF;transform:translateX(2px)}
+.materia-pdf-icon{
+  flex-shrink:0;width:34px;height:34px;border-radius:9px;
+  background:var(--terracotta);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+}
+.materia-pdf-text{font-size:.87rem;color:var(--ink);font-weight:600}
+.materia-pdf-text strong{color:var(--terracotta)}
+
+.materia-toc{display:flex;flex-direction:column;gap:.6rem;margin-bottom:2rem}
+.materia-toc-item{
+  display:flex;align-items:center;gap:.9rem;
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);
+  padding:.9rem 1.1rem;cursor:pointer;text-align:left;width:100%;
+  font-family:inherit;transition:all .12s;box-shadow:var(--shadow-sm);
+}
+.materia-toc-item:hover{border-color:var(--teal-soft);transform:translateX(2px)}
+.materia-toc-num{
+  flex-shrink:0;width:50px;height:50px;border-radius:10px;
+  background:var(--teal-bg);color:var(--teal);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;
+}
+.materia-toc-num-label{font-size:.55rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;line-height:1.1;opacity:.8}
+.materia-toc-num-value{font-weight:800;font-size:1.05rem;line-height:1.1}
+.materia-toc-text{flex:1}
+.materia-toc-titulo{font-size:1rem;font-weight:700;color:var(--ink)}
+.materia-toc-arrow{color:var(--ink-faint);flex-shrink:0}
+
+.licao-nav{display:flex;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.licao-nav-btn{
+  background:var(--surface);border:1px solid var(--border);color:var(--ink-soft);
+  font-size:.78rem;font-weight:700;padding:.4rem .7rem;border-radius:8px;cursor:pointer;
+  transition:all .12s;font-family:inherit;
+}
+.licao-nav-btn:hover{border-color:var(--teal-soft);color:var(--teal)}
+.licao-nav-btn.active{background:var(--teal);border-color:var(--teal);color:#fff}
+
+.licao-secao{margin-bottom:1.8rem}
+.licao-subtitulo{
+  font-size:1.02rem;font-weight:800;color:var(--teal);
+  margin-bottom:.7rem;padding-bottom:.5rem;border-bottom:2px solid var(--teal-bg);
+}
+.licao-paragrafo{
+  font-size:.93rem;line-height:1.7;color:var(--ink);margin-bottom:.85rem;
+  border-radius:8px;padding:.3rem .5rem;margin-left:-.5rem;margin-right:-.5rem;
+  transition:background-color 1.2s ease, box-shadow .3s ease;
+}
+.licao-paragrafo:last-child{margin-bottom:0}
+.licao-paragrafo.highlighted{
+  background-color:var(--amber-bg);
+  box-shadow:0 0 0 2px var(--amber);
+  animation:fonte-pulse 1.6s ease-out 1;
+}
+@keyframes fonte-pulse{
+  0%{background-color:#FDE9B8}
+  100%{background-color:var(--amber-bg)}
+}
+
+/* ===== MODAL: Ver no material ===== */
+.btn-fonte{
+  margin-top:.6rem;background:transparent;border:1.5px dashed var(--teal);
+  color:var(--teal);font-size:.78rem;font-weight:700;
+  padding:.4rem .85rem;border-radius:999px;cursor:pointer;transition:all .15s;
+  display:inline-flex;align-items:center;gap:.35rem;
+}
+.btn-fonte:hover{background:var(--teal-bg);border-style:solid}
+
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(15,15,15,.55);
+  display:flex;align-items:center;justify-content:center;z-index:1000;
+  padding:1.25rem;animation:modal-fade-in .15s ease;
+}
+@keyframes modal-fade-in{from{opacity:0}to{opacity:1}}
+.modal-box{
+  background:var(--surface);border-radius:var(--radius-lg);
+  max-width:560px;width:100%;max-height:80vh;overflow-y:auto;
+  box-shadow:var(--shadow-lg);animation:modal-slide-up .2s ease;
+}
+@keyframes modal-slide-up{from{transform:translateY(12px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-header{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:1.1rem 1.3rem;border-bottom:1px solid var(--border);
+  position:sticky;top:0;background:var(--surface);border-radius:var(--radius-lg) var(--radius-lg) 0 0;
+}
+.modal-header-text{font-size:.92rem;font-weight:800;color:var(--ink)}
+.modal-header-sub{font-size:.76rem;color:var(--ink-soft);font-weight:600;margin-top:.1rem}
+.modal-close{
+  flex-shrink:0;width:30px;height:30px;border-radius:8px;border:none;
+  background:var(--surface-soft);color:var(--ink-soft);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+}
+.modal-close:hover{background:var(--border);color:var(--ink)}
+.modal-body{padding:1.2rem 1.3rem}
+.modal-paragrafo{
+  font-size:.91rem;line-height:1.7;color:var(--ink);
+  background:var(--amber-bg);border-left:3px solid var(--amber);
+  border-radius:8px;padding:.85rem 1rem;margin-bottom:.7rem;
+}
+.modal-paragrafo:last-child{margin-bottom:0}
+.modal-footer{padding:0 1.3rem 1.2rem}
+.modal-link-btn{
+  width:100%;background:var(--teal);color:#fff;border:none;border-radius:10px;
+  padding:.8rem;font-size:.88rem;font-weight:700;cursor:pointer;transition:background .15s;
+}
+.modal-link-btn:hover{background:var(--teal-soft)}
+
+.licao-footer-nav{
+  display:flex;justify-content:space-between;gap:1rem;margin-top:2rem;padding-top:1.5rem;
+  border-top:1px solid var(--border);
+}
+.licao-footer-btn{
+  background:var(--surface);border:1px solid var(--border);color:var(--ink);
+  font-size:.85rem;font-weight:700;padding:.7rem 1.1rem;border-radius:10px;cursor:pointer;
+  transition:all .12s;font-family:inherit;display:flex;align-items:center;gap:.4rem;
+}
+.licao-footer-btn:hover{border-color:var(--teal-soft);color:var(--teal)}
+.licao-footer-btn:disabled{opacity:.35;cursor:not-allowed}
+.licao-footer-btn:disabled:hover{border-color:var(--border);color:var(--ink)}
+
+.home-nav{display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.8rem}
+.home-nav-btn{
+  border:none;border-radius:var(--radius-md);padding:1rem 1.5rem;font-size:1rem;font-weight:800;
+  cursor:pointer;transition:transform .12s, box-shadow .15s;display:flex;align-items:center;justify-content:center;gap:.5rem;
+}
+.home-nav-btn:active{transform:scale(.98)}
+.home-nav-btn.primary{background:var(--teal);color:#fff;box-shadow:0 6px 20px rgba(27,94,90,.28)}
+.home-nav-btn.primary:hover{background:var(--teal-soft)}
+.home-nav-btn.secondary{background:var(--surface);color:var(--ink);border:1.5px solid var(--border);box-shadow:var(--shadow-sm)}
+.home-nav-btn.secondary:hover{border-color:var(--ink-faint)}
+
+.home-grid-label{font-size:.78rem;color:var(--ink-faint);font-weight:600;margin-bottom:.8rem}
+.sim-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem}
+.sim-chip{
+  aspect-ratio:1;border-radius:10px;background:var(--surface);border:1px solid var(--border);
+  color:var(--ink-soft);font-size:.85rem;font-weight:700;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:all .12s;box-shadow:var(--shadow-sm);
+}
+.sim-chip:hover{background:var(--terracotta);border-color:var(--terracotta);color:#fff;transform:translateY(-2px)}
+
+@media (max-width:420px){
+  .sim-grid{grid-template-columns:repeat(4,1fr)}
+  .action-row{flex-direction:column}
+  .action-row .btn-block{width:100%}
+}
+
+
+/* ===== AJUSTES DO SITE DE EPÍSTOLAS GERAIS ===== */
+:root{
+  --teal:#1E4A7A;
+  --teal-soft:#2F639B;
+  --teal-bg:#E9F0F8;
+}
+.btn-primary{box-shadow:0 4px 14px rgba(30,74,122,.3)}
+.home-nav-btn.primary{box-shadow:0 6px 20px rgba(30,74,122,.28)}
+.home{
+  background:
+    radial-gradient(circle at 15% 0%, rgba(30,74,122,0.08), transparent 50%),
+    radial-gradient(circle at 85% 100%, rgba(188,90,60,0.06), transparent 50%),
+    var(--bg);
+}
+.home-inner{max-width:520px}
+
+.q-tag{
+  display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.03em;text-transform:uppercase;
+  color:var(--ink-soft);background:var(--surface-soft);border:1px solid var(--border);
+  padding:.15rem .5rem;border-radius:999px;margin-bottom:.45rem;
+}
+.coment-box{
+  margin-top:.8rem;padding:.75rem .95rem;border-radius:var(--radius-sm);
+  font-size:.86rem;line-height:1.55;background:var(--teal-bg);
+  border-left:3px solid var(--teal);color:var(--ink);
+}
+.coment-box .gab-label{margin-bottom:.15rem}
+
+.sim-chip{position:relative;flex-direction:column;gap:.1rem}
+.sim-chip small{font-size:.62rem;font-weight:700;opacity:.85}
+.sim-chip.done{background:var(--green-bg);border-color:var(--green);color:var(--green)}
+.sim-chip.done:hover{background:var(--terracotta);border-color:var(--terracotta);color:#fff}
+
+.topico-list{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.8rem;text-align:left}
+.topico-btn{
+  display:flex;align-items:center;justify-content:space-between;gap:.8rem;width:100%;
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);
+  padding:.7rem .95rem;font-family:inherit;font-size:.88rem;font-weight:700;color:var(--ink);
+  cursor:pointer;box-shadow:var(--shadow-sm);transition:all .12s;text-align:left;
+}
+.topico-btn:hover{border-color:var(--teal-soft);transform:translateX(2px)}
+.topico-btn .star{color:var(--amber);margin-right:.3rem}
+.topico-btn .n{font-size:.72rem;font-weight:700;color:var(--ink-faint);white-space:nowrap}
+
+.diss-group{margin-top:2rem}
+.diss-group:first-of-type{margin-top:0}
+
+.materia-fonte{font-size:.8rem;color:var(--ink-soft);margin-top:.4rem;font-style:italic}
+
+.footer-note{font-size:.72rem;color:var(--ink-faint);margin-top:2rem;line-height:1.5}
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script>
+const TOPICOS = {"autoria": "Autoria de Hebreus", "italia": "Hebreus e a Itália", "proposito": "Propósito e sacerdócio de Cristo", "alianca": "Sombra e as duas alianças (Hb 8–10)", "tiago": "Imperativos em Tiago", "geral": "Outros temas de Hebreus"};
+const PROVA_TOPICOS = ["autoria", "italia", "proposito", "alianca", "tiago"];
+const QUESTOES = [{"id": "q1", "topico": "autoria", "enunciado": "No P⁴⁶, o manuscrito mais antigo de Hebreus (início do séc. 3), onde a carta aparece?", "alternativas": [{"letra": "A", "texto": "No fim do corpus paulino, depois de Filemom"}, {"letra": "B", "texto": "No corpus paulino, logo depois de Romanos"}, {"letra": "C", "texto": "Entre as Epístolas Gerais, logo antes de Tiago"}, {"letra": "D", "texto": "Isolada, sem fazer parte de nenhuma coleção"}], "correta": "B", "comentario": "O P⁴⁶ coloca Hebreus logo depois de Romanos, o que reflete a convicção da igreja do Oriente de que a carta era paulina.", "fonte": ["h-4-0"]}, {"id": "q2", "topico": "autoria", "enunciado": "Como Clemente de Alexandria explicava o grego refinado de Hebreus, parecido com o de Lucas-Atos?", "alternativas": [{"letra": "A", "texto": "Barnabé redigiu a carta sob orientação de Pedro"}, {"letra": "B", "texto": "Paulo ditou a carta a Timóteo, que melhorou o estilo"}, {"letra": "C", "texto": "Paulo escreveu em hebraico, e Lucas traduziu o texto para o grego"}, {"letra": "D", "texto": "Apolo escreveu a carta a partir de notas de Paulo"}], "correta": "C", "comentario": "Clemente de Alexandria mantinha Paulo como autor e supunha que Lucas tinha traduzido para o grego um original hebraico.", "fonte": ["h-4-1"]}, {"id": "q3", "topico": "autoria", "enunciado": "Segundo Clemente de Alexandria, por que Paulo não colocou seu nome no início da carta?", "alternativas": [{"letra": "A", "texto": "Porque estava preso e não podia se identificar"}, {"letra": "B", "texto": "Porque a carta era originalmente um sermão anônimo"}, {"letra": "C", "texto": "Porque escrevia a judeus que tinham um forte preconceito contra ele"}, {"letra": "D", "texto": "Porque o início da carta se perdeu na transmissão"}], "correta": "C", "comentario": "Para Clemente, Paulo omitiu o nome por prudência, já que os destinatários judeus tinham preconceito contra ele.", "fonte": ["h-4-1"]}, {"id": "q4", "topico": "autoria", "enunciado": "Que frase de Orígenes resume sua posição sobre quem escreveu Hebreus?", "alternativas": [{"letra": "A", "texto": "“A carta é sem dúvida obra de Barnabé”"}, {"letra": "B", "texto": "“Quem escreveu a carta só Deus sabe”"}, {"letra": "C", "texto": "“Lucas é o verdadeiro autor da carta”"}, {"letra": "D", "texto": "“Paulo a escreveu em grego, de próprio punho”"}], "correta": "B", "comentario": "Orígenes achava que um discípulo de Paulo tinha reescrito o que o apóstolo disse, mas se recusou a especular sobre o nome.", "fonte": ["h-4-2"]}, {"id": "q5", "topico": "autoria", "enunciado": "Qual foi a única proposta alternativa de autoria na igreja antiga do Ocidente, e quem a defendeu?", "alternativas": [{"letra": "A", "texto": "Priscila, defendida pelo Cânon Muratoriano"}, {"letra": "B", "texto": "Apolo, defendido por Ireneu"}, {"letra": "C", "texto": "Barnabé, defendido por Tertuliano"}, {"letra": "D", "texto": "Lucas, defendido por Hipólito"}], "correta": "C", "comentario": "O Cânon Muratoriano, Ireneu e Hipólito negavam que Paulo fosse o autor. A única alternativa antiga foi Barnabé, proposto por Tertuliano no séc. 2.", "fonte": ["h-4-3"]}, {"id": "q6", "topico": "autoria", "enunciado": "Quem mudou a opinião da igreja ocidental a favor da autoria paulina de Hebreus?", "alternativas": [{"letra": "A", "texto": "Hipólito e o Cânon Muratoriano"}, {"letra": "B", "texto": "Jerônimo e Agostinho"}, {"letra": "C", "texto": "Tertuliano e Ireneu"}, {"letra": "D", "texto": "Lutero e Calvino"}], "correta": "B", "comentario": "Jerônimo e Agostinho se apoiaram na opinião das igrejas orientais. Pesou menos a crítica literária e mais o fato de que a autoria apostólica favorecia a aceitação no cânon.", "fonte": ["h-4-4"]}, {"id": "q7", "topico": "autoria", "enunciado": "Os Sínodos de Hipona (393) e Cartago (397) listaram: “Do apóstolo Paulo, treze cartas; do mesmo apóstolo, aos Hebreus, uma”. O que essa fórmula mostra?", "alternativas": [{"letra": "A", "texto": "Que Hebreus era considerada a primeira carta de Paulo"}, {"letra": "B", "texto": "Que o Ocidente atribuía Hebreus a Barnabé"}, {"letra": "C", "texto": "Que Hebreus já era atribuída a Paulo, mas ainda ficava separada das cartas paulinas reconhecidas"}, {"letra": "D", "texto": "Que Hebreus tinha sido excluída do cânon"}], "correta": "C", "comentario": "Só no 6º Sínodo de Cartago (419) as catorze cartas passaram a ser atribuídas a Paulo sem essa distinção.", "fonte": ["h-4-5"]}, {"id": "q8", "topico": "autoria", "enunciado": "Quem propôs, pela primeira vez até onde se sabe, que Apolo seria o autor de Hebreus?", "alternativas": [{"letra": "A", "texto": "Lutero"}, {"letra": "B", "texto": "Calvino"}, {"letra": "C", "texto": "Orígenes"}, {"letra": "D", "texto": "Jerônimo"}], "correta": "A", "comentario": "Na Reforma, Lutero propôs Apolo. Calvino preferiu Clemente de Roma ou Lucas.", "fonte": ["h-4-6"]}, {"id": "q9", "topico": "autoria", "enunciado": "Comentando Hb 13.23, Calvino defendeu como autor de Hebreus:", "alternativas": [{"letra": "A", "texto": "Apolo"}, {"letra": "B", "texto": "O próprio Paulo"}, {"letra": "C", "texto": "Barnabé ou Silas"}, {"letra": "D", "texto": "Clemente de Roma ou Lucas"}], "correta": "D", "comentario": "Calvino defendeu Clemente de Roma ou Lucas. A proposta de Apolo foi de Lutero.", "fonte": ["h-4-6"]}, {"id": "q10", "topico": "autoria", "enunciado": "Segundo Carson & Moo, qual é o argumento mais forte contra a autoria paulina?", "alternativas": [{"letra": "A", "texto": "O autor cita apenas o texto hebraico do Antigo Testamento"}, {"letra": "B", "texto": "Em 2.3 o autor diz que recebeu o evangelho daqueles que ouviram o Senhor, e não do próprio Senhor (cf. Gl 1.11-12)"}, {"letra": "C", "texto": "A carta só pode ter sido escrita depois de 96 d.C., quando Paulo já tinha morrido"}, {"letra": "D", "texto": "A carta contradiz a doutrina da justificação pela fé"}], "correta": "B", "comentario": "Vocabulário, estilo e falta de saudação também pesam. Mas “acima de tudo” Paulo jamais se apresentaria como cristão de segunda mão, ele que dizia ter recebido o evangelho por revelação (Gl 1.11-12).", "fonte": ["h-5-1"]}, {"id": "q11", "topico": "autoria", "enunciado": "Qual destes NÃO é um argumento de Carson & Moo contra a autoria paulina?", "alternativas": [{"letra": "A", "texto": "A ausência da saudação em que o autor se identifica, prática usual de Paulo"}, {"letra": "B", "texto": "O sumo sacerdócio de Cristo, central em Hebreus, não aparece nas cartas paulinas reconhecidas"}, {"letra": "C", "texto": "O autor demonstra desconhecer a Septuaginta (LXX)"}, {"letra": "D", "texto": "As diferenças de vocabulário, estilo grego e retórica"}], "correta": "C", "comentario": "Pelo contrário: o autor está imerso na LXX. Nenhuma das suas citações do AT depende do hebraico.", "fonte": ["h-5-0", "h-6-4"]}, {"id": "q12", "topico": "autoria", "enunciado": "Por que a hipótese de que Priscila escreveu Hebreus é praticamente excluída?", "alternativas": [{"letra": "A", "texto": "Porque Priscila não conhecia Timóteo"}, {"letra": "B", "texto": "Porque o livro só usa o pronome “eu”, nunca “nós”"}, {"letra": "C", "texto": "Porque em 11.32 o autor se refere a si mesmo no masculino singular"}, {"letra": "D", "texto": "Porque Priscila nunca esteve ligada à missão de Paulo"}], "correta": "C", "comentario": "A teoria explicaria a oscilação entre “nós” e “eu”, e Priscila conhecia Timóteo e Apolo. Mas o masculino singular de 11.32 a exclui.", "fonte": ["h-6-2"]}, {"id": "q13", "topico": "autoria", "enunciado": "Que argumento é usado a favor de Barnabé como autor de Hebreus?", "alternativas": [{"letra": "A", "texto": "Ele era natural de Alexandria e discípulo de Fílon"}, {"letra": "B", "texto": "Ele era chamado “filho da exortação” (At 4.36), e Hebreus se descreve como “palavra de exortação” (13.22)"}, {"letra": "C", "texto": "Ele é mencionado nominalmente em Hb 13.23"}, {"letra": "D", "texto": "Ele ensinou Apolo junto com Áquila"}], "correta": "B", "comentario": "O argumento liga huios paraklēseōs (At 4.36) a logos tēs paraklēseōs (Hb 13.22). Carson & Moo respondem que paraklēsis é um termo comum demais no NT.", "fonte": ["h-6-0"]}, {"id": "q14", "topico": "autoria", "enunciado": "Por que Apolo parecia a Lutero um candidato plausível?", "alternativas": [{"letra": "A", "texto": "Era um “homem eloquente”, com conhecimento profundo das Escrituras e natural de Alexandria (At 18.24)"}, {"letra": "B", "texto": "Foi apontado como autor por Clemente de Roma"}, {"letra": "C", "texto": "Deixou outras cartas com estilo parecido com o de Hebreus"}, {"letra": "D", "texto": "Era levita de Chipre e colaborador de Paulo"}], "correta": "A", "comentario": "Carson & Moo chamam a proposta de “conjectura brilhante”, mas sem evidências para testá-la: seria “especulação em cima de especulação”.", "fonte": ["h-6-1"]}, {"id": "q15", "topico": "autoria", "enunciado": "Que perfil do autor Carson & Moo consideram o mais provável?", "alternativas": [{"letra": "A", "texto": "Um sacerdote de Jerusalém que citava o AT hebraico"}, {"letra": "B", "texto": "Um apóstolo que conviveu com Jesus e escrevia em aramaico"}, {"letra": "C", "texto": "Um gentio convertido com pouco conhecimento do Antigo Testamento"}, {"letra": "D", "texto": "Um judeu helenista convertido, cristão da segunda geração, imerso na LXX e com boa formação"}], "correta": "D", "comentario": "A conclusão é reconhecer a ignorância (“não sabemos quem escreveu a carta”) e traçar só um perfil provável.", "fonte": ["h-6-4"]}, {"id": "q16", "topico": "italia", "enunciado": "Qual é a única indicação explícita do local de origem de Hebreus?", "alternativas": [{"letra": "A", "texto": "O título “Aos hebreus”"}, {"letra": "B", "texto": "A referência à libertação de Timóteo em 13.23"}, {"letra": "C", "texto": "A menção à Jerusalém celestial em 12.22"}, {"letra": "D", "texto": "A saudação de 13.24: “Os da Itália enviam saudações”"}], "correta": "D", "comentario": "13.24 é a única indicação explícita, e mesmo ela é ambígua.", "fonte": ["h-7-0"]}, {"id": "q17", "topico": "italia", "enunciado": "Se “os da Itália” (13.24) forem crentes italianos que deixaram sua terra natal, o que se conclui?", "alternativas": [{"letra": "A", "texto": "A carta foi escrita DA Itália, para destinatários desconhecidos"}, {"letra": "B", "texto": "A carta foi enviada PARA a Itália, mas não sabemos de onde partiu"}, {"letra": "C", "texto": "A carta foi escrita em Jerusalém e enviada a Alexandria"}, {"letra": "D", "texto": "Os destinatários eram gentios convertidos por Paulo em Roma"}], "correta": "B", "comentario": "Nesse caso, os italianos fora da Itália mandam saudações para casa. É a leitura que favorece Roma como destino.", "fonte": ["h-7-1"]}, {"id": "q18", "topico": "italia", "enunciado": "Se “os da Itália” (13.24) forem crentes que estão na Itália, o que se conclui?", "alternativas": [{"letra": "A", "texto": "O autor está escrevendo DA Itália, e não temos como identificar os destinatários"}, {"letra": "B", "texto": "A carta foi enviada para a igreja de Roma"}, {"letra": "C", "texto": "Os destinatários estavam em Jerusalém"}, {"letra": "D", "texto": "O autor só pode ter sido Clemente de Roma"}], "correta": "A", "comentario": "Nessa leitura, a frase só nos diz de onde o autor escreve.", "fonte": ["h-7-1"]}, {"id": "q19", "topico": "italia", "enunciado": "Por que Carson & Moo consideram atraente a tradução da NEB para 13.24?", "alternativas": [{"letra": "A", "texto": "Porque omite a saudação, considerada acréscimo posterior"}, {"letra": "B", "texto": "Porque esclarece que a carta foi escrita em Roma"}, {"letra": "C", "texto": "Porque preserva a ambiguidade: “Saudações a vocês da parte de nossos amigos italianos”"}, {"letra": "D", "texto": "Porque traduz “Itália” como “Palestina”"}], "correta": "C", "comentario": "Como não temos condições de saber o que o autor quis dizer, uma tradução que mantém as duas leituras abertas é a mais honesta.", "fonte": ["h-7-2"]}, {"id": "q20", "topico": "italia", "enunciado": "O que a hipótese de que Hebreus foi enviada a Roma exige na leitura de 13.24?", "alternativas": [{"letra": "A", "texto": "Que o autor estivesse em Roma no momento da escrita"}, {"letra": "B", "texto": "Que “Itália” seja uma metáfora para a igreja universal"}, {"letra": "C", "texto": "Que a carta tenha sido escrita depois de 96 d.C."}, {"letra": "D", "texto": "Que “os da Itália” sejam italianos fora da Itália (como Priscila e Áquila) mandando saudações para casa"}], "correta": "D", "comentario": "O grego admite essa interpretação. Harnack e Manson associaram a teoria à história do cristianismo em Roma.", "fonte": ["h-9-1"]}, {"id": "q21", "topico": "italia", "enunciado": "Que evidências favorecem Roma como destino da carta?", "alternativas": [{"letra": "A", "texto": "Hebreus menciona a igreja de Roma no capítulo 1"}, {"letra": "B", "texto": "O Cânon Muratoriano afirma que ela foi enviada a Roma"}, {"letra": "C", "texto": "Hebreus foi conhecida primeiro em Roma (Clemente de Roma), e o Ocidente demorou a atribuí-la a Paulo"}, {"letra": "D", "texto": "Paulo cita Hebreus na carta aos Romanos"}], "correta": "C", "comentario": "A demora do Ocidente em atribuir a carta a Paulo pode indicar que lá se sabia que ela não era dele. Mesmo assim, Roma “não passa de conjectura”.", "fonte": ["h-9-1"]}, {"id": "q22", "topico": "italia", "enunciado": "Segundo Carson & Moo, mesmo que soubéssemos quem foi o autor, por que isso não resolveria a questão do local de origem?", "alternativas": [{"letra": "A", "texto": "Porque a saudação de 13.24 é um acréscimo posterior"}, {"letra": "B", "texto": "Porque o autor nunca saiu de Jerusalém"}, {"letra": "C", "texto": "Porque a carta foi escrita em vários lugares diferentes"}, {"letra": "D", "texto": "Porque o autor podia ter circulado bastante, como Paulo"}], "correta": "D", "comentario": "Os autores acrescentam que as categorias conceituais do livro revelam mais sobre o público-alvo do que sobre o autor.", "fonte": ["h-7-2"]}, {"id": "q23", "topico": "proposito", "enunciado": "Segundo Carson & Moo, qual era o perigo principal enfrentado pelos destinatários?", "alternativas": [{"letra": "A", "texto": "Ser seduzidos por judaizantes que exigiam a circuncisão dos gentios"}, {"letra": "B", "texto": "Aderir a uma heresia gnóstica que negava a encarnação"}, {"letra": "C", "texto": "Voltar ao paganismo e à idolatria"}, {"letra": "D", "texto": "Voltar a depender das estruturas religiosas da antiga aliança, o que equivaleria a apostasia"}], "correta": "D", "comentario": "A carta não mostra propaganda judaizante nem fala de circuncisão. O risco era de cristãos judeus voltarem a se apoiar no sistema da antiga aliança.", "fonte": ["h-10-2"]}, {"id": "q24", "topico": "proposito", "enunciado": "Para o autor de Hebreus, o que significava voltar às estruturas religiosas da antiga aliança?", "alternativas": [{"letra": "A", "texto": "Completar a fé cristã com a obediência à lei"}, {"letra": "B", "texto": "Adotar uma forma legítima de cristianismo judaico mais conservador"}, {"letra": "C", "texto": "Tomar uma decisão cultural, sem consequências espirituais"}, {"letra": "D", "texto": "Atribuir a elas uma eficácia redentora que nunca tiveram e menosprezar a importância exclusiva de Cristo"}], "correta": "D", "comentario": "Os leitores talvez achassem que era só um cristianismo judaico mais conservador. Para o autor, “não é cristianismo de forma alguma”.", "fonte": ["h-10-2"]}, {"id": "q25", "topico": "proposito", "enunciado": "Qual destes NÃO aparece, em Carson & Moo, entre os motivos insinuados para os leitores voltarem ao judaísmo?", "alternativas": [{"letra": "A", "texto": "A pressão de judaizantes que exigiam a circuncisão"}, {"letra": "B", "texto": "O cansaço da vergonha de viver à margem da herança cultural (13.13)"}, {"letra": "C", "texto": "A atração por ensinos inovadores (13.9)"}, {"letra": "D", "texto": "O medo de perseguição, já que o judaísmo era reconhecido pelos romanos"}], "correta": "A", "comentario": "Bruce observa que nada na carta sugere propaganda judaizante, e a circuncisão nem é mencionada.", "fonte": ["h-10-1", "h-10-3"]}, {"id": "q26", "topico": "proposito", "enunciado": "Por que voltar ao judaísmo poderia diminuir a ameaça de perseguição?", "alternativas": [{"letra": "A", "texto": "Porque o Templo oferecia asilo político aos perseguidos"}, {"letra": "B", "texto": "Porque os judeus estavam isentos de pagar impostos a Roma"}, {"letra": "C", "texto": "Porque o judaísmo era uma religião reconhecida pelos romanos, e o cristianismo não"}, {"letra": "D", "texto": "Porque o imperador Nero era simpático ao judaísmo"}], "correta": "C", "comentario": "O medo pode ter contribuído para a tentação, junto com a vergonha (13.13) e os ensinos novos (13.9).", "fonte": ["h-10-3"]}, {"id": "q27", "topico": "proposito", "enunciado": "Que sintoma prático mostra que a disciplina dos leitores estava se deteriorando?", "alternativas": [{"letra": "A", "texto": "A recusa em sustentar os líderes"}, {"letra": "B", "texto": "O abandono das reuniões regulares da comunidade (10.25)"}, {"letra": "C", "texto": "A rejeição da autoridade de Timóteo"}, {"letra": "D", "texto": "A prática da circuncisão dos filhos"}], "correta": "B", "comentario": "Hb 10.25 pode indicar uma igreja doméstica que já não se reunia com o restante da igreja.", "fonte": ["h-10-3"]}, {"id": "q28", "topico": "proposito", "enunciado": "Qual é a relação entre o tema da superioridade de Cristo e o propósito de Hebreus?", "alternativas": [{"letra": "A", "texto": "Serve para defender a permanência do Templo de Jerusalém"}, {"letra": "B", "texto": "Serve para provar que Jesus era o maior dos anjos"}, {"letra": "C", "texto": "A supremacia de Cristo e do seu sacerdócio fundamenta as advertências: se ele é superior, voltar ao sistema antigo é apostasia"}, {"letra": "D", "texto": "É um tratado abstrato, sem ligação com a situação dos leitores"}], "correta": "C", "comentario": "Carson & Moo dizem que a supremacia de Cristo “não é o assunto de um artigo abstrato”: os trechos parenéticos mostram o seu propósito.", "fonte": ["h-1-1", "h-10-4"]}, {"id": "q29", "topico": "proposito", "enunciado": "Que argumento indica que os leitores eram cristãos judeus, e não gentios?", "alternativas": [{"letra": "A", "texto": "O autor fala repetidamente da circuncisão"}, {"letra": "B", "texto": "O autor contesta a ideia de que o culto do Sinai era definitivo (7.11), o que só faz sentido para quem pensava em voltar ao judaísmo"}, {"letra": "C", "texto": "A carta é endereçada nominalmente à igreja de Jerusalém"}, {"letra": "D", "texto": "A carta foi escrita em hebraico"}], "correta": "B", "comentario": "Também pesam os “ensinos elementares” (6.1), que pressupõem o judaísmo, e o uso do AT como autoridade reconhecida pelos leitores.", "fonte": ["h-10-1"]}, {"id": "q30", "topico": "proposito", "enunciado": "Segundo a aula, a ordem de Melquisedeque torna Jesus superior aos sumos sacerdotes da lei mosaica em quatro aspectos. Qual destes NÃO é um deles?", "alternativas": [{"letra": "A", "texto": "É herdado por descendência da tribo de Levi"}, {"letra": "B", "texto": "Resulta da mudança feita por Deus nas leis do serviço sacerdotal"}, {"letra": "C", "texto": "É confirmado pelo juramento divino do Sl 110.4"}, {"letra": "D", "texto": "Seu sacerdócio é eterno"}], "correta": "A", "comentario": "Os quatro aspectos: eterno, superior ao dos levitas, fruto da mudança na lei sacerdotal e confirmado por juramento (Sl 110.4). Jesus não é da tribo de Levi.", "fonte": ["s-3-1"]}, {"id": "q31", "topico": "proposito", "enunciado": "Em 4.15—5.10, o que diferencia Jesus dos outros sumos sacerdotes?", "alternativas": [{"letra": "A", "texto": "Ele não participou da condição humana"}, {"letra": "B", "texto": "Ele pertence à tribo de Levi"}, {"letra": "C", "texto": "Seu sofrimento e sua provação não eram resultado do pecado"}, {"letra": "D", "texto": "Ele oferece sacrifícios todos os dias"}], "correta": "C", "comentario": "Jesus é semelhante aos sumos sacerdotes porque participa da condição humana, mas é diferente deles porque não tem pecado.", "fonte": ["s-2-1"]}, {"id": "q32", "topico": "proposito", "enunciado": "Segundo a aula, de que três maneiras o autor mostra a superioridade escatológica do sumo sacerdócio de Jesus (5.1-10)?", "alternativas": [{"letra": "A", "texto": "Ele cumpre a lei, guarda o sábado e purifica o Templo"}, {"letra": "B", "texto": "Ele aperfeiçoa o sacerdócio, é fonte de salvação eterna para os que lhe obedecem e pertence à ordem de Melquisedeque"}, {"letra": "C", "texto": "Ele é superior aos anjos, a Moisés e a Josué"}, {"letra": "D", "texto": "Ele descende de Arão, oferece sacrifícios diários e serve no Templo"}], "correta": "B", "comentario": "São os três pontos (I, II e III) do slide de 4.15—5.10.", "fonte": ["s-2-1"]}, {"id": "q33", "topico": "proposito", "enunciado": "Que textos do AT o autor liga no cap. 7 para mostrar a superioridade do sacerdócio de Melquisedeque sobre o de Levi?", "alternativas": [{"letra": "A", "texto": "Jr 31 e Ez 36"}, {"letra": "B", "texto": "Gn 14.18-20 e Sl 110"}, {"letra": "C", "texto": "Sl 2 e 2Sm 7"}, {"letra": "D", "texto": "Êx 28 e Lv 16"}], "correta": "B", "comentario": "O encontro de Abraão com Melquisedeque (Gn 14) e o “tu és sacerdote para sempre” (Sl 110.4) sustentam o argumento.", "fonte": ["h-3-3"]}, {"id": "q34", "topico": "proposito", "enunciado": "Segundo Carson & Moo, qual é o ponto decisivo do argumento sobre Melquisedeque?", "alternativas": [{"letra": "A", "texto": "A eficácia permanente do sacrifício de Jesus, capaz de “salvar plenamente os que vêm a Deus por meio dele” (7.25)"}, {"letra": "B", "texto": "A ideia de que Abraão era inferior a Levi"}, {"letra": "C", "texto": "A identificação de Melquisedeque com o próprio Cristo"}, {"letra": "D", "texto": "A origem cananeia de Melquisedeque"}], "correta": "A", "comentario": "Os sacrifícios da antiga aliança “não aperfeiçoavam nada” (7.19). O de Jesus salva plenamente.", "fonte": ["h-3-3"]}, {"id": "q35", "topico": "alianca", "enunciado": "Segundo Carson & Moo, à luz de Hb 8, o que são o sumo sacerdote levítico e o antigo santuário?", "alternativas": [{"letra": "A", "texto": "Cópias perfeitas do santuário celestial, ainda válidas"}, {"letra": "B", "texto": "Sombras da nova aliança e do novo sumo sacerdote que os profetas anteviram"}, {"letra": "C", "texto": "Instituições permanentes que Cristo veio confirmar"}, {"letra": "D", "texto": "Invenções humanas sem nenhuma relação com Cristo"}], "correta": "B", "comentario": "Eles “não passam de sombras” (Hb 8.1-13; Jr 31.31-34). Apontavam para Cristo, mas não tinham eficácia própria.", "fonte": ["h-3-4"]}, {"id": "q36", "topico": "alianca", "enunciado": "Que profecia do AT o autor cita em Hb 8.7-13 para anunciar a nova aliança?", "alternativas": [{"letra": "A", "texto": "Ezequiel 37.1-14"}, {"letra": "B", "texto": "Isaías 53.4-6"}, {"letra": "C", "texto": "Jeremias 31.31-34"}, {"letra": "D", "texto": "Salmo 110.4"}], "correta": "C", "comentario": "É a profecia da nova aliança (LXX 38.31-34). Com base nela, o autor conclui que a primeira aliança ficou obsoleta (8.13).", "fonte": ["s-3-2", "h-3-4"]}, {"id": "q37", "topico": "alianca", "enunciado": "O que Hb 8.13 afirma sobre a primeira aliança?", "alternativas": [{"letra": "A", "texto": "Ela foi aperfeiçoada e mantida para os judeus"}, {"letra": "B", "texto": "Ela só perdeu a validade quando o Templo foi destruído em 70 d.C."}, {"letra": "C", "texto": "Ela continua válida, lado a lado com a nova"}, {"letra": "D", "texto": "Ao chamar a aliança de “nova”, Deus tornou a primeira obsoleta, e o que envelhece está prestes a desaparecer"}], "correta": "D", "comentario": "Para Carson & Moo, o próprio anúncio da nova aliança já tinha tornado a mosaica “velha e obsoleta”.", "fonte": ["h-3-4", "h-8-3"]}, {"id": "q38", "topico": "alianca", "enunciado": "Que ritual é exposto em Hb 9.1-10 para mostrar os limites dos antigos sacrifícios?", "alternativas": [{"letra": "A", "texto": "A circuncisão"}, {"letra": "B", "texto": "A Páscoa"}, {"letra": "C", "texto": "A Festa dos Tabernáculos"}, {"letra": "D", "texto": "O Dia da Expiação"}], "correta": "D", "comentario": "A exposição do Tabernáculo e do Dia da Expiação mostra que o sacrifício de Cristo alcança um resultado duradouro que os antigos jamais pretenderam alcançar (9.11-28).", "fonte": ["h-3-5"]}, {"id": "q39", "topico": "alianca", "enunciado": "Segundo a aula, a que correspondem as duas partes do tabernáculo terreno?", "alternativas": [{"letra": "A", "texto": "Ao céu e à terra"}, {"letra": "B", "texto": "Às duas eras da aliança de Deus com seu povo, ou seja, às duas partes da história da salvação"}, {"letra": "C", "texto": "Aos judeus e aos gentios"}, {"letra": "D", "texto": "Ao sacerdócio de Arão e ao de Levi"}], "correta": "B", "comentario": "O autor usa o tabernáculo do deserto para mostrar que é necessário um aperfeiçoamento por meio de um tabernáculo vindouro.", "fonte": ["s-3-2"]}, {"id": "q40", "topico": "alianca", "enunciado": "Segundo a aula, o que indica a repetição dos sacrifícios levíticos (9.25; 10.1-3,11)?", "alternativas": [{"letra": "A", "texto": "A imperfeição desses sacrifícios"}, {"letra": "B", "texto": "A fidelidade dos sacerdotes"}, {"letra": "C", "texto": "O perdão definitivo dos pecados"}, {"letra": "D", "texto": "A superioridade deles sobre o sacrifício de Cristo"}], "correta": "A", "comentario": "Se aperfeiçoassem, “não teriam deixado de ser oferecidos?” (10.2). O sacrifício de Cristo é único.", "fonte": ["s-3-4"]}, {"id": "q41", "topico": "alianca", "enunciado": "Segundo a aula (10.1-18), qual destes NÃO é um motivo para a obra de Jesus ser mais efetiva que a dos sumos sacerdotes levíticos?", "alternativas": [{"letra": "A", "texto": "Eles precisavam repetir seus sacrifícios muitas vezes"}, {"letra": "B", "texto": "Eles ofereciam sacrifícios de animais, que não podem remover pecados"}, {"letra": "C", "texto": "Os sacerdotes levitas ofereciam sacrifícios só uma vez por ano, o que era pouco"}, {"letra": "D", "texto": "Os sacerdotes levitas eram eles mesmos pecadores"}], "correta": "C", "comentario": "Os três motivos: sacerdotes pecadores, sacrifícios repetidos e sangue de animais. O problema não era a frequência baixa, mas a necessidade de repetir.", "fonte": ["s-3-4"]}, {"id": "q42", "topico": "alianca", "enunciado": "Que afirmação de Hb 10.4 sobre os sacrifícios da antiga aliança a aula destaca?", "alternativas": [{"letra": "A", "texto": "É impossível que o sangue de touros e bodes remova pecados"}, {"letra": "B", "texto": "O sangue de touros e bodes purifica a consciência"}, {"letra": "C", "texto": "Os sacrifícios de animais devem continuar até a volta de Cristo"}, {"letra": "D", "texto": "Os sacrifícios de animais são superiores às ofertas de cereais"}], "correta": "A", "comentario": "A aula explica que eles só ofereciam limpeza da carne, e não a purificação da consciência.", "fonte": ["s-3-4"]}, {"id": "q43", "topico": "alianca", "enunciado": "Segundo a aula, que tipo de purificação os sacrifícios de animais ofereciam?", "alternativas": [{"letra": "A", "texto": "Apenas a limpeza da carne (9.13-14), e não a purificação interior da consciência"}, {"letra": "B", "texto": "A purificação definitiva de todos os pecados"}, {"letra": "C", "texto": "A purificação completa da consciência"}, {"letra": "D", "texto": "A purificação dos gentios para entrarem no Templo"}], "correta": "A", "comentario": "A purificação da consciência era necessária para o resgate total do pecado (9.15; 10.2,22). Só Cristo a oferece.", "fonte": ["s-3-5"]}, {"id": "q44", "topico": "alianca", "enunciado": "Que salmo Hebreus usa (10.5-9) para apresentar o sacrifício voluntário do corpo de Cristo como substituição do sistema sacrificial mosaico?", "alternativas": [{"letra": "A", "texto": "Salmo 40.6-8"}, {"letra": "B", "texto": "Salmo 95.7-11"}, {"letra": "C", "texto": "Salmo 2.7"}, {"letra": "D", "texto": "Salmo 8.4-6"}], "correta": "A", "comentario": "“Sacrifício e oferta não quiseste; antes, corpo me formaste” (Hb 10.5): é a substituição escatológica do sistema de sacrifícios.", "fonte": ["s-3-5"]}, {"id": "q45", "topico": "alianca", "enunciado": "Qual é a antítese central entre a antiga aliança e a aliança em Cristo em Hb 8–10?", "alternativas": [{"letra": "A", "texto": "Graça para os judeus contra lei para os gentios"}, {"letra": "B", "texto": "Lei escrita contra lei oral"}, {"letra": "C", "texto": "Sacrifícios repetidos, oferecidos por sacerdotes pecadores e incapazes de aperfeiçoar, contra o sacrifício único de Cristo, de eficácia permanente"}, {"letra": "D", "texto": "Templo de Jerusalém contra sinagoga"}], "correta": "C", "comentario": "A antiga ordem era sombra; a nova é a realidade. O sacrifício de Cristo é definitivo e alcança o que os antigos nunca alcançaram.", "fonte": ["s-3-4", "h-3-5"]}, {"id": "q46", "topico": "alianca", "enunciado": "Segundo Carson & Moo, o que significa “perfeição” em Hebreus?", "alternativas": [{"letra": "A", "texto": "Essencialmente completude, sobretudo a completude do plano divino de salvação"}, {"letra": "B", "texto": "A ausência de qualquer pecado moral no crente"}, {"letra": "C", "texto": "O cumprimento rigoroso da lei mosaica"}, {"letra": "D", "texto": "Um conhecimento místico superior"}], "correta": "A", "comentario": "Os sacrifícios antigos “não aperfeiçoavam nada” (7.19): não levavam o plano de salvação à completude.", "fonte": ["h-3-3"]}, {"id": "q47", "topico": "alianca", "enunciado": "John Hughes demonstrou que, em Hebreus 9, o termo diathēkē deve ser entendido como:", "alternativas": [{"letra": "A", "texto": "Promessa"}, {"letra": "B", "texto": "Aliança"}, {"letra": "C", "texto": "Sacrifício"}, {"letra": "D", "texto": "Testamento"}], "correta": "B", "comentario": "Segundo Carson & Moo, Hughes mostrou de forma convincente que, ao longo de Hb 9, diathēkē significa “aliança”, e não “testamento”.", "fonte": ["h-12-0"]}, {"id": "q48", "topico": "alianca", "enunciado": "Na 2ª grande exortação (10.19-39), o que designa o véu que fechava a entrada do santuário celestial?", "alternativas": [{"letra": "A", "texto": "O Templo de Jerusalém"}, {"letra": "B", "texto": "A lei de Moisés"}, {"letra": "C", "texto": "A incredulidade do povo"}, {"letra": "D", "texto": "A carne de Jesus"}], "correta": "D", "comentario": "O caminho está aberto por meio da carne de Jesus. Por isso a exortação é manter a confiança e se aproximar de Deus.", "fonte": ["s-3-6"]}, {"id": "q49", "topico": "alianca", "enunciado": "Segundo a aula, o que acontece a quem despreza as instruções da nova aliança (10.26-31)?", "alternativas": [{"letra": "A", "texto": "Recebe um castigo mais severo do que o da Lei de Moisés (Dt 17.2-7)"}, {"letra": "B", "texto": "Deve oferecer um sacrifício de expiação no Templo"}, {"letra": "C", "texto": "Não recebe castigo, porque a graça anula o juízo"}, {"letra": "D", "texto": "Recebe o mesmo castigo previsto na Lei de Moisés"}], "correta": "A", "comentario": "É o argumento “do menor para o maior”, que já aparece em 2.1-4: quanto maior o presente, maior a responsabilidade.", "fonte": ["s-3-6"]}, {"id": "q50", "topico": "alianca", "enunciado": "Em Hb 13.9-16, como Carson & Moo descrevem o “sacrifício de louvor”?", "alternativas": [{"letra": "A", "texto": "Como uma nova versão dos sacrifícios de animais"}, {"letra": "B", "texto": "Como uma oferta a ser levada ao Templo de Jerusalém"}, {"letra": "C", "texto": "Como uma exigência para obter o perdão dos pecados"}, {"letra": "D", "texto": "Como contrastado com os sacrifícios da antiga aliança, cumpridos no sacrifício de Jesus “fora do acampamento”"}], "correta": "D", "comentario": "Até o fim da carta, o autor contrapõe as duas alianças: é melhor participar da desgraça de Cristo do que se afastar da sua graça.", "fonte": ["h-3-7"]}, {"id": "q51", "topico": "tiago", "enunciado": "Segundo a aula, por que a carta de Tiago é tão marcada por verbos no imperativo?", "alternativas": [{"letra": "A", "texto": "Porque é uma carta de recomendação pessoal"}, {"letra": "B", "texto": "Porque é um tratado doutrinário sobre a justificação"}, {"letra": "C", "texto": "Porque é uma narrativa histórica da igreja de Jerusalém"}, {"letra": "D", "texto": "Porque é um escrito exortatório, em que o ensinamento moral prevalece sobre o doutrinal"}], "correta": "D", "comentario": "As sentenças em série formam um escrito exortatório, que toma posição e dá conselhos diante dos perigos que ameaçam a comunidade.", "fonte": ["t-0-0"]}, {"id": "q52", "topico": "tiago", "enunciado": "Que imperativo a aula destaca na seção “Não basta ouvir o Evangelho; é necessário viver de conformidade com ele” (1.19-27)?", "alternativas": [{"letra": "A", "texto": "“Não jureis”"}, {"letra": "B", "texto": "“Sujeitai-vos a Deus”"}, {"letra": "C", "texto": "“Sede pacientes”"}, {"letra": "D", "texto": "“Tornai-vos praticantes da Palavra”"}], "correta": "D", "comentario": "Tg 1.22: “Tornai-vos, pois, praticantes da palavra e não somente ouvintes, enganando-vos a vós mesmos.”", "fonte": ["t-1-0"]}, {"id": "q53", "topico": "tiago", "enunciado": "O imperativo de 1.22 está ligado, na aula, a qual paralelismo?", "alternativas": [{"letra": "A", "texto": "Riqueza e pobreza"}, {"letra": "B", "texto": "Lei e graça"}, {"letra": "C", "texto": "Céu e terra"}, {"letra": "D", "texto": "Prática e não-prática"}], "correta": "D", "comentario": "Quem ouve e pratica é contraposto a quem só ouve, como quem se olha no espelho e logo esquece como é (1.23-24).", "fonte": ["t-1-0"]}, {"id": "q54", "topico": "tiago", "enunciado": "Que passagem de Tiago concentra uma série de cerca de dez imperativos seguidos (“Sujeitai-vos… resisti… chegai-vos… purificai… humilhai-vos”)?", "alternativas": [{"letra": "A", "texto": "Tg 5.13-16"}, {"letra": "B", "texto": "Tg 4.7-10"}, {"letra": "C", "texto": "Tg 2.14-17"}, {"letra": "D", "texto": "Tg 1.2-4"}], "correta": "B", "comentario": "Sujeitai-vos, resisti, chegai-vos, purificai, limpai, afligi-vos, lamentai, chorai, converta-se, humilhai-vos: dez imperativos em quatro versículos.", "fonte": ["t-2-4"]}, {"id": "q55", "topico": "tiago", "enunciado": "Em Tg 4.7, quais imperativos aparecem lado a lado?", "alternativas": [{"letra": "A", "texto": "“Ide” e “fazei discípulos”"}, {"letra": "B", "texto": "“Crede” e “sereis salvos”"}, {"letra": "C", "texto": "“Sujeitai-vos a Deus” e “resisti ao diabo”"}, {"letra": "D", "texto": "“Orai” e “vigiai”"}], "correta": "C", "comentario": "“Sujeitai-vos, portanto, a Deus; mas resisti ao diabo, e ele fugirá de vós” (4.7, ARA).", "fonte": ["t-2-4"]}, {"id": "q56", "topico": "tiago", "enunciado": "Que imperativo Tiago dirige a quem tem falta de sabedoria (1.5)?", "alternativas": [{"letra": "A", "texto": "“Estude a lei”"}, {"letra": "B", "texto": "“Guarde silêncio”"}, {"letra": "C", "texto": "“Peça-a a Deus”"}, {"letra": "D", "texto": "“Procure os mestres”"}], "correta": "C", "comentario": "“Se, porém, algum de vós necessita de sabedoria, peça-a a Deus” (1.5). Em seguida: “peça-a, porém, com fé” (1.6).", "fonte": ["t-2-0"]}, {"id": "q57", "topico": "tiago", "enunciado": "Em 1.19, o que Tiago ordena que todo homem seja?", "alternativas": [{"letra": "A", "texto": "Pronto para ouvir, tardio para falar, tardio para se irar"}, {"letra": "B", "texto": "Rico em obras, pobre em palavras, forte na lei"}, {"letra": "C", "texto": "Sábio diante dos homens e humilde diante dos ricos"}, {"letra": "D", "texto": "Pronto para falar, tardio para ouvir, pronto para julgar"}], "correta": "A", "comentario": "O imperativo abre a seção sobre ouvir e praticar a palavra (1.19-27).", "fonte": ["t-2-1"]}, {"id": "q58", "topico": "tiago", "enunciado": "Na exortação à paciência (5.7-12), qual destes é um imperativo de Tiago?", "alternativas": [{"letra": "A", "texto": "“Vendei tudo o que tendes e dai aos pobres”"}, {"letra": "B", "texto": "“Ide a Jerusalém e esperai a promessa”"}, {"letra": "C", "texto": "“Sede, pois, irmãos, pacientes, até à vinda do Senhor”"}, {"letra": "D", "texto": "“Guardai o sábado para santificá-lo”"}], "correta": "C", "comentario": "Na mesma seção: “fortalecei o vosso coração” (5.8), “não vos queixeis” (5.9), “tomai por modelo os profetas” (5.10) e “não jureis” (5.12).", "fonte": ["t-2-6"]}, {"id": "q59", "topico": "tiago", "enunciado": "Qual destes NÃO é um imperativo da carta de Tiago?", "alternativas": [{"letra": "A", "texto": "“Confessai os vossos pecados uns aos outros” (5.16)"}, {"letra": "B", "texto": "“Não jureis nem pelo céu, nem pela terra” (5.12)"}, {"letra": "C", "texto": "“Não faleis mal uns dos outros” (4.11)"}, {"letra": "D", "texto": "“Justificai-vos pela fé, sem as obras”"}], "correta": "D", "comentario": "Tiago insiste justamente no contrário: a fé sem obras é morta (2.14-26). Os outros três são imperativos da carta.", "fonte": ["t-2-5", "t-2-6", "t-2-7"]}, {"id": "q60", "topico": "tiago", "enunciado": "Em 5.14, qual é o imperativo dirigido a quem está doente?", "alternativas": [{"letra": "A", "texto": "“Ofereça um sacrifício no Templo”"}, {"letra": "B", "texto": "“Chame os presbíteros da igreja”"}, {"letra": "C", "texto": "“Jejue por sete dias”"}, {"letra": "D", "texto": "“Procure um médico”"}], "correta": "B", "comentario": "Na mesma seção: “Faça oração”, “Cante louvores” (5.13), “Confessai… e orai uns pelos outros” (5.16).", "fonte": ["t-2-7"]}, {"id": "q61", "topico": "geral", "enunciado": "Como Carson & Moo descrevem o gênero de Hebreus?", "alternativas": [{"letra": "A", "texto": "Um apocalipse com visões simbólicas"}, {"letra": "B", "texto": "Um evangelho centrado na vida de Jesus"}, {"letra": "C", "texto": "Uma carta paulina típica, com saudação e ação de graças"}, {"letra": "D", "texto": "Provavelmente uma homilia (ou série de homilias) colocada na forma escrita de uma carta um pouco anômala"}], "correta": "D", "comentario": "A obra começa sem saudação, mas termina como carta (13.20-25), e o autor a chama de “palavra de exortação” (13.22).", "fonte": ["h-0-1"]}, {"id": "q62", "topico": "geral", "enunciado": "Hebreus começa sem saudação e sem indicar autor e destinatários. Que outra carta do NT também começa assim?", "alternativas": [{"letra": "A", "texto": "1João"}, {"letra": "B", "texto": "1Pedro"}, {"letra": "C", "texto": "Tiago"}, {"letra": "D", "texto": "Judas"}], "correta": "A", "comentario": "Carson & Moo notam que todas as cartas do NT, exceto 1João, trazem essa saudação típica.", "fonte": ["h-0-0"]}, {"id": "q63", "topico": "geral", "enunciado": "Qual é a conclusão de Carson & Moo sobre a data de Hebreus?", "alternativas": [{"letra": "A", "texto": "Exatamente 64 d.C., durante a perseguição de Nero"}, {"letra": "B", "texto": "Segunda metade do século II"}, {"letra": "C", "texto": "Certamente depois de 96, por causa de 1Clemente"}, {"letra": "D", "texto": "Nenhuma data entre c. 60 e 100 pode ser descartada, mas as evidências favorecem uma data anterior a 70"}], "correta": "D", "comentario": "O argumento central é que o autor fala da obsolescência dos sacrifícios sem jamais dizer que eles tinham cessado.", "fonte": ["h-8-4"]}, {"id": "q64", "topico": "geral", "enunciado": "Qual é o argumento mais forte para datar Hebreus antes de 70 d.C.?", "alternativas": [{"letra": "A", "texto": "O autor argumenta a obsolescência dos sacrifícios sem mencionar que eles tinham cessado com a destruição do Templo"}, {"letra": "B", "texto": "O uso de verbos no presente, que prova que o Templo existia"}, {"letra": "C", "texto": "A citação de Hebreus nas cartas de Paulo"}, {"letra": "D", "texto": "A descrição explícita do Templo de Herodes"}], "correta": "A", "comentario": "É um argumento do silêncio, mas forte. O argumento dos verbos no presente, sozinho, não é decisivo.", "fonte": ["h-8-3"]}, {"id": "q65", "topico": "geral", "enunciado": "Que documento fornece o limite máximo tradicional para a data de Hebreus, por citá-la?", "alternativas": [{"letra": "A", "texto": "As Antiguidades judaicas de Josefo"}, {"letra": "B", "texto": "O Cânon Muratoriano"}, {"letra": "C", "texto": "1Clemente (c. 96 d.C.)"}, {"letra": "D", "texto": "A Didaquê"}], "correta": "C", "comentario": "1Clemente 36.1-6 faz repetidas referências a Hebreus.", "fonte": ["h-8-1"]}, {"id": "q66", "topico": "geral", "enunciado": "Qual foi a posição do Cânon Muratoriano (c. 170-80 d.C.) sobre Hebreus?", "alternativas": [{"letra": "A", "texto": "Atribuiu Hebreus a Barnabé"}, {"letra": "B", "texto": "Excluiu Hebreus"}, {"letra": "C", "texto": "Incluiu Hebreus como carta paulina"}, {"letra": "D", "texto": "Colocou Hebreus logo depois de Romanos"}], "correta": "B", "comentario": "No Ocidente, Hebreus era conhecida e citada, mas não era tratada como canônica. No Oriente, nunca se duvidou da sua canonicidade.", "fonte": ["h-11-1"]}, {"id": "q67", "topico": "geral", "enunciado": "Na 1ª parte (1.5-14), quantas citações do AT (LXX) o autor usa para mostrar que Jesus é superior aos anjos?", "alternativas": [{"letra": "A", "texto": "Sete"}, {"letra": "B", "texto": "Três"}, {"letra": "C", "texto": "Dez"}, {"letra": "D", "texto": "Doze"}], "correta": "A", "comentario": "Sl 2.7; 2Sm 7.14; Hb 1.6 (Dt 32.43 / Sl 97.6); Sl 104.4; Sl 45.6-7; Sl 102.25-26; Sl 110.1.", "fonte": ["s-1-0"]}, {"id": "q68", "topico": "geral", "enunciado": "Que citação fecha a cadeia de Hebreus 1 e recapitula que Jesus é muito superior aos anjos?", "alternativas": [{"letra": "A", "texto": "Sl 104.4 (Hb 1.7)"}, {"letra": "B", "texto": "Sl 110.1 (Hb 1.13)"}, {"letra": "C", "texto": "Dt 32.43 (Hb 1.6)"}, {"letra": "D", "texto": "Sl 2.7 (Hb 1.5)"}], "correta": "B", "comentario": "A sétima e última citação recapitula todas as anteriores numa só ideia: Jesus é muito superior aos anjos.", "fonte": ["s-1-0"]}, {"id": "q69", "topico": "geral", "enunciado": "No exórdio (1.1-4), que três características o autor atribui às Escrituras do passado?", "alternativas": [{"letra": "A", "texto": "Obscuras, falsas e ultrapassadas"}, {"letra": "B", "texto": "Fragmentadas (polymerōs), multiformes (polytropōs) e pertencentes ao passado (palai)"}, {"letra": "C", "texto": "Perfeitas, eternas e definitivas"}, {"letra": "D", "texto": "Escritas, orais e proféticas"}], "correta": "B", "comentario": "O autor contrasta essa revelação com a que Deus deu “nestes últimos dias” pelo Filho.", "fonte": ["s-0-0"]}, {"id": "q70", "topico": "geral", "enunciado": "Em Hb 12.2, como Carson & Moo preferem traduzir archēgos, aplicado a Jesus?", "alternativas": [{"letra": "A", "texto": "Pioneiro (e não “autor”)"}, {"letra": "B", "texto": "Mediador"}, {"letra": "C", "texto": "Profeta"}, {"letra": "D", "texto": "Juiz"}], "correta": "A", "comentario": "Jesus é o pioneiro e aperfeiçoador da fé: abriu o caminho para Deus e concluiu tudo o que era necessário.", "fonte": ["h-3-6", "h-12-1"]}, {"id": "q71", "topico": "geral", "enunciado": "Qual estudioso tem o esboço de Hebreus considerado mais detalhado e consistente, baseado na análise do discurso?", "alternativas": [{"letra": "A", "texto": "Guthrie"}, {"letra": "B", "texto": "Käsemann"}, {"letra": "C", "texto": "Attridge"}, {"letra": "D", "texto": "Kümmel"}], "correta": "A", "comentario": "Guthrie usa a linguística textual para mostrar a interação entre exposição e exortação.", "fonte": ["h-2-1"]}, {"id": "q72", "topico": "geral", "enunciado": "Que tema de Hebreus Käsemann destacou na obra The wandering people of God?", "alternativas": [{"letra": "A", "texto": "A destruição do Templo"}, {"letra": "B", "texto": "O sacerdócio de Melquisedeque"}, {"letra": "C", "texto": "A autoria paulina"}, {"letra": "D", "texto": "O povo peregrino de Deus"}], "correta": "D", "comentario": "Esse estudo alimentou avaliações sobre o perfil dos leitores.", "fonte": ["h-12-0"]}];
+const SIMULADOS = [{"numero": 1, "ids": ["q18", "q31", "q14", "q38", "q64", "q40", "q51", "q3", "q47", "q6", "q65"]}, {"numero": 2, "ids": ["q57", "q42", "q10", "q33", "q61", "q2", "q54", "q70", "q16", "q44", "q25"]}, {"numero": 3, "ids": ["q34", "q36", "q24", "q46", "q20", "q59", "q58", "q15", "q72", "q1"]}, {"numero": 4, "ids": ["q56", "q35", "q67", "q13", "q27", "q19", "q23", "q5", "q60", "q45"]}, {"numero": 5, "ids": ["q7", "q52", "q68", "q28", "q21", "q29", "q62", "q43", "q4", "q49"]}, {"numero": 6, "ids": ["q9", "q53", "q26", "q30", "q66", "q39", "q22", "q63", "q50", "q8"]}, {"numero": 7, "ids": ["q11", "q32", "q55", "q17", "q71", "q12", "q69", "q41", "q48", "q37"]}];
+const DISSERTATIVAS = [{"numero": 1, "topico": "autoria", "enunciado": "Cite três propostas de autoria de Hebreus e quem as defendeu.", "gabarito": "Paulo: tradição do Oriente e P⁴⁶; Clemente de Alexandria (com Lucas como tradutor); Trento. Barnabé: Tertuliano. Apolo: Lutero (pela primeira vez). Clemente de Roma ou Lucas: Calvino. Priscila: Harnack. (Quaisquer três.)", "fonte": ["h-4-1", "h-4-3", "h-4-6", "h-6-2"]}, {"numero": 2, "topico": "autoria", "enunciado": "Por que a maioria dos estudiosos rejeita hoje a autoria paulina de Hebreus?", "gabarito": "Pesam as diferenças de vocabulário, estilo e retórica, a ausência da saudação com o nome do autor e a falta de temas paulinos (o sumo sacerdócio de Cristo, por outro lado, não aparece em Paulo). Acima de tudo: em 2.3 o autor diz que recebeu o evangelho dos que ouviram o Senhor, algo que Paulo não diria (Gl 1.11-12).", "fonte": ["h-5-0", "h-5-1"]}, {"numero": 3, "topico": "autoria", "enunciado": "Qual é a conclusão de Carson & Moo sobre o autor de Hebreus?", "gabarito": "Devemos reconhecer a ignorância: não sabemos quem escreveu (os primeiros leitores sabiam). Com toda a probabilidade, era um judeu helenista convertido, cristão da segunda geração (2.3), imerso na LXX e com boa formação.", "fonte": ["h-6-4"]}, {"numero": 4, "topico": "italia", "enunciado": "Explique as duas formas de interpretar “Os da Itália enviam saudações” (13.24) e o que cada uma implica.", "gabarito": "1) Italianos fora da Itália mandam saudações para casa: a carta foi enviada PARA a Itália, mas não sabemos de onde. 2) Crentes que estão na Itália mandam saudações: o autor escreve DA Itália, e não sabemos quem são os destinatários. Por isso a tradução ambígua da NEB (“nossos amigos italianos”) é atraente.", "fonte": ["h-7-1", "h-7-2"]}, {"numero": 5, "topico": "italia", "enunciado": "Qual é a relação entre Hb 13.24 e a hipótese de que a carta foi enviada a Roma?", "gabarito": "A hipótese de Roma exige ler “os da Itália” como italianos que estavam fora da Itália (como Priscila e Áquila) mandando saudações para casa. A favor: Hebreus foi conhecida primeiro em Roma (Clemente de Roma), e o Ocidente demorou a atribuí-la a Paulo. Mesmo assim, é conjectura.", "fonte": ["h-9-1"]}, {"numero": 6, "topico": "proposito", "enunciado": "Qual era a situação dos destinatários de Hebreus e por que o autor escreve?", "gabarito": "Eram cristãos judeus tentados a voltar a depender das estruturas religiosas da antiga aliança, talvez achando que seria só um cristianismo judaico mais conservador. Para o autor, isso é apostasia: dá ao sistema antigo uma eficácia redentora que ele nunca teve e relativiza Cristo e seu sacrifício. Ele escreve para evitar essa catástrofe.", "fonte": ["h-10-2", "h-10-4"]}, {"numero": 7, "topico": "proposito", "enunciado": "Que motivos podiam levar os leitores a voltar ao judaísmo?", "gabarito": "O cansaço da vergonha de viver à margem da herança cultural (13.13); a atração por ensinos inovadores em vez do evangelho apostólico (13.9; 13.7-8); e o medo de perseguição, pois o judaísmo era reconhecido por Roma e o cristianismo não. Além disso, eles abandonavam as reuniões (10.25).", "fonte": ["h-10-3"]}, {"numero": 8, "topico": "proposito", "enunciado": "Como a superioridade do sacerdócio de Jesus responde ao problema dos leitores?", "gabarito": "Se o sacerdócio de Jesus é eterno, superior ao levítico, confirmado por juramento (Sl 110.4) e seu sacrifício salva plenamente (7.25), voltar ao sacerdócio e aos sacrifícios antigos é trocar a realidade pela sombra. A superioridade de Cristo fundamenta as advertências contra a apostasia.", "fonte": ["s-3-1", "h-3-3", "h-1-1"]}, {"numero": 9, "topico": "alianca", "enunciado": "Explique como, em Hb 8–10, o sacerdócio levítico é sombra do sacerdócio de Cristo.", "gabarito": "O sumo sacerdote levítico e o antigo santuário são sombras da nova aliança e do novo sumo sacerdote anunciados pelos profetas (Jr 31.31-34). Seus sacrifícios repetidos não aperfeiçoavam; o sacrifício único de Cristo tem eficácia permanente. A antiga ordem existia para apontar para a realidade trazida pela nova (10.1).", "fonte": ["h-3-4", "h-3-5"]}, {"numero": 10, "topico": "alianca", "enunciado": "Segundo a aula, por que a obra de Jesus foi mais efetiva que a dos sumos sacerdotes levíticos (10.1-18)?", "gabarito": "1) Os sacerdotes levitas eram eles mesmos pecadores. 2) Repetiam seus sacrifícios muitas vezes (9.25; 10.1-3,11), sinal de imperfeição. 3) Ofereciam sacrifícios de animais, e é impossível que o sangue de touros e bodes remova pecados (10.4).", "fonte": ["s-3-4"]}, {"numero": 11, "topico": "alianca", "enunciado": "Qual é o significado de Hb 8.13 e qual sua relação com Jr 31.31-34?", "gabarito": "Ao anunciar por Jeremias uma “nova” aliança, Deus tornou a primeira obsoleta, e o que envelhece está prestes a desaparecer (8.13). A antiga aliança é deixada de lado: era sombra, e a nova, estabelecida pela morte de Cristo, é a realidade.", "fonte": ["h-3-4", "s-3-2"]}, {"numero": 12, "topico": "alianca", "enunciado": "Por que é impossível que o sangue de touros e bodes remova pecados (Hb 10.4)?", "gabarito": "a) As Escrituras predizem a substituição do sistema mosaico. b) Com base em Jr 31.31-34, esses sacrifícios só limpavam a carne (9.13-14), e não a consciência (9.15; 10.2,22). c) O Sl 40.6-8 apresenta o sacrifício voluntário do corpo de Cristo como substituto do sistema (10.7,9).", "fonte": ["s-3-5"]}, {"numero": 13, "topico": "tiago", "enunciado": "Por que a epístola de Tiago tem tantos verbos no imperativo? Dê exemplos.", "gabarito": "Porque é um escrito exortatório, uma coleção de sentenças em que o ensino moral prevalece sobre o doutrinal, tomando posição diante dos perigos da comunidade. Exemplos: “Tornai-vos praticantes da palavra” (1.22); “peça-a a Deus” (1.5); “Sujeitai-vos a Deus; resisti ao diabo” (4.7); “Sede pacientes” (5.7); “não jureis” (5.12).", "fonte": ["t-0-0", "t-2-4"]}, {"numero": 14, "topico": "tiago", "enunciado": "Cite o imperativo destacado em aula para Tg 1.19-27 e explique seu sentido.", "gabarito": "“Tornai-vos praticantes da Palavra (e não somente ouvintes)” (1.22). Não basta ouvir o Evangelho; é preciso viver de acordo com ele. A aula liga o imperativo ao paralelismo “prática e não-prática” e às imagens da semeadura e do espelho.", "fonte": ["t-1-0", "t-1-1"]}, {"numero": 15, "topico": "geral", "enunciado": "Por que Carson & Moo favorecem uma data anterior a 70 d.C. para Hebreus?", "gabarito": "O autor argumenta que os sacrifícios são obsoletos e pergunta se eles não teriam deixado de ser oferecidos (10.1-2). Se o Templo e os sacrifícios já tivessem acabado em 70, seria difícil ele não mencionar isso. É um argumento do silêncio, mas forte.", "fonte": ["h-8-3", "h-8-4"]}];
+const MATERIA = [{"numero": 1, "rotulo": "Carson & Moo", "titulo": "Hebreus — Introdução", "fonte": "CARSON, D. A.; MOO, D. J. Introdução ao Novo Testamento — capítulo de Hebreus.", "secoes": [{"subtitulo": "Gênero: carta ou homilia?", "paragrafos": ["Hebreus começa <strong>sem saudação<\/strong> e sem indicar o autor e os destinatários — algo comum nas cartas greco-romanas e presente em todas as cartas do NT, <strong>exceto 1João<\/strong>. Mesmo assim, termina de forma tipicamente epistolar: bênção, notas pessoais e despedida (13.20-25). As advertências específicas mostram que o autor tem leitores definidos em mente (5.12; 6.10; 10.32).", "Em 13.22 o autor chama sua obra de “palavra de exortação”. A riqueza de recursos retóricos indica que, provavelmente, a obra foi originalmente <strong>uma homilia (ou série de homilias) colocada na forma escrita de uma carta “um pouco anômala”<\/strong>. Não há evidência textual de que o início tenha se perdido ou de que o fim tenha sido acrescentado: Hebreus 13 é parte integral da obra."], "paragrafoIds": ["h-0-0", "h-0-1"]}, {"subtitulo": "Tema geral", "paragrafos": ["O tema não é debatido: a <strong>supremacia inconteste do Filho de Deus, Jesus Cristo<\/strong>, não desafiada nem por anjos nem por humanos. De forma correlata: a aliança que ele estabeleceu é superior a qualquer outra; o <strong>sacerdócio dele é melhor do que o de Levi<\/strong>; o sacrifício dele é superior aos da legislação mosaica; e até a revelação anterior tinha o propósito de antecipá-lo e apontar para ele.", "A supremacia de Cristo não é um “artigo abstrato”: seu propósito aparece nos trechos parenéticos (exortações) — 2.1-4; 3.7—4.11; 4.14-16; 5.11—6.12; 10.19-39; 12.1—13.17 —, escritos para <strong>advertir os leitores a não voltarem às formas de piedade que antes conheciam, abandonando a fé cristã<\/strong>."], "paragrafoIds": ["h-1-0", "h-1-1"]}, {"subtitulo": "Estrutura", "paragrafos": ["Há consenso de que o livro foi cuidadosamente estruturado, mas não sobre a forma dessa estrutura. Propostas: argumentação de 1.1 a 10.18 seguida de exortações (10.19—13.25), considerada pouco minuciosa; cinco divisões em quiasmo entre introdução (1.1-4) e conclusão (13.20-21), considerada forçada; um longo prólogo (1.1—4.13), duas apresentações de Jesus como sumo sacerdote (4.14—6.20; 7.1—10.18) e um longo epílogo (10.19—13.25); e o esquema de Kümmel, baseado nos trechos parenéticos.", "Attridge observa que as unidades menores são bem delineadas; o problema é vinculá-las na estrutura maior. O esboço mais detalhado e consistente talvez seja o de <strong>Guthrie<\/strong>, que usa a análise do discurso (linguística textual) para mostrar a interação entre exposição e exortação ao longo do documento."], "paragrafoIds": ["h-2-0", "h-2-1"]}, {"subtitulo": "Fluxo do argumento", "paragrafos": ["O <strong>exórdio (1.1-4)<\/strong> destaca o caráter superior e definitivo da revelação no Filho. Segue o argumento de que ele é <strong>superior aos anjos (1.5-14)<\/strong> e a primeira advertência (2.1-4): se até a revelação antiga e inferior trouxe juízos, não podemos nos afastar do evangelho. Jesus se identificou com os seres humanos mortais e caídos para levá-los ao seu destino, tornando-se “sumo sacerdote misericordioso e fiel” (2.17).", "Jesus e Moisés foram fiéis, mas Jesus é o <strong>Filho<\/strong> da casa (3.1-6). Vem a advertência contra a incredulidade da geração de Moisés, numa exposição do Sl 95.7-11 sobre o <strong>“descanso”<\/strong> (3.7—4.11): Josué levou o povo a Canaã, mas aquele não era o descanso derradeiro; o descanso que Jesus dá é da mesma natureza do descanso de Deus. Fugir dessa palavra perscrutadora é tolice (4.12-13).", "Jesus é o sumo sacerdote capaz de se solidarizar com nossas fraquezas (4.14-16). As qualificações dos sumos sacerdotes da antiga aliança (5.1-4) aparecem de forma superlativa em Cristo (5.5-10), “segundo a ordem de Melquisedeque”. Antes de explorar o título, o autor insere uma advertência severa (5.11—6.20): condena a imaturidade, afirma que é impossível recuperar apóstatas, incentiva a perseverança e lembra a certeza da promessa de Deus.", "No cap. 7, o autor liga <strong>Gn 14.18-20 e o Sl 110<\/strong> para mostrar a superioridade do sacerdócio de Melquisedeque sobre o de Levi — e que Jesus pertence ao primeiro. O ponto decisivo é a <strong>eficácia permanente do sacrifício de Jesus<\/strong>: os sacrifícios da antiga aliança não aperfeiçoavam nada (7.19), mas Jesus pode “salvar plenamente os que vêm a Deus por meio dele” (7.25). Em Hebreus, perfeição é essencialmente <strong>completude<\/strong> — sobretudo do plano divino de salvação.", "À luz disso, <strong>o sumo sacerdote levítico e o antigo santuário não passam de sombras da nova aliança e do novo sumo sacerdote<\/strong> que os próprios profetas anteviram (Hb 8.1-13; <strong>Jr 31.31-34<\/strong>). O anúncio da nova aliança já tinha tornado <strong>a aliança mosaica velha e obsoleta (8.13)<\/strong>.", "Isso leva à exposição do ritual do Tabernáculo, especialmente do <strong>Dia da Expiação (9.1-10)<\/strong>, para mostrar que o sacrifício de Cristo alcança um resultado duradouro que os antigos sacrifícios jamais pretenderam alcançar (9.11-28). <strong>A antiga ordem tinha o objetivo de ser uma sombra da realidade introduzida pela nova (10.1-18)<\/strong>. A entronização do novo sumo sacerdote confirma o caráter definitivo e a eficácia permanente de sua obra.", "A longa seção parenética (10.19—11.39) incentiva os leitores a permanecerem firmes: desviar-se é perigoso por causa da <strong>suficiência exclusiva da nova aliança<\/strong>. A fé perseverante é modelada pelas Escrituras (cap. 11). Os leitores devem olhar para Jesus, o <strong>“pioneiro” (não o “autor”) e aperfeiçoador da fé<\/strong> (12.1-3); suportar as tribulações como disciplina amorosa de Deus (12.4-11); e não se alinhar a Esaú (12.12-17). O autor contrasta a Sião celestial com o Sinai terreno (12.18-29).", "As exortações finais (13.1-17) trazem instruções éticas (13.1-6), o exemplo dos primeiros líderes (13.7-8), a submissão aos líderes atuais (13.17) e o <strong>“sacrifício de louvor”<\/strong>, contrastado com os sacrifícios da antiga aliança, cumpridos no sacrifício de Jesus “fora do acampamento” (13.9-16). A carta termina com pedido de oração (13.18-19), doxologia (13.20-21), observações pessoais (13.22-23) e saudações finais (13.24-25)."], "paragrafoIds": ["h-3-0", "h-3-1", "h-3-2", "h-3-3", "h-3-4", "h-3-5", "h-3-6", "h-3-7"]}, {"subtitulo": "Autor: a tradição antiga", "paragrafos": ["No texto mais antigo de Hebreus, o <strong>P⁴⁶ (início do séc. 3)<\/strong>, a carta está no corpus paulino, <strong>logo depois de Romanos<\/strong>. Isso reflete a convicção da igreja do Oriente, que se apoiava nos estudiosos alexandrinos cujas opiniões Eusébio preservou.", "<strong>Clemente de Alexandria<\/strong> (c. 150-215) mantém Paulo como autor, mas admite as dificuldades: o grego de Hebreus é mais refinado que o de Paulo e parecido com o de Lucas-Atos. Por isso supõe que <strong>Paulo escreveu em hebraico e Lucas traduziu<\/strong>. Explica a falta do nome de Paulo dizendo que ele escrevia a <strong>judeus com forte preconceito contra ele<\/strong> e, por prudência, não se identificou.", "<strong>Orígenes<\/strong> (185-253) diz que o conteúdo não é inferior ao das cartas de Paulo, mas acha que <strong>um discípulo tomou notas do que o apóstolo disse e reescreveu o material<\/strong>. Sabia que alguns apontavam Lucas e outros Clemente de Roma, mas recusou-se a especular: <strong>“quem escreveu a carta só Deus sabe”<\/strong>.", "Na <strong>igreja ocidental<\/strong>, houve resistência à autoria paulina até a 2ª metade do séc. 4: o <strong>Cânon Muratoriano, Ireneu e Hipólito<\/strong> negam que Paulo seja o autor. A única proposta alternativa antiga é a de <strong>Tertuliano (séc. 2): Barnabé<\/strong> — e ele diz que Hebreus tem mais autoridade que O Pastor, de Hermas, por causa da importância do autor.", "Foi a opinião conjunta de <strong>Jerônimo e Agostinho<\/strong> que mudou o Ocidente — menos pela crítica literária e mais porque a autoria apostólica favorecia a aceitação no cânon. Jerônimo reconhece as dúvidas, mas diz que não importa quem foi o autor, pois a obra é “honrada diariamente com sua leitura nas igrejas”.", "O <strong>Sínodo de Hipona (393)<\/strong> e o <strong>3º Sínodo de Cartago (397)<\/strong> listam: “Do apóstolo Paulo, <strong>treze cartas<\/strong>; do mesmo apóstolo, aos Hebreus, uma” — ainda distinguindo Hebreus das demais. No <strong>6º Sínodo de Cartago (419)<\/strong>, <strong>catorze<\/strong> cartas são atribuídas a Paulo. Mesmo depois, comentaristas cultos fazem ressalvas: Tomás de Aquino diz que Lucas traduziu a carta para um grego excelente.", "Na <strong>Reforma<\/strong>, a tradição foi reexaminada: <strong>Calvino<\/strong> (comentando 13.23) defendeu <strong>Clemente de Roma ou Lucas<\/strong>; <strong>Lutero propôs — pela primeira vez, até onde se sabe — Apolo<\/strong>. O <strong>Concílio de Trento<\/strong> reagiu insistindo em catorze cartas paulinas."], "paragrafoIds": ["h-4-0", "h-4-1", "h-4-2", "h-4-3", "h-4-4", "h-4-5", "h-4-6"]}, {"subtitulo": "Autor: por que não Paulo?", "paragrafos": ["A última defesa importante da autoria paulina foi escrita há mais de meio século; hoje praticamente ninguém a repetiria. As diferenças de <strong>vocabulário, estilo grego e retórica<\/strong> não a tornam impossível, mas menos plausível. Pesam também: a <strong>ausência da saudação com o nome do autor<\/strong>, prática usual de Paulo; a ausência de vários temas paulinos comuns; e o fato de o <strong>sumo sacerdócio de Cristo<\/strong>, central em Hebreus, não aparecer nas cartas paulinas reconhecidas.", "<strong>Acima de tudo<\/strong>: é praticamente impossível que Paulo se apresentasse como alguém que ouviu o evangelho não do Senhor, mas <strong>daqueles “que o ouviram” (2.3)<\/strong> — compare com Gl 1.11-12, onde Paulo diz ter recebido o evangelho por revelação de Jesus Cristo.", "<strong>Lucas<\/strong> e <strong>Clemente de Roma<\/strong> também recebem poucos votos hoje. As conexões entre Lucas e Hebreus são tênues demais. Clemente parece citar Hebreus e tem abordagem muito distante: para falar do ministério da igreja, apela às leis cerimoniais do AT — postura totalmente divergente da de Hebreus."], "paragrafoIds": ["h-5-0", "h-5-1", "h-5-2"]}, {"subtitulo": "Autor: outras propostas", "paragrafos": ["<strong>Barnabé<\/strong>: levita de Chipre (At 4.36), do grupo helenista de Jerusalém, colaborador de Paulo. Era chamado <em>huios paraklēseōs<\/em>, “filho da exortação/encorajamento” (At 4.36), e Hebreus se chama <em>logos tēs paraklēseōs<\/em>, “palavra de exortação” (13.22). <em>Contra:<\/em> <em>paraklēsis<\/em> é comum demais no NT para apontar uma só pessoa; e Hebreus não é só contra o Templo, mas mostra a obsolescência de todo o sistema de rituais em princípio.", "<strong>Apolo (proposta de Lutero)<\/strong>: “homem eloquente” e com “conhecimento profundo das Escrituras” (At 18.24), natural de <strong>Alexandria<\/strong> (há ligações de Hebreus com Fílon de Alexandria) e ligado à missão de Paulo (1Co 1—4). <em>Contra:<\/em> é uma “conjectura brilhante”, mas sem evidências para testá-la; o pensamento de Hebreus está longe do neoplatonismo e do estoicismo de Fílon — seria “especulação em cima de especulação”.", "<strong>Priscila<\/strong> (desde Harnack), talvez com Áquila: explicaria a oscilação entre “nós” e “eu”; o casal ensinou Apolo (At 18.26) e conhecia Timóteo (Hb 13.23); o nome teria sumido por tendências antifeministas. <em>Contra:<\/em> indícios insuficientes e, sobretudo, o autor se refere a si mesmo <strong>no masculino singular em 11.32<\/strong>.", "Objeções semelhantes valem para outras sugestões: Silas, Timóteo, Epafras, o diácono Filipe ou Maria, mãe de Jesus.", "<strong>Conclusão de Carson & Moo:<\/strong> é melhor reconhecer nossa ignorância. Não sabemos quem escreveu; os primeiros leitores quase certamente sabiam. Com toda a probabilidade, o autor era um <strong>judeu helenista convertido<\/strong>, <strong>crente da segunda geração (2.3)<\/strong>, <strong>imerso na LXX<\/strong> (nenhuma de suas citações do AT depende do hebraico) e com <strong>boa formação<\/strong>, a julgar pelo vocabulário e pelo estilo grego excelentes."], "paragrafoIds": ["h-6-0", "h-6-1", "h-6-2", "h-6-3", "h-6-4"]}, {"subtitulo": "Local de origem: “os da Itália” (13.24)", "paragrafos": ["A <strong>única indicação explícita<\/strong> do local de origem está em <strong>13.24: “Os da Itália enviam saudações”<\/strong>. Infelizmente, a frase não é clara.", "<strong>Leitura 1:<\/strong> são crentes italianos que deixaram sua terra e mandam saudações para casa — então a carta foi enviada <strong>PARA a Itália<\/strong>, mas não sabemos de onde partiu. <strong>Leitura 2:<\/strong> são crentes que estão <strong>na<\/strong> Itália — então o autor escreve <strong>DA Itália<\/strong>, mas não sabemos quem são os destinatários.", "Como não dá para saber o que o autor quis dizer, a <strong>ambiguidade da tradução da NEB<\/strong> é atraente: <strong>“Saudações a vocês da parte de nossos amigos italianos”<\/strong>. Mesmo que soubéssemos quem é o autor, isso não fixaria a procedência geográfica, pois ele podia circular bastante (como Paulo). Numa obra tão parenética, a argumentação é moldada pelas necessidades dos leitores: a análise das categorias conceituais do livro revela <strong>mais sobre o público-alvo do que sobre o autor<\/strong>."], "paragrafoIds": ["h-7-0", "h-7-1", "h-7-2"]}, {"subtitulo": "Data", "paragrafos": ["Autor e leitores pertencem à <strong>segunda geração<\/strong> de cristãos (2.3) — no sentido genealógico, não cronológico. Provavelmente a carta não é anterior a 50 d.C.; a maioria diria que não é anterior a 60.", "<strong>1Clemente<\/strong> (36.1-6) faz repetidas referências a Hebreus. Com a data tradicional de 1Clemente, <strong>96 d.C.<\/strong>, temos a data máxima para Hebreus (embora a base dessa data — a perseguição de Domiciano — seja tênue). Se o Timóteo de 13.23 é o colega de Paulo, a carta foi escrita durante a vida dele, o que dá <strong>c. 100<\/strong> como data mais avançada.", "Hb 12.4 (“ainda não resististes até ao sangue”) pode ser figurado. Se se refere a mártires, pode indicar uma data anterior à perseguição de Nero (64 d.C.) — ou leitores de outra região, depois dela. É arriscado usar o versículo para fixar uma data.", "O uso de <strong>verbos no presente<\/strong> para o ritual judaico (7.8; 9.6-7,9,13; 13.10) não é decisivo: o presente grego não indica necessariamente o tempo presente, e Clemente e Josefo também usam o presente depois de 70. Mas há uma forma mais forte do argumento: o autor argumenta a <strong>obsolescência<\/strong> dos sacrifícios (8.13) e pergunta se eles não “teriam deixado de ser oferecidos” (10.1-2). Se os sacrifícios tivessem acabado em 70 d.C., seria difícil ele não assinalar isso. É um argumento baseado no silêncio, mas <strong>forte<\/strong>.", "O argumento mais forte para data tardia — uma cristologia “alta” em 1.1-3 — não se sustenta: 1Co 8.6, Fp 2.6-11 e Cl 1.15-20 são anteriores a 70. <strong>Conclusão:<\/strong> nenhuma data entre c. 60 e 100 pode ser eliminada, mas <strong>as evidências favorecem uma data anterior a 70<\/strong>."], "paragrafoIds": ["h-8-0", "h-8-1", "h-8-2", "h-8-3", "h-8-4"]}, {"subtitulo": "Destinatários", "paragrafos": ["As referências a experiências dos leitores (10.32-34) mostram um grupo específico. Muitos pensaram na <strong>Palestina/Jerusalém<\/strong>, por causa das referências ao ritual. Mas o silêncio absoluto sobre o Templo (em contraste com o Tabernáculo), o grego refinado e o uso exclusivo da LXX enfraquecem essa teoria.", "Foram propostas Alexandria, Antioquia, Bitínia e Ponto, Cesareia, Colossos, Corinto, Chipre, Éfeso e Samaria, mas a única outra proposta com apoio razoável é <strong>Roma<\/strong>: é o primeiro lugar em que a carta foi conhecida (Clemente de Roma), e a demora de Roma e do Ocidente em atribuí-la a Paulo pode indicar que sabiam que não era dele. Essa teoria exige ler <strong>“os da Itália” (13.24) como italianos que estavam fora da Itália<\/strong> (como Priscila e Áquila). <strong>Harnack<\/strong> pensava numa igreja doméstica em Roma; <strong>Manson<\/strong>, numa facção conservadora judaico-cristã. Ainda assim, Roma “não passa de conjectura”."], "paragrafoIds": ["h-9-0", "h-9-1"]}, {"subtitulo": "Propósito", "paragrafos": ["O título “Aos hebreus” (<em>Pros Hebraious<\/em>) já aparece no P⁴⁶ e era conhecido por Clemente de Alexandria (c. 180), mas a maioria o considera um rótulo editorial posterior. O conteúdo deve decidir. Todos concordam que o livro é escrito <strong>a cristãos<\/strong>, instados a <strong>sustentar sua confissão<\/strong> (3.6,14; 4.14; 10.23).", "Alguns propõem leitores gentios: o conhecimento do ritual viria da leitura, e “afastar-se do Deus vivo” (3.12) combinaria com pagãos. Mas o exemplo de 3.12 é o próprio Israel no deserto; os “ensinos elementares” (6.1) pressupõem o judaísmo; não há sinal de propaganda judaizante nem menção à circuncisão; e muitos argumentos desafiam a ideia de que <strong>o culto do Sinai era definitivo (7.11)<\/strong> — algo de que só precisaria quem corresse o risco de voltar ao judaísmo.", "Conclusão: os leitores eram <strong>cristãos judeus<\/strong> (provavelmente do judaísmo helenista), tentados a <strong>voltar a depender das estruturas religiosas da antiga aliança<\/strong> — talvez pensando que seria apenas um cristianismo judaico mais conservador. Para o autor, isso <strong>não é cristianismo de forma alguma: é apostasia<\/strong>. Voltar a essas estruturas é <strong>atribuir-lhes uma eficácia redentora que nunca tiveram<\/strong> e <strong>menosprezar a importância exclusiva de Cristo e de seu sacrifício<\/strong>.", "Os motivos são apenas insinuados: <strong>cansaço da vergonha<\/strong> de viver à margem da herança cultural (13.13); atenção a <strong>ensinos inovadores<\/strong> (13.9) em vez do evangelho apostólico (13.7-8); e talvez <strong>medo<\/strong> — <strong>o judaísmo era religião reconhecida pelos romanos; o cristianismo não<\/strong>, e voltar diminuiria a ameaça de perseguição. A disciplina se deteriorava com o <strong>abandono das reuniões<\/strong> (10.25), talvez uma igreja doméstica que já não se reunia com o restante.", "Mais do que os motivos, interessam ao autor as <strong>consequências<\/strong>: Cristo, seu sacrifício e sua obra sacerdotal ficam tão relativizados que, na prática, são negados — e a apostasia está a um passo. <strong>É para evitar essa catástrofe que ele escreve<\/strong>, mostrando a superioridade de Cristo, de sua aliança e de seu sacerdócio."], "paragrafoIds": ["h-10-0", "h-10-1", "h-10-2", "h-10-3", "h-10-4"]}, {"subtitulo": "Texto e aceitação no cânon", "paragrafos": ["Os manuscritos mais importantes são, em sua imensa maioria, <strong>alexandrinos<\/strong>; a tradição bizantina é representada pelos unciais K e L (séc. 9), e o texto ocidental por D (Codex Claromontanus, séc. 6) e pela Antiga Latina. O texto está bem preservado, com decisões difíceis em alguns versículos (1.8; 11.17,37; 12.3,7).", "No <strong>Ocidente<\/strong>, a carta era conhecida e citada (Clemente de Roma, Inácio, Hermas, Justino), mas não tratada como apostólica ou canônica; o <strong>Cânon Muratoriano (c. 170-80) exclui Hebreus<\/strong>. Em <strong>Alexandria e no Oriente<\/strong>, nunca se duvidou de sua canonicidade; <strong>Eusébio<\/strong> a inclui entre os livros “reconhecidos”, e os pais sírios jamais a questionaram. No fim, o Oriente prevaleceu no Ocidente pela influência de Jerônimo e Agostinho."], "paragrafoIds": ["h-11-0", "h-11-1"]}, {"subtitulo": "Estudos recentes e contribuição de Hebreus", "paragrafos": ["Áreas de interesse: a <strong>cristologia<\/strong> (a exposição da obra sacerdotal de Cristo é mais completa aqui do que em qualquer outro trecho do NT); <strong>Melquisedeque<\/strong> (comparado às tradições dos manuscritos do mar Morto); o <strong>uso do AT<\/strong> (só Mateus se equipara); o tema do <strong>povo peregrino<\/strong> (Käsemann, <em>The wandering people of God<\/em>); perfeição, descanso (cap. 4), fé (cap. 11) e nova aliança. <strong>John Hughes<\/strong> mostrou que, em Hb 9, <em>diathēkē<\/em> deve ser entendido como <strong>“aliança”, e não “testamento”<\/strong>.", "<strong>Contribuição:<\/strong> Hebreus enriquece a cristologia do NT — obra sacerdotal de Jesus, caráter definitivo do seu sacrifício, sua filiação, a importância da encarnação (cap. 2) e seu papel de <strong>“pioneiro” (<em>archēgos<\/em>)<\/strong>. Ensina a interpretar o AT (tipologia, profecia que vai além da predição verbal). Trata da transição entre Israel, sob a aliança do Sinai, e a igreja, sob a aliança selada pela morte e ressurreição de Jesus. E, como 1João, preocupa-se com a perseverança e o perigo da apostasia."], "paragrafoIds": ["h-12-0", "h-12-1"]}]}, {"numero": 2, "rotulo": "Aulas 4–5", "titulo": "Hebreus — Síntese teológica", "fonte": "Slides do Prof. Dr. Leonardo Silveira (FABAT) — Aula 04-05.", "secoes": [{"subtitulo": "Exórdio — a intervenção divina na história humana (1.1-4)", "paragrafos": ["Na primeira linha, o autor revela a estratégia de toda a sua homilia: compara a maneira como Deus falou no passado com a maneira como fala “nestes últimos dias”. Ele atribui três características às Escrituras antigas: são <strong>fragmentadas<\/strong> (<em>polymerōs<\/em>), <strong>multiformes<\/strong> (<em>polytropōs<\/em>) e <strong>pertencem ao passado<\/strong> (<em>palai<\/em>).", "A alusão ao Sl 2.8 tem força escatológica (aponta para o domínio total de Cristo). A <strong>herança<\/strong> é tema-chave do livro (1.14; 6.12,17; 9.15; 11.7,8; 12.17). “Assentou-se à direita da Majestade nas alturas” é alusão evidente ao <strong>Sl 110.1<\/strong> (109.1 LXX). O uso de <em>ónoma<\/em> (“nome”) em 1.4 pode ecoar o contexto messiânico de 2Sm 7."], "paragrafoIds": ["s-0-0", "s-0-1"]}, {"subtitulo": "1ª parte — Posição de Cristo (1.5—2.18)", "paragrafos": ["<strong>Jesus superior aos anjos (1.5-14):<\/strong> o autor seleciona <strong>sete citações do AT (LXX)<\/strong>. (1) Sl 2.7 (1.5): a relação de <strong>Filho<\/strong>, que nenhum anjo partilha. (2) 2Sm 7.14 (1.5): reforça a relação filial — os anjos são servos que adoram o Filho — e liga o Sl 2.7 à cadeia que celebra a exaltação do Filho. (3) 1.6, sem fonte conhecida (elementos de Dt 32.43 e Sl 97.6): os anjos devem reverenciar o <strong>“primogênito”<\/strong> (<em>prōtotokos<\/em>). (4) Sl 104.4 (1.7): lugar e ministério inferiores dos anjos. (5) Sl 45.6-7 (1.8-9): a alta posição do Filho. (6) Sl 102.25-26 (1.10-12): seu poder criativo. (7) <strong>Sl 110.1 (1.13)<\/strong>: fecha e recapitula — <strong>Jesus é muito superior aos anjos<\/strong>.", "<strong>Reconhecer sua autoridade (2.1-4):<\/strong> Deus usou anjos para entregar a lei a Moisés; se a desobediência à lei menor trazia retribuição certa, a desobediência à palavra da salvação seria muito mais grave. <strong>Solidariedade com os homens (2.5-18):<\/strong> pelo Sl 8.4-6, Jesus, por sua encarnação e morte, assumiu o papel que Deus pretendia para a humanidade."], "paragrafoIds": ["s-1-0", "s-1-1"]}, {"subtitulo": "2ª parte — Cristo, nosso sumo sacerdote (3.1—5.10)", "paragrafos": ["<strong>3.1-6:<\/strong> em sua fidelidade, Jesus é posto lado a lado com Moisés, que foi “fiel em toda a casa de Deus” (3.2; Nm 12.6-8); “casa” = Israel, o povo de Deus. <strong>3.7—4.14:<\/strong> a geração do deserto é o exemplo negativo de quem começa a peregrinação rumo a Deus, mas tem o coração endurecido no caminho.", "<strong>4.15—5.10:<\/strong> Jesus é semelhante aos outros sumos sacerdotes (participa da condição humana), mas há uma diferença: <strong>seu sofrimento e provação não eram resultado do pecado<\/strong>. O autor demonstra a superioridade escatológica do seu sumo sacerdócio de três maneiras: (I) <strong>ele aperfeiçoa o sacerdócio<\/strong>; (II) <strong>é fonte de salvação eterna para todos os que lhe obedecem<\/strong>; (III) <strong>pertence à ordem sacerdotal de Melquisedeque<\/strong>."], "paragrafoIds": ["s-2-0", "s-2-1"]}, {"subtitulo": "3ª parte — Jesus, sumo sacerdote feito perfeito (5.11—10.39)", "paragrafos": ["<strong>1ª grande exortação (5.11—6.20):<\/strong> Jesus é o perfeito sumo sacerdote, e é impossível que os que participaram das bênçãos escatológicas se arrependam de novo se decaírem. O autor alerta os leitores para não retrocederem na fé nem se desviarem do caminho que leva ao Monte Sião, a Jerusalém celestial.", "<strong>O sacerdócio glorioso do Filho (7.1-28):<\/strong> a ordem de Melquisedeque torna Jesus superior aos sumos sacerdotes da lei mosaica em <strong>quatro aspectos<\/strong>: (1) <strong>seu sacerdócio é eterno<\/strong>; (2) <strong>é superior ao dos levitas<\/strong>; (3) <strong>resulta da mudança feita por Deus nas leis que governavam o serviço sacerdotal<\/strong>; (4) <strong>o juramento divino o confirma (Sl 110.4)<\/strong>. Síntese: por pertencer à ordem de Melquisedeque e receber homenagem de Abraão e Levi, o sacerdócio de Jesus é eterno, uma instituição posterior e mais perfeita de Deus, estabelecida com juramento — <strong>superior em tudo ao sumo sacerdócio levítico<\/strong>.", "<strong>Síntese central (8.1—9.28):<\/strong> o sofrimento de Jesus resulta em perfeição. Primeiro, o autor cita a profecia de <strong>Jr 31.31-34<\/strong> (LXX 38.31-34) de que Deus fará uma <strong>nova aliança<\/strong> (Hb 8.7-13). Depois, usa o tabernáculo do deserto para mostrar que é preciso um aperfeiçoamento por meio de um tabernáculo vindouro: <strong>as duas partes do tabernáculo terreno correspondem às duas eras da aliança<\/strong> — ilustram as duas partes da história da salvação.", "Para essa situação “perfeita” se tornar realidade, o Filho real e sumo sacerdote escatológico <strong>devia morrer e, por sua morte, estabelecer a nova aliança<\/strong>. Esse aperfeiçoamento pelo sofrimento o qualifica a servir no <strong>tabernáculo celestial<\/strong> e a sentar-se à direita de Deus, separando sua obra das <strong>tarefas provisórias<\/strong> dos sumos sacerdotes anteriores.", "<strong>Princípio de salvação eterna (10.1-18):<\/strong> a obra de Jesus na expiação foi mais efetiva que a dos sumos sacerdotes levíticos porque: (1) <strong>os sacerdotes levitas eram eles mesmos pecadores<\/strong>; (2) <strong>repetiam seus sacrifícios muitas vezes<\/strong> (9.25; 10.1-3,11), o que indica a imperfeição de seus esforços; (3) <strong>ofereciam sacrifícios de animais<\/strong> — e “é impossível que o sangue de touros e bodes remova pecados” (10.4).", "<strong>Por que isso é impossível?<\/strong> (a) As Escrituras predizem a <strong>substituição do sistema mosaico<\/strong> de sacrifícios por outro. (b) Com base em Jr 31.31-34, os sacrifícios de animais ofereciam apenas <strong>limpeza da carne<\/strong> (9.13-14), e não a <strong>purificação interior da consciência<\/strong>, necessária para o resgate total do pecado (9.15; 10.2,22). (c) O <strong>Sl 40.6-8<\/strong> fala do <strong>sacrifício voluntário do corpo de Cristo<\/strong> como substituição escatológica do sistema de sacrifícios da lei mosaica (10.7,9).", "<strong>2ª grande exortação (10.19-39):<\/strong> os princípios teológicos têm consequências práticas. A entrada no santuário celestial estava fechada por um <strong>véu, que aqui designa a carne de Jesus<\/strong>; por isso, é preciso manter a confiança, ter atitude ativa na comunidade e vigiar uns pelos outros. <strong>Desprezar as instruções da nova aliança trará castigo mais severo do que o da Lei de Moisés<\/strong> (Dt 17.2-7)."], "paragrafoIds": ["s-3-0", "s-3-1", "s-3-2", "s-3-3", "s-3-4", "s-3-5", "s-3-6"]}, {"subtitulo": "4ª e 5ª partes — Fé perseverante e posição dos cristãos (11.1—13.25)", "paragrafos": ["<strong>11.1-40:<\/strong> exemplos de fé dos antigos — Abel, Enoque e Noé; as provas de Abraão, até o sacrifício de Isaque; Jacó e José; Moisés, a saída do Egito e Jericó; Raabe e muitos outros. <strong>12.1-13:<\/strong> a nuvem de testemunhas, a imagem da corrida e os sofrimentos como parte da <strong>educação de Deus<\/strong> — o autor chega a falar em “bastardos” e chama Deus de “Pai dos espíritos”.", "<strong>12.14—13.18:<\/strong> paz com todos; a “raiz de amargura”; o terror que a antiga aliança inspira e a glória da nova. 13.1-6: amor fraterno, moral matrimonial e desapego das riquezas. 13.7-19: os antigos dirigentes morreram, mas <strong>Jesus permanece sumo sacerdote para sempre<\/strong>; os “alimentos” de 13.9-10 talvez sejam as refeições sacrificais do judaísmo; há uma comparação entre o Dia da Expiação e o sofrimento de Jesus “fora da porta” (13.12). 13.22-25: epílogo; a saudação se dirige aos guias e aos santos."], "paragrafoIds": ["s-4-0", "s-4-1"]}]}, {"numero": 3, "rotulo": "Aulas 6–7", "titulo": "Tiago — Os verbos imperativos", "fonte": "Slides do Prof. Dr. Leonardo Silveira (FABAT) — Aula 06-07, e texto bíblico (ARA). Só o tópico dos imperativos cai na prova.", "secoes": [{"subtitulo": "Por que Tiago está cheio de imperativos?", "paragrafos": ["<strong>Segundo a aula:<\/strong> em Tiago predominam as <strong>sentenças<\/strong>, às vezes isoladas, mas geralmente em série em torno de um pensamento comum. Essa coleção de sentenças faz da carta <strong>um escrito exortatório<\/strong>, diante dos perigos que ameaçam a comunidade — de fora e de dentro —, tomando posição e dando conselhos. No conteúdo, <strong>o ensinamento moral prevalece sobre o doutrinal<\/strong>, e a carta mostra uma <strong>seriedade inflexível em suas exigências morais<\/strong>.", "O imperativo é o modo verbal da <strong>ordem e da exortação<\/strong> (“fazei”, “sede”, “não jureis”). É a marca gramatical desse caráter exortatório: os imperativos aparecem do primeiro ao último capítulo (costuma-se contar mais de cinquenta em apenas 108 versículos). <em>(Contexto complementar ao slide.)<\/em>"], "paragrafoIds": ["t-0-0", "t-0-1"]}, {"subtitulo": "O imperativo destacado em aula (1.22)", "paragrafos": ["Na seção <strong>“Não basta ouvir o Evangelho; é necessário viver de conformidade com ele” (1.19-27)<\/strong>, a aula destaca o <strong>imperativo “Tornai-vos praticantes da Palavra”<\/strong> e o <strong>paralelismo “prática e não-prática”<\/strong>. As imagens usadas são a da <strong>semeadura<\/strong> (a palavra “implantada”, 1.21) e a do <strong>espelho<\/strong> (quem ouve e não pratica é como quem se olha no espelho e logo esquece como é, 1.23-24).", "<em>“Portanto, despojando-vos de toda impureza e acúmulo de maldade, <strong>acolhei<\/strong>, com mansidão, a palavra em vós implantada, a qual é poderosa para salvar a vossa alma. <strong>Tornai-vos<\/strong>, pois, praticantes da palavra e não somente ouvintes, enganando-vos a vós mesmos.”<\/em> (Tg 1.21-22, ARA)"], "paragrafoIds": ["t-1-0", "t-1-1"]}, {"subtitulo": "Imperativos ao longo da carta (texto bíblico, ARA)", "paragrafos": ["<strong>Provações e sabedoria (1.2-18):<\/strong> “<strong>tende<\/strong> por motivo de toda alegria o passardes por várias provações” (1.2); “se algum de vós necessita de sabedoria, <strong>peça-a<\/strong> a Deus” (1.5); “<strong>peça-a<\/strong>, porém, com fé, em nada duvidando” (1.6); “<strong>Não vos enganeis<\/strong>, meus amados irmãos” (1.16).", "<strong>Ouvir e praticar (1.19-27):<\/strong> “Todo homem, pois, <strong>seja pronto para ouvir, tardio para falar, tardio para se irar<\/strong>” (1.19); “<strong>acolhei<\/strong>, com mansidão, a palavra em vós implantada” (1.21); “<strong>Tornai-vos<\/strong>, pois, praticantes da palavra” (1.22).", "<strong>Contra a acepção de pessoas (2.1-13):<\/strong> “<strong>não tenhais<\/strong> a fé em nosso Senhor Jesus Cristo, Senhor da glória, em acepção de pessoas” (2.1); “<strong>Ouvi<\/strong>, meus amados irmãos” (2.5); “<strong>Falai<\/strong> de tal maneira e de tal maneira <strong>procedei<\/strong> como aqueles que hão de ser julgados pela lei da liberdade” (2.12).", "<strong>Língua e sabedoria (3.1-18):<\/strong> “<strong>não vos torneis<\/strong>, muitos de vós, mestres” (3.1); “<strong>Mostre<\/strong> em mansidão de sabedoria, mediante condigno proceder, as suas obras” (3.13); “<strong>não vos glorieis<\/strong> disso, <strong>nem mintais<\/strong> contra a verdade” (3.14).", "<strong>A série mais concentrada (4.7-10):<\/strong> “<strong>Sujeitai-vos<\/strong>, portanto, a Deus; mas <strong>resisti<\/strong> ao diabo, e ele fugirá de vós. <strong>Chegai-vos<\/strong> a Deus, e ele se chegará a vós outros. <strong>Purificai<\/strong> as mãos, pecadores; e vós que sois de ânimo dobre, <strong>limpai<\/strong> o coração. <strong>Afligi-vos<\/strong>, <strong>lamentai<\/strong> e <strong>chorai<\/strong>. <strong>Converta-se<\/strong> o vosso riso em pranto, e a vossa alegria, em tristeza. <strong>Humilhai-vos<\/strong> na presença do Senhor, e ele vos exaltará.” — <strong>dez imperativos em quatro versículos<\/strong>.", "<strong>Discórdias, mercadores e ricos (4.11—5.6):<\/strong> “Irmãos, <strong>não faleis mal<\/strong> uns dos outros” (4.11); “<strong>Atendei<\/strong>, agora, vós que dizeis: Hoje ou amanhã, iremos para a cidade tal” (4.13); “<strong>Atendei<\/strong>, agora, ricos, <strong>chorai<\/strong> lamentando, por causa das vossas desventuras” (5.1).", "<strong>Paciência e juramento (5.7-12):<\/strong> “<strong>Sede<\/strong>, pois, irmãos, <strong>pacientes<\/strong>, até à vinda do Senhor” (5.7); “<strong>fortalecei<\/strong> o vosso coração” (5.8); “<strong>não vos queixeis<\/strong> uns dos outros” (5.9); “<strong>tomai por modelo<\/strong> no sofrimento e na paciência os profetas” (5.10); “<strong>não jureis<\/strong> nem pelo céu, nem pela terra […]; <strong>seja<\/strong>, porém, o vosso sim, sim, e o vosso não, não” (5.12).", "<strong>Oração e o irmão extraviado (5.13-20):<\/strong> “Está alguém entre vós sofrendo? <strong>Faça oração<\/strong>. Está alguém alegre? <strong>Cante louvores<\/strong>” (5.13); “Está alguém entre vós doente? <strong>Chame<\/strong> os presbíteros da igreja” (5.14); “<strong>Confessai<\/strong>, pois, os vossos pecados uns aos outros e <strong>orai<\/strong> uns pelos outros” (5.16); “<strong>sabei<\/strong> que aquele que converte o pecador do seu caminho errado salvará da morte a alma dele” (5.20)."], "paragrafoIds": ["t-2-0", "t-2-1", "t-2-2", "t-2-3", "t-2-4", "t-2-5", "t-2-6", "t-2-7"]}, {"subtitulo": "Resumo para a prova", "paragrafos": ["Os imperativos são <strong>a marca formal do caráter exortatório<\/strong> de Tiago (ensino moral &gt; ensino doutrinal). Aparecem do começo ao fim, com <strong>concentração máxima em 4.7-10<\/strong>. O imperativo destacado em aula — <strong>“Tornai-vos praticantes da Palavra” (1.22)<\/strong> — resume a carta: não basta ouvir; a fé verdadeira se mostra na prática."], "paragrafoIds": ["t-3-0"]}]}];
+
+const QMAP = {};
+QUESTOES.forEach(q => { QMAP[q.id] = q; });
+const N_ALEATORIO = 15;
+const STORAGE_KEY = 'simulado-epistolas-gerais-v1';
+
+let view = 'home';
+let simKey = null;        // 's0'…'s6', 'topico:<chave>' ou 'aleatorio'
+let respostas = {};       // { [id da questão]: letra } e { ['d_'+n]: texto }
+let corrigido = false;
+let currentLicao = 0;
+let returnTo = null;      // { view: 'simulado'|'dissertativas' }
+let progresso = carregarProgresso(); // { [simKey]: { respostas, corrigido, ids? } }
+let dissRespostas = progresso.__diss || {};
+
+const ICON_RESET = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 .49-9.36L1 10"></path></svg>';
+const ICON_CHECK = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+const ICON_X = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+const ICON_ARROW = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+const ICON_ARROW_LEFT = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>';
+
+// ===== PERSISTÊNCIA (só conveniência: o site funciona sem ela) =====
+function carregarProgresso() {
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch (e) { return {}; }
+}
+function gravarProgresso() {
+  try {
+    progresso.__diss = dissRespostas;
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(progresso));
+  } catch (e) { /* armazenamento indisponível */ }
+}
+
+function ring(pct, size) {
+  size = size || 34;
+  const r = (size - 4) / 2;
+  const c = 2 * Math.PI * r;
+  const offset = c - (pct / 100) * c;
+  return `<div class="ring-wrap" style="width:${size}px;height:${size}px">
+    <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
+      <circle class="ring-bg" cx="${size/2}" cy="${size/2}" r="${r}"></circle>
+      <circle class="ring-fg" cx="${size/2}" cy="${size/2}" r="${r}" stroke-dasharray="${c}" stroke-dashoffset="${offset}"></circle>
+    </svg>
+    <span class="ring-label">${Math.round(pct)}%</span>
+  </div>`;
+}
+
+function escapeAttr(s) { return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+
+// ===== SIMULADOS =====
+function getSim(key) {
+  if (!key) return null;
+  if (key[0] === 's' && !key.includes(':')) {
+    const i = Number(key.slice(1));
+    const s = SIMULADOS[i];
+    if (!s) return null;
+    return { titulo: 'Simulado ' + s.numero, eyebrow: `Simulado ${s.numero} de ${SIMULADOS.length}`, ids: s.ids, idx: i };
+  }
+  if (key.startsWith('topico:')) {
+    const t = key.slice(7);
+    if (!TOPICOS[t]) return null;
+    return { titulo: TOPICOS[t], eyebrow: 'Treino por tópico', ids: QUESTOES.filter(q => q.topico === t).map(q => q.id) };
+  }
+  if (key === 'aleatorio') {
+    const salvo = progresso[key];
+    const ids = salvo && salvo.ids ? salvo.ids.filter(id => QMAP[id]) : sortearIds();
+    return { titulo: 'Simulado aleatório', eyebrow: `${N_ALEATORIO} questões sorteadas`, ids };
+  }
+  return null;
+}
+
+function sortearIds() {
+  const ids = QUESTOES.map(q => q.id);
+  for (let i = ids.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [ids[i], ids[j]] = [ids[j], ids[i]];
+  }
+  return ids.slice(0, N_ALEATORIO);
+}
+
+function salvarProgressoAtual() {
+  if (view === 'simulado' && simKey) {
+    const sim = getSim(simKey);
+    progresso[simKey] = { respostas: { ...respostas }, corrigido, ids: sim ? sim.ids : undefined };
+    gravarProgresso();
+  }
+}
+
+function startSim(key) {
+  salvarProgressoAtual();
+  view = 'simulado';
+  simKey = String(key);
+  returnTo = null;
+  const salvo = progresso[simKey];
+  if (salvo) {
+    respostas = { ...(salvo.respostas || {}) };
+    corrigido = !!salvo.corrigido;
+  } else {
+    respostas = {};
+    corrigido = false;
+    if (simKey === 'aleatorio') progresso.aleatorio = { respostas: {}, corrigido: false, ids: sortearIds() };
+  }
+  renderSim();
+  window.scrollTo({ top: 0 });
+}
+
+function novoAleatorio() {
+  delete progresso.aleatorio;
+  gravarProgresso();
+  view = 'home';
+  startSim('aleatorio');
+}
+
+function reiniciarSimulado() {
+  if (!window.confirm('Isso vai apagar suas respostas deste simulado. Tem certeza que quer recomeçar do zero?')) return;
+  const ids = simKey === 'aleatorio' && progresso.aleatorio ? progresso.aleatorio.ids : undefined;
+  respostas = {};
+  corrigido = false;
+  progresso[simKey] = { respostas: {}, corrigido: false, ids };
+  gravarProgresso();
+  renderSim();
+}
+
+function escolher(id, letra) {
+  if (corrigido) return;
+  respostas[id] = letra;
+  salvarProgressoAtual();
+  renderSim(true);
+}
+
+function corrigir() {
+  corrigido = true;
+  salvarProgressoAtual();
+  renderSim();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function calcScore(sim, resp) {
+  let ok = 0;
+  sim.ids.forEach(id => { if (resp[id] && resp[id] === QMAP[id].correta) ok++; });
+  return { ok, total: sim.ids.length };
+}
+
+function scorePorTopico(sim) {
+  const out = {};
+  sim.ids.forEach(id => {
+    const q = QMAP[id];
+    out[q.topico] = out[q.topico] || { ok: 0, total: 0 };
+    out[q.topico].total++;
+    if (respostas[id] === q.correta) out[q.topico].ok++;
+  });
+  return out;
+}
+
+// ===== HOME =====
+function renderHome() {
+  salvarProgressoAtual();
+  view = 'home';
+  returnTo = null;
+  const chips = SIMULADOS.map((s, i) => {
+    const p = progresso['s' + i];
+    let extra = '';
+    let cls = '';
+    if (p && p.corrigido) {
+      const sc = calcScore({ ids: s.ids }, p.respostas || {});
+      extra = `<small>${sc.ok}/${sc.total}</small>`;
+      cls = 'done';
+    }
+    return `<button class="sim-chip ${cls}" onclick="startSim('s${i}')">${s.numero}${extra}</button>`;
+  }).join('');
+
+  const topicos = Object.keys(TOPICOS).map(t => {
+    const n = QUESTOES.filter(q => q.topico === t).length;
+    const star = PROVA_TOPICOS.includes(t) ? '<span class="star">★</span>' : '';
+    return `<button class="topico-btn" onclick="startSim('topico:${t}')"><span>${star}${TOPICOS[t]}</span><span class="n">${n} questões</span></button>`;
+  }).join('');
+
+  document.getElementById('root').innerHTML = `
+    <div class="home">
+      <div class="home-inner">
+        <span class="home-badge">FABAT · Epístolas Gerais</span>
+        <h1 class="home-title">Simulados<br><span>AV1</span></h1>
+        <p class="home-sub">Hebreus e os imperativos de Tiago · correção automática</p>
+        <div class="format-pills">
+          <span class="pill">${QUESTOES.length} múltipla escolha</span>
+          <span class="pill">${DISSERTATIVAS.length} dissertativas</span>
+          <span class="pill">Comentário em cada questão</span>
+        </div>
+        <div class="home-nav">
+          <button class="home-nav-btn primary" onclick="startSim('aleatorio')">🎲&nbsp;&nbsp;Simulado aleatório (${N_ALEATORIO} questões)</button>
+          <button class="home-nav-btn secondary" onclick="renderDissertativas()">📝&nbsp;&nbsp;Questões Dissertativas</button>
+          <button class="home-nav-btn secondary" onclick="renderMateriaIndex()">📖&nbsp;&nbsp;Material de Estudo</button>
+        </div>
+        <p class="home-grid-label">ou escolha um simulado fixo</p>
+        <div class="sim-grid" style="margin-bottom:1.8rem">${chips}</div>
+        <p class="home-grid-label">ou treine por tópico <span style="color:var(--amber)">★</span> = tópico indicado pelo professor</p>
+        <div class="topico-list">${topicos}</div>
+        <p class="footer-note">Fontes: Carson &amp; Moo, <em>Introdução ao Novo Testamento</em> (cap. de Hebreus) e slides das aulas 4 a 7 do Prof. Dr. Leonardo Silveira. Suas respostas ficam salvas só neste navegador.</p>
+      </div>
+    </div>`;
+}
+
+// ===== SIMULADO =====
+function renderSim(keepScroll) {
+  const sim = getSim(simKey);
+  if (!sim) return renderHome();
+  const y = window.scrollY;
+  const answered = sim.ids.filter(id => respostas[id]).length;
+  const total = sim.ids.length;
+  const pct = total ? answered / total * 100 : 0;
+  const isFixo = sim.idx !== undefined;
+
+  let html = `<div class="topbar">
+    <div class="topbar-left">
+      ${!corrigido ? `<span id="progress-ring-container">${ring(pct, 30)}</span>` : `<div class="completed-badge">${ICON_CHECK}</div>`}
+      <span class="topbar-title">${sim.titulo}</span>
+    </div>
+    <div class="topbar-right">
+      ${isFixo ? `<select class="select-pill" onchange="startSim(this.value)">
+        ${SIMULADOS.map((s, i) => `<option value="s${i}" ${i === sim.idx ? 'selected' : ''}>Simulado ${s.numero}</option>`).join('')}
+      </select>` : ''}
+      <button class="btn-pill" onclick="reiniciarSimulado()" title="Apagar respostas e recomeçar">${ICON_RESET} Reiniciar</button>
+      <button class="btn-pill" onclick="renderHome()">Início</button>
+    </div>
+  </div>`;
+
+  html += '<div class="wrap">';
+
+  if (corrigido) {
+    const sc = calcScore(sim, respostas);
+    const porTopico = scorePorTopico(sim);
+    html += `<div class="placar">
+      <div class="placar-top">
+        <div class="placar-icon">${ICON_CHECK}</div>
+        <div>
+          <div class="placar-titulo">Resultado: ${sc.ok} de ${sc.total}</div>
+          <div class="placar-sub">Leia o comentário de cada questão e use “Ver no material” para revisar.</div>
+        </div>
+      </div>
+      ${Object.keys(porTopico).map(t => {
+        const r = porTopico[t];
+        const p = Math.round(r.ok / r.total * 100);
+        return `<div class="placar-row">
+          <span class="placar-row-label">${TOPICOS[t]}</span>
+          <div class="placar-bar-wrap"><div class="placar-bar bar-mult" style="width:${p}%"></div></div>
+          <span class="placar-score">${r.ok}<small>/${r.total}</small></span>
+        </div>`;
+      }).join('')}
+      <div class="placar-total">
+        <span class="placar-total-label">Aproveitamento</span>
+        <span class="placar-total-value">${Math.round(sc.ok / sc.total * 100)}%</span>
+      </div>
+    </div>`;
+  } else {
+    html += `<div class="page-head">
+      <span class="page-eyebrow">${sim.eyebrow}</span>
+      <h1 class="page-title">Múltipla escolha</h1>
+      <p class="page-sub">${answered} de ${total} questões respondidas · marque uma alternativa por questão</p>
+    </div>`;
+  }
+
+  sim.ids.forEach((id, n) => {
+    const q = QMAP[id];
+    const sel = respostas[id];
+    let cardCls = '';
+    if (corrigido) cardCls = sel === q.correta ? 'correct' : 'incorrect';
+    html += `<div class="card ${cardCls}">
+      <div class="q-head">
+        <span class="q-num">${n + 1}</span>
+        <div style="flex:1">
+          <span class="q-tag">${TOPICOS[q.topico]}</span>
+          <p class="q-enunciado">${q.enunciado}</p>
+        </div>
+      </div>
+      <div class="alt-list">
+        ${q.alternativas.map(alt => {
+          let cls = sel === alt.letra ? 'sel' : '';
+          let badge = '';
+          if (corrigido) {
+            if (alt.letra === q.correta && sel === alt.letra) { cls = 'acerto'; badge = `<span class="alt-badge" style="color:var(--green)">${ICON_CHECK}</span>`; }
+            else if (alt.letra === q.correta) { cls = 'perdida'; badge = `<span class="alt-badge" style="color:var(--amber)">${ICON_ARROW}</span>`; }
+            else if (sel === alt.letra) { cls = 'errada'; badge = `<span class="alt-badge" style="color:var(--red)">${ICON_X}</span>`; }
+            else cls = '';
+          }
+          return `<button class="alt ${cls}" onclick="escolher('${q.id}','${alt.letra}')" ${corrigido ? 'style="cursor:default"' : ''}>
+            <span class="alt-letra">${alt.letra}</span>
+            <span class="alt-texto">${alt.texto}</span>
+            ${badge}
+          </button>`;
+        }).join('')}
+      </div>
+      ${corrigido ? `<div class="coment-box">
+        <span class="gab-label">${sel === q.correta ? 'Correto' : (sel ? 'Resposta certa: ' + q.correta : 'Não respondida · certa: ' + q.correta)}</span>${q.comentario}
+        ${q.fonte && q.fonte.length ? `<br><button class="btn-fonte" onclick="showFonteModal('${q.fonte.join(',')}')">📖 Ver no material</button>` : ''}
+      </div>` : ''}
+    </div>`;
+  });
+
+  if (!corrigido) {
+    html += `<div class="action-card">
+      <p>${answered < total ? `Faltam ${total - answered} questões para concluir.` : 'Tudo respondido. Hora de corrigir!'}</p>
+      <button class="btn-block btn-success" onclick="corrigir()">Corrigir simulado</button>
+    </div>`;
+  } else {
+    let next = '';
+    if (isFixo && sim.idx < SIMULADOS.length - 1) next = `<button class="btn-block btn-primary" onclick="startSim('s${sim.idx + 1}')">Próximo simulado →</button>`;
+    if (simKey === 'aleatorio') next = `<button class="btn-block btn-primary" onclick="novoAleatorio()">🎲 Sortear outro</button>`;
+    html += `<div class="action-card">
+      <div class="action-row">
+        ${next}
+        <button class="btn-block btn-ghost" onclick="renderHome()">Voltar ao início</button>
+      </div>
+    </div>`;
+  }
+
+  html += '</div>';
+  document.getElementById('root').innerHTML = html;
+  if (keepScroll) window.scrollTo({ top: y });
+}
+
+// ===== DISSERTATIVAS =====
+function setDiss(n, val) {
+  dissRespostas['d_' + n] = val;
+  gravarProgresso();
+}
+
+function toggleGab(num) {
+  const box = document.getElementById('gab_' + num);
+  if (box) box.classList.toggle('visible');
+}
+
+function renderDissertativas() {
+  salvarProgressoAtual();
+  view = 'dissertativas';
+  returnTo = null;
+  let html = `<div class="topbar">
+    <div class="topbar-left"><span class="topbar-title">Questões Dissertativas</span></div>
+    <div class="topbar-right">
+      <button class="btn-pill" onclick="renderHome()">← Início</button>
+    </div>
+  </div>`;
+
+  html += '<div class="wrap">';
+  html += `<div class="page-head">
+    <span class="page-eyebrow">${DISSERTATIVAS.length} questões · treino</span>
+    <h1 class="page-title">Dissertativas</h1>
+    <p class="page-sub">Responda com suas palavras, em poucas frases, e depois compare com o gabarito.</p>
+  </div>`;
+
+  Object.keys(TOPICOS).forEach(t => {
+    const qs = DISSERTATIVAS.filter(q => q.topico === t);
+    if (!qs.length) return;
+    html += `<div class="section-label diss-group">${TOPICOS[t]} <span class="count">${qs.length}</span></div>`;
+    qs.forEach(q => {
+      const val = dissRespostas['d_' + q.numero] || '';
+      html += `<div class="card">
+        <div class="q-head">
+          <span class="q-num">${q.numero}</span>
+          <div style="flex:1"><p class="q-enunciado">${q.enunciado}</p></div>
+        </div>
+        <textarea class="q-textarea" rows="3" placeholder="Sua resposta…" oninput="setDiss(${q.numero}, this.value)">${escapeAttr(val)}</textarea>
+        <button class="btn-gab" onclick="toggleGab('d${q.numero}')">Ver gabarito</button>
+        <div class="gab-box" id="gab_d${q.numero}">
+          <span class="gab-label">Gabarito</span>${q.gabarito}
+          ${q.fonte && q.fonte.length ? `<br><button class="btn-fonte" onclick="showFonteModal('${q.fonte.join(',')}')">📖 Ver no material</button>` : ''}
+        </div>
+      </div>`;
+    });
+  });
+
+  html += '</div>';
+  document.getElementById('root').innerHTML = html;
+}
+
+// ===== FONTE / MODAL =====
+function findParagrafo(pid) {
+  for (let li = 0; li < MATERIA.length; li++) {
+    const licao = MATERIA[li];
+    for (const secao of licao.secoes) {
+      const idx = secao.paragrafoIds.indexOf(pid);
+      if (idx !== -1) return { licaoIdx: li, licao, subtitulo: secao.subtitulo, texto: secao.paragrafos[idx] };
+    }
+  }
+  return null;
+}
+
+function showFonteModal(idsStr) {
+  closeFonteModal();
+  const ids = idsStr.split(',');
+  const trechos = ids.map(findParagrafo).filter(Boolean);
+  if (!trechos.length) return;
+  const partes = [...new Set(trechos.map(t => t.licao.rotulo + ' — ' + t.licao.titulo))];
+
+  const container = document.createElement('div');
+  container.id = 'fonte-modal-container';
+  container.innerHTML = `<div class="modal-overlay" onclick="if(event.target===this) closeFonteModal()">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div>
+          <div class="modal-header-text">Trecho do material de estudo</div>
+          <div class="modal-header-sub">${partes.join(' · ')}</div>
+        </div>
+        <button class="modal-close" onclick="closeFonteModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        ${trechos.map(t => `<p class="modal-paragrafo"><strong style="color:var(--teal)">${t.subtitulo}</strong><br>${t.texto}</p>`).join('')}
+      </div>
+      <div class="modal-footer">
+        <button class="modal-link-btn" onclick="goToFonteInMaterial('${idsStr}')">Abrir no material →</button>
+      </div>
+    </div>
+  </div>`;
+  document.body.appendChild(container);
+}
+
+function closeFonteModal() {
+  const el = document.getElementById('fonte-modal-container');
+  if (el) el.remove();
+}
+
+function goToFonteInMaterial(idsStr) {
+  closeFonteModal();
+  const ids = idsStr.split(',');
+  const first = findParagrafo(ids[0]);
+  if (!first) return;
+  if (view === 'simulado') { salvarProgressoAtual(); returnTo = { view: 'simulado' }; }
+  else if (view === 'dissertativas') returnTo = { view: 'dissertativas' };
+  renderLicao(first.licaoIdx, ids);
+  setTimeout(() => {
+    const el = document.getElementById(ids[0]);
+    if (el && el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 80);
+}
+
+function voltarParaOrigem() {
+  if (!returnTo) return renderHome();
+  const destino = returnTo;
+  returnTo = null;
+  if (destino.view === 'simulado') { view = 'simulado'; renderSim(); }
+  else if (destino.view === 'dissertativas') renderDissertativas();
+  else renderHome();
+}
+
+// ===== MATERIAL DE ESTUDO =====
+function renderMateriaIndex() {
+  salvarProgressoAtual();
+  view = 'materia-index';
+  let html = `<div class="topbar">
+    <div class="topbar-left"><span class="topbar-title">Material de Estudo</span></div>
+    <div class="topbar-right">
+      <button class="btn-pill" onclick="renderHome()">← Início</button>
+    </div>
+  </div>`;
+
+  html += '<div class="wrap">';
+  html += `<div class="page-head">
+    <span class="page-eyebrow">Matéria da AV1</span>
+    <h1 class="page-title">Material de Estudo</h1>
+    <p class="page-sub">Resumo das fontes da prova. As questões apontam para os trechos daqui.</p>
+  </div>`;
+
+  html += '<div class="materia-toc">';
+  MATERIA.forEach((licao, idx) => {
+    html += `<button class="materia-toc-item" onclick="renderLicao(${idx})">
+      <span class="materia-toc-num">
+        <span class="materia-toc-num-label">Parte</span>
+        <span class="materia-toc-num-value">${licao.numero}</span>
+      </span>
+      <span class="materia-toc-text">
+        <span class="materia-toc-titulo">${licao.titulo}</span>
+        <span class="materia-fonte" style="display:block;margin-top:.1rem">${licao.rotulo}</span>
+      </span>
+      <span class="materia-toc-arrow">${ICON_ARROW}</span>
+    </button>`;
+  });
+  html += '</div></div>';
+  document.getElementById('root').innerHTML = html;
+}
+
+function renderLicao(idx, highlightIds) {
+  view = 'licao';
+  currentLicao = idx;
+  const licao = MATERIA[idx];
+  if (!licao) return renderMateriaIndex();
+
+  let html = `<div class="topbar">
+    <div class="topbar-left"><span class="topbar-title">${licao.titulo}</span></div>
+    <div class="topbar-right">
+      ${returnTo ? `<button class="btn-pill accent" onclick="voltarParaOrigem()">${ICON_ARROW_LEFT} Voltar à questão</button>` : ''}
+      <button class="btn-pill" onclick="renderMateriaIndex()">📖 Material</button>
+      <button class="btn-pill" onclick="renderHome()">Início</button>
+    </div>
+  </div>`;
+
+  html += '<div class="wrap">';
+  html += '<div class="licao-nav">';
+  MATERIA.forEach((l, i) => {
+    html += `<button class="licao-nav-btn ${i === idx ? 'active' : ''}" onclick="renderLicao(${i})">${l.numero}. ${l.rotulo}</button>`;
+  });
+  html += '</div>';
+
+  html += `<div class="page-head">
+    <span class="page-eyebrow">Parte ${licao.numero} · ${licao.rotulo}</span>
+    <h1 class="page-title">${licao.titulo}</h1>
+    <p class="materia-fonte">${licao.fonte}</p>
+  </div>`;
+
+  licao.secoes.forEach(secao => {
+    html += `<div class="licao-secao">
+      <h3 class="licao-subtitulo">${secao.subtitulo}</h3>
+      ${secao.paragrafos.map((p, pIdx) => {
+        const pid = secao.paragrafoIds[pIdx];
+        const hl = highlightIds && highlightIds.includes(pid);
+        return `<p class="licao-paragrafo ${hl ? 'highlighted' : ''}" id="${pid}">${p}</p>`;
+      }).join('')}
+    </div>`;
+  });
+
+  const prevIdx = idx - 1, nextIdx = idx + 1;
+  const hasPrev = prevIdx >= 0, hasNext = nextIdx < MATERIA.length;
+  html += `<div class="licao-footer-nav">
+    <button class="licao-footer-btn" onclick="renderLicao(${prevIdx})" ${!hasPrev ? 'disabled' : ''}>← ${hasPrev ? 'Parte ' + MATERIA[prevIdx].numero : 'Anterior'}</button>
+    <button class="licao-footer-btn" onclick="renderLicao(${nextIdx})" ${!hasNext ? 'disabled' : ''}>${hasNext ? 'Parte ' + MATERIA[nextIdx].numero : 'Próxima'} →</button>
+  </div>`;
+
+  html += '</div>';
+  document.getElementById('root').innerHTML = html;
+  if (!highlightIds) window.scrollTo({ top: 0 });
+}
+
+renderHome();
+</script>
+</body>
+</html>
