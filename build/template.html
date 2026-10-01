@@ -70,6 +70,7 @@
 <script>
 const TOPICOS = /*__TOPICOS__*/;
 const PROVA_TOPICOS = /*__PROVA_TOPICOS__*/;
+const MOLDE = /*__MOLDE__*/;
 const QUESTOES = /*__QUESTOES__*/;
 const SIMULADOS = /*__SIMULADOS__*/;
 const DISSERTATIVAS = /*__DISSERTATIVAS__*/;
@@ -77,8 +78,9 @@ const MATERIA = /*__MATERIA__*/;
 
 const QMAP = {};
 QUESTOES.forEach(q => { QMAP[q.id] = q; });
-const N_ALEATORIO = 15;
-const STORAGE_KEY = 'simulado-epistolas-gerais-v1';
+const DMAP = {};
+DISSERTATIVAS.forEach(d => { DMAP[d.numero] = d; });
+const STORAGE_KEY = 'simulado-epistolas-gerais-v2';
 
 let view = 'home';
 let simKey = null;        // 's0'…'s6', 'topico:<chave>' ou 'aleatorio'
@@ -86,7 +88,7 @@ let respostas = {};       // { [id da questão]: letra } e { ['d_'+n]: texto }
 let corrigido = false;
 let currentLicao = 0;
 let returnTo = null;      // { view: 'simulado'|'dissertativas' }
-let progresso = carregarProgresso(); // { [simKey]: { respostas, corrigido, ids? } }
+let progresso = carregarProgresso(); // { [simKey]: { respostas, corrigido, ids?, diss? } }
 let dissRespostas = progresso.__diss || {};
 
 const ICON_RESET = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 .49-9.36L1 10"></path></svg>';
@@ -132,34 +134,49 @@ function getSim(key) {
     const i = Number(key.slice(1));
     const s = SIMULADOS[i];
     if (!s) return null;
-    return { titulo: 'Simulado ' + s.numero, eyebrow: `Simulado ${s.numero} de ${SIMULADOS.length}`, ids: s.ids, idx: i };
+    return { titulo: 'Simulado ' + s.numero, eyebrow: `Simulado ${s.numero} de ${SIMULADOS.length} · formato da prova`, ids: s.ids, diss: s.diss, idx: i };
   }
   if (key.startsWith('topico:')) {
     const t = key.slice(7);
     if (!TOPICOS[t]) return null;
-    return { titulo: TOPICOS[t], eyebrow: 'Treino por tópico', ids: QUESTOES.filter(q => q.topico === t).map(q => q.id) };
+    return { titulo: TOPICOS[t], eyebrow: 'Treino por tópico', ids: QUESTOES.filter(q => q.topico === t).map(q => q.id), diss: [] };
   }
   if (key === 'aleatorio') {
     const salvo = progresso[key];
-    const ids = salvo && salvo.ids ? salvo.ids.filter(id => QMAP[id]) : sortearIds();
-    return { titulo: 'Simulado aleatório', eyebrow: `${N_ALEATORIO} questões sorteadas`, ids };
+    const prova = salvo && salvo.ids ? { ids: salvo.ids.filter(id => QMAP[id]), diss: (salvo.diss || []).filter(n => DMAP[n]) } : sortearProva();
+    return { titulo: 'Prova aleatória', eyebrow: '7 objetivas + 2 discursivas sorteadas', ids: prova.ids, diss: prova.diss };
   }
   return null;
 }
 
-function sortearIds() {
-  const ids = QUESTOES.map(q => q.id);
-  for (let i = ids.length - 1; i > 0; i--) {
+function embaralhar(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [ids[i], ids[j]] = [ids[j], ids[i]];
+    [a[i], a[j]] = [a[j], a[i]];
   }
-  return ids.slice(0, N_ALEATORIO);
+  return a;
+}
+
+// Sorteia uma prova no formato real: MOLDE de objetivas + 2 discursivas
+// (a de Hb 8–10 indicada pelo professor e outra em destaque).
+function sortearProva() {
+  const usados = new Set();
+  const ids = [];
+  MOLDE.forEach(t => {
+    const opcoes = embaralhar(QUESTOES.filter(q => (t === 'livre' ? PROVA_TOPICOS.includes(q.topico) : q.topico === t) && !usados.has(q.id)));
+    if (opcoes.length) { usados.add(opcoes[0].id); ids.push(opcoes[0].id); }
+  });
+  const destaque = DISSERTATIVAS.filter(d => d.destaque);
+  const fixa = destaque.find(d => d.topico === 'alianca');
+  const outra = embaralhar(destaque.filter(d => d !== fixa))[0];
+  return { ids: embaralhar(ids), diss: [fixa, outra].filter(Boolean).map(d => d.numero) };
 }
 
 function salvarProgressoAtual() {
   if (view === 'simulado' && simKey) {
     const sim = getSim(simKey);
-    progresso[simKey] = { respostas: { ...respostas }, corrigido, ids: sim ? sim.ids : undefined };
+    progresso[simKey] = { respostas: { ...respostas }, corrigido, ids: sim ? sim.ids : undefined, diss: sim ? sim.diss : undefined };
     gravarProgresso();
   }
 }
@@ -176,7 +193,7 @@ function startSim(key) {
   } else {
     respostas = {};
     corrigido = false;
-    if (simKey === 'aleatorio') progresso.aleatorio = { respostas: {}, corrigido: false, ids: sortearIds() };
+    if (simKey === 'aleatorio') progresso.aleatorio = { respostas: {}, corrigido: false, ...sortearProva() };
   }
   renderSim();
   window.scrollTo({ top: 0 });
@@ -191,10 +208,10 @@ function novoAleatorio() {
 
 function reiniciarSimulado() {
   if (!window.confirm('Isso vai apagar suas respostas deste simulado. Tem certeza que quer recomeçar do zero?')) return;
-  const ids = simKey === 'aleatorio' && progresso.aleatorio ? progresso.aleatorio.ids : undefined;
+  const salvo = simKey === 'aleatorio' && progresso.aleatorio ? progresso.aleatorio : {};
   respostas = {};
   corrigido = false;
-  progresso[simKey] = { respostas: {}, corrigido: false, ids };
+  progresso[simKey] = { respostas: {}, corrigido: false, ids: salvo.ids, diss: salvo.diss };
   gravarProgresso();
   renderSim();
 }
@@ -204,6 +221,11 @@ function escolher(id, letra) {
   respostas[id] = letra;
   salvarProgressoAtual();
   renderSim(true);
+}
+
+function setSimDiss(n, val) {
+  respostas['d_' + n] = val;
+  salvarProgressoAtual();
 }
 
 function corrigir() {
@@ -258,22 +280,23 @@ function renderHome() {
       <div class="home-inner">
         <span class="home-badge">FABAT · Epístolas Gerais</span>
         <h1 class="home-title">Simulados<br><span>AV1</span></h1>
-        <p class="home-sub">Hebreus e os imperativos de Tiago · correção automática</p>
+        <p class="home-sub">Hebreus e Tiago · no formato da prova: 7 objetivas + 2 discursivas</p>
         <div class="format-pills">
-          <span class="pill">${QUESTOES.length} múltipla escolha</span>
-          <span class="pill">${DISSERTATIVAS.length} dissertativas</span>
+          <span class="pill">${QUESTOES.length} objetivas</span>
+          <span class="pill">${DISSERTATIVAS.length} discursivas</span>
           <span class="pill">Comentário em cada questão</span>
         </div>
         <div class="home-nav">
-          <button class="home-nav-btn primary" onclick="startSim('aleatorio')">🎲&nbsp;&nbsp;Simulado aleatório (${N_ALEATORIO} questões)</button>
+          <button class="home-nav-btn primary" onclick="renderLicao(0)">🎯&nbsp;&nbsp;O que cai na prova</button>
+          <button class="home-nav-btn secondary" onclick="startSim('aleatorio')">🎲&nbsp;&nbsp;Prova aleatória (7 + 2)</button>
           <button class="home-nav-btn secondary" onclick="renderDissertativas()">📝&nbsp;&nbsp;Questões Dissertativas</button>
           <button class="home-nav-btn secondary" onclick="renderMateriaIndex()">📖&nbsp;&nbsp;Material de Estudo</button>
         </div>
-        <p class="home-grid-label">ou escolha um simulado fixo</p>
+        <p class="home-grid-label">ou escolha um simulado fixo (7 + 2)</p>
         <div class="sim-grid" style="margin-bottom:1.8rem">${chips}</div>
         <p class="home-grid-label">ou treine por tópico <span style="color:var(--amber)">★</span> = tópico indicado pelo professor</p>
         <div class="topico-list">${topicos}</div>
-        <p class="footer-note">Fontes: Carson &amp; Moo, <em>Introdução ao Novo Testamento</em> (cap. de Hebreus) e slides das aulas 4 a 7 do Prof. Dr. Leonardo Silveira. Suas respostas ficam salvas só neste navegador.</p>
+        <p class="footer-note">Fontes: orientações do professor para a AV1, Carson &amp; Moo, <em>Introdução ao Novo Testamento</em> (cap. de Hebreus), e slides das aulas 4 a 7 do Prof. Dr. Leonardo Silveira. Suas respostas ficam salvas só neste navegador.</p>
       </div>
     </div>`;
 }
@@ -311,8 +334,8 @@ function renderSim(keepScroll) {
       <div class="placar-top">
         <div class="placar-icon">${ICON_CHECK}</div>
         <div>
-          <div class="placar-titulo">Resultado: ${sc.ok} de ${sc.total}</div>
-          <div class="placar-sub">Leia o comentário de cada questão e use “Ver no material” para revisar.</div>
+          <div class="placar-titulo">Objetivas: ${sc.ok} de ${sc.total}</div>
+          <div class="placar-sub">Leia o comentário de cada questão${sim.diss && sim.diss.length ? ' e confira as discursivas no fim da página' : ''}.</div>
         </div>
       </div>
       ${Object.keys(porTopico).map(t => {
@@ -374,6 +397,29 @@ function renderSim(keepScroll) {
     </div>`;
   });
 
+  if (sim.diss && sim.diss.length) {
+    html += `<div class="section-label">Discursivas <span class="count">${sim.diss.length}</span></div>
+      <p class="section-hint">${corrigido ? 'Compare sua resposta com o gabarito.' : 'Escreva sua resposta. O gabarito aparece depois de corrigir.'}</p>`;
+    sim.diss.forEach((num, k) => {
+      const d = DMAP[num];
+      const val = respostas['d_' + num] || '';
+      html += `<div class="card">
+        <div class="q-head">
+          <span class="q-num">${total + k + 1}</span>
+          <div style="flex:1">
+            <span class="q-tag">${TOPICOS[d.topico]}</span>
+            <p class="q-enunciado">${d.enunciado}</p>
+          </div>
+        </div>
+        <textarea class="q-textarea" rows="4" placeholder="Sua resposta…" oninput="setSimDiss(${num}, this.value)">${escapeAttr(val)}</textarea>
+        ${corrigido ? `<div class="gab-box visible">
+          <span class="gab-label">Gabarito</span>${d.gabarito}
+          ${d.fonte && d.fonte.length ? `<br><button class="btn-fonte" onclick="showFonteModal('${d.fonte.join(',')}')">📖 Ver no material</button>` : ''}
+        </div>` : ''}
+      </div>`;
+    });
+  }
+
   if (!corrigido) {
     html += `<div class="action-card">
       <p>${answered < total ? `Faltam ${total - answered} questões para concluir.` : 'Tudo respondido. Hora de corrigir!'}</p>
@@ -382,7 +428,7 @@ function renderSim(keepScroll) {
   } else {
     let next = '';
     if (isFixo && sim.idx < SIMULADOS.length - 1) next = `<button class="btn-block btn-primary" onclick="startSim('s${sim.idx + 1}')">Próximo simulado →</button>`;
-    if (simKey === 'aleatorio') next = `<button class="btn-block btn-primary" onclick="novoAleatorio()">🎲 Sortear outro</button>`;
+    if (simKey === 'aleatorio') next = `<button class="btn-block btn-primary" onclick="novoAleatorio()">🎲 Sortear outra prova</button>`;
     html += `<div class="action-card">
       <div class="action-row">
         ${next}
@@ -422,19 +468,22 @@ function renderDissertativas() {
   html += `<div class="page-head">
     <span class="page-eyebrow">${DISSERTATIVAS.length} questões · treino</span>
     <h1 class="page-title">Dissertativas</h1>
-    <p class="page-sub">Responda com suas palavras, em poucas frases, e depois compare com o gabarito.</p>
+    <p class="page-sub">Na prova caem 2 discursivas, e uma delas é sobre Hebreus 8–10. Responda com suas palavras e depois compare com o gabarito.</p>
   </div>`;
 
+  const grupos = [{ titulo: '★ Seguem a orientação do professor', qs: DISSERTATIVAS.filter(q => q.destaque) }];
   Object.keys(TOPICOS).forEach(t => {
-    const qs = DISSERTATIVAS.filter(q => q.topico === t);
-    if (!qs.length) return;
-    html += `<div class="section-label diss-group">${TOPICOS[t]} <span class="count">${qs.length}</span></div>`;
-    qs.forEach(q => {
+    const qs = DISSERTATIVAS.filter(q => !q.destaque && q.topico === t);
+    if (qs.length) grupos.push({ titulo: 'Treino extra · ' + TOPICOS[t], qs });
+  });
+  grupos.forEach(g => {
+    html += `<div class="section-label diss-group">${g.titulo} <span class="count">${g.qs.length}</span></div>`;
+    g.qs.forEach(q => {
       const val = dissRespostas['d_' + q.numero] || '';
       html += `<div class="card">
         <div class="q-head">
           <span class="q-num">${q.numero}</span>
-          <div style="flex:1"><p class="q-enunciado">${q.enunciado}</p></div>
+          <div style="flex:1"><span class="q-tag">${TOPICOS[q.topico]}</span><p class="q-enunciado">${q.enunciado}</p></div>
         </div>
         <textarea class="q-textarea" rows="3" placeholder="Sua resposta…" oninput="setDiss(${q.numero}, this.value)">${escapeAttr(val)}</textarea>
         <button class="btn-gab" onclick="toggleGab('d${q.numero}')">Ver gabarito</button>

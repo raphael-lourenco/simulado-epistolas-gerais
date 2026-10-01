@@ -2,19 +2,20 @@
 
 Site de estudo para a AV1 de Epístolas Gerais (FABAT, 2026.2): Hebreus e os verbos imperativos em Tiago.
 
-- 72 questões de múltipla escolha, cada uma com comentário e link para o trecho do material
-- 7 simulados fixos, simulado aleatório (15 questões) e treino por tópico
-- 15 questões dissertativas com gabarito
-- Material de estudo: resumo de Carson & Moo (Hebreus) e dos slides das aulas 4 a 7
+- Simulados no formato da prova: 7 objetivas + 2 discursivas (uma delas sempre sobre Hebreus 8–10)
+- 7 simulados fixos, prova aleatória no mesmo formato e treino por tópico
+- 92 questões objetivas, cada uma com comentário e link para o trecho do material
+- 19 discursivas com gabarito, com destaque para as que seguem a orientação do professor
+- Material de estudo: guia "O que cai na prova", resumo de Carson & Moo (Hebreus) e dos slides das aulas 4 a 7
 
-Tópicos indicados pelo professor: autoria de Hebreus; relação do texto com a Itália; motivações da escrita e superioridade do sacerdócio de Jesus; sacerdócio levítico como sombra do de Cristo e as duas alianças (Hb 8–10); verbos imperativos em Tiago.
+Pontos que o professor indicou: propósito de Hebreus (destinatários judeus-cristãos querendo voltar ao judaísmo; superioridade de Jesus sobre a instituição judaica e o sistema sacrificial levítico); gênero (homilia, “palavra de exortação”, 13.22); vínculo com a Itália (13.24 e contato literário com 1 Pedro e 1 Clemente); Tiago como texto exortatório por causa do alto número de imperativos; e a discursiva de Hebreus 8–10.
 
 ## Como editar
 
 O `index.html` é gerado. Não edite à mão: altere os arquivos em `build/` e rode o build.
 
 - `build/materia.py`: material de estudo (cada parágrafo ganha um id `prefixo-seção-parágrafo`)
-- `build/questoes.py`: questões de múltipla escolha e dissertativas
+- `build/questoes.py`: tópicos, molde da prova, questões objetivas e discursivas
 - `build/template.html` e `build/base.css`: layout
 
 ```sh

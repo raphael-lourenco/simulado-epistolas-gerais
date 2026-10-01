@@ -4,6 +4,46 @@
 MATERIA = [
     {
         "numero": 1,
+        "prefixo": "p",
+        "rotulo": "Guia da prova",
+        "titulo": "O que o professor quer na prova",
+        "fonte": "Orientações do professor sobre a AV1, repassadas pela turma. Os complementos estão marcados.",
+        "secoes": [
+            ("Estrutura da prova", [
+                "A avaliação tem <strong>7 questões objetivas</strong> e <strong>apenas 2 questões discursivas</strong>. Os simulados deste site seguem esse formato.",
+            ]),
+            ("Hebreus — Propósito (cai em duas questões)", [
+                "<strong>Contexto que você precisa apresentar:</strong> os destinatários eram <strong>judeus-cristãos que estavam querendo voltar para o judaísmo</strong>.",
+                "<strong>Resposta central sobre o propósito:</strong> a carta visa mostrar <strong>a superioridade de Jesus em relação à instituição judaica e ao sistema sacrificial levítico</strong>.",
+                "<em>Complemento (Carson & Moo e slides):</em> por isso o autor compara Jesus com tudo o que os leitores estariam tentados a buscar de volta: ele é superior aos anjos (1.5-14), a Moisés (3.1-6), ao sacerdócio de Levi (cap. 7) e aos sacrifícios da antiga aliança (caps. 8–10). Voltar ao judaísmo seria apostasia, pois daria ao sistema antigo uma eficácia que ele nunca teve.",
+            ]),
+            ("Hebreus — Gênero e natureza", [
+                "<strong>Resposta direta sobre o gênero:</strong> Hebreus é <strong>uma homilia</strong> (um sermão).",
+                "<strong>Característica para não esquecer:</strong> o próprio texto, em seu final, se autodenomina <strong>“palavra de exortação” (Hb 13.22)</strong>.",
+                "<em>Complemento (Carson & Moo):</em> a obra começa sem a saudação típica das cartas, tem grande riqueza retórica e só termina em forma de carta (13.20-25). Por isso se diz que é uma homilia colocada na forma escrita de uma carta.",
+            ]),
+            ("Hebreus — Vínculo com a Itália (atenção aos slides)", [
+                "Lembre-se de <strong>dois argumentos</strong> que justificam a ligação do texto com a Itália:",
+                "<strong>1º argumento:</strong> a menção no final da carta, em <strong>Hebreus 13</strong>: <strong>“Os da Itália vos saúdam”</strong> (13.24).",
+                "<strong>2º argumento:</strong> os <strong>pontos de contato literário com outros textos vinculados a Roma</strong>, como <strong>1 Pedro</strong> e <strong>1 Clemente</strong>. O professor leu em sala o capítulo 35 ou 37 de 1 Clemente.",
+                "<em>Complemento:</em> 1 Clemente é a carta da igreja de Roma (c. 96 d.C.), e Carson & Moo lembram que ela faz repetidas referências a Hebreus (1Clem 36.1-6). Roma é o primeiro lugar onde se sabe que Hebreus foi conhecida. 1 Pedro manda saudações da igreja “que está em Babilônia” (1Pe 5.13), nome tradicionalmente entendido como Roma.",
+            ]),
+            ("Tiago — Natureza e gênero", [
+                "<strong>O que deve constar na resposta:</strong> a principal marca da epístola de Tiago é o <strong>alto número de verbos no imperativo</strong>.",
+                "<strong>A conclusão que ele quer:</strong> é exatamente essa grande quantidade de imperativos que <strong>classifica Tiago como um texto de natureza e gênero exortatório</strong>.",
+                "<em>Exemplos (ARA):</em> “Tornai-vos praticantes da palavra” (1.22); “peça-a a Deus” (1.5); “Sujeitai-vos a Deus; resisti ao diabo” (4.7); “Sede pacientes” (5.7); “não jureis” (5.12).",
+            ]),
+            ("Discursiva de Hebreus 8–10: o que ele quer ler", [
+                "<strong>1. Introdução:</strong> comece por <strong>Hebreus 8.1</strong>: <strong>“a suma é: temos tal sumo sacerdote, que está assentado à direita de Deus”</strong>.",
+                "<strong>2. Como explicar os capítulos:</strong> o <strong>sistema sacrificial levítico era apenas uma “sombra” da realidade futura</strong>, que é a <strong>Nova Aliança em Cristo</strong> (cf. 8.5; 10.1).",
+                "<strong>3. Argumento central:</strong> os antigos sacrifícios <strong>não eram eficazes por serem repetitivos</strong>, e <strong>a própria necessidade de repetição já comprovava a ineficácia deles</strong> (cf. 10.1-4,11).",
+                "<strong>4. Conclusão:</strong> a <strong>lei antiga estava fadada a desaparecer</strong>, e o autor justifica isso <strong>citando Jeremias 31 nos capítulos 8 e 10</strong> (8.8-12; 10.16-17) para provar que <strong>a antiga aliança estava sendo deixada de lado</strong> (cf. 8.13).",
+                "<strong>Resposta modelo:</strong> <em>“A suma do argumento é que temos tal sumo sacerdote, que está assentado à direita de Deus (8.1). Diante dele, o sistema sacrificial levítico era apenas sombra da realidade futura, que é a Nova Aliança em Cristo. Os antigos sacrifícios não eram eficazes, e a prova disso é que precisavam ser repetidos continuamente: a própria repetição mostrava sua ineficácia, enquanto Cristo ofereceu um único sacrifício. Por isso a lei antiga estava fadada a desaparecer, e o autor cita Jeremias 31 nos capítulos 8 e 10 para provar que a antiga aliança estava sendo deixada de lado.”</em>",
+            ]),
+        ],
+    },
+    {
+        "numero": 2,
         "prefixo": "h",
         "rotulo": "Carson & Moo",
         "titulo": "Hebreus — Introdução",
@@ -86,7 +126,7 @@ MATERIA = [
         ],
     },
     {
-        "numero": 2,
+        "numero": 3,
         "prefixo": "s",
         "rotulo": "Aulas 4–5",
         "titulo": "Hebreus — Síntese teológica",
@@ -120,7 +160,7 @@ MATERIA = [
         ],
     },
     {
-        "numero": 3,
+        "numero": 4,
         "prefixo": "t",
         "rotulo": "Aulas 6–7",
         "titulo": "Tiago — Os verbos imperativos",
