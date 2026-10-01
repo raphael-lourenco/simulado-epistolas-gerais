@@ -8,7 +8,7 @@ import random
 from pathlib import Path
 
 from materia import MATERIA
-from questoes import TOPICOS, PROVA_TOPICOS, MOLDE_OBJETIVAS, MULTIPLA, DISSERTATIVAS
+from questoes import TOPICOS, PROVA_TOPICOS, TOPICOS_LIVRE, MOLDE_OBJETIVAS, MULTIPLA, DISSERTATIVAS
 
 AQUI = Path(__file__).resolve().parent
 SAIDA = AQUI.parent / "index.html"
@@ -82,8 +82,8 @@ def montar_simulados(questoes, dissertativas, rng):
     for n in range(n_sims):
         ids = [pools[t].pop() for t in MOLDE_OBJETIVAS if t != "livre"]
         simulados.append({"numero": n + 1, "ids": ids, "diss": [d_fixa, d_rodizio[n % len(d_rodizio)]]})
-    # vaga "livre": sorteada entre as questões que sobraram dos tópicos do guia
-    sobra = [qid for t in PROVA_TOPICOS for qid in pools[t]]
+    # vaga "livre": sorteada entre as questões do Carson que sobraram
+    sobra = [qid for t in TOPICOS_LIVRE for qid in pools[t]]
     rng.shuffle(sobra)
     for n, sim in enumerate(simulados):
         sim["ids"].append(sobra[n])
@@ -119,6 +119,7 @@ def main():
         "/*__TOPICOS__*/": js(TOPICOS),
         "/*__PROVA_TOPICOS__*/": js(PROVA_TOPICOS),
         "/*__MOLDE__*/": js(MOLDE_OBJETIVAS),
+        "/*__TOPICOS_LIVRE__*/": js(TOPICOS_LIVRE),
         "/*__QUESTOES__*/": js(questoes),
         "/*__SIMULADOS__*/": js(simulados),
         "/*__DISSERTATIVAS__*/": js(dissertativas),

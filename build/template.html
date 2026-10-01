@@ -71,6 +71,7 @@
 const TOPICOS = /*__TOPICOS__*/;
 const PROVA_TOPICOS = /*__PROVA_TOPICOS__*/;
 const MOLDE = /*__MOLDE__*/;
+const TOPICOS_LIVRE = /*__TOPICOS_LIVRE__*/;
 const QUESTOES = /*__QUESTOES__*/;
 const SIMULADOS = /*__SIMULADOS__*/;
 const DISSERTATIVAS = /*__DISSERTATIVAS__*/;
@@ -80,7 +81,7 @@ const QMAP = {};
 QUESTOES.forEach(q => { QMAP[q.id] = q; });
 const DMAP = {};
 DISSERTATIVAS.forEach(d => { DMAP[d.numero] = d; });
-const STORAGE_KEY = 'simulado-epistolas-gerais-v2';
+const STORAGE_KEY = 'simulado-epistolas-gerais-v3';
 
 let view = 'home';
 let simKey = null;        // 's0'…'s6', 'topico:<chave>' ou 'aleatorio'
@@ -164,7 +165,7 @@ function sortearProva() {
   const usados = new Set();
   const ids = [];
   MOLDE.forEach(t => {
-    const opcoes = embaralhar(QUESTOES.filter(q => (t === 'livre' ? PROVA_TOPICOS.includes(q.topico) : q.topico === t) && !usados.has(q.id)));
+    const opcoes = embaralhar(QUESTOES.filter(q => (t === 'livre' ? TOPICOS_LIVRE.includes(q.topico) : q.topico === t) && !usados.has(q.id)));
     if (opcoes.length) { usados.add(opcoes[0].id); ids.push(opcoes[0].id); }
   });
   const destaque = DISSERTATIVAS.filter(d => d.destaque);
@@ -296,7 +297,7 @@ function renderHome() {
         <div class="sim-grid" style="margin-bottom:1.8rem">${chips}</div>
         <p class="home-grid-label">ou treine por tópico <span style="color:var(--amber)">★</span> = tópico indicado pelo professor</p>
         <div class="topico-list">${topicos}</div>
-        <p class="footer-note">Fontes: orientações do professor para a AV1, Carson &amp; Moo, <em>Introdução ao Novo Testamento</em> (cap. de Hebreus), e slides das aulas 4 a 7 do Prof. Dr. Leonardo Silveira. Suas respostas ficam salvas só neste navegador.</p>
+        <p class="footer-note">A prova sai basicamente do Carson &amp; Moo, <em>Introdução ao Novo Testamento</em> (cap. de Hebreus), e não exige consulta à Bíblia. Os simulados seguem as orientações do professor; os slides das aulas 4 a 7 entram como apoio. Suas respostas ficam salvas só neste navegador.</p>
       </div>
     </div>`;
 }
