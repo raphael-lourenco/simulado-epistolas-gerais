@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulados AV2 — Epístolas Gerais</title>
+<meta name="description" content="Simulados para a AV2 de Epístolas Gerais (FABAT): Tiago 5.13-18, 1 e 2 Pedro e Judas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F7F5F1;
+  --bg-soft:#EFEBE3;
+  --surface:#FFFFFF;
+  --surface-soft:#F3F0EA;
+  --ink:#23211D;
+  --ink-soft:#6B665C;
+  --ink-faint:#A39E92;
+  --teal:#1B5E5A;
+  --teal-soft:#2D7E79;
+  --teal-bg:#E8F2F1;
+  --terracotta:#BC5A3C;
+  --terracotta-bg:#FBEDE6;
+  --green:#3A8253;
+  --green-bg:#EAF5ED;
+  --red:#C0473D;
+  --red-bg:#FCEEEC;
+  --amber:#B8862E;
+  --amber-bg:#FBF3E4;
+  --border:#E2DDD3;
+  --shadow-sm:0 1px 3px rgba(35,33,29,0.05), 0 1px 2px rgba(35,33,29,0.04);
+  --shadow-md:0 4px 16px rgba(35,33,29,0.07), 0 2px 6px rgba(35,33,29,0.04);
+  --shadow-lg:0 12px 32px rgba(35,33,29,0.1), 0 4px 12px rgba(35,33,29,0.05);
+  --radius-sm:8px;
+  --radius-md:14px;
+  --radius-lg:20px;
+}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--surface-soft);color:var(--ink);font-family:'Inter',-apple-system,sans-serif;min-height:100vh;line-height:1.5}
+button{font-family:inherit}
+
+/* ===== TOPBAR ===== */
+.topbar{
+  background:var(--ink);
+  color:#fff;
+  padding:.85rem 1.25rem;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:1rem;flex-wrap:wrap;
+  position:sticky;top:0;z-index:100;
+}
+.topbar-left{display:flex;align-items:center;gap:.7rem;min-width:0}
+.topbar-title{font-size:.88rem;font-weight:700;white-space:nowrap}
+.topbar-right{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+
+.ring-wrap{position:relative;width:34px;height:34px;flex-shrink:0}
+.ring-wrap svg{transform:rotate(-90deg)}
+.ring-bg{fill:none;stroke:rgba(255,255,255,0.15);stroke-width:3}
+.ring-fg{fill:none;stroke:var(--teal-soft);stroke-width:3;stroke-linecap:round;transition:stroke-dashoffset .4s ease}
+.ring-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700}
+.completed-badge{
+  width:30px;height:30px;background:var(--green);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;
+}
+
+.select-pill{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.16);
+  color:#fff;font-size:.82rem;font-weight:600;
+  padding:.45rem .8rem;border-radius:999px;cursor:pointer;
+  appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='white' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right .7rem center;padding-right:1.8rem;
+}
+.select-pill option{
+  background:var(--surface);color:var(--ink);font-weight:500;
+}
+.btn-pill{
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#fff;
+  font-size:.82rem;font-weight:600;padding:.45rem .9rem;border-radius:999px;cursor:pointer;
+  transition:background .15s;white-space:nowrap;
+}
+.btn-pill:hover{background:rgba(255,255,255,.16)}
+.btn-pill.accent{background:var(--teal);border-color:var(--teal)}
+.btn-pill.accent:hover{background:var(--teal-soft)}
+
+/* ===== LAYOUT ===== */
+.wrap{max-width:720px;margin:0 auto;padding:1.75rem 1.25rem 4rem}
+
+.page-head{margin-bottom:1.75rem}
+.page-eyebrow{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--teal);background:var(--teal-bg);
+  padding:.3rem .7rem;border-radius:999px;margin-bottom:.9rem;
+}
+.page-title{font-size:1.6rem;font-weight:800;letter-spacing:-.02em;color:var(--ink);margin-bottom:.3rem}
+.page-sub{font-size:.92rem;color:var(--ink-soft)}
+
+.section-label{
+  display:flex;align-items:center;gap:.6rem;
+  font-size:.95rem;font-weight:800;color:var(--ink);
+  margin:2rem 0 1rem;
+}
+.section-label .count{
+  font-size:.72rem;font-weight:700;color:var(--ink-faint);
+  background:var(--surface-soft);padding:.15rem .55rem;border-radius:999px;
+}
+.section-hint{font-size:.82rem;color:var(--ink-soft);margin-bottom:1.1rem;margin-top:-.6rem}
+
+/* ===== CARDS ===== */
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  padding:1.3rem 1.4rem;
+  margin-bottom:.85rem;
+  box-shadow:var(--shadow-sm);
+  transition:box-shadow .15s, border-color .15s;
+}
+.card.correct{border-color:var(--green);box-shadow:0 0 0 3px var(--green-bg)}
+.card.incorrect{border-color:var(--red);box-shadow:0 0 0 3px var(--red-bg)}
+.card.pending{border-color:var(--border);background:var(--amber-bg)}
+
+.q-head{display:flex;gap:.85rem;align-items:flex-start;margin-bottom:.9rem}
+.q-num{
+  flex-shrink:0;width:28px;height:28px;border-radius:9px;
+  background:var(--ink);color:#fff;
+  font-size:.78rem;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+}
+.q-num.warn{background:var(--amber)}
+.q-enunciado{font-size:.96rem;line-height:1.55;color:var(--ink);font-weight:500;flex:1;padding-top:.1rem}
+.q-instrucao{font-size:.8rem;color:var(--ink-soft);font-style:italic;margin-top:.25rem}
+
+.warn-badge{
+  display:inline-flex;align-items:center;gap:.3rem;
+  background:var(--amber);color:#fff;font-size:.68rem;font-weight:800;
+  padding:.2rem .55rem;border-radius:999px;margin-bottom:.5rem;letter-spacing:.02em;
+}
+
+/* ===== TEXTAREA / GABARITO ===== */
+.q-textarea{
+  width:100%;border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:.7rem .85rem;font-family:inherit;font-size:.9rem;color:var(--ink);
+  background:var(--surface-soft);resize:vertical;outline:none;transition:border-color .15s;
+}
+.q-textarea:focus{border-color:var(--teal);background:var(--surface)}
+
+.btn-gab{
+  margin-top:.7rem;background:transparent;border:1.5px solid var(--border);
+  color:var(--ink-soft);font-size:.78rem;font-weight:700;
+  padding:.4rem .85rem;border-radius:999px;cursor:pointer;transition:all .15s;
+}
+.btn-gab:hover{border-color:var(--teal);color:var(--teal)}
+
+.gab-box{
+  margin-top:.8rem;padding:.8rem .95rem;border-radius:var(--radius-sm);
+  font-size:.87rem;line-height:1.5;background:var(--teal-bg);
+  border-left:3px solid var(--teal);display:none;color:var(--ink);
+}
+.gab-box.visible{display:block}
+.gab-label{font-weight:800;color:var(--teal);display:block;margin-bottom:.2rem;font-size:.78rem;text-transform:uppercase;letter-spacing:.03em}
+
+/* ===== LACUNA ===== */
+.lacuna-wrap{display:flex;align-items:center;flex-wrap:wrap;gap:.3rem;font-size:.95rem;line-height:2;font-weight:500}
+.lacuna-input{
+  border:none;border-bottom:2.5px solid var(--ink-faint);background:transparent;
+  font-family:inherit;font-size:.95rem;font-weight:700;color:var(--teal);
+  width:140px;outline:none;padding:.1rem .3rem;text-align:center;transition:border-color .15s;
+}
+.lacuna-input:focus{border-bottom-color:var(--teal)}
+.lacuna-input:disabled{opacity:.85}
+.lacuna-input.ok{border-bottom-color:var(--green)!important;color:var(--green)!important}
+.lacuna-input.err{border-bottom-color:var(--red)!important;color:var(--red)!important}
+.gab-lacuna{margin-top:.6rem;font-size:.85rem;font-weight:600;display:none}
+.gab-lacuna.visible{display:flex;align-items:center;gap:.4rem}
+.gab-lacuna.ok{color:var(--green)}
+.gab-lacuna.err{color:var(--red)}
+
+/* ===== ALTERNATIVAS ===== */
+.alt-list{display:flex;flex-direction:column;gap:.55rem}
+.alt{
+  display:flex;align-items:flex-start;gap:.75rem;
+  background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:.7rem .9rem;cursor:pointer;text-align:left;font-family:inherit;
+  font-size:.89rem;font-weight:500;color:var(--ink);transition:all .12s;width:100%;
+}
+.alt:hover{border-color:var(--teal-soft);background:var(--teal-bg)}
+.alt.sel{border-color:var(--teal);background:var(--teal-bg);font-weight:600}
+.alt.acerto{border-color:var(--green);background:var(--green-bg);font-weight:600}
+.alt.errada{border-color:var(--red);background:var(--red-bg);font-weight:600}
+.alt.perdida{border-color:var(--amber);background:var(--amber-bg);font-weight:600}
+
+.alt-letra{
+  flex-shrink:0;width:24px;height:24px;border-radius:7px;
+  background:var(--surface-soft);border:1.5px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.74rem;font-weight:800;color:var(--ink-soft);
+}
+.alt.sel .alt-letra{background:var(--teal);border-color:var(--teal);color:#fff}
+.alt.acerto .alt-letra{background:var(--green);border-color:var(--green);color:#fff}
+.alt.errada .alt-letra{background:var(--red);border-color:var(--red);color:#fff}
+.alt.perdida .alt-letra{background:var(--amber);border-color:var(--amber);color:#fff}
+.alt-texto{flex:1;line-height:1.5;padding-top:.05rem}
+.alt-badge{font-weight:800;margin-left:.5rem;font-size:.85rem}
+
+/* ===== PLACAR ===== */
+.placar{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:1.6rem;margin-bottom:1.75rem;box-shadow:var(--shadow-md);
+}
+.placar-top{display:flex;align-items:center;gap:.7rem;margin-bottom:1.2rem;padding-bottom:1.1rem;border-bottom:1px solid var(--border)}
+.placar-icon{
+  width:36px;height:36px;border-radius:10px;background:var(--green);
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;flex-shrink:0;
+}
+.placar-titulo{font-size:1.02rem;font-weight:800;color:var(--ink)}
+.placar-sub{font-size:.8rem;color:var(--ink-soft);margin-top:.1rem}
+
+.placar-row{display:flex;align-items:center;gap:.9rem;margin-bottom:.8rem}
+.placar-row-label{font-size:.84rem;font-weight:600;color:var(--ink-soft);width:115px;flex-shrink:0}
+.placar-bar-wrap{flex:1;height:8px;background:var(--surface-soft);border-radius:99px;overflow:hidden}
+.placar-bar{height:100%;border-radius:99px;transition:width .6s cubic-bezier(.4,0,.2,1)}
+.bar-mult{background:linear-gradient(90deg,var(--teal),var(--teal-soft))}
+.bar-lac{background:linear-gradient(90deg,var(--amber),#FBBF24)}
+.placar-score{font-weight:800;font-size:1rem;color:var(--ink);width:46px;text-align:right;flex-shrink:0}
+.placar-score small{font-weight:600;color:var(--ink-faint);font-size:.74rem}
+
+.placar-total{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);
+}
+.placar-total-label{font-size:.84rem;color:var(--ink-soft);font-weight:600}
+.placar-total-value{font-size:1.15rem;font-weight:800;color:var(--ink)}
+
+/* ===== BUTTONS ===== */
+.btn-block{
+  width:100%;border:none;border-radius:var(--radius-md);font-weight:800;font-size:1rem;
+  padding:1rem;cursor:pointer;transition:transform .1s, box-shadow .15s;
+}
+.btn-block:active{transform:scale(.98)}
+.btn-primary{background:var(--teal);color:#fff;box-shadow:0 4px 14px rgba(27,94,90,.3)}
+.btn-primary:hover{background:var(--teal-soft)}
+.btn-success{background:var(--green);color:#fff;box-shadow:0 4px 14px rgba(16,185,129,.3)}
+.btn-success:hover{filter:brightness(1.06)}
+.btn-ghost{background:var(--surface);color:var(--ink);border:1.5px solid var(--border)}
+.btn-ghost:hover{border-color:var(--ink-faint)}
+
+.action-card{
+  text-align:center;margin-top:1.75rem;padding:1.5rem;
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);
+}
+.action-card p{font-size:.85rem;color:var(--ink-soft);margin-bottom:1rem}
+.action-row{display:flex;gap:.7rem;flex-wrap:wrap}
+.action-row .btn-block{flex:1;min-width:160px}
+
+/* ===== HOME ===== */
+.home{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem 1.25rem;background:
+  radial-gradient(circle at 15% 0%, rgba(27,94,90,0.07), transparent 50%),
+  radial-gradient(circle at 85% 100%, rgba(188,90,60,0.06), transparent 50%),
+  var(--bg);
+}
+.home-inner{text-align:center;max-width:480px;width:100%}
+.home-badge{
+  display:inline-flex;align-items:center;gap:.4rem;
+  background:var(--surface);border:1px solid var(--border);
+  color:var(--teal);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:.4rem .9rem;border-radius:999px;margin-bottom:1.75rem;box-shadow:var(--shadow-sm);
+}
+.home-title{
+  font-size:clamp(2.2rem,7vw,3rem);font-weight:900;letter-spacing:-.03em;line-height:1.05;
+  color:var(--ink);margin-bottom:.6rem;
+}
+.home-title span{color:var(--terracotta)}
+.home-sub{color:var(--ink-soft);font-size:1rem;margin-bottom:2.2rem;font-weight:500}
+
+.format-pills{display:flex;gap:.55rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.2rem}
+.pill{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:999px;padding:.45rem .9rem;font-size:.78rem;color:var(--ink-soft);font-weight:600;
+  box-shadow:var(--shadow-sm);
+}
+
+/* ===== MATERIAL DE ESTUDO ===== */
+.materia-pdf-link{
+  display:flex;align-items:center;gap:.7rem;
+  background:var(--terracotta-bg);border:1px solid var(--terracotta);border-radius:var(--radius-md);
+  padding:.85rem 1.1rem;margin-bottom:1.5rem;text-decoration:none;
+  transition:all .12s;
+}
+.materia-pdf-link:hover{background:#F7DECF;transform:translateX(2px)}
+.materia-pdf-icon{
+  flex-shrink:0;width:34px;height:34px;border-radius:9px;
+  background:var(--terracotta);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+}
+.materia-pdf-text{font-size:.87rem;color:var(--ink);font-weight:600}
+.materia-pdf-text strong{color:var(--terracotta)}
+
+.materia-toc{display:flex;flex-direction:column;gap:.6rem;margin-bottom:2rem}
+.materia-toc-item{
+  display:flex;align-items:center;gap:.9rem;
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);
+  padding:.9rem 1.1rem;cursor:pointer;text-align:left;width:100%;
+  font-family:inherit;transition:all .12s;box-shadow:var(--shadow-sm);
+}
+.materia-toc-item:hover{border-color:var(--teal-soft);transform:translateX(2px)}
+.materia-toc-num{
+  flex-shrink:0;width:50px;height:50px;border-radius:10px;
+  background:var(--teal-bg);color:var(--teal);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;
+}
+.materia-toc-num-label{font-size:.55rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;line-height:1.1;opacity:.8}
+.materia-toc-num-value{font-weight:800;font-size:1.05rem;line-height:1.1}
+.materia-toc-text{flex:1}
+.materia-toc-titulo{font-size:1rem;font-weight:700;color:var(--ink)}
+.materia-toc-arrow{color:var(--ink-faint);flex-shrink:0}
+
+.licao-nav{display:flex;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.licao-nav-btn{
+  background:var(--surface);border:1px solid var(--border);color:var(--ink-soft);
+  font-size:.78rem;font-weight:700;padding:.4rem .7rem;border-radius:8px;cursor:pointer;
+  transition:all .12s;font-family:inherit;
+}
+.licao-nav-btn:hover{border-color:var(--teal-soft);color:var(--teal)}
+.licao-nav-btn.active{background:var(--teal);border-color:var(--teal);color:#fff}
+
+.licao-secao{margin-bottom:1.8rem}
+.licao-subtitulo{
+  font-size:1.02rem;font-weight:800;color:var(--teal);
+  margin-bottom:.7rem;padding-bottom:.5rem;border-bottom:2px solid var(--teal-bg);
+}
+.licao-paragrafo{
+  font-size:.93rem;line-height:1.7;color:var(--ink);margin-bottom:.85rem;
+  border-radius:8px;padding:.3rem .5rem;margin-left:-.5rem;margin-right:-.5rem;
+  transition:background-color 1.2s ease, box-shadow .3s ease;
+}
+.licao-paragrafo:last-child{margin-bottom:0}
+.licao-paragrafo.highlighted{
+  background-color:var(--amber-bg);
+  box-shadow:0 0 0 2px var(--amber);
+  animation:fonte-pulse 1.6s ease-out 1;
+}
+@keyframes fonte-pulse{
+  0%{background-color:#FDE9B8}
+  100%{background-color:var(--amber-bg)}
+}
+
+/* ===== MODAL: Ver no material ===== */
+.btn-fonte{
+  margin-top:.6rem;background:transparent;border:1.5px dashed var(--teal);
+  color:var(--teal);font-size:.78rem;font-weight:700;
+  padding:.4rem .85rem;border-radius:999px;cursor:pointer;transition:all .15s;
+  display:inline-flex;align-items:center;gap:.35rem;
+}
+.btn-fonte:hover{background:var(--teal-bg);border-style:solid}
+
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(15,15,15,.55);
+  display:flex;align-items:center;justify-content:center;z-index:1000;
+  padding:1.25rem;animation:modal-fade-in .15s ease;
+}
+@keyframes modal-fade-in{from{opacity:0}to{opacity:1}}
+.modal-box{
+  background:var(--surface);border-radius:var(--radius-lg);
+  max-width:560px;width:100%;max-height:80vh;overflow-y:auto;
+  box-shadow:var(--shadow-lg);animation:modal-slide-up .2s ease;
+}
+@keyframes modal-slide-up{from{transform:translateY(12px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-header{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:1.1rem 1.3rem;border-bottom:1px solid var(--border);
+  position:sticky;top:0;background:var(--surface);border-radius:var(--radius-lg) var(--radius-lg) 0 0;
+}
+.modal-header-text{font-size:.92rem;font-weight:800;color:var(--ink)}
+.modal-header-sub{font-size:.76rem;color:var(--ink-soft);font-weight:600;margin-top:.1rem}
+.modal-close{
+  flex-shrink:0;width:30px;height:30px;border-radius:8px;border:none;
+  background:var(--surface-soft);color:var(--ink-soft);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+}
+.modal-close:hover{background:var(--border);color:var(--ink)}
+.modal-body{padding:1.2rem 1.3rem}
+.modal-paragrafo{
+  font-size:.91rem;line-height:1.7;color:var(--ink);
+  background:var(--amber-bg);border-left:3px solid var(--amber);
+  border-radius:8px;padding:.85rem 1rem;margin-bottom:.7rem;
+}
+.modal-paragrafo:last-child{margin-bottom:0}
+.modal-footer{padding:0 1.3rem 1.2rem}
+.modal-link-btn{
+  width:100%;background:var(--teal);color:#fff;border:none;border-radius:10px;
+  padding:.8rem;font-size:.88rem;font-weight:700;cursor:pointer;transition:background .15s;
+}
+.modal-link-btn:hover{background:var(--teal-soft)}
+
+.licao-footer-nav{
+  display:flex;justify-content:space-between;gap:1rem;margin-top:2rem;padding-top:1.5rem;
+  border-top:1px solid var(--border);
+}
+.licao-footer-btn{
+  background:var(--surface);border:1px solid var(--border);color:var(--ink);
+  font-size:.85rem;font-weight:700;padding:.7rem 1.1rem;border-radius:10px;cursor:pointer;
+  transition:all .12s;font-family:inherit;display:flex;align-items:center;gap:.4rem;
+}
+.licao-footer-btn:hover{border-color:var(--teal-soft);color:var(--teal)}
+.licao-footer-btn:disabled{opacity:.35;cursor:not-allowed}
+.licao-footer-btn:disabled:hover{border-color:var(--border);color:var(--ink)}
+
+.home-nav{display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.8rem}
+.home-nav-btn{
+  border:none;border-radius:var(--radius-md);padding:1rem 1.5rem;font-size:1rem;font-weight:800;
+  cursor:pointer;transition:transform .12s, box-shadow .15s;display:flex;align-items:center;justify-content:center;gap:.5rem;
+}
+.home-nav-btn:active{transform:scale(.98)}
+.home-nav-btn.primary{background:var(--teal);color:#fff;box-shadow:0 6px 20px rgba(27,94,90,.28)}
+.home-nav-btn.primary:hover{background:var(--teal-soft)}
+.home-nav-btn.secondary{background:var(--surface);color:var(--ink);border:1.5px solid var(--border);box-shadow:var(--shadow-sm)}
+.home-nav-btn.secondary:hover{border-color:var(--ink-faint)}
+
+.home-grid-label{font-size:.78rem;color:var(--ink-faint);font-weight:600;margin-bottom:.8rem}
+.sim-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem}
+.sim-chip{
+  aspect-ratio:1;border-radius:10px;background:var(--surface);border:1px solid var(--border);
+  color:var(--ink-soft);font-size:.85rem;font-weight:700;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:all .12s;box-shadow:var(--shadow-sm);
+}
+.sim-chip:hover{background:var(--terracotta);border-color:var(--terracotta);color:#fff;transform:translateY(-2px)}
+
+@media (max-width:420px){
+  .sim-grid{grid-template-columns:repeat(4,1fr)}
+  .action-row{flex-direction:column}
+  .action-row .btn-block{width:100%}
+}
+
+
+/* ===== AJUSTES DO SITE DE EPÍSTOLAS GERAIS ===== */
+:root{
+  --teal:#1E4A7A;
+  --teal-soft:#2F639B;
+  --teal-bg:#E9F0F8;
+}
+.btn-primary{box-shadow:0 4px 14px rgba(30,74,122,.3)}
+.home-nav-btn.primary{box-shadow:0 6px 20px rgba(30,74,122,.28)}
+.home{
+  background:
+    radial-gradient(circle at 15% 0%, rgba(30,74,122,0.08), transparent 50%),
+    radial-gradient(circle at 85% 100%, rgba(188,90,60,0.06), transparent 50%),
+    var(--bg);
+}
+.home-inner{max-width:520px}
+
+.q-tag{
+  display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.03em;text-transform:uppercase;
+  color:var(--ink-soft);background:var(--surface-soft);border:1px solid var(--border);
+  padding:.15rem .5rem;border-radius:999px;margin-bottom:.45rem;
+}
+.coment-box{
+  margin-top:.8rem;padding:.75rem .95rem;border-radius:var(--radius-sm);
+  font-size:.86rem;line-height:1.55;background:var(--teal-bg);
+  border-left:3px solid var(--teal);color:var(--ink);
+}
+.coment-box .gab-label{margin-bottom:.15rem}
+
+.sim-chip{position:relative;flex-direction:column;gap:.1rem}
+.sim-chip small{font-size:.62rem;font-weight:700;opacity:.85}
+.sim-chip.done{background:var(--green-bg);border-color:var(--green);color:var(--green)}
+.sim-chip.done:hover{background:var(--terracotta);border-color:var(--terracotta);color:#fff}
+
+.topico-list{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.8rem;text-align:left}
+.topico-btn{
+  display:flex;align-items:center;justify-content:space-between;gap:.8rem;width:100%;
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);
+  padding:.7rem .95rem;font-family:inherit;font-size:.88rem;font-weight:700;color:var(--ink);
+  cursor:pointer;box-shadow:var(--shadow-sm);transition:all .12s;text-align:left;
+}
+.topico-btn:hover{border-color:var(--teal-soft);transform:translateX(2px)}
+.topico-btn .star{color:var(--amber);margin-right:.3rem}
+.topico-btn .n{font-size:.72rem;font-weight:700;color:var(--ink-faint);white-space:nowrap}
+
+.diss-group{margin-top:2rem}
+.diss-group:first-of-type{margin-top:0}
+
+.materia-fonte{font-size:.8rem;color:var(--ink-soft);margin-top:.4rem;font-style:italic}
+
+.footer-note{font-size:.72rem;color:var(--ink-faint);margin-top:2rem;line-height:1.5}
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script>
+const TOPICOS = {"tg_estrutura": "Tiago: estilo, estrutura e tema", "tg_presbiteros": "Tg 5.14: os presbíteros", "tg_oracao": "Tg 5.13-18: oração e cura", "contribuicao": "Contribuição de Judas e de 1 Pedro", "pe1_recentes": "1 Pedro em estudos recentes", "pe2_autoria": "Autoria de 2 Pedro", "judas_recentes": "Judas em estudos recentes", "tg_metodo": "Tiago: método e contexto", "pe2_judas": "2 Pedro: conteúdo e relação com Judas", "canon": "Cânon de 1 Pedro e Judas", "apocalipse": "Apocalipse: estrutura (extra)"};
+const PROVA_TOPICOS = ["tg_estrutura", "tg_presbiteros", "tg_oracao", "contribuicao", "pe1_recentes", "pe2_autoria", "judas_recentes"];
+const MOLDE = ["tg_estrutura", "tg_presbiteros", "tg_oracao", "contribuicao", "pe1_recentes", "pe2_autoria", "livre"];
+const TOPICOS_LIVRE = ["judas_recentes", "tg_metodo", "pe2_judas", "canon", "pe1_recentes", "pe2_autoria", "tg_oracao"];
+const DISS_TOPICOS = ["pe2_autoria", "judas_recentes"];
+const QUESTOES = [{"id": "q1", "topico": "tg_estrutura", "enunciado": "Segundo o artigo de Carreiro, como Carson caracteriza a organização da carta de Tiago?", "alternativas": [{"letra": "A", "texto": "Como uma carta de estrutura rigorosamente sistemática, organizada em quiasmo"}, {"letra": "B", "texto": "Como uma única homilia batismal adaptada à forma de carta"}, {"letra": "C", "texto": "Como uma carta paulina típica, com saudação, ação de graças, corpo doutrinário e parênese"}, {"letra": "D", "texto": "Como uma coleção de homilias sem estrutura sistemática aparente, na qual ainda assim se discernem cinco seções gerais"}], "correta": "D", "comentario": "Konnings sugere uma reunião de homilias; Carson também fala de coleção de homilias, mas discerne 5 seções. A “homilia batismal” é a hipótese de Perdelwitz para 1 Pedro.", "fonte": ["t-3-0", "t-3-1"]}, {"id": "q2", "topico": "tg_estrutura", "enunciado": "Qual destas é uma característica do estilo da carta de Tiago destacada no artigo?", "alternativas": [{"letra": "A", "texto": "O grande número de hapax legomena (63) e o uso de “palavras-gancho” para ligar os temas"}, {"letra": "B", "texto": "A maior proporção de hapax legomena de todo o Novo Testamento, segundo Bauckham"}, {"letra": "C", "texto": "A ausência de vocabulário raro, por ser escrita num grego simples e popular"}, {"letra": "D", "texto": "A citação frequente das cartas de Paulo como Escritura"}], "correta": "A", "comentario": "63 hapax legomena (Vouga) e palavras-gancho (Konnings). A “maior proporção de hapax de todo o NT” é o que Bauckham diz de 2 Pedro.", "fonte": ["t-3-2"]}, {"id": "q3", "topico": "tg_estrutura", "enunciado": "Segundo o artigo, que consequência tem o uso de “palavras-gancho” em Tiago?", "alternativas": [{"letra": "A", "texto": "Facilita a divisão da carta em capítulos temáticos bem definidos"}, {"letra": "B", "texto": "Prova que a carta foi escrita originalmente em aramaico"}, {"letra": "C", "texto": "Pode dificultar a delimitação de grandes trechos da carta"}, {"letra": "D", "texto": "Indica que a carta é uma liturgia batismal"}], "correta": "C", "comentario": "As palavras-gancho conectam os diversos temas, e por isso é difícil delimitar grandes trechos.", "fonte": ["t-3-2"]}, {"id": "q4", "topico": "tg_estrutura", "enunciado": "Na divisão de Carson citada no artigo, em qual seção está a perícope de Tg 5.13-18?", "alternativas": [{"letra": "A", "texto": "Implicações de uma conduta cristã (4.13–5.11)"}, {"letra": "B", "texto": "Exortações finais (5.12-20)"}, {"letra": "C", "texto": "Cisões dentro da comunidade (3.1–4.12)"}, {"letra": "D", "texto": "O cristianismo verdadeiro e as obras (1.19–2.26)"}], "correta": "B", "comentario": "As 5 seções: Provações e maturidade (1.1-18); Cristianismo verdadeiro e obras (1.19–2.26); Cisões (3.1–4.12); Conduta cristã (4.13–5.11); Exortações finais (5.12-20).", "fonte": ["t-3-1", "t-4-0"]}, {"id": "q5", "topico": "tg_estrutura", "enunciado": "Segundo o artigo, qual é o principal assunto de Tiago 5.13-18?", "alternativas": [{"letra": "A", "texto": "A unção com óleo"}, {"letra": "B", "texto": "A confissão de pecados"}, {"letra": "C", "texto": "O dom de cura"}, {"letra": "D", "texto": "A oração"}], "correta": "D", "comentario": "Unção com óleo e confissão de pecados aparecem, mas o principal assunto e foco é a oração (a palavra aparece sete vezes).", "fonte": ["t-0-1", "t-4-1"]}, {"id": "q6", "topico": "tg_estrutura", "enunciado": "Que dado do texto, segundo o artigo, mostra claramente a ênfase de Tg 5.13-18?", "alternativas": [{"letra": "A", "texto": "A expressão “em nome do Senhor” é repetida em todos os versículos"}, {"letra": "B", "texto": "O texto cita literalmente a oração de Elias registrada em 1 Reis"}, {"letra": "C", "texto": "O verbo “curar” aparece em todos os versículos da perícope"}, {"letra": "D", "texto": "A palavra “oração” é usada sete vezes nesses versículos"}], "correta": "D", "comentario": "Sete ocorrências de “oração” em 5.13-18. E a oração de Elias não é mencionada no AT.", "fonte": ["t-4-1", "t-10-2"]}, {"id": "q7", "topico": "tg_estrutura", "enunciado": "Quais são os três temas que, segundo o artigo, encerram a carta de Tiago (5.12-20)?", "alternativas": [{"letra": "A", "texto": "Os juramentos (5.12), a confissão (5.16) e a volta de Cristo (5.20)"}, {"letra": "B", "texto": "A riqueza (5.1-6), a unção (5.14) e a bênção apostólica"}, {"letra": "C", "texto": "A paciência (5.7-11), a oração (5.13-18) e a saudação final"}, {"letra": "D", "texto": "Os juramentos (5.12), a oração (5.13-18) e a conversão dos que se desviaram (5.19-20)"}], "correta": "D", "comentario": "Os três temas finais vêm de Brown, Fitzmyer e Murphy.", "fonte": ["t-4-0"]}, {"id": "q8", "topico": "tg_estrutura", "enunciado": "Analise as afirmativas:<br><br>I. A carta de Tiago não tem um início “epistolar” nem organização sistemática.<br>II. Konnings sugere que a carta seja uma reunião de homilias do autor.<br>III. Por não ter estrutura sistemática, Carson desiste de propor qualquer divisão para a carta.<br><br>Segundo o artigo, está correto o que se afirma em:", "alternativas": [{"letra": "A", "texto": "I, II e III"}, {"letra": "B", "texto": "I, apenas"}, {"letra": "C", "texto": "I e II, apenas"}, {"letra": "D", "texto": "II e III, apenas"}], "correta": "C", "comentario": "III é falsa: mesmo sem estrutura sistemática aparente, Carson discerne cinco seções gerais.", "fonte": ["t-3-0", "t-3-1"]}, {"id": "q9", "topico": "tg_estrutura", "enunciado": "Como o artigo descreve o movimento do texto de Tg 5.13-18?", "alternativas": [{"letra": "A", "texto": "Exposição sobre o dom de cura; imposição de mãos; testemunho de Elias"}, {"letra": "B", "texto": "Crítica aos ricos; paciência diante do sofrimento; vinda do Senhor"}, {"letra": "C", "texto": "Exortação à oração em todas as circunstâncias; acolhida da oração por Deus; perdão e confissão de pecados; e, de novo, a oração com o exemplo de Elias"}, {"letra": "D", "texto": "Instrução sobre juramentos; unção com óleo; conversão dos desviados"}], "correta": "C", "comentario": "v. 13-14 oração em todas as circunstâncias; v. 15a acolhida; v. 15b-16 perdão e confissão; v. 17-18 Elias. Por isso Vouga delimita 13-18.", "fonte": ["t-4-2"]}, {"id": "q10", "topico": "tg_presbiteros", "enunciado": "Como o artigo interpreta a expressão “presbíteros” (anciãos) em Tg 5.14?", "alternativas": [{"letra": "A", "texto": "Como os membros mais idosos da comunidade, respeitados pela experiência"}, {"letra": "B", "texto": "Como cristãos que haviam recebido o dom espiritual de cura"}, {"letra": "C", "texto": "Como os sacerdotes judeus da sinagoga local"}, {"letra": "D", "texto": "Como uma posição de autoridade na igreja local, e não como referência a pessoas de idade avançada"}], "correta": "D", "comentario": "Com Brown: o termo não se refere a alguém de idade avançada, mas a uma posição de autoridade na igreja local.", "fonte": ["t-6-2"]}, {"id": "q11", "topico": "tg_presbiteros", "enunciado": "Segundo Vouga, citado no artigo, por que os presbíteros são chamados para orar pelo doente?", "alternativas": [{"letra": "A", "texto": "Porque somente eles possuíam o dom de cura listado em 1 Coríntios 12"}, {"letra": "B", "texto": "Porque eram os médicos da comunidade e aplicavam o óleo como remédio"}, {"letra": "C", "texto": "Porque representam a igreja, que assim mostra solidariedade ao irmão doente, e não por terem um dom especial de cura"}, {"letra": "D", "texto": "Porque só a oração dos presbíteros é eficaz, segundo Keener"}], "correta": "C", "comentario": "Vouga: o presbítero representa a igreja, que é chamada a se unir em torno do doente para orar. Keener diz o contrário da última alternativa: Tiago estende a oração com fé a todos.", "fonte": ["t-6-3"]}, {"id": "q12", "topico": "tg_presbiteros", "enunciado": "Que argumento Moo usa para aproximar o presbítero de Tg 5.14 do pastor moderno?", "alternativas": [{"letra": "A", "texto": "Os presbíteros eram sempre os membros mais velhos, como os pastores da época"}, {"letra": "B", "texto": "Os presbíteros eram ordenados com unção de óleo, como os pastores hoje"}, {"letra": "C", "texto": "Tiago usa a palavra “pastor” no mesmo versículo"}, {"letra": "D", "texto": "“Pastores” e “presbíteros” nunca aparecem juntos numa mesma passagem, e At 20.28 diz que os presbíteros de Éfeso deviam pastorear suas comunidades"}], "correta": "D", "comentario": "É o argumento de Moo no artigo.", "fonte": ["t-6-1"]}, {"id": "q13", "topico": "tg_presbiteros", "enunciado": "Segundo Brown, citado no artigo, que função tinha o presbítero na comunidade cristã primitiva?", "alternativas": [{"letra": "A", "texto": "Uma função apenas honorífica, sem autoridade sobre a igreja"}, {"letra": "B", "texto": "Uma função de autoridade associada aos apóstolos; eles também presidiam igrejas missionárias"}, {"letra": "C", "texto": "A função de cuidar das finanças, distinta do ensino e do pastoreio"}, {"letra": "D", "texto": "A função de profeta itinerante, sem ligação com uma igreja local"}], "correta": "B", "comentario": "Brown concorda com Vouga e Moo: é uma posição de autoridade na igreja local.", "fonte": ["t-6-2"]}, {"id": "q14", "topico": "tg_presbiteros", "enunciado": "Segundo Vouga, quem é o presbítero (ancião) em Tg 5.14?", "alternativas": [{"letra": "A", "texto": "Um apóstolo itinerante enviado de Jerusalém"}, {"letra": "B", "texto": "Um curador carismático reconhecido pela comunidade"}, {"letra": "C", "texto": "O responsável pela igreja local"}, {"letra": "D", "texto": "Um irmão idoso escolhido pela família do doente"}], "correta": "C", "comentario": "Vouga: o presbítero é o responsável da igreja local.", "fonte": ["t-6-1"]}, {"id": "q15", "topico": "tg_presbiteros", "enunciado": "O artigo observa que <em>proskalesasthō<\/em> (“chame”) está no imperativo médio aoristo. O que isso revela?", "alternativas": [{"letra": "A", "texto": "Que a iniciativa de chamar os presbíteros deve vir da própria pessoa enferma"}, {"letra": "B", "texto": "Que a igreja inteira deve ir à casa do doente"}, {"letra": "C", "texto": "Que os presbíteros devem visitar os doentes por iniciativa própria"}, {"letra": "D", "texto": "Que o pastor deve promover a unção pública nos cultos"}], "correta": "A", "comentario": "A iniciativa é do enfermo. Nas considerações finais o autor diz que nada no texto autoriza a unção pública em cultos por iniciativa do pastor.", "fonte": ["t-6-0", "t-11-1"]}, {"id": "q16", "topico": "tg_presbiteros", "enunciado": "Analise as afirmativas:<br><br>I. O termo “presbítero” designa uma posição de autoridade na igreja local.<br>II. O presbítero é chamado por representar a igreja junto ao doente.<br>III. Todos os presbíteros tinham o dom de cura, por isso eram chamados.<br><br>Segundo o artigo, está correto o que se afirma em:", "alternativas": [{"letra": "A", "texto": "I, apenas"}, {"letra": "B", "texto": "I, II e III"}, {"letra": "C", "texto": "I e II, apenas"}, {"letra": "D", "texto": "II e III, apenas"}], "correta": "C", "comentario": "III é falsa: não se pode pressupor que todos os presbíteros tivessem o dom de cura, e Vouga diz que não são chamados por um dom especial.", "fonte": ["t-6-2", "t-6-3", "t-8-0"]}, {"id": "q17", "topico": "tg_presbiteros", "enunciado": "Por que, segundo o artigo, não se pode dizer que os presbíteros de Tg 5.14 eram chamados por terem o dom de cura?", "alternativas": [{"letra": "A", "texto": "Porque Tiago proíbe expressamente o dom de cura"}, {"letra": "B", "texto": "Porque o dom de cura já tinha cessado no tempo de Tiago"}, {"letra": "C", "texto": "Porque não se pode pressupor que todos os presbíteros tivessem esse dom, que em 1 Coríntios 12 aparece distinto, e o texto não fala de imposição de mãos"}, {"letra": "D", "texto": "Porque os presbíteros eram, na verdade, médicos"}], "correta": "C", "comentario": "Por isso parece óbvio que Tiago enfatiza a eficácia da oração, e não o dom de cura.", "fonte": ["t-8-0", "t-6-3"]}, {"id": "q18", "topico": "tg_presbiteros", "enunciado": "O que o artigo conclui sobre a prática de unção com óleo em cultos públicos?", "alternativas": [{"letra": "A", "texto": "O texto não desautoriza a unção como ato simbólico, mas nada nele autoriza a unção pública em cultos por iniciativa do pastor"}, {"letra": "B", "texto": "O texto ordena que o pastor unja publicamente os doentes em todo culto"}, {"letra": "C", "texto": "O texto restringe a unção aos apóstolos e por isso ela não vale hoje"}, {"letra": "D", "texto": "O texto proíbe qualquer uso de óleo na igreja de hoje"}], "correta": "A", "comentario": "A iniciativa de chamar os presbíteros é do doente (imperativo de <em>proskalesasthō<\/em>).", "fonte": ["t-11-1", "t-6-0"]}, {"id": "q19", "topico": "tg_oracao", "enunciado": "Segundo o artigo, qual é a ênfase do v. 15 de Tiago 5?", "alternativas": [{"letra": "A", "texto": "A ênfase está na salvação escatológica do doente, e não na cura"}, {"letra": "B", "texto": "A ênfase está na oração, e não no óleo"}, {"letra": "C", "texto": "A ênfase está no óleo, que tem propriedades curativas"}, {"letra": "D", "texto": "A ênfase está no dom de cura dos presbíteros"}], "correta": "B", "comentario": "Kistemaker: “a ênfase está na oração, e não no óleo”. O texto não fala de imposição de mãos nem de alguém com dom de cura.", "fonte": ["t-8-0"]}, {"id": "q20", "topico": "tg_oracao", "enunciado": "Segundo o artigo, quem cura o doente em Tg 5.15?", "alternativas": [{"letra": "A", "texto": "O Senhor, que o levanta em resposta à oração da fé"}, {"letra": "B", "texto": "O óleo, aplicado como remédio"}, {"letra": "C", "texto": "A confissão pública dos pecados do doente"}, {"letra": "D", "texto": "O presbítero que tem o dom de cura"}], "correta": "A", "comentario": "Harrison: “não é o azeite que cura o doente, mas antes o Senhor é que o levanta em resposta da oração da fé”.", "fonte": ["t-8-3"]}, {"id": "q21", "topico": "tg_oracao", "enunciado": "Como o artigo interpreta o verbo <em>sózō<\/em> (“curará/salvará”) em Tg 5.15?", "alternativas": [{"letra": "A", "texto": "Como perdão de pecados, sem relação com a doença"}, {"letra": "B", "texto": "Embora no resto da carta tenha sentido escatológico e soteriológico, aqui a ênfase recai sobre a cura do doente, pois <em>sózō<\/em> também significava “restaurar a saúde”"}, {"letra": "C", "texto": "Como libertação de demônios"}, {"letra": "D", "texto": "Como salvação eterna apenas, pois a oração dos anciãos não pretende a cura"}], "correta": "B", "comentario": "Vouga sugere que a oração visaria a salvação, mas isso fugiria da lógica do texto. Champlin: <em>sózō<\/em> com frequência significava restaurar a saúde (Mt 9.21; Mc 6.56).", "fonte": ["t-8-2"]}, {"id": "q22", "topico": "tg_oracao", "enunciado": "Como o artigo, seguindo Moo, interpreta a unção com óleo em Tg 5.14?", "alternativas": [{"letra": "A", "texto": "Como um ato físico com significado simbólico: os presbíteros separam o doente para receber atenção especial de Deus"}, {"letra": "B", "texto": "Como um ato apenas medicinal: oração junto com a melhor medicina disponível"}, {"letra": "C", "texto": "Como um ritual pagão que Tiago manda abandonar"}, {"letra": "D", "texto": "Como um sacramento que, por si mesmo, comunica a cura"}], "correta": "A", "comentario": "Moo: <em>aleiphō<\/em> descreve o ato físico de ungir, mas na LXX também se aplica à consagração. O uso medicinal é uma das interpretações citadas, não a conclusão.", "fonte": ["t-7-3"]}, {"id": "q23", "topico": "tg_oracao", "enunciado": "Por que, segundo Moo, Tiago usa o verbo <em>aleiphō<\/em> e não <em>chríō<\/em> para falar da unção?", "alternativas": [{"letra": "A", "texto": "Porque <em>aleiphō<\/em> é a palavra do NT que descreve o ato físico de ungir; no NT <em>chríō<\/em> nunca se refere à unção física"}, {"letra": "B", "texto": "Porque <em>aleiphō<\/em> nunca tem sentido simbólico na Bíblia"}, {"letra": "C", "texto": "Porque <em>chríō<\/em> era a palavra usada nos cultos pagãos"}, {"letra": "D", "texto": "Porque <em>chríō<\/em> tinha sentido exclusivamente medicinal"}], "correta": "A", "comentario": "Mesmo assim, como na LXX <em>aleiphō<\/em> se aplica à consagração de sacerdotes, não é preciso eliminar todo significado simbólico.", "fonte": ["t-7-3"]}, {"id": "q24", "topico": "tg_oracao", "enunciado": "Segundo o artigo, o que indica a expressão “em nome do Senhor” (5.14)?", "alternativas": [{"letra": "A", "texto": "Que o óleo deveria ser consagrado no Templo"}, {"letra": "B", "texto": "Que apenas os apóstolos podiam ungir"}, {"letra": "C", "texto": "Que a unção tem conotação espiritual, sendo mais uma evidência contra o uso do óleo como remédio"}, {"letra": "D", "texto": "Que a unção era um costume exclusivamente pagão"}], "correta": "C", "comentario": "Brown: a unção não era apenas terapêutica, mas símbolo dos poderes terapêuticos de Cristo (Mc 6.13).", "fonte": ["t-7-4"]}, {"id": "q25", "topico": "tg_oracao", "enunciado": "Como o artigo explica a relação entre doença e pecado em Tg 5.15?", "alternativas": [{"letra": "A", "texto": "O presbítero deve exigir uma confissão pública antes de orar"}, {"letra": "B", "texto": "Doença e pecado não têm relação alguma na Bíblia"}, {"letra": "C", "texto": "Toda doença é resultado de um pecado específico, que precisa ser confessado para haver cura"}, {"letra": "D", "texto": "O “se” mostra que Tiago não liga toda doença ao pecado; o presbítero não deve presumir que o doente pecou, mas também não deve excluir essa possibilidade"}], "correta": "D", "comentario": "O presbítero age como pastor de almas, sondando a consciência e oferecendo o perdão de Deus, além de orar pela cura.", "fonte": ["t-8-4"]}, {"id": "q26", "topico": "tg_oracao", "enunciado": "Segundo o artigo, como é a oração “da fé” de Tg 5.15?", "alternativas": [{"letra": "A", "texto": "Uma oração que depende do óleo para ser eficaz"}, {"letra": "B", "texto": "Uma oração com a absoluta certeza de que Deus a ouvirá e responderá, nascida de “um compromisso inabalável e sincero com Deus”"}, {"letra": "C", "texto": "Uma oração que só os apóstolos podiam fazer"}, {"letra": "D", "texto": "Uma oração com fórmulas fixas recitadas pelos presbíteros"}], "correta": "B", "comentario": "Lopes fala da certeza de que Deus ouvirá; a definição de fé é de Moo.", "fonte": ["t-8-1"]}, {"id": "q27", "topico": "tg_oracao", "enunciado": "Segundo Keener, citado no artigo, o que Tiago faz ao dizer que “a oração de um justo é poderosa e eficaz” (5.16)?", "alternativas": [{"letra": "A", "texto": "Ensina que a oração só é eficaz se acompanhada de óleo"}, {"letra": "B", "texto": "Estende a todos os cristãos a possibilidade de orar com fé pela cura, quando a sabedoria judaica a reservava a mestres muito piedosos"}, {"letra": "C", "texto": "Afirma que só Elias e os profetas tinham oração eficaz"}, {"letra": "D", "texto": "Restringe a oração eficaz aos anciãos justos"}], "correta": "B", "comentario": "A leitura restritiva (só o ancião justo) é de Champlin; o artigo contrapõe a de Keener.", "fonte": ["t-9-3"]}, {"id": "q28", "topico": "tg_oracao", "enunciado": "Qual é a lição que Tiago quer transmitir com o exemplo de Elias, segundo o artigo?", "alternativas": [{"letra": "A", "texto": "Só os profetas podem orar pelo controle da natureza"}, {"letra": "B", "texto": "Elias tinha poderes sobre-humanos, que os cristãos devem buscar"}, {"letra": "C", "texto": "A oração só é eficaz depois de três anos e meio de jejum"}, {"letra": "D", "texto": "Elias era um homem como qualquer um, e os recursos de oração disponíveis para ele estão disponíveis para cada cristão"}], "correta": "D", "comentario": "O poder não está na pessoa, mas naquele que ouve a oração. Kistemaker lembra que no séc. 1 se atribuíam a Elias atributos sobre-humanos, mas a lição de Tiago é a humanidade dele.", "fonte": ["t-10-3", "t-11-2"]}, {"id": "q29", "topico": "tg_oracao", "enunciado": "Na explicação do artigo, o que significa “orou fervorosamente” (<em>proseuchē prosēuxato<\/em>) em Tg 5.17?", "alternativas": [{"letra": "A", "texto": "“Orou muitas vezes”, indicando repetição"}, {"letra": "B", "texto": "Literalmente “orou em oração”, recurso que indica a intensidade e a seriedade da oração"}, {"letra": "C", "texto": "“Orou em línguas”, indicando um dom espiritual"}, {"letra": "D", "texto": "“Orou no Templo”, indicando o lugar da oração"}], "correta": "B", "comentario": "Explicação de Kistemaker; a NVI traduz “fervorosamente”.", "fonte": ["t-10-1"]}, {"id": "q30", "topico": "tg_oracao", "enunciado": "Sobre a confissão de pecados em Tg 5.16, qual posição o artigo apresenta como equilibrada?", "alternativas": [{"letra": "A", "texto": "A de Kistemaker: confissão pessoal num círculo de crentes; pecados que envolvem a igreja confessam-se publicamente, e os particulares, só com os envolvidos"}, {"letra": "B", "texto": "A de que a confissão deve ser feita apenas ao presbítero, em segredo"}, {"letra": "C", "texto": "A de que a confissão é dispensável quando há unção com óleo"}, {"letra": "D", "texto": "A de Lopes: toda confissão deve ser pública e aberta, como a dos batizados por João"}], "correta": "A", "comentario": "Lopes defende confissão pública; Harrison, confissões com o objetivo de que os crentes orem uns pelos outros; Kistemaker equilibra.", "fonte": ["t-9-0", "t-9-1"]}, {"id": "q31", "topico": "tg_oracao", "enunciado": "Na síntese do artigo, que função a igreja tem quando há confissão mútua de pecados?", "alternativas": [{"letra": "A", "texto": "Uma função sacramental, que dispensa a oração"}, {"letra": "B", "texto": "Uma função judicial, de punir o pecador"}, {"letra": "C", "texto": "Nenhuma função, pois a confissão é só a Deus"}, {"letra": "D", "texto": "Uma função terapêutica"}], "correta": "D", "comentario": "A oração é eficaz se feita com fé, e a igreja tem função terapêutica quando há confissão mútua de pecados.", "fonte": ["t-11-2"]}, {"id": "q32", "topico": "contribuicao", "enunciado": "Segundo Carson, Moo e Morris, qual alternativa NÃO corresponde à contribuição de Judas?", "alternativas": [{"letra": "A", "texto": "Judas mostra que não há nada de novo nas atitudes erradas diante de Deus, citando exemplos como Caim, Balaão e Coré"}, {"letra": "B", "texto": "Judas enfatiza que o juízo divino é certo para quem vive como os hereges"}, {"letra": "C", "texto": "Judas lembra que há limites: é possível remodelar o evangelho a ponto de ele perder sua essência"}, {"letra": "D", "texto": "Judas faz uma análise sistemática do ensino herético e o refuta ponto por ponto"}], "correta": "D", "comentario": "Judas não refuta ponto por ponto: basta que os leitores considerem o tipo de vida dos hereges.", "fonte": ["j-5-1", "j-5-2", "j-5-3"]}, {"id": "q33", "topico": "contribuicao", "enunciado": "Qual alternativa NÃO traz uma contribuição de Judas, segundo o material?", "alternativas": [{"letra": "A", "texto": "A carta chama os leitores a considerar o que acontece quando quem professa seguir a Cristo nega a fé no ensino e na vida"}, {"letra": "B", "texto": "A carta interessa-se pela salvação comum e pela fé entregue uma vez por todas aos santos"}, {"letra": "C", "texto": "A carta desafia os leitores a se oporem resolutamente às práticas que se dizem cristãs mas negam a essência da fé"}, {"letra": "D", "texto": "A carta é uma apresentação sistemática da fé cristã"}], "correta": "D", "comentario": "O texto diz expressamente que a carta não é uma apresentação sistemática da fé nem de algum aspecto dela.", "fonte": ["j-5-0", "j-5-2"]}, {"id": "q34", "topico": "contribuicao", "enunciado": "Qual alternativa NÃO corresponde ao que o material diz sobre a contribuição de Judas?", "alternativas": [{"letra": "A", "texto": "Os leitores não deviam se surpreender, mas também não podiam ser complacentes"}, {"letra": "B", "texto": "Diante da heresia, os leitores deviam se surpreender, pois era um fenômeno totalmente novo na igreja"}, {"letra": "C", "texto": "Judas cita os incrédulos libertos do Egito, os anjos pecadores e Sodoma e Gomorra"}, {"letra": "D", "texto": "Os apóstolos já haviam advertido que surgiriam hereges"}], "correta": "B", "comentario": "Não havia nada de surpreendente: os apóstolos já tinham avisado (17-19).", "fonte": ["j-5-2"]}, {"id": "q35", "topico": "contribuicao", "enunciado": "Sobre a aplicação de Judas para hoje, qual alternativa NÃO está de acordo com o material?", "alternativas": [{"letra": "A", "texto": "A tolerância é importante, e há variedade legítima de expressões do cristianismo"}, {"letra": "B", "texto": "Toda tolerância é um erro, e a igreja deve julgar todos os que divergem dela, mesmo em questões pouco importantes"}, {"letra": "C", "texto": "As advertências de Judas têm importância permanente"}, {"letra": "D", "texto": "É possível reinterpretar a vida cristã a ponto de ela não se distinguir da vida do mundo"}], "correta": "B", "comentario": "Carson diz o contrário: há perigo quando cristãos se põem como juízes de todos os que divergem em questões pouco importantes. Mas Judas lembra que existem limites.", "fonte": ["j-5-3"]}, {"id": "q36", "topico": "contribuicao", "enunciado": "Segundo Childs, citado no material, o que a carta de Judas apresenta?", "alternativas": [{"letra": "A", "texto": "Um credo oficial para resumir a fé da igreja"}, {"letra": "B", "texto": "Uma refutação detalhada do gnosticismo do séc. 2"}, {"letra": "C", "texto": "Uma liturgia batismal da igreja de Roma"}, {"letra": "D", "texto": "Uma descrição teológica do fenômeno da heresia, em vez de atacar uma forma histórica específica de erro"}], "correta": "D", "comentario": "Por isso a carta fala a todas as épocas.", "fonte": ["j-5-1"]}, {"id": "q37", "topico": "contribuicao", "enunciado": "Qual alternativa NÃO corresponde à contribuição de 1 Pedro, segundo o material?", "alternativas": [{"letra": "A", "texto": "A carta quase não fala de Deus, concentrando-se na organização da igreja"}, {"letra": "B", "texto": "A palavra “Deus” aparece 39 vezes, cerca de uma a cada 43 palavras"}, {"letra": "C", "texto": "Martin diz que talvez nenhum documento do NT seja tão teológico quanto 1 Pedro, no sentido de ensino sobre Deus"}, {"letra": "D", "texto": "Deus é apresentado como Pai, santo, juiz de todos e Criador fiel"}], "correta": "A", "comentario": "É o contrário: há um número incomum de referências a Deus.", "fonte": ["a-4-0", "a-4-1"]}, {"id": "q38", "topico": "contribuicao", "enunciado": "Segundo o material, quais escritos do NT se comparam a 1 Pedro na frequência da palavra “Deus”?", "alternativas": [{"letra": "A", "texto": "2 Pedro e Judas"}, {"letra": "B", "texto": "Hebreus e Tiago"}, {"letra": "C", "texto": "1 João e Romanos"}, {"letra": "D", "texto": "Mateus e Atos"}], "correta": "C", "comentario": "1 João: uma a cada 34 palavras; Romanos: uma a cada 46; 1 Pedro: uma a cada 43.", "fonte": ["a-4-0"]}, {"id": "q39", "topico": "contribuicao", "enunciado": "Qual alternativa NÃO é uma forma pela qual 1 Pedro relaciona a igreja a Deus?", "alternativas": [{"letra": "A", "texto": "“Povo de Deus” (2.10)"}, {"letra": "B", "texto": "“Casa [família] de Deus” (4.17)"}, {"letra": "C", "texto": "“Rebanho de Deus” (5.2)"}, {"letra": "D", "texto": "“Templo de Jerusalém”"}], "correta": "D", "comentario": "Os membros também são “servos de Deus” (2.16).", "fonte": ["a-4-2"]}, {"id": "q40", "topico": "contribuicao", "enunciado": "Qual alternativa NÃO corresponde à contribuição de Judas segundo o material?", "alternativas": [{"letra": "A", "texto": "Judas mostra que essas pessoas, de certo modo, “negam Jesus Cristo” (4)"}, {"letra": "B", "texto": "Judas trata de pessoas que, sendo membros da igreja, levam vidas tão más que poderiam ser chamadas de ímpias"}, {"letra": "C", "texto": "Judas apela à autoridade dos oficiais da igreja para condenar os falsos mestres"}, {"letra": "D", "texto": "Judas afirma que os que vivem como os hereges sofrerão castigo eterno"}], "correta": "C", "comentario": "A igreja e seus oficiais não merecem a mínima alusão em Judas (p. 513). As outras três estão na seção “A contribuição de Judas”.", "fonte": ["j-5-0", "j-5-1", "j-3-2"]}, {"id": "q41", "topico": "pe1_recentes", "enunciado": "Em “1 Pedro em estudos recentes”, que tendência Carson aponta no debate sobre a autoria?", "alternativas": [{"letra": "A", "texto": "A tendência de considerá-la uma carta de Paulo"}, {"letra": "B", "texto": "A tendência de atribuí-la a Silvano como autor independente"}, {"letra": "C", "texto": "A tendência de datá-la antes da conversão de Paulo"}, {"letra": "D", "texto": "A tendência de considerar a carta pseudepígrafe, embora ninguém apresente um motivo convincente para alguém escrever em nome de Pedro"}], "correta": "D", "comentario": "A carta tem ensinos ortodoxos e nada que exigisse autorização oficial.", "fonte": ["a-1-0"]}, {"id": "q42", "topico": "pe1_recentes", "enunciado": "Qual é, segundo Carson, a única consideração com algum peso contra a autoria petrina de 1 Pedro?", "alternativas": [{"letra": "A", "texto": "As perseguições sofridas pelos leitores não poderiam ter ocorrido na vida de Pedro e indicariam o tempo de Domiciano ou Trajano"}, {"letra": "B", "texto": "A carta foi rejeitada por Eusébio"}, {"letra": "C", "texto": "A carta cita as cartas de Paulo como Escritura"}, {"letra": "D", "texto": "O grego de 1 Pedro é igual ao de 2 Pedro"}], "correta": "A", "comentario": "O sofrimento “pelo nome de Cristo” (4.14,16) é usado para defender essa data tardia.", "fonte": ["a-1-1"]}, {"id": "q43", "topico": "pe1_recentes", "enunciado": "Como Carson responde ao argumento de que as perseguições de 1 Pedro pertencem ao tempo de Domiciano ou Trajano?", "alternativas": [{"letra": "A", "texto": "Admite que 1 Pedro foi escrita sob Trajano por um discípulo de Pedro"}, {"letra": "B", "texto": "Não há evidências de perseguição generalizada sob esses imperadores, e o que Plínio descreve (investigações oficiais e torturas) não aparece em 1 Pedro"}, {"letra": "C", "texto": "Diz que Pedro viveu até o tempo de Domiciano"}, {"letra": "D", "texto": "Afirma que 1 Pedro não fala de sofrimento algum"}], "correta": "B", "comentario": "Havia suspeita generalizada contra os cristãos desde muito antes, e autoridades locais podiam oprimi-los sem riscos.", "fonte": ["a-1-2"]}, {"id": "q44", "topico": "pe1_recentes", "enunciado": "Quem, em 1911, propôs que 1 Pedro teria uma pausa em 4.11, sendo a primeira parte uma homilia batismal?", "alternativas": [{"letra": "A", "texto": "R. J. Bauckham"}, {"letra": "B", "texto": "R. Perdelwitz"}, {"letra": "C", "texto": "H. Preisker"}, {"letra": "D", "texto": "F. L. Cross"}], "correta": "B", "comentario": "Preisker levou adiante a ideia (liturgia batismal de Roma); Cross propôs uma liturgia batismal de Páscoa.", "fonte": ["a-2-0"]}, {"id": "q45", "topico": "pe1_recentes", "enunciado": "Associe corretamente: segundo o material, F. L. Cross entende que 1 Pedro é:", "alternativas": [{"letra": "A", "texto": "Uma homilia batismal seguida de uma carta escrita depois de 4.12"}, {"letra": "B", "texto": "A liturgia para um batismo realizado na Páscoa"}, {"letra": "C", "texto": "A liturgia batismal da igreja em Roma, com o batismo depois de 1.21"}, {"letra": "D", "texto": "Uma ficção transparente escrita em nome de Pedro"}], "correta": "B", "comentario": "A segunda é de Preisker, a terceira de Perdelwitz e a quarta é o que Bauckham diz de 2 Pedro.", "fonte": ["a-2-1"]}, {"id": "q46", "topico": "pe1_recentes", "enunciado": "Qual destas NÃO é uma crítica de Carson às teorias batismais sobre 1 Pedro?", "alternativas": [{"letra": "A", "texto": "Não se explica por que uma liturgia romana teria sido enviada para a Ásia Menor"}, {"letra": "B", "texto": "O batismo é mencionado apenas uma vez (3.21), estranho se fosse o núcleo do escrito"}, {"letra": "C", "texto": "O batismo é o tema mais frequente da carta, o que torna a teoria desnecessária"}, {"letra": "D", "texto": "Não há evidência de que uma liturgia fixa estivesse em uso num período tão remoto"}], "correta": "C", "comentario": "O batismo aparece uma só vez. Outra crítica: já em 1.3 “nos regenerou” está no passado.", "fonte": ["a-2-2"]}, {"id": "q47", "topico": "pe1_recentes", "enunciado": "Por que, segundo Carson, o argumento dos tempos verbais em favor da hipótese batismal não se sustenta?", "alternativas": [{"letra": "A", "texto": "Porque 1.22 está no futuro, e não no passado"}, {"letra": "B", "texto": "Porque toda a carta está no futuro"}, {"letra": "C", "texto": "Porque já em 1.3 “nos regenerou” está no passado, mostrando que os leitores já estavam na igreja, e o particípio presente de 1.5 não é futuro"}, {"letra": "D", "texto": "Porque a carta foi escrita em aramaico, sem tempos verbais"}], "correta": "C", "comentario": "A tese dizia que em 1.3-21 a santificação é futura e em 1.22 passada (batismo consumado).", "fonte": ["a-2-2"]}, {"id": "q48", "topico": "pe1_recentes", "enunciado": "Sobre a liturgia e a unidade de 1 Pedro, o que o material afirma?", "alternativas": [{"letra": "A", "texto": "Não há nenhuma expressão litúrgica em 1 Pedro"}, {"letra": "B", "texto": "A identificação das expressões litúrgicas é objetiva e consensual"}, {"letra": "C", "texto": "Há amplo consenso de que a liturgia está por trás da carta, mas teorias de divisão em seções não são amplamente aceitas, e os estudiosos em geral declaram sua unidade"}, {"letra": "D", "texto": "A carta é uma reunião de vários documentos litúrgicos independentes"}], "correta": "C", "comentario": "A identificação das expressões litúrgicas é subjetiva, mas trechos como 1.3-12; 2.4-8, 21-25; 3.18-22 são citados.", "fonte": ["a-3-0", "a-3-1"]}, {"id": "q49", "topico": "pe1_recentes", "enunciado": "Como Carson responde à objeção de que há “paulinismo” demais em 1 Pedro para ser de Pedro?", "alternativas": [{"letra": "A", "texto": "Admite que 1 Pedro foi escrita por um discípulo de Paulo"}, {"letra": "B", "texto": "Diz que não há nenhuma semelhança entre Pedro e Paulo"}, {"letra": "C", "texto": "Diz que Pedro copiou a carta aos Romanos"}, {"letra": "D", "texto": "Paulo e Pedro incluem muito do ensino cristão comum da igreja, e é perigoso afirmar que um dos escritores usou o outro"}], "correta": "D", "comentario": "Ambos são membros da igreja primitiva e escrevem a partir de preocupações comuns.", "fonte": ["a-3-2"]}, {"id": "q50", "topico": "pe1_recentes", "enunciado": "Analise as afirmativas:<br><br>I. Pedro conclama os leitores a partilharem dos sofrimentos de Cristo (4.13).<br>II. Na carta se vê uma forte devoção de mártir, com chamado a partilhar a morte de Cristo.<br>III. Plínio fala a Trajano de investigações oficiais e torturas que não aparecem em 1 Pedro.<br><br>Segundo o material, está correto o que se afirma em:", "alternativas": [{"letra": "A", "texto": "II e III, apenas"}, {"letra": "B", "texto": "I e III, apenas"}, {"letra": "C", "texto": "I, II e III"}, {"letra": "D", "texto": "I, apenas"}], "correta": "B", "comentario": "II é falsa: os leitores partilham os sofrimentos de Cristo, mas não sua morte. “Nessa carta não se vê uma devoção de mártir.”", "fonte": ["a-1-2", "a-1-3"]}, {"id": "q51", "topico": "pe2_autoria", "enunciado": "Qual é a conclusão de Carson, Moo e Morris sobre a autoria de 2 Pedro?", "alternativas": [{"letra": "A", "texto": "A carta é pseudônima, mas uma ficção transparente, sem intenção de enganar"}, {"letra": "B", "texto": "Nenhum argumento conclusivo foi apresentado contra a autoria; é melhor aceitar a carta como escrito autêntico do apóstolo Pedro"}, {"letra": "C", "texto": "Pedro não pode ter escrito esta epístola"}, {"letra": "D", "texto": "Não é possível saber, e devemos reconhecer a nossa ignorância"}], "correta": "B", "comentario": "A segunda é de Bauckham; a terceira é de Kümmel; a quarta é a conclusão de Carson sobre o autor de Hebreus (AV1).", "fonte": ["b-9-1"]}, {"id": "q52", "topico": "pe2_autoria", "enunciado": "Quem afirma sem rodeios que “Pedro não pode ter escrito esta epístola”?", "alternativas": [{"letra": "A", "texto": "Bauckham"}, {"letra": "B", "texto": "Guthrie"}, {"letra": "C", "texto": "Kümmel"}, {"letra": "D", "texto": "Green"}], "correta": "C", "comentario": "Bauckham aceita a pseudonímia, mas como ficção transparente; Green defende a atestação de 2 Pedro; Guthrie fez a contagem de palavras com Judas.", "fonte": ["b-1-2"]}, {"id": "q53", "topico": "pe2_autoria", "enunciado": "Qual é a posição de Bauckham sobre a autoria de 2 Pedro?", "alternativas": [{"letra": "A", "texto": "Aceita que a carta é pseudônima, mas como uma “ficção totalmente transparente”, sem intenção de enganar"}, {"letra": "B", "texto": "Defende a autoria petrina com base no uso de secretários"}, {"letra": "C", "texto": "Afirma que 2 Pedro é uma liturgia batismal"}, {"letra": "D", "texto": "Afirma que a carta foi escrita por Judas"}], "correta": "A", "comentario": "Carson objeta: se a ficção era transparente, por que tantos na igreja primitiva não perceberam?", "fonte": ["b-1-3"]}, {"id": "q54", "topico": "pe2_autoria", "enunciado": "Qual é a objeção de Carson à tese da “ficção transparente” de Bauckham?", "alternativas": [{"letra": "A", "texto": "Bauckham ignora a relação entre 2 Pedro e Judas"}, {"letra": "B", "texto": "A carta foi aceita sem nenhum debate na igreja primitiva"}, {"letra": "C", "texto": "Bauckham é um estudioso liberal e por isso não merece crédito"}, {"letra": "D", "texto": "Na igreja primitiva, o debate sobre aceitar a carta girava em torno de ela ser ou não de um apóstolo; se a ficção era transparente, por que tantos não perceberam?"}], "correta": "D", "comentario": "Carson observa que a posição de Bauckham em geral é bem conservadora.", "fonte": ["b-1-3"]}, {"id": "q55", "topico": "pe2_autoria", "enunciado": "Como os defensores da autoria petrina explicam a diferença de estilo entre 1 e 2 Pedro?", "alternativas": [{"letra": "A", "texto": "Pelo uso de secretários diferentes, ou por Pedro ter escrito uma das cartas pessoalmente e usado um secretário na outra"}, {"letra": "B", "texto": "Por 1 Pedro ser uma liturgia e 2 Pedro uma carta"}, {"letra": "C", "texto": "Pela diferença de idade dos destinatários"}, {"letra": "D", "texto": "Por 2 Pedro ter sido traduzida do latim"}], "correta": "A", "comentario": "Eles lembram também que quase nada se sabe da contribuição de um secretário.", "fonte": ["b-1-1"]}, {"id": "q56", "topico": "pe2_autoria", "enunciado": "Segundo Carson, por que o nome “Simeão Pedro” (1.1) favorece a autoria petrina?", "alternativas": [{"letra": "A", "texto": "Porque os pais apostólicos sempre chamam Pedro de Simeão"}, {"letra": "B", "texto": "Porque 1 Pedro também começa com “Simeão Pedro”"}, {"letra": "C", "texto": "Porque “Simeão” é a forma usada em todos os escritos pseudepígrafos de Pedro"}, {"letra": "D", "texto": "Porque a forma “Simeão” quase nunca é usada para Pedro; seria natural para o próprio Pedro, mas um imitador usaria a forma de 1 Pedro"}], "correta": "D", "comentario": "No NT a forma só aparece em At 15.14, e aparentemente não nos pais apostólicos nem na literatura pseudepígrafa.", "fonte": ["b-3-0"]}, {"id": "q57", "topico": "pe2_autoria", "enunciado": "Como Carson responde à objeção de que 2 Pedro pressupõe uma coleção oficial das cartas de Paulo (3.15-16)?", "alternativas": [{"letra": "A", "texto": "A carta nada fala de coleção; “todas as suas epístolas” pode significar apenas as cartas de Paulo conhecidas por Pedro"}, {"letra": "B", "texto": "Admite que a coleção oficial já existia no ano 40"}, {"letra": "C", "texto": "Diz que 3.15-16 é uma interpolação posterior"}, {"letra": "D", "texto": "Diz que o texto não se refere a Paulo, mas a Apolo"}], "correta": "A", "comentario": "E o pouco conhecimento das doutrinas paulinas na carta indica que ainda não havia coleção oficial.", "fonte": ["b-5-0", "b-5-1"]}, {"id": "q58", "topico": "pe2_autoria", "enunciado": "Segundo Carson, o que, em 2Pe 3.15-16, depõe a favor de a expressão vir do próprio Pedro?", "alternativas": [{"letra": "A", "texto": "A crítica direta à teologia de Paulo"}, {"letra": "B", "texto": "A afirmação de que Pedro escreveu todas as cartas de Paulo"}, {"letra": "C", "texto": "A citação literal de Romanos"}, {"letra": "D", "texto": "O humilde reconhecimento de que os escritos de Paulo são “difíceis de entender”"}], "correta": "D", "comentario": "Alguém que escrevesse em nome de Pedro iria criar dúvidas sobre a capacidade do apóstolo de entender Paulo?", "fonte": ["b-5-3"]}, {"id": "q59", "topico": "pe2_autoria", "enunciado": "Como Carson interpreta “os pais” em 2Pe 3.4?", "alternativas": [{"letra": "A", "texto": "Como os pais da igreja do séc. 2"}, {"letra": "B", "texto": "Como os apóstolos já falecidos, o que prova uma data tardia"}, {"letra": "C", "texto": "Como os pais dos destinatários da carta"}, {"letra": "D", "texto": "Provavelmente como os patriarcas judeus, já que em nenhum outro versículo do NT a expressão designa os primeiros cristãos"}], "correta": "D", "comentario": "Além disso, a expressão é posta na boca dos falsos mestres. A objeção não é decisiva.", "fonte": ["b-6-1"]}, {"id": "q60", "topico": "pe2_autoria", "enunciado": "Segundo Carson, por que a acusação de que 2 Pedro combate o gnosticismo não prova uma data tardia?", "alternativas": [{"letra": "A", "texto": "Porque Pedro conheceu pessoalmente os grandes mestres gnósticos"}, {"letra": "B", "texto": "Porque 2 Pedro não fala de falsos mestres"}, {"letra": "C", "texto": "Porque nenhum sistema gnóstico conhecido forma paralelo com 2 Pedro, e o gnosticismo pleno é um conjunto de sistemas do séc. 2"}, {"letra": "D", "texto": "Porque o gnosticismo já era um sistema completo antes de Jesus"}], "correta": "C", "comentario": "Neyrey afirma categoricamente que os oponentes de 2 Pedro não são gnósticos.", "fonte": ["b-8-1"]}, {"id": "q61", "topico": "pe2_autoria", "enunciado": "Qual é o argumento do “motivo” contra a hipótese de que 2 Pedro é pseudepígrafe?", "alternativas": [{"letra": "A", "texto": "Escritos pseudepígrafos que usavam um grande nome promoviam ensinos não ortodoxos; 2 Pedro é ortodoxa e não precisava de um grande nome"}, {"letra": "B", "texto": "A carta era herética e por isso precisava do nome de Pedro"}, {"letra": "C", "texto": "Todos os escritos com nome de apóstolo eram pseudepígrafos"}, {"letra": "D", "texto": "Pedro precisava de um pseudônimo para escapar da perseguição"}], "correta": "A", "comentario": "Ninguém apresentou ainda um motivo razoável para alguém enviar a carta sob o nome de Pedro.", "fonte": ["b-9-0"]}, {"id": "q62", "topico": "pe2_autoria", "enunciado": "Analise as afirmativas:<br><br>I. Green, com Westcott, diz que 2 Pedro tem apoio incomparavelmente melhor do que o melhor dos livros rejeitados.<br>II. A tradição da igreja vincula a carta a vários nomes além do de Pedro.<br>III. Pela brevidade e pelo conteúdo, seria improvável que 2 Pedro fosse muito citada.<br><br>Segundo o material, está correto o que se afirma em:", "alternativas": [{"letra": "A", "texto": "II e III, apenas"}, {"letra": "B", "texto": "I e III, apenas"}, {"letra": "C", "texto": "I, apenas"}, {"letra": "D", "texto": "I, II e III"}], "correta": "B", "comentario": "II é falsa: a tradição atribui uniformemente a carta a Pedro, e nenhum outro nome está vinculado a ela.", "fonte": ["b-2-0", "b-2-1", "b-4-0"]}, {"id": "q63", "topico": "judas_recentes", "enunciado": "Quem chama Judas de “o livro mais negligenciado do Novo Testamento”?", "alternativas": [{"letra": "A", "texto": "Childs"}, {"letra": "B", "texto": "Rowston"}, {"letra": "C", "texto": "Guthrie"}, {"letra": "D", "texto": "Bauckham"}], "correta": "B", "comentario": "Bauckham diz algo parecido, mas sobre Judas e 2 Pedro juntos.", "fonte": ["j-1-0"]}, {"id": "q64", "topico": "judas_recentes", "enunciado": "Segundo o material, quais são os três aspectos que costumam definir o “catolicismo primitivo”?", "alternativas": [{"letra": "A", "texto": "A diminuição da esperança da parusia, o interesse pela igreja como instituição e o emprego de credos para resumir a fé"}, {"letra": "B", "texto": "O uso de apócrifos, a polêmica antignóstica e a liturgia pascal"}, {"letra": "C", "texto": "A intensificação da esperança da parusia, a rejeição da instituição e o uso de profecias"}, {"letra": "D", "texto": "O culto aos santos, a sucessão apostólica e o batismo infantil"}], "correta": "A", "comentario": "E nada disso se vê em Judas.", "fonte": ["j-3-1"]}, {"id": "q65", "topico": "judas_recentes", "enunciado": "Por que, segundo Carson, Judas não é um exemplo de “catolicismo primitivo”?", "alternativas": [{"letra": "A", "texto": "Porque Judas abandona a esperança da volta de Cristo"}, {"letra": "B", "texto": "Porque Judas defende abertamente a autoridade dos bispos"}, {"letra": "C", "texto": "Porque nele a esperança da parusia brilha fortemente e nem a igreja nem seus oficiais recebem a mínima alusão"}, {"letra": "D", "texto": "Porque Judas resume a fé em credos oficiais"}], "correta": "C", "comentario": "A parusia aparece nos v. 6, 14, 21 e 24.", "fonte": ["j-3-2"]}, {"id": "q66", "topico": "judas_recentes", "enunciado": "Segundo Carson, a que se refere “a fé que uma vez por todas foi entregue aos santos” (Jd 3)?", "alternativas": [{"letra": "A", "texto": "À tradição oral dos rabinos"}, {"letra": "B", "texto": "Aos elementos básicos ligados ao evangelho, isto é, à fidelidade ao ensino cristão mais antigo, e não a um corpo de doutrinas sob controle eclesiástico"}, {"letra": "C", "texto": "Às cartas de Paulo reunidas em coleção"}, {"letra": "D", "texto": "A um credo oficial controlado pelas autoridades da igreja"}], "correta": "B", "comentario": "Judas insiste na verdade do evangelho que leva a vidas piedosas.", "fonte": ["j-3-3"]}, {"id": "q67", "topico": "judas_recentes", "enunciado": "Como os estudiosos que examinam Judas costumam ver o autor, e o que Carson responde?", "alternativas": [{"letra": "A", "texto": "Como um teólogo sistemático; Carson discorda, pois a carta é uma liturgia"}, {"letra": "B", "texto": "Como defensor dogmático das velhas tradições e adversário intolerante; Carson diz que isso dificilmente é equitativo, pois há mais do que dogmatismo em Judas"}, {"letra": "C", "texto": "Como um místico gnóstico; Carson concorda"}, {"letra": "D", "texto": "Como o maior teólogo do NT; Carson concorda"}], "correta": "B", "comentario": "É a apreciação comum nos estudos recentes.", "fonte": ["j-2-0", "j-2-1"]}, {"id": "q68", "topico": "judas_recentes", "enunciado": "Sobre a alegação de que Judas combate o gnosticismo, qual é a posição de Carson?", "alternativas": [{"letra": "A", "texto": "Deve ser vista com suspeita, pois o gnosticismo pleno é do séc. 2 avançado, e nada em Judas comprova que foi escrito quando o gnosticismo florescia"}, {"letra": "B", "texto": "Concorda, e diz que Judas é um avivamento do pensamento apocalíptico"}, {"letra": "C", "texto": "Diz que Judas é ele mesmo um escrito gnóstico"}, {"letra": "D", "texto": "Concorda, e por isso data Judas no séc. 2"}], "correta": "A", "comentario": "A ideia do “avivamento do pensamento apocalíptico” é de Rowston, seguindo R. M. Grant.", "fonte": ["j-4-1"]}, {"id": "q69", "topico": "judas_recentes", "enunciado": "Como Carson avalia a ideia de Rowston de que Judas seria “um avivamento do pensamento apocalíptico”?", "alternativas": [{"letra": "A", "texto": "O pensamento apocalíptico de Judas pode muito bem ser o pensamento apocalíptico normal dos primeiros cristãos, presente também em Paulo e no Apocalipse"}, {"letra": "B", "texto": "Concorda plenamente e data Judas depois da guerra judaica"}, {"letra": "C", "texto": "Diz que o pensamento apocalíptico só aparece no Apocalipse"}, {"letra": "D", "texto": "Nega que exista qualquer pensamento apocalíptico em Judas"}], "correta": "A", "comentario": "Rowston se apoia na teoria de R. M. Grant (profecia → apocalíptica → gnosticismo).", "fonte": ["j-4-0", "j-4-2"]}, {"id": "q70", "topico": "judas_recentes", "enunciado": "Analise as afirmativas:<br><br>I. “Catolicismo primitivo” é uma expressão de significado incerto, muitas vezes usada de modo pejorativo.<br>II. Judas trata a igreja como guardiã do ensino legítimo contra os hereges.<br>III. Bauckham diz que nenhum livro do NT foi mais negligenciado do que Judas e 2 Pedro.<br><br>Segundo o material, está correto o que se afirma em:", "alternativas": [{"letra": "A", "texto": "I, apenas"}, {"letra": "B", "texto": "I, II e III"}, {"letra": "C", "texto": "I e III, apenas"}, {"letra": "D", "texto": "II e III, apenas"}], "correta": "C", "comentario": "II é falsa: Judas não escreve como se a igreja fosse a guardiã do ensino legítimo.", "fonte": ["j-3-0", "j-3-3", "j-1-1"]}, {"id": "q71", "topico": "tg_metodo", "enunciado": "Segundo Kunz, citado no artigo, o que busca o método histórico-gramatical?", "alternativas": [{"letra": "A", "texto": "A aplicação devocional imediata, sem análise do contexto"}, {"letra": "B", "texto": "A reconstrução das fontes que o autor usou, sem pressupor a inspiração"}, {"letra": "C", "texto": "O significado do texto a partir do sentido simples de suas palavras, com base no seu contexto histórico"}, {"letra": "D", "texto": "O sentido alegórico oculto por trás das palavras"}], "correta": "C", "comentario": "Lopes acrescenta os pressupostos da inspiração, da veracidade e da unidade do cânon.", "fonte": ["t-1-0"]}, {"id": "q72", "topico": "tg_metodo", "enunciado": "Segundo o artigo, onde os princípios do método histórico-gramatical já podem ser observados e quando foram retomados?", "alternativas": [{"letra": "A", "texto": "Na Escola de Antioquia; foram retomados na Reforma Protestante"}, {"letra": "B", "texto": "No Concílio de Trento; foram retomados no séc. 20"}, {"letra": "C", "texto": "Na Escola de Alexandria; foram retomados na Idade Média"}, {"letra": "D", "texto": "Nos rabinos de Jâmnia; foram retomados no Iluminismo"}], "correta": "A", "comentario": "Lutero e Calvino rejeitavam a alegoria e diziam que a Escritura é intérprete de si mesma (Zuck).", "fonte": ["t-1-1"]}, {"id": "q73", "topico": "tg_metodo", "enunciado": "Qual é o último passo do método histórico-gramatical, segundo o artigo?", "alternativas": [{"letra": "A", "texto": "A tradução para o vernáculo"}, {"letra": "B", "texto": "A crítica textual"}, {"letra": "C", "texto": "A síntese, que resume a exegese e busca atualizar as verdades do texto para os dias de hoje"}, {"letra": "D", "texto": "A delimitação da perícope"}], "correta": "C", "comentario": "Crítica textual, delimitação e tradução fazem parte do primeiro passo. O autor ainda inverte os dois primeiros passos.", "fonte": ["t-1-2"]}, {"id": "q74", "topico": "tg_metodo", "enunciado": "Segundo o artigo, quem seria o autor da carta e onde e quando ela teria sido escrita?", "alternativas": [{"letra": "A", "texto": "Tiago, irmão de Jesus, em Jerusalém, em meados de 40 d.C., antes do Concílio de Jerusalém"}, {"letra": "B", "texto": "Tiago, filho de Zebedeu, em Roma, por volta de 64 d.C."}, {"letra": "C", "texto": "Um discípulo anônimo de Tiago, na Ásia Menor, no séc. 2"}, {"letra": "D", "texto": "Tiago, filho de Alfeu, em Antioquia, depois de 70 d.C."}], "correta": "A", "comentario": "Carson aponta Tiago, irmão do Senhor (Gl 1.19), também pela semelhança com o grego de At 15.13-21.", "fonte": ["t-2-0", "t-2-1"]}, {"id": "q75", "topico": "tg_metodo", "enunciado": "Por que Tiago está entre as “epístolas gerais”, segundo o artigo?", "alternativas": [{"letra": "A", "texto": "Porque foi escrita a uma única igreja da Galácia"}, {"letra": "B", "texto": "Porque foi escrita por vários autores"}, {"letra": "C", "texto": "Porque o endereço “às doze tribos da Diáspora” faz dela uma circular, sem destinatário específico, embora o autor tivesse em mente cristãos judeus"}, {"letra": "D", "texto": "Porque trata de assuntos gerais, sem nenhuma exortação"}], "correta": "C", "comentario": "A observação da circular é de Vouga.", "fonte": ["t-2-2"]}, {"id": "q76", "topico": "pe2_judas", "enunciado": "Quantos versículos de Judas estão representados em 2 Pedro, segundo o material?", "alternativas": [{"letra": "A", "texto": "Todos os 25 versículos"}, {"letra": "B", "texto": "78 dos 297 versículos"}, {"letra": "C", "texto": "19 dos 25 versículos"}, {"letra": "D", "texto": "12 dos 25 versículos"}], "correta": "C", "comentario": "Mesmo assim, as palavras raramente são idênticas.", "fonte": ["b-10-0"]}, {"id": "q77", "topico": "pe2_judas", "enunciado": "Segundo a contagem de Guthrie, quantas palavras são comuns aos trechos paralelos de 2 Pedro (297 palavras) e Judas (256)?", "alternativas": [{"letra": "A", "texto": "150 palavras"}, {"letra": "B", "texto": "78 palavras"}, {"letra": "C", "texto": "19 palavras"}, {"letra": "D", "texto": "256 palavras"}], "correta": "B", "comentario": "Se 2 Pedro tomou emprestado, alterou cerca de 70% das palavras de Judas.", "fonte": ["b-10-1"]}, {"id": "q78", "topico": "pe2_judas", "enunciado": "O que a análise de Guthrie sobre as 12 seções paralelas de 2 Pedro e Judas mostra?", "alternativas": [{"letra": "A", "texto": "2 Pedro é sempre mais curto, logo é a fonte"}, {"letra": "B", "texto": "Judas é mais longo em cinco delas, de modo que nenhum dos dois é consistentemente mais conciso"}, {"letra": "C", "texto": "Judas é sempre mais curto, logo é a fonte"}, {"letra": "D", "texto": "As seções são idênticas palavra por palavra"}], "correta": "B", "comentario": "Por isso é difícil determinar a direção da dependência.", "fonte": ["b-10-1"]}, {"id": "q79", "topico": "pe2_judas", "enunciado": "Segundo Bauckham, que característica de vocabulário distingue 2 Pedro?", "alternativas": [{"letra": "A", "texto": "Ausência total de palavras raras"}, {"letra": "B", "texto": "63 hapax legomena e uso de palavras-gancho"}, {"letra": "C", "texto": "Vocabulário idêntico ao de 1 Pedro"}, {"letra": "D", "texto": "A mais elevada proporção de hapax legomena entre todos os livros do NT; das 57 palavras exclusivas, 32 não ocorrem na LXX"}], "correta": "D", "comentario": "Os 63 hapax e as palavras-gancho são de Tiago (artigo). Para Bauckham, 2 Pedro pertence ao grego dos judeus helenistas.", "fonte": ["b-1-0"]}, {"id": "q80", "topico": "pe2_judas", "enunciado": "Segundo o resumo do conteúdo de 2 Pedro, o que o autor diz sobre a vinda do Senhor (3.8-10)?", "alternativas": [{"letra": "A", "texto": "É certa, embora ocorra na cronologia do próprio Senhor, e não na nossa"}, {"letra": "B", "texto": "Já aconteceu na transfiguração"}, {"letra": "C", "texto": "Não acontecerá, como dizem os zombadores"}, {"letra": "D", "texto": "Acontecerá antes da morte de Pedro"}], "correta": "A", "comentario": "Ela é a base para a exortação ao viver piedoso (3.11).", "fonte": ["b-0-3"]}, {"id": "q81", "topico": "canon", "enunciado": "Quem é o primeiro a citar 1 Pedro explicitamente como escrito de Pedro?", "alternativas": [{"letra": "A", "texto": "Ireneu"}, {"letra": "B", "texto": "Eusébio"}, {"letra": "C", "texto": "Clemente de Roma"}, {"letra": "D", "texto": "Policarpo"}], "correta": "A", "comentario": "Há ecos em Policarpo (citações sem dúvida), Barnabé e Hermas, mas o primeiro a citá-la como de Pedro é Ireneu. Eusébio a inclui entre os autênticos.", "fonte": ["a-0-0", "a-0-1"]}, {"id": "q82", "topico": "canon", "enunciado": "Qual cânon excluiu 1 Pedro, Judas e todas as outras epístolas gerais?", "alternativas": [{"letra": "A", "texto": "O cânon de Marcião"}, {"letra": "B", "texto": "O Cânon Siríaco"}, {"letra": "C", "texto": "O cânon de Eusébio"}, {"letra": "D", "texto": "O Cânon Muratoriano"}], "correta": "B", "comentario": "1 Pedro não está no Muratoriano, mas talvez porque o fragmento está incompleto. O Siríaco excluiu também o Apocalipse.", "fonte": ["a-0-0", "j-0-0"]}, {"id": "q83", "topico": "canon", "enunciado": "Por que algumas pessoas na igreja primitiva duvidaram da canonicidade de Judas?", "alternativas": [{"letra": "A", "texto": "Porque a carta foi escrita depois do Apocalipse"}, {"letra": "B", "texto": "Porque o autor fez uso de livros apócrifos"}, {"letra": "C", "texto": "Porque a carta defende o gnosticismo"}, {"letra": "D", "texto": "Porque Judas não era irmão de Tiago"}], "correta": "B", "comentario": "Com o tempo, viu-se que isso não era motivo suficiente, e a aceitação tornou-se universal.", "fonte": ["j-0-1"]}, {"id": "q84", "topico": "canon", "enunciado": "O que Carson diz sobre a ausência de 1 Pedro no Cânon Muratoriano?", "alternativas": [{"letra": "A", "texto": "Selwyn e outros acreditam que o texto desse fragmento não está completo; e não há registro antigo de objeção à carta"}, {"letra": "B", "texto": "Prova que a igreja de Roma rejeitava 1 Pedro"}, {"letra": "C", "texto": "Mostra que 1 Pedro era considerada pseudepígrafe"}, {"letra": "D", "texto": "Deve-se ao uso de livros apócrifos na carta"}], "correta": "A", "comentario": "Westcott: a forma atual do fragmento torna provável uma lacuna.", "fonte": ["a-0-1"]}, {"id": "q85", "topico": "apocalipse", "enunciado": "Segundo o material, sobre o que há consenso geral na estrutura de Apocalipse?", "alternativas": [{"letra": "A", "texto": "1.1-20 (ou 1.1-8) é o prólogo, 22.6-11 é o epílogo, e as cartas às sete igrejas (caps. 2–3) são uma unidade à parte"}, {"letra": "B", "texto": "O livro é uma peça em sete atos com sete cenas"}, {"letra": "C", "texto": "O livro é um quiasmo perfeito"}, {"letra": "D", "texto": "Os capítulos 12–22 repetem os capítulos 1–11"}], "correta": "A", "comentario": "As outras são propostas de alguns estudiosos (Fiorenza, Swete, Bowman), sem consenso.", "fonte": ["r-0-0", "r-0-2"]}, {"id": "q86", "topico": "apocalipse", "enunciado": "Que versículo de Apocalipse pode servir de base para dividir o livro em visão inicial, cartas e acontecimentos futuros?", "alternativas": [{"letra": "A", "texto": "12.1"}, {"letra": "B", "texto": "4.1"}, {"letra": "C", "texto": "22.6"}, {"letra": "D", "texto": "1.19"}], "correta": "D", "comentario": "“As coisas que viste” (cap. 1), “as que são” (caps. 2–3) e “as que hão de acontecer depois destas” (caps. 4ss).", "fonte": ["r-0-1"]}];
+const SIMULADOS = [{"numero": 1, "ids": ["q77", "q20", "q52", "q18", "q45", "q40", "q3"], "diss": [1, 9]}, {"numero": 2, "ids": ["q50", "q6", "q23", "q54", "q13", "q65", "q37"], "diss": [2, 10]}, {"numero": 3, "ids": ["q34", "q42", "q31", "q5", "q51", "q14", "q58"], "diss": [3, 11]}, {"numero": 4, "ids": ["q78", "q41", "q36", "q8", "q55", "q12", "q25"], "diss": [4, 12]}, {"numero": 5, "ids": ["q67", "q7", "q16", "q21", "q62", "q32", "q44"], "diss": [5, 13]}, {"numero": 6, "ids": ["q38", "q63", "q29", "q15", "q2", "q43", "q60"], "diss": [6, 9]}, {"numero": 7, "ids": ["q1", "q17", "q33", "q83", "q24", "q46", "q56"], "diss": [7, 10]}, {"numero": 8, "ids": ["q19", "q47", "q39", "q10", "q79", "q59", "q4"], "diss": [8, 11]}, {"numero": 9, "ids": ["q9", "q35", "q27", "q74", "q49", "q53", "q11"], "diss": [1, 12]}];
+const DISSERTATIVAS = [{"numero": 1, "topico": "pe2_autoria", "enunciado": "Carson, Moo e Morris apresentam objeções à autoria petrina de 2 Pedro e depois as refutam. Escolha uma dessas objeções e explique como os autores a refutam, defendendo a posição tradicional.", "gabarito": "Escolha <strong>uma<\/strong>: 1) <strong>Estilo diferente de 1 Pedro<\/strong> → secretários diferentes; um escrito antigo com o nome do autor deve ser aceito como dele, salvo forte evidência contrária. 2) <strong>Paulo como Escritura (3.15-16)<\/strong> → não há menção de coleção oficial; Paulo já se via inspirado; Pedro pode ter sido o primeiro a reconhecer isso; e o “difíceis de entender” é humilde demais para um imitador. 3) <strong>“Os pais” (3.4)<\/strong> → no NT a expressão nunca designa os primeiros cristãos; são os patriarcas; e está na boca dos falsos mestres. 4) <strong>Uso de Judas<\/strong> → não está provado que Judas é a fonte, e não sabemos o que um apóstolo usaria. 5) <strong>Ensino falso/gnosticismo<\/strong> → nenhum sistema gnóstico conhecido é paralelo a 2 Pedro. 6) <strong>Motivo<\/strong> → pseudepígrafes promoviam heterodoxia; 2 Pedro é ortodoxa e não precisava de um grande nome. <strong>Conclusão:<\/strong> nenhum argumento conclusivo contra; aceitar a carta como do apóstolo Pedro.", "fonte": ["p-1-1", "p-1-2", "b-1-1", "b-5-1", "b-6-1", "b-7-1", "b-8-1", "b-9-0", "b-9-1"], "destaque": true}, {"numero": 2, "topico": "pe2_autoria", "enunciado": "Uma das objeções à autoria petrina de 2 Pedro é o uso que a carta faz de Judas. Explique a objeção e como Carson, Moo e Morris a refutam.", "gabarito": "<strong>Objeção:<\/strong> um apóstolo não usaria um escrito de quem não era apóstolo; como 2 Pedro usa Judas, Pedro não pode ser o autor. <strong>Refutação:<\/strong> a objeção depende de <strong>duas pressuposições<\/strong>. (1) Que <strong>Judas é a fonte<\/strong> de 2 Pedro: possível, mas <strong>não comprovado<\/strong>, e alguns veem a dependência no sentido inverso (Guthrie: das 297 palavras de 2 Pedro e 256 de Judas, só 78 são comuns, e nenhum dos dois é sempre mais conciso). (2) Que um apóstolo <strong>não usaria um escrito não apostólico<\/strong>: não temos condições de dizer o que um apóstolo usaria. Pedro poderia incorporar <strong>palavras úteis, não importando onde as encontrasse<\/strong>.", "fonte": ["b-7-0", "b-7-1", "b-10-1"], "destaque": true}, {"numero": 3, "topico": "pe2_autoria", "enunciado": "Explique a objeção à autoria petrina baseada na referência às cartas de Paulo como “Escrituras” (2Pe 3.15-16) e a resposta dada por Carson, Moo e Morris.", "gabarito": "<strong>Objeção:<\/strong> a referência pressupõe uma <strong>coleção oficial<\/strong> das cartas de Paulo, improvável no tempo de Pedro, e chamá-las de “Escrituras” seria tardio. <strong>Resposta:<\/strong> 2 Pedro <strong>não fala de coleção<\/strong>; “todas as suas epístolas” pode ser só as cartas que Pedro conhecia, e a carta revela pouco conhecimento das doutrinas de Paulo. Quanto a “Escrituras”, o próprio <strong>Paulo já considerava seus escritos inspirados e autorizados<\/strong> (1Co 7.40; 14.37); não há evidência de um período em que Paulo foi negligenciado, e nada impede que <strong>Pedro tenha sido o primeiro a reconhecer a mão de Deus<\/strong> nos escritos de Paulo. A favor de Pedro: o humilde reconhecimento de que Paulo é “<strong>difícil de entender<\/strong>”, algo que um imitador não poria na boca do apóstolo.", "fonte": ["b-5-0", "b-5-1", "b-5-2", "b-5-3"], "destaque": true}, {"numero": 4, "topico": "pe2_autoria", "enunciado": "Explique a objeção à autoria petrina de 2 Pedro baseada na expressão “os pais” (3.4) e como ela é refutada.", "gabarito": "<strong>Objeção:<\/strong> Pedro morreu cedo demais para chamar os primeiros líderes cristãos de “os pais”; a expressão indicaria uma geração posterior. <strong>Refutação:<\/strong> em <strong>nenhum outro versículo do NT<\/strong> “os pais” designa os primeiros cristãos; o mais provável é que se refira aos <strong>patriarcas judeus<\/strong>, como em outros textos. Também não é provável que um escritor pseudônimo supusesse esse uso nos dias de Pedro. E a expressão <strong>não é do autor sobre si mesmo<\/strong>: ele a atribui aos <strong>falsos mestres<\/strong>. (A forma “nossos pais” vem de manuscritos inferiores.) Logo, <strong>a objeção não é decisiva<\/strong>.", "fonte": ["b-6-0", "b-6-1"], "destaque": true}, {"numero": 5, "topico": "pe2_autoria", "enunciado": "Explique a objeção à autoria petrina de 2 Pedro baseada na diferença de estilo e vocabulário em relação a 1 Pedro e a resposta dos defensores da autoria tradicional.", "gabarito": "<strong>Objeção:<\/strong> o estilo e a linguagem são bem diferentes dos de 1 Pedro; Bauckham mostra que 2 Pedro tem a <strong>maior proporção de hapax legomena do NT<\/strong> (57 palavras exclusivas, 32 fora da LXX) e um grego de judeus helenistas. <strong>Resposta:<\/strong> a diferença pode ser explicada pelo uso de <strong>secretários diferentes<\/strong>, ou por Pedro ter escrito uma das cartas pessoalmente e usado um secretário na outra; quase nada se sabe da contribuição de um secretário. Além disso, <strong>um escrito antigo que traz o nome do autor deve ser aceito como dele<\/strong>, a menos que haja fortes evidências em contrário.", "fonte": ["b-1-0", "b-1-1"], "destaque": true}, {"numero": 6, "topico": "pe2_autoria", "enunciado": "Explique a objeção à autoria petrina de 2 Pedro segundo a qual a carta combate o gnosticismo e mostre como Carson, Moo e Morris a refutam.", "gabarito": "<strong>Objeção:<\/strong> o autor combate ensinos <strong>gnósticos<\/strong>, que só surgiram bem depois de Pedro; logo a carta é tardia. <strong>Refutação:<\/strong> <strong>nenhum sistema gnóstico conhecido<\/strong> forma paralelo com o que 2 Pedro diz; afirmar que o autor combate o gnosticismo é <strong>ir além das evidências<\/strong> (Neyrey: “os oponentes não são gnósticos”). O gnosticismo do séc. 2 é um conjunto de sistemas ecléticos; alguns ensinos que depois atraíram os gnósticos já existiam na era apostólica, mas isso <strong>não é o gnosticismo em si<\/strong>. Opor-se a esse ensino não é motivo para dizer que o autor não era Pedro.", "fonte": ["b-8-0", "b-8-1"], "destaque": true}, {"numero": 7, "topico": "pe2_autoria", "enunciado": "Se 2 Pedro fosse uma pseudepígrafe, por que teria sido escrita? Explique o argumento do “motivo” usado por Carson, Moo e Morris em favor da autoria petrina.", "gabarito": "Havia escritos que usavam o nome de um grande personagem para dar respeitabilidade ao que diziam, mas <strong>todos promoviam ensinos não ortodoxos<\/strong>. <strong>2 Pedro é ortodoxa<\/strong>, em consonância com outros mestres cristãos, e poderia ser publicada com o nome do verdadeiro autor ou sem nome. Para escrever ortodoxia <strong>não era preciso apelar a um grande nome<\/strong>, e <strong>ninguém apresentou um motivo razoável<\/strong> para enviar a carta sob o nome de Pedro. Contra a tese de Bauckham (ficção transparente): o debate na igreja primitiva girava justamente em torno de a carta ser ou não de um apóstolo; se era transparente, por que tantos não perceberam? <strong>Conclusão:<\/strong> é melhor aceitá-la como escrito autêntico de Pedro.", "fonte": ["b-9-0", "b-9-1", "b-1-3"], "destaque": true}, {"numero": 8, "topico": "pe2_autoria", "enunciado": "Que indícios internos da própria carta Carson, Moo e Morris apresentam em favor da autoria petrina de 2 Pedro?", "gabarito": "1) O autor se identifica como “<strong>Simeão Pedro<\/strong>, servo e apóstolo” (1.1): forma rara (só At 15.14), natural para o próprio Pedro; um imitador usaria a forma de 1 Pedro. 2) Diz que o Senhor lhe mostrou que sua <strong>morte estava próxima<\/strong> (1.14). 3) Afirma ter sido <strong>testemunha ocular da transfiguração<\/strong> (1.16-18), com diferenças em relação aos evangelhos (sem Moisés e Elias, com o enfático <em>egō<\/em>), o que um imitador dificilmente faria. 4) Menciona uma <strong>carta anterior<\/strong> aos mesmos leitores (3.1). 5) Chama Paulo de “<strong>nosso amado irmão<\/strong>” (3.15), sinal de intimidade. Somam-se a isso a <strong>tradição<\/strong> (que atribui a carta uniformemente a Pedro) e a <strong>atestação<\/strong> melhor que a de qualquer livro rejeitado.", "fonte": ["b-3-0", "b-3-1", "b-3-2", "b-4-0", "b-2-0"], "destaque": true}, {"numero": 9, "topico": "judas_recentes", "enunciado": "Em “Judas em estudos recentes”, Carson, Moo e Morris discutem se Judas é um exemplo de “catolicismo primitivo”. Explique o que se entende por essa expressão e por que os autores rejeitam essa classificação para Judas.", "gabarito": "“Catolicismo primitivo” é expressão de <strong>significado incerto<\/strong>, muitas vezes <strong>pejorativa<\/strong>, mas inclui pelo menos <strong>três aspectos<\/strong>: (1) <strong>diminuição da esperança da parusia<\/strong>; (2) <strong>interesse pela igreja como instituição<\/strong>; (3) <strong>uso de credos para resumir a fé<\/strong>. <strong>Nada disso se vê em Judas:<\/strong> (1) a esperança da parusia <strong>brilha fortemente<\/strong> (v. 6, 14, 21, 24); (2) <strong>nem a igreja nem seus oficiais<\/strong> recebem a mínima alusão, e Judas não apela a mestres oficiais contra os falsos mestres; (3) “a fé entregue uma vez por todas aos santos” (v. 3) não é um corpo de doutrinas controlado por autoridades, mas os <strong>elementos básicos do evangelho<\/strong>, o ensino cristão mais antigo. Judas insiste na verdade do evangelho que leva a vidas piedosas.", "fonte": ["j-3-0", "j-3-1", "j-3-2", "j-3-3", "p-2-1"], "destaque": true}, {"numero": 10, "topico": "judas_recentes", "enunciado": "Segundo Carson, Moo e Morris, como Judas tem sido visto nos estudos recentes? Comente a avaliação dos autores sobre essa visão.", "gabarito": "Judas é pouco estudado: é curto e não está no centro dos debates. <strong>Rowston<\/strong> o chama de “<strong>o livro mais negligenciado do NT<\/strong>”, e <strong>Bauckham<\/strong> diz que nenhum livro foi mais negligenciado do que <strong>Judas e 2 Pedro<\/strong>. Quem o examina tende a ver o autor como <strong>conservador demais<\/strong>, <strong>defensor dogmático das velhas tradições<\/strong> e <strong>adversário intolerante<\/strong> de quem diverge. Os autores dizem que essa <strong>não é uma apreciação equitativa<\/strong>: “<strong>há mais do que dogmatismo em Judas<\/strong>”. Ele não é exemplo de catolicismo primitivo (parusia viva, nenhuma alusão à instituição, a fé como elementos básicos do evangelho) e nada prova que combata um gnosticismo tardio.", "fonte": ["j-1-0", "j-1-1", "j-2-0", "j-2-1", "j-3-1"], "destaque": true}, {"numero": 11, "topico": "judas_recentes", "enunciado": "Alguns estudiosos dizem que Judas combate o gnosticismo e o veem como “um avivamento do pensamento apocalíptico”. Explique essa posição e a resposta de Carson, Moo e Morris.", "gabarito": "<strong>Posição:<\/strong> quem data Judas depois da era apostólica costuma dizer que ele combate algum gnosticismo. <strong>Rowston<\/strong>, citando a teoria de <strong>R. M. Grant<\/strong> (a profecia levou ao pensamento apocalíptico depois da guerra macabeia, e este ao gnosticismo depois da guerra judaica), vê em Judas “<strong>um avivamento do pensamento apocalíptico<\/strong>”, talvez para restabelecer um paulinismo autêntico contra o gnosticismo antinomista. <strong>Resposta:<\/strong> essa afirmação deve ser vista <strong>com suspeita<\/strong>: o gnosticismo pleno é uma série de sistemas do <strong>séc. 2 avançado<\/strong>; alguns ensinos existiam no séc. 1, mas é exagero chamá-los de gnosticismo. <strong>Nada em Judas comprova<\/strong> que foi escrito quando o gnosticismo florescia. E o pensamento apocalíptico de Judas, presente também em <strong>Paulo e no Apocalipse<\/strong>, pode ser o <strong>pensamento apocalíptico normal dos primeiros cristãos<\/strong>.", "fonte": ["j-4-0", "j-4-1", "j-4-2"], "destaque": true}, {"numero": 12, "topico": "judas_recentes", "enunciado": "Segundo Carson, Moo e Morris, qual é o significado de “a fé que uma vez por todas foi entregue aos santos” (Jd 3) no debate sobre o “catolicismo primitivo”?", "gabarito": "Quem vê Judas como católico primitivo lê a expressão como um <strong>conjunto de ensinos oficiais<\/strong> que exigiria a rejeição dos que divergissem, sob controle das autoridades da igreja. Para os autores, não é isso: a expressão chama a atenção para os <strong>“elementos básicos” intimamente ligados ao evangelho<\/strong>; Judas fala da importância de ser <strong>fiel ao ensino cristão mais antigo<\/strong>, e não a um corpo de doutrinas sob controle eclesiástico. Ele <strong>não trata a igreja como guardiã<\/strong> do ensino legítimo contra os hereges, mas insiste na <strong>verdade do evangelho que leva a vidas piedosas<\/strong>, em contraste com a vida dos adversários.", "fonte": ["j-3-3", "j-3-2"], "destaque": true}, {"numero": 13, "topico": "judas_recentes", "enunciado": "Resuma o que Carson, Moo e Morris dizem sobre Judas nos estudos recentes (p. 512-513), apontando pelo menos dois temas do debate e a posição dos autores.", "gabarito": "1) <strong>Negligência:<\/strong> Rowston chama Judas de o livro mais negligenciado do NT; Bauckham inclui 2 Pedro. 2) <strong>Imagem dogmática:<\/strong> o autor é visto como defensor dogmático e intolerante; para Carson, há mais do que dogmatismo em Judas. 3) <strong>Catolicismo primitivo<\/strong> (menos esperança da parusia, igreja como instituição, credos): nada disso se vê em Judas, pois a parusia brilha (v. 6, 14, 21, 24), não há alusão à igreja ou a oficiais, e a fé “entregue uma vez por todas” são os elementos básicos do evangelho. 4) <strong>Gnosticismo:<\/strong> deve ser visto com suspeita, pois o gnosticismo pleno é do séc. 2, e o pensamento apocalíptico de Judas é o normal dos primeiros cristãos. (Basta desenvolver bem dois.)", "fonte": ["j-1-0", "j-2-1", "j-3-1", "j-3-2", "j-4-1", "j-4-2"], "destaque": true}, {"numero": 14, "topico": "tg_presbiteros", "enunciado": "Como o artigo “Tiago 5.13-18: uma análise exegética” interpreta a figura dos presbíteros em Tg 5.14 e o motivo de serem chamados?", "gabarito": "O presbítero (ancião) é o <strong>responsável pela igreja local<\/strong> (Vouga); Moo o aproxima do <strong>pastor moderno<\/strong> (At 20.28); Brown fala de uma <strong>função de autoridade associada aos apóstolos<\/strong>. O termo <strong>não se refere à idade avançada<\/strong>, mas a uma posição de autoridade. São chamados <strong>não por um dom especial de cura<\/strong>, mas por <strong>representarem a igreja<\/strong>, que mostra solidariedade ao doente. A iniciativa de chamá-los é do enfermo (imperativo de <em>proskalesasthō<\/em>).", "fonte": ["t-6-0", "t-6-1", "t-6-2", "t-6-3"], "destaque": false}, {"numero": 15, "topico": "tg_oracao", "enunciado": "Como o artigo interpreta a relação entre oração, unção com óleo e cura em Tg 5.14-15?", "gabarito": "A <strong>ênfase está na oração, e não no óleo<\/strong> (Kistemaker): não há imposição de mãos nem busca de alguém com dom de cura. A unção é <strong>ato físico com significado simbólico<\/strong> (Moo: <em>aleiphō<\/em>), separando o doente para a atenção de Deus; “em nome do Senhor” mostra conotação espiritual, contra o uso medicinal. A oração da fé “curará” (<em>sózō<\/em>, aqui no sentido de <strong>restaurar a saúde<\/strong>), e <strong>é o Senhor quem levanta o doente<\/strong> em resposta à oração. O “se” mostra que nem toda doença vem do pecado.", "fonte": ["t-7-3", "t-7-4", "t-8-0", "t-8-2", "t-8-3", "t-8-4"], "destaque": false}, {"numero": 16, "topico": "tg_estrutura", "enunciado": "Descreva o estilo e a organização temática da carta de Tiago segundo o artigo de Carreiro.", "gabarito": "Tiago não tem início epistolar nem organização sistemática: Konnings e Carson a veem como <strong>coleção de homilias<\/strong>. Mesmo assim, Carson discerne <strong>5 seções<\/strong> (1.1-18; 1.19–2.26; 3.1–4.12; 4.13–5.11; 5.12-20). O estilo tem <strong>63 hapax legomena<\/strong> e usa <strong>palavras-gancho<\/strong>, o que dificulta a delimitação. A perícope 5.13-18 está nas exortações finais, entre os juramentos (5.12) e a conversão dos desviados (5.19-20), e seu tema principal é a <strong>oração<\/strong> (sete ocorrências).", "fonte": ["t-3-0", "t-3-1", "t-3-2", "t-4-0", "t-4-1"], "destaque": false}, {"numero": 17, "topico": "pe1_recentes", "enunciado": "Explique a hipótese de que 1 Pedro seria uma homilia ou liturgia batismal e as críticas de Carson, Moo e Morris.", "gabarito": "<strong>Hipótese:<\/strong> Perdelwitz (1911) viu uma pausa em 4.11 e tomou a primeira parte como <strong>homilia batismal<\/strong>; Preisker, como a <strong>liturgia batismal de Roma<\/strong> (batismo depois de 1.21); Cross, como liturgia de batismo na <strong>Páscoa<\/strong>. <strong>Críticas:<\/strong> o batismo aparece <strong>só uma vez<\/strong> (3.21); o argumento dos tempos verbais falha (1.3 já está no passado); a variedade da carta é ignorada; <strong>não há evidência de liturgia fixa<\/strong> tão cedo; e não se explica por que uma liturgia romana iria para a Ásia Menor.", "fonte": ["a-2-0", "a-2-1", "a-2-2"], "destaque": false}, {"numero": 18, "topico": "contribuicao", "enunciado": "Qual é a contribuição da carta de Judas, segundo Carson, Moo e Morris?", "gabarito": "Judas se interessa pela salvação comum e pela <strong>fé entregue uma vez por todas aos santos<\/strong>, mas <strong>não faz apresentação sistemática<\/strong> nem refuta a heresia ponto por ponto: chama os leitores a ver o que acontece quando quem professa a Cristo <strong>nega a fé no ensino e na vida<\/strong>, e afirma que o <strong>juízo é certo<\/strong>. Mostra que <strong>não há nada de novo<\/strong> no erro (Egito, anjos, Sodoma; Caim, Balaão, Coré) e que os apóstolos já tinham advertido. Para hoje: a tolerância é importante, mas <strong>há limites<\/strong>; o evangelho pode ser remodelado a ponto de perder sua essência.", "fonte": ["j-5-0", "j-5-1", "j-5-2", "j-5-3"], "destaque": false}, {"numero": 19, "topico": "pe2_judas", "enunciado": "Qual é a relação entre 2 Pedro e Judas, segundo Carson, Moo e Morris?", "gabarito": "<strong>19 dos 25 versículos<\/strong> de Judas estão representados em 2 Pedro, mas as palavras raramente são idênticas. Guthrie: <strong>297 palavras em 2 Pedro, 256 em Judas, 78 comuns<\/strong>; se 2 Pedro copiou, alterou cerca de 70%. Das 12 seções paralelas, Judas é mais longo em cinco: nenhum é sempre mais conciso. Por isso a direção da dependência <strong>não está comprovada<\/strong>, o que enfraquece a objeção à autoria petrina baseada no uso de Judas.", "fonte": ["b-10-0", "b-10-1", "b-7-1"], "destaque": false}];
+const MATERIA = [{"numero": 1, "rotulo": "Guia da prova", "titulo": "O que o professor quer na prova", "fonte": "Orientações do professor sobre a AV2, transcritas da aula. Os complementos estão marcados.", "secoes": [{"subtitulo": "Estrutura da prova", "paragrafos": ["A avaliação tem <strong>7 questões de múltipla escolha<\/strong> e <strong>2 discursivas<\/strong>. O professor já disse quais são os <strong>dois temas das discursivas<\/strong>: autoria de 2 Pedro e Judas em estudos recentes.", "As objetivas são “bem tranquilas”: <strong>três saem do artigo sobre Tiago 5.13-18<\/strong> e as demais são extraídas de pontos do material do Carson (1 Pedro, 2 Pedro e Judas)."], "paragrafoIds": ["p-0-0", "p-0-1"]}, {"subtitulo": "Discursiva 1 — Autoria de 2 Pedro", "paragrafos": ["Ele vai perguntar sobre a <strong>autoria de 2 Pedro<\/strong> e a defesa da <strong>autoria tradicional<\/strong> (Pedro como autor). Você precisa <strong>explicar os argumentos a favor da posição tradicional<\/strong>.", "Lembre-se de como o texto está organizado: o autor <strong>apresenta as objeções<\/strong> à autoria petrina e depois <strong>as refuta<\/strong>. O que ele quer é o <strong>tema da refutação<\/strong>: <strong>você escolhe uma das objeções<\/strong> e explica como ela é respondida. Não precisa explicar todas.", "<em>Complemento (Carson, p. 480-484):<\/em> as objeções respondidas são (1) diferença de <strong>estilo e vocabulário<\/strong> em relação a 1 Pedro; (2) <strong>Paulo e as “demais Escrituras”<\/strong> (3.15-16); (3) <strong>“os pais”<\/strong> (3.4); (4) o <strong>emprego de Judas<\/strong>; (5) o <strong>ensino falso<\/strong> (gnosticismo); (6) o <strong>motivo<\/strong> de uma pseudepígrafe. Somam-se a isso a confirmação externa, as alusões a Pedro na carta e a tradição da igreja.", "<strong>Modelo de resposta curta (objeção do uso de Judas):<\/strong> <em>“Objeta-se que um apóstolo não usaria o escrito de alguém que não era apóstolo, e que 2 Pedro usa Judas. Mas a objeção depende de duas pressuposições: primeiro, que Judas é a fonte de 2 Pedro, o que não está comprovado (alguns veem a dependência no sentido inverso); segundo, que um apóstolo não usaria um escrito não apostólico, o que não temos condições de afirmar. Não há motivo para dizer que Pedro não incorporaria palavras úteis, não importando onde as encontrasse.”<\/em>"], "paragrafoIds": ["p-1-0", "p-1-1", "p-1-2", "p-1-3"]}, {"subtitulo": "Discursiva 2 — Judas em estudos recentes (p. 512-513)", "paragrafos": ["A segunda discursiva sai da seção <strong>“Judas em estudos recentes”<\/strong>, nas <strong>páginas 512 e 513<\/strong> do Carson. Ele vai extrair uma pergunta desse trecho.", "<em>Complemento:<\/em> os pontos principais do trecho são: Judas como <strong>o livro mais negligenciado do NT<\/strong> (Rowston; Bauckham); a visão de Judas como <strong>defensor dogmático e intolerante<\/strong> (“há mais do que dogmatismo em Judas”); o <strong>“catolicismo primitivo”<\/strong> e seus três aspectos, que não se veem em Judas; e a alegação de que Judas combate o <strong>gnosticismo<\/strong>."], "paragrafoIds": ["p-2-0", "p-2-1"]}, {"subtitulo": "Múltipla escolha — o artigo de Tiago 5.13-18", "paragrafos": ["<strong>Três questões objetivas<\/strong> saem do artigo do início do PDF (Carreiro). Elas não são sobre a autoria de Tiago, mas sobre:", "<strong>1. Estilo e organização temática:<\/strong> logo no início o autor fala do <strong>estilo grego<\/strong> da carta e da sua <strong>organização temática<\/strong> (coleção de homilias; as 5 seções de Carson; 63 hapax legomena; “palavras-gancho”) e de <strong>sobre o que a perícope trata<\/strong> (o tema principal é a oração).", "<strong>2. Os presbíteros (v. 14):<\/strong> como ele interpreta a expressão <strong>“presbíteros”/“anciãos”<\/strong>: os responsáveis pela igreja local, posição de autoridade, não pessoas idosas.", "<strong>3. Oração e cura:<\/strong> como ele interpreta o tema da <strong>oração e da cura<\/strong> no texto: a ênfase está na oração, não no óleo nem num dom de cura.", "O professor chamou o artigo de texto “leve”: é uma exegese no sentido de comentário (o autor reúne o que vários comentaristas dizem e chega a conclusões), não uma exegese completa."], "paragrafoIds": ["p-3-0", "p-3-1", "p-3-2", "p-3-3", "p-3-4"]}, {"subtitulo": "Múltipla escolha — os outros pontos do material", "paragrafos": ["<strong>Contribuição (alternativa que NÃO é):<\/strong> haverá uma questão em que você deve marcar a alternativa que <strong>não traz uma contribuição<\/strong> do texto (o professor citou o texto sobre a contribuição de Judas). Leia as contribuições para reconhecê-las e perceber quando uma alternativa é diferente do que o texto diz.", "<strong>1 Pedro em estudos recentes:<\/strong> pseudepigrafia, perseguições e a hipótese da homilia/liturgia batismal.", "<strong>Autoria de 2 Pedro também em múltipla escolha.<\/strong> Dica do professor: o fato de haver uma objetiva sobre o tema perto da discursiva <strong>não significa que ela te dá a resposta da discursiva<\/strong>. Pense com cuidado no que cada uma pede."], "paragrafoIds": ["p-4-0", "p-4-1", "p-4-2"]}]}, {"numero": 2, "rotulo": "Artigo · Carreiro (2021)", "titulo": "Tiago 5.13-18: uma análise exegética", "fonte": "CARREIRO, Gustavo Albernaz Dias. Tiago 5.13-18: uma análise exegética. Revista Batista Pioneira, v. 10, n. 1, jun. 2021, p. 151-166.", "secoes": [{"subtitulo": "Resumo e objetivo", "paragrafos": ["O trabalho apresenta uma <strong>análise exegética histórico-gramatical<\/strong> de Tg 5.13-18: o método, as principais características da carta, a delimitação do texto e a exegese da perícope; por fim, uma <strong>síntese<\/strong> com a mensagem para o leitor contemporâneo.", "Os versículos falam de temas como a <strong>unção com óleo<\/strong> e a <strong>confissão de pecados<\/strong>, mas <strong>o principal assunto e foco é a oração<\/strong>."], "paragrafoIds": ["t-0-0", "t-0-1"]}, {"subtitulo": "O método histórico-gramatical", "paragrafos": ["Segundo <strong>Kunz<\/strong>, o método busca o significado do texto a partir do que suas palavras expressam em seu <strong>sentido simples<\/strong>, com base no <strong>contexto histórico<\/strong> da escrita, segundo regras semânticas e gramaticais comuns a qualquer texto literário. <strong>Lopes<\/strong> acrescenta os pressupostos da <strong>inspiração, veracidade e unidade do cânon<\/strong>.", "Seus princípios já aparecem na <strong>Escola de Antioquia<\/strong> e foram retomados na <strong>Reforma<\/strong>: segundo Zuck, Lutero e Calvino diziam que a Escritura é intérprete de si mesma e <strong>rejeitavam a alegoria<\/strong>.", "<strong>Passos:<\/strong> (1) familiarização com o texto: delimitação, crítica textual (Nestle-Aland 28) e tradução (NVI); (2) contextos histórico, literário e cultural; (3) análises léxica, morfológica, estilística, sintática, literária e teológica; (4) <strong>síntese<\/strong>, que atualiza as verdades do texto para hoje. Por questões estilísticas, o autor <strong>inverte o primeiro e o segundo passos<\/strong>."], "paragrafoIds": ["t-1-0", "t-1-1", "t-1-2"]}, {"subtitulo": "A carta de Tiago: autor, data e destinatários", "paragrafos": ["Há pelo menos quatro Tiagos no NT (filho de Zebedeu, filho de Alfeu, pai de Judas e irmão de Jesus). Para <strong>Carson<\/strong>, o candidato óbvio é <strong>Tiago, irmão do Senhor<\/strong> (Gl 1.19), pela proeminência na igreja primitiva, e pela semelhança entre o grego da carta e o do discurso de Tiago em <strong>At 15.13-21<\/strong>.", "Se o autor é o irmão de Jesus, a carta foi escrita provavelmente em <strong>Jerusalém<\/strong>, em meados de <strong>40 d.C.<\/strong> (antes do Concílio de Jerusalém, 48/49 d.C.).", "Para <strong>Vouga<\/strong>, o endereço “às doze tribos da Diáspora” faz dela uma <strong>circular<\/strong>; por isso está entre as “epístolas gerais”. O público aparenta ser de <strong>cristãos judeus<\/strong>."], "paragrafoIds": ["t-2-0", "t-2-1", "t-2-2"]}, {"subtitulo": "Estilo e organização temática", "paragrafos": ["A carta não tem início “epistolar” nem <strong>organização sistemática<\/strong>. <strong>Konnings<\/strong> sugere que seja uma <strong>reunião de homilias<\/strong>; <strong>Carson<\/strong> também a vê como <strong>coleção de homilias<\/strong> sem estrutura sistemática aparente.", "Mesmo assim, Carson discerne <strong>5 seções gerais<\/strong>: Provações e maturidade cristã (1.1-18); O cristianismo verdadeiro e as obras (1.19–2.26); Cisões dentro da comunidade (3.1–4.12); Implicações de uma conduta cristã (4.13–5.11); <strong>Exortações finais (5.12-20)<\/strong>.", "Quanto ao estilo, a pequena carta tem <strong>63 hapax legomena<\/strong> (Vouga) e usa <strong>“palavras-gancho”<\/strong> para conectar os temas (Konnings), o que pode <strong>dificultar a delimitação<\/strong> de grandes trechos."], "paragrafoIds": ["t-3-0", "t-3-1", "t-3-2"]}, {"subtitulo": "Delimitação do texto (5.13-18)", "paragrafos": ["Nas considerações finais (5.12-20), três temas encerram a carta: <strong>juramentos (5.12)<\/strong>, <strong>oração (5.13-18)<\/strong> e <strong>conversão dos que se desviaram (5.19-20)<\/strong>.", "Tiago usa <strong>sete vezes<\/strong> a palavra “oração” em 5.13-18, o que mostra a ênfase da perícope. O tema já tinha sido introduzido em <strong>1.5-8<\/strong>.", "Movimento do texto: exortação à oração em todas as circunstâncias (v. 13-14); acolhida da oração por Deus (v. 15a); perdão e confissão de pecados (v. 15b-16); de novo a oração, com o <strong>exemplo de Elias<\/strong> (v. 17-18). Por isso Vouga delimita a perícope em 13-18."], "paragrafoIds": ["t-4-0", "t-4-1", "t-4-2"]}, {"subtitulo": "Versículo 13: sofrimento e alegria", "paragrafos": ["Quando há problemas, o cristão deve <strong>orar e não murmurar<\/strong>; e Deus muda as circunstâncias pela oração. Para Lopes, Tiago corrige um comportamento errado (murmuração ou impaciência) diante das adversidades.", "<em>Euthyméō<\/em> (sentir-se feliz), segundo Moo, não se refere a circunstâncias externas, mas à alegria do coração, em tempos maus ou bons. “Cante louvores” é um só verbo, <em>psaleto<\/em> (“brandir”, “torcer”), que passou a indicar o canto de salmos e depois qualquer cântico religioso.", "Com Bruce: o remédio para a alma na tribulação não é a murmuração, mas a <strong>oração<\/strong>; e na alegria, não a frivolidade, mas <strong>cantar louvores<\/strong>."], "paragrafoIds": ["t-5-0", "t-5-1", "t-5-2"]}, {"subtitulo": "Versículo 14: os presbíteros", "paragrafos": ["O verbo para o doente (<em>astheneō<\/em>) às vezes se refere a alguém <strong>à beira da morte<\/strong>: indica gravidade. <em>Proskalesasthō<\/em> está no <strong>imperativo médio aoristo<\/strong>: a <strong>iniciativa de chamar os presbíteros deve vir do enfermo<\/strong>.", "Segundo <strong>Vouga<\/strong>, o presbítero (ancião, <em>presbytérous<\/em>) é o <strong>responsável pela igreja local<\/strong>. <strong>Moo<\/strong> aproxima o presbítero do <strong>pastor moderno<\/strong>: “pastores” e “presbíteros” nunca aparecem juntos numa mesma passagem, e At 20.28 diz que os presbíteros de Éfeso deviam “pastorear”.", "<strong>Brown<\/strong>: na comunidade primitiva o presbítero tinha uma <strong>função de autoridade associada aos apóstolos<\/strong> e presidia igrejas missionárias. O termo <strong>não se refere a alguém de idade avançada<\/strong>, mas a uma <strong>posição de autoridade na igreja local<\/strong>.", "<strong>Vouga<\/strong> adverte: o presbítero é enviado <strong>não por ter um dom especial de cura<\/strong>, mas por <strong>representar a igreja<\/strong>, que mostra solidariedade ao irmão doente e se une em torno dele para orar."], "paragrafoIds": ["t-6-0", "t-6-1", "t-6-2", "t-6-3"]}, {"subtitulo": "Versículo 14: a unção com óleo", "paragrafos": ["Na Antiguidade o óleo tinha <strong>uso medicinal<\/strong> e servia para a unção de sacerdotes; não era exclusivo do cristianismo (judaísmo e cultura pagã). Bruce sugere que Tiago o recomenda para que os cristãos não recorram a práticas pagãs ou supersticiosas.", "Na Bíblia a unção tem vários sentidos: cura ou purificação (Is 1.6; Jr 8.22; Mc 6.13); honra e alegria (Dt 28.40; Am 6.6; Lc 7.36-50); eleição ou consagração de sacerdotes e reis (1Sm 10.1; Êx 28.41).", "Interpretações: uso <strong>medicinal<\/strong> (oração + a melhor medicina disponível); <strong>símbolo do Espírito Santo<\/strong>; ou forma de <strong>encorajar a fé<\/strong> do doente (Taylor).", "<strong>Moo<\/strong>: Tiago usa <em>aleiphō<\/em>, e não <em>chríō<\/em>, porque <em>aleiphō<\/em> descreve o <strong>ato físico de ungir<\/strong> (no NT, <em>chríō<\/em> nunca se refere à unção física). Mas, como na LXX <em>aleiphō<\/em> também se aplica à consagração de sacerdotes, a unção é <strong>um ato físico com significado simbólico<\/strong>: os presbíteros <strong>separam o doente para receber atenção especial de Deus<\/strong>.", "“<strong>Em nome do Senhor<\/strong>” dá à unção conotação espiritual e é mais uma evidência <strong>contra o uso do óleo como remédio<\/strong>. Brown: não era apenas terapêutica, mas símbolo dos poderes terapêuticos de Cristo (Mc 6.13)."], "paragrafoIds": ["t-7-0", "t-7-1", "t-7-2", "t-7-3", "t-7-4"]}, {"subtitulo": "Versículo 15: a oração da fé e a cura", "paragrafos": ["Alguns veem aqui o exercício do <strong>dom de cura<\/strong>, mas <strong>não há imposição de mãos<\/strong> nem busca por alguém com esse dom (nem todos os presbíteros o teriam; em 1Co 12 os dons aparecem distintos). Tiago enfatiza a <strong>eficácia da oração<\/strong>. Kistemaker: “<strong>a ênfase está na oração, e não no óleo<\/strong>”.", "A oração é caracterizada pela <strong>fé<\/strong>: certeza de que Deus ouvirá e responderá (Lopes). Moo define a fé como “um compromisso inabalável e sincero com Deus”.", "“Curará” traduz <em>sózō<\/em>, que em Tiago (1.21; 2.14; 4.12; 5.20) tem sentido <strong>escatológico e soteriológico<\/strong>; Vouga sugere que a oração visaria a salvação. Mas isso fugiria da lógica do texto: aqui <strong>a ênfase recai sobre a cura do doente<\/strong>. Champlin: <em>sózō<\/em> com frequência significava “<strong>restaurar a saúde<\/strong>” (Mt 9.21; Mc 6.56).", "“O Senhor o levantará” é forma comum de indicar a <strong>recuperação de um enfermo<\/strong> (Mt 9.5; Mc 1.31). “Não é o azeite que cura o doente, mas antes <strong>o Senhor é que o levanta em resposta da oração da fé<\/strong>” (Harrison).", "“Se houver cometido pecados, será perdoado”: a literatura hebraica e os Evangelhos (Mc 2.3-12; Jo 5.14) associam doença e pecado. Mas o <strong>“se”<\/strong> mostra que Tiago <strong>não relaciona toda doença ao pecado<\/strong>. O presbítero não deve presumir pecado, nem excluir a possibilidade: age como pastor de almas, sondando a consciência e oferecendo o perdão de Deus, além de orar pela cura."], "paragrafoIds": ["t-8-0", "t-8-1", "t-8-2", "t-8-3", "t-8-4"]}, {"subtitulo": "Versículo 16: confissão mútua", "paragrafos": ["Não há consenso sobre <strong>como<\/strong> confessar. Alguns (Taylor): confissão específica, do doente a quem ora por ele. <strong>Lopes<\/strong>: pública e aberta, como a dos batizados por João (Mt 3.6). <strong>Harrison<\/strong>: nem confissões públicas indiscriminadas nem particulares, mas <strong>com o objetivo de que os crentes orem uns pelos outros<\/strong>.", "Sobre “uns aos outros”: Lopes e Bruce entendem que a prática se estende a <strong>todos os cristãos<\/strong>, mesmo sem o presbítero. <strong>Kistemaker<\/strong> equilibra: confissão pessoal num círculo de crentes; pecados que envolvem toda a igreja são confessados publicamente; os particulares, só com os envolvidos. Discernimento e restrição.", "“Para serem curados”, sem especificar se cura física ou espiritual. Champlin: nos rabinos, o enfermo confessava os pecados para facilitar a cura.", "“A oração de um justo é poderosa e eficaz”: para Champlin, só a de um <strong>ancião justo<\/strong>; para <strong>Keener<\/strong>, Tiago é mais ousado: na sabedoria judaica só mestres muito piedosos oravam por cura, e Tiago <strong>estende a oração com fé a todos os cristãos<\/strong>."], "paragrafoIds": ["t-9-0", "t-9-1", "t-9-2", "t-9-3"]}, {"subtitulo": "Versículos 17-18: Elias", "paragrafos": ["Tiago usa personagens do AT como exemplos: Abraão e Raabe (fé, 2.21-25), Jó (paciência, 5.11) e <strong>Elias, modelo de oração eficaz<\/strong>. Kistemaker: Elias era tido em alta estima no séc. 1 e recebia crédito por atributos sobre-humanos.", "“Orou fervorosamente” traduz <em>proseuchē prosēuxato<\/em>, literalmente “<strong>orou em oração<\/strong>”, recurso que indica a <strong>intensidade<\/strong> da oração.", "A oração de Elias <strong>não é mencionada no AT<\/strong>: Tiago teria usado fontes orais ou literárias (Eclesiástico 48.2-3; 2 Esdras 7.109).", "A lição: Elias era <strong>um homem como qualquer um<\/strong>, e os recursos disponíveis para ele estão para cada cristão. “As promessas de Deus quanto à oração [...] se estendem a todos os filhos de Deus” (Lopes)."], "paragrafoIds": ["t-10-0", "t-10-1", "t-10-2", "t-10-3"]}, {"subtitulo": "Considerações finais (síntese)", "paragrafos": ["Diante do sofrimento o crente deve orar; na boa fase, lembrar-se do Senhor. O líder da igreja tem um papel junto aos enfermos.", "A unção com óleo é <strong>símbolo espiritual de cura divina<\/strong>, de uso legítimo hoje se balizado pelas Escrituras. O texto não a desautoriza como ato simbólico, mas <strong>nada nele autoriza a unção pública em cultos por iniciativa do pastor<\/strong>.", "O principal assunto é a <strong>oração<\/strong>: eficaz se feita com fé; a igreja tem <strong>função terapêutica<\/strong> quando há confissão mútua de pecados. Como Elias, cada cristão é apenas humano: <strong>o poder não está na pessoa, mas naquele que ouve a oração<\/strong>."], "paragrafoIds": ["t-11-0", "t-11-1", "t-11-2"]}]}, {"numero": 3, "rotulo": "Carson, Moo & Morris", "titulo": "1 Pedro — Cânon, estudos recentes e contribuição", "fonte": "CARSON, D. A.; MOO, D. J.; MORRIS, L. Introdução ao Novo Testamento. São Paulo: Vida Nova, 1997, p. 473-476.", "secoes": [{"subtitulo": "Aceitação na igreja (p. 473)", "paragrafos": ["Há ecos de 1 Pedro em Barnabé, <strong>Policarpo<\/strong> (citações sem dúvida), Hermas e outros. O primeiro a citá-la explicitamente como escrito de Pedro é <strong>Ireneu<\/strong>. Depois disso é rotineiramente aceita, exceto pela exclusão (com todas as epístolas gerais) do <strong>Cânon Siríaco<\/strong>.", "Não está no <strong>Cânon Muratoriano<\/strong>, mas Selwyn e outros (Westcott) acham que o texto desse fragmento está incompleto. <strong>Eusébio<\/strong> a inclui entre os escritos autênticos. A igreja jamais pôs seriamente em dúvida sua autenticidade."], "paragrafoIds": ["a-0-0", "a-0-1"]}, {"subtitulo": "Autoria e perseguição (p. 473-474)", "paragrafos": ["Parte do debate se concentra na autoria, com <strong>tendência a considerar a carta pseudepígrafe<\/strong>. Mas ninguém apresenta motivo convincente para alguém escrever em nome de Pedro: a carta tem <strong>ensinos ortodoxos<\/strong>, nada que exigisse autorização oficial, e não se vê por que inventar que Pedro escreveu às igrejas daquelas províncias.", "A única consideração com algum peso: as <strong>perseguições<\/strong> não poderiam ter ocorrido na vida de Pedro, e o sofrimento “<strong>pelo nome de Cristo<\/strong>” ou “<strong>como cristão<\/strong>” (4.14,16) indicaria o tempo de <strong>Domiciano ou Trajano<\/strong>.", "Resposta: não há evidência de <strong>perseguição generalizada<\/strong> sob esses imperadores, e 1 Pedro não corresponde ao que se sabe delas: <strong>Plínio<\/strong> fala a Trajano de investigações oficiais e torturas, e nada disso aparece em 1 Pedro. Havia <strong>suspeita generalizada<\/strong> contra os cristãos desde muito antes, e autoridades locais podiam oprimi-los sem risco.", "Pedro conclama os leitores a partilharem dos <strong>sofrimentos<\/strong> de Cristo (4.13), mas não de sua morte: na carta <strong>não se vê uma devoção de mártir<\/strong>."], "paragrafoIds": ["a-1-0", "a-1-1", "a-1-2", "a-1-3"]}, {"subtitulo": "A hipótese batismal (p. 474-475)", "paragrafos": ["Alguns ligam a carta ao <strong>batismo<\/strong>, como <strong>homilia ou liturgia batismal<\/strong>. Em 1911, <strong>R. Perdelwitz<\/strong> viu uma pausa em <strong>4.11<\/strong>: antes, o sofrimento seria potencial; depois (4.12), concreto; a alegria é presente em 1.6,8 e futura em 4.12ss; e “resumidamente” (5.12) só se aplicaria ao trecho a partir de 4.12. A primeira parte seria uma <strong>homilia batismal<\/strong> (Wikenhauser: teoria “brilhante mas sem base sólida”).", "<strong>H. Preisker<\/strong>: essa parte seria a própria <strong>liturgia batismal da igreja em Roma<\/strong>, com o batismo acontecendo depois de 1.21 (não mencionado por segredo). <strong>F. L. Cross<\/strong>: liturgia do batismo realizado na <strong>Páscoa<\/strong>.", "Críticas de Carson: (1) o batismo é mencionado <strong>uma única vez<\/strong> (3.21), estranho se fosse o núcleo; (2) o argumento dos tempos verbais falha, pois já em 1.3 “nos regenerou” está no passado, e o particípio presente de 1.5 (“guardados”) não é futuro; (3) ignora a variedade da parte inicial; (4) <strong>não há evidência de liturgia fixa<\/strong> num período tão remoto; (5) nem se explica por que uma liturgia romana seria enviada à <strong>Ásia Menor<\/strong>. Os adeptos acentuaram demais algumas evidências e deixaram de lado o que não se harmoniza. Kelly: teorias de “impressionante engenhosidade”."], "paragrafoIds": ["a-2-0", "a-2-1", "a-2-2"]}, {"subtitulo": "Liturgia, parênese e unidade (p. 475-476)", "paragrafos": ["É amplamente aceito que há <strong>expressões litúrgicas<\/strong> e talvez fragmentos de credos no NT, e 1 Pedro contribui com isso (1.3-12; 2.4-8, 21-25; 3.18-22 são citados com frequência), embora a identificação seja subjetiva. Há também <strong>parênese<\/strong> (ensino aos convertidos).", "Isso não significa que a carta seja uma reunião de documentos: <strong>teorias de divisão em seções não são amplamente aceitas<\/strong>, e os estudiosos em geral declaram a <strong>unidade da carta<\/strong>.", "Quanto ao “<strong>paulinismo<\/strong>” usado contra a autoria petrina: Paulo e Pedro incluem muito do <strong>ensino cristão comum<\/strong> da igreja; é perigoso afirmar que um usou o outro."], "paragrafoIds": ["a-3-0", "a-3-1", "a-3-2"]}, {"subtitulo": "A contribuição de 1 Pedro (p. 476)", "paragrafos": ["Martin: “provavelmente nenhum outro documento do NT é tão <strong>teológico<\/strong> quanto 1 Pedro”, no sentido estrito de <strong>ensino sobre Deus<\/strong>. A palavra “Deus” aparece <strong>39 vezes<\/strong> (uma a cada 43 palavras); só <strong>1 João<\/strong> (1/34) e <strong>Romanos<\/strong> (1/46) se comparam.", "Deus vive (1.23), sua vontade é feita (2.15; 3.17), conhece previamente os seus (1.2), sua Palavra permanece (1.25). É o <strong>Pai<\/strong> (1.2), <strong>santo<\/strong> (1.15), o <strong>juiz de todos<\/strong> (4.5), o <strong>Criador fiel<\/strong> (4.19), o “<strong>Deus de toda a graça<\/strong>” (5.10); “graça” aparece <strong>dez vezes<\/strong>. Por sua misericórdia temos novo nascimento e viva esperança (1.3).", "A igreja é o “povo de Deus” (2.10), a “casa de Deus” (4.17), o “rebanho de Deus” (5.2), e seus membros são “servos de Deus” (2.16)."], "paragrafoIds": ["a-4-0", "a-4-1", "a-4-2"]}]}, {"numero": 4, "rotulo": "Carson, Moo & Morris", "titulo": "2 Pedro — Conteúdo, autoria e relação com Judas", "fonte": "CARSON, D. A.; MOO, D. J.; MORRIS, L. Introdução ao Novo Testamento. São Paulo: Vida Nova, 1997, p. 479-484.", "secoes": [{"subtitulo": "Conteúdo (p. 479)", "paragrafos": ["Abertura (1.1-2); as dádivas de Cristo (1.3-4) e a exortação ao aprimoramento de qualidades cristãs (1.5-11). Pedro sabe que tem pouco tempo de vida (1.14) e quer que os leitores se lembrem da verdade depois de sua morte (1.15).", "A mensagem não são “fábulas engenhosamente inventadas”: ele ouviu a voz na <strong>transfiguração<\/strong> (1.16-18). As Escrituras são obra do Espírito nos profetas (1.19-21).", "Falsos profetas do passado e falsos mestres do futuro (2.1-3); Deus julgou anjos e ímpios, mas salvou o justo Ló (2.4-10); os falsos mestres são arrogantes e serão castigados (2.10-22).", "Lembra uma carta anterior (3.1); zombadores nos últimos dias (3.3-7); a vinda do Senhor é certa, na cronologia do Senhor (3.8-10); exortação à vida piedosa, novos céus e nova terra (3.11-13); referência ao que <strong>Paulo<\/strong> escreveu (3.14-18)."], "paragrafoIds": ["b-0-0", "b-0-1", "b-0-2", "b-0-3"]}, {"subtitulo": "Autoria: o estado da questão (p. 479-481)", "paragrafos": ["O <strong>estilo<\/strong> não se assemelha ao de 1 Pedro e a linguagem é bem diferente. <strong>Bauckham<\/strong>: 2 Pedro tem a <strong>maior proporção de hapax legomena do NT<\/strong>; das 57 palavras exclusivas, 32 não ocorrem na LXX. Para ele, 2 Pedro pertence ao âmbito do <strong>grego dos judeus helenistas<\/strong>.", "Defensores da autoria petrina: a diferença pode vir do uso de <strong>secretários diferentes<\/strong> (pouco se sabe da contribuição de um secretário); e um escrito antigo que traz o nome do autor deve ser aceito como dele, a menos que haja fortes evidências contrárias.", "Hoje a maioria acha que essas evidências existem. <strong>Kümmel<\/strong>: “Pedro não pode ter escrito esta epístola.” Razões: (1) a relação com <strong>Judas<\/strong>; (2) diferenças de <strong>estilo e vocabulário<\/strong> com 1 Pedro; (3) as cartas de <strong>Paulo como Escritura<\/strong> (3.15-16); (4) os apóstolos como pessoas do passado (3.2) e “<strong>os pais<\/strong>” já mortos (3.4). Há também os vários livros atribuídos a Pedro (Evangelho, Atos e Apocalipse de Pedro): 2 Pedro seria mais um.", "Em geral, conservadores sustentam a autoria petrina; os demais, não. <strong>Bauckham<\/strong>, apesar de conservador, aceita a <strong>pseudonímia<\/strong>, mas como “<strong>ficção totalmente transparente<\/strong>”, sem intenção de enganar. Objeção de Carson: na igreja primitiva o debate sobre aceitar a carta girava justamente em torno de ela ser ou não de um apóstolo. Se a ficção era transparente, <strong>por que tantos não perceberam?<\/strong>"], "paragrafoIds": ["b-1-0", "b-1-1", "b-1-2", "b-1-3"]}, {"subtitulo": "Confirmação externa (p. 481)", "paragrafos": ["Green (com Westcott): nenhum livro do NT é tão mal atestado como 2 Pedro, mas ela tem “um apoio <strong>incomparavelmente melhor do que o melhor dos livros rejeitados<\/strong>”.", "Quem rejeita a autoria ressalta a fragilidade da atestação; quem aceita lembra que nenhum livro não canônico tem tanta aceitação e que, pela <strong>brevidade e pelo conteúdo<\/strong>, seria improvável que fosse muito citada."], "paragrafoIds": ["b-2-0", "b-2-1"]}, {"subtitulo": "Alusões a Pedro (p. 481-482)", "paragrafos": ["O autor se identifica como “<strong>Simeão Pedro<\/strong>, servo e apóstolo de Jesus Cristo” (1.1). A forma “Simeão” quase não é usada para Pedro (no NT só em At 15.14; não nos pais apostólicos nem na literatura pseudepígrafa). Seria natural para o próprio Pedro usar a forma original do nome; um <strong>imitador usaria a forma de 1 Pedro<\/strong>.", "Diz que o Senhor lhe mostrou que sua morte estava próxima (1.14); foi <strong>testemunha ocular da transfiguração<\/strong> (1.16-18); escreveu uma carta anterior aos mesmos leitores (3.1); chama Paulo de “<strong>nosso amado irmão<\/strong>” (3.15).", "Se é improvável que um apóstolo cite a transfiguração em vez da ressurreição, é igualmente improvável que um pseudônimo o faça. A transfiguração deve ter sido um ponto alto para Pedro, e há diferenças em relação aos evangelhos (sem Moisés e Elias, sem “a ele ouvi”, com o enfático <em>egō<\/em>)."], "paragrafoIds": ["b-3-0", "b-3-1", "b-3-2"]}, {"subtitulo": "Tradição da igreja (p. 482)", "paragrafos": ["A tradição atribui <strong>uniformemente<\/strong> a carta a Pedro; <strong>nenhum outro nome<\/strong> está vinculado a ela."], "paragrafoIds": ["b-4-0"]}, {"subtitulo": "Objeção: Paulo e as “demais Escrituras” (p. 482)", "paragrafos": ["<strong>Objeção:<\/strong> a referência às cartas de Paulo (3.15-16) pressupõe uma <strong>coleção oficial<\/strong> das epístolas paulinas, improvável na vida de Pedro.", "<strong>Resposta:<\/strong> 2 Pedro <strong>nada fala de coleção<\/strong>; “todas as suas epístolas” pode ser só as cartas de Paulo <strong>conhecidas por Pedro<\/strong>. E a carta revela pouco conhecimento das doutrinas paulinas, sinal de que ainda não havia coleção oficial.", "O problema principal é chamar as cartas de Paulo de “<strong>Escrituras<\/strong>” (<em>graphas<\/em>). Paulo já acreditava que seus escritos eram inspirados (1Co 7.40; 14.37) e autorizados (1Co 2.16; 14.37-38; 2Ts 3.14). A alegação de que houve um período em que Paulo foi negligenciado <strong>não tem evidências<\/strong>; nada impede que Pedro fosse <strong>o primeiro a reconhecer a mão de Deus<\/strong> no que Paulo escreveu.", "A favor de Pedro: o humilde reconhecimento de que achava os escritos de Paulo “<strong>difíceis de entender<\/strong>”. Quem escrevesse em nome de Pedro iria criar dúvidas sobre a capacidade do apóstolo de entender Paulo?"], "paragrafoIds": ["b-5-0", "b-5-1", "b-5-2", "b-5-3"]}, {"subtitulo": "Objeção: “os pais” (p. 483)", "paragrafos": ["<strong>Objeção:<\/strong> Pedro morreu cedo demais para chamar os primeiros líderes da igreja de “<strong>os pais<\/strong>” (3.4). (A tradução “nossos pais” se baseia em manuscritos inferiores.)", "<strong>Resposta:<\/strong> em <strong>nenhum outro versículo do NT<\/strong> “os pais” designa os primeiros cristãos; é muito mais provável que se refira aos <strong>patriarcas judeus<\/strong>. Nem é provável que um pseudônimo supusesse esse uso nos dias de Pedro. E a expressão é posta na boca dos <strong>falsos mestres<\/strong>, não usada pelo autor para si. <strong>A objeção não é decisiva.<\/strong>"], "paragrafoIds": ["b-6-0", "b-6-1"]}, {"subtitulo": "Objeção: o emprego de Judas (p. 483)", "paragrafos": ["<strong>Objeção:<\/strong> um apóstolo não usaria o escrito de alguém que não era apóstolo; logo, o uso de Judas elimina Pedro como autor.", "<strong>Resposta:<\/strong> há <strong>duas pressuposições<\/strong>. (1) Que <strong>Judas é a fonte<\/strong> de 2 Pedro: possível, mas <strong>não comprovado<\/strong>; alguns veem a dependência no sentido inverso. (2) Que um apóstolo <strong>não utilizaria um escrito não apostólico<\/strong>: não temos condições de dizer o que um apóstolo usaria. Pedro poderia incorporar <strong>palavras úteis, não importando onde as encontrasse<\/strong>."], "paragrafoIds": ["b-7-0", "b-7-1"]}, {"subtitulo": "Objeção: o ensino falso (p. 483-484)", "paragrafos": ["<strong>Objeção:<\/strong> o autor combate ensinos <strong>gnósticos<\/strong>, que só surgiram bem depois de Pedro.", "<strong>Resposta:<\/strong> <strong>nenhum sistema gnóstico conhecido<\/strong> forma paralelo com 2 Pedro; dizer que o autor se opõe ao gnosticismo é ir além das evidências (Neyrey: “os oponentes não são gnósticos”). O gnosticismo do séc. 2 é um conjunto de sistemas ecléticos; alguns ensinos depois atraentes aos gnósticos remontam à era apostólica, mas isso não é o gnosticismo em si."], "paragrafoIds": ["b-8-0", "b-8-1"]}, {"subtitulo": "Objeção: o motivo (p. 484)", "paragrafos": ["Se fosse pseudepígrafe, <strong>por que foi escrita?<\/strong> Os escritos que usavam um grande nome do passado para ganhar respeitabilidade promoviam <strong>ensinos não ortodoxos<\/strong>. Não é o caso de 2 Pedro: seus ensinos são <strong>ortodoxos<\/strong>, em consonância com outros mestres, e poderia ser publicada com o nome do verdadeiro autor ou sem nome. Para escrever ortodoxia <strong>não era preciso apelar a um grande nome<\/strong>; ninguém apresentou motivo razoável.", "<strong>Conclusão de Carson:<\/strong> nem todos os problemas foram superados, e a investigação histórica se limita a probabilidades. Mas <strong>nenhum argumento conclusivo<\/strong> foi apresentado contra a autoria; as objeções não se sustentam, e é melhor aceitar a carta <strong>como escrito autêntico do apóstolo Pedro<\/strong>."], "paragrafoIds": ["b-9-0", "b-9-1"]}, {"subtitulo": "Relacionamento entre 2 Pedro e Judas (p. 484)", "paragrafos": ["<strong>19 dos 25 versículos de Judas<\/strong> estão representados em 2 Pedro, mas as palavras raramente são idênticas.", "Contagem de <strong>Guthrie<\/strong>: os trechos comuns têm <strong>297 palavras em 2 Pedro<\/strong> e <strong>256 em Judas<\/strong>, e só <strong>78 são comuns<\/strong>. Se 2 Pedro tomou emprestado, alterou cerca de <strong>70%<\/strong> das palavras de Judas; se Judas usou 2 Pedro, alterou um pouco mais e reduziu. Das <strong>12 seções paralelas<\/strong>, Judas é mais longo em cinco: nenhum dos dois é consistentemente mais conciso."], "paragrafoIds": ["b-10-0", "b-10-1"]}]}, {"numero": 5, "rotulo": "Carson, Moo & Morris", "titulo": "Judas — Estudos recentes e contribuição", "fonte": "CARSON, D. A.; MOO, D. J.; MORRIS, L. Introdução ao Novo Testamento. São Paulo: Vida Nova, 1997, p. 512-515.", "secoes": [{"subtitulo": "Cânon (p. 512)", "paragrafos": ["Judas foi classificado entre os livros <strong>contestados<\/strong>, mas conquistou espaço e foi aceito, exceto pelo <strong>Cânon Siríaco<\/strong> (que excluiu também as outras epístolas gerais e o Apocalipse).", "As dúvidas vinham do uso de <strong>livros apócrifos<\/strong> pelo autor: alguns achavam que nenhum escritor canônico faria isso. Com o tempo, viu-se que isso não era motivo suficiente, e a aceitação tornou-se universal."], "paragrafoIds": ["j-0-0", "j-0-1"]}, {"subtitulo": "Judas em estudos recentes: um livro negligenciado (p. 512)", "paragrafos": ["Judas não está no centro de grandes debates teológicos: é curto e seu tema não prende a atenção da vanguarda. <strong>Rowston<\/strong> o chama de “<strong>o livro mais negligenciado do Novo Testamento<\/strong>”.", "<strong>Bauckham<\/strong>: “Nenhum outro livro do NT tem sido mais negligenciado pelos estudiosos do que <strong>Judas e 2 Pedro<\/strong>”; as opiniões costumeiras vêm de uma era passada, e seu comentário tenta trazer o estudo para os anos 1980. Vez por outra os estudiosos tratam da relação óbvia entre Judas e 2 Pedro."], "paragrafoIds": ["j-1-0", "j-1-1"]}, {"subtitulo": "A imagem de Judas como dogmático (p. 512)", "paragrafos": ["Quem examina Judas em geral não se impressiona: vê o autor como <strong>preocupado demais em manter uma atitude conservadora<\/strong> diante do depósito da verdade, opondo-se energicamente ao que considera herético, um <strong>defensor dogmático das velhas tradições<\/strong> e <strong>adversário intolerante<\/strong> dos que divergem.", "Carson: dificilmente essa é uma apreciação equitativa. “<strong>Há mais do que dogmatismo em Judas.<\/strong>”"], "paragrafoIds": ["j-2-0", "j-2-1"]}, {"subtitulo": "Judas e o “catolicismo primitivo” (p. 512-513)", "paragrafos": ["Há amplo interesse no chamado “<strong>catolicismo primitivo<\/strong>”, e Judas é visto com frequência como exemplo dele. A expressão costuma ser <strong>pejorativa<\/strong> (o “católico primitivo” não seria cristianismo autêntico) e tem <strong>significado incerto<\/strong>.", "Consenso aproximado: inclui pelo menos <strong>três aspectos<\/strong>: (1) a <strong>diminuição da esperança da parusia<\/strong>; (2) o <strong>interesse pela igreja como instituição<\/strong>; (3) o <strong>emprego de credos para resumir a fé<\/strong>. <strong>Nada disso se vê em Judas.<\/strong>", "(1) A esperança da parusia <strong>brilha fortemente<\/strong> (v. 6, 14, 21, 24): não há diminuição da expectativa. (2) <strong>Nem a igreja nem seus oficiais<\/strong> recebem a mínima alusão: Judas poderia ter apelado aos mestres oficiais contra os falsos mestres, mas não o faz.", "(3) A “<strong>fé que uma vez por todas foi entregue aos santos<\/strong>” (v. 3) não é um corpo de doutrinas oficiais sob controle de autoridades eclesiásticas, mas os <strong>elementos básicos<\/strong> ligados ao evangelho: fidelidade ao ensino cristão mais antigo. Judas não trata a igreja como guardiã do ensino legítimo contra os hereges; insiste na <strong>verdade do evangelho que leva a vidas piedosas<\/strong>."], "paragrafoIds": ["j-3-0", "j-3-1", "j-3-2", "j-3-3"]}, {"subtitulo": "Judas e o gnosticismo (p. 513)", "paragrafos": ["Quem data Judas depois da era apostólica costuma dizer que ele combate algum <strong>gnosticismo<\/strong>. Rowston cita R. M. Grant (profecia → pensamento apocalíptico após a guerra macabeia → gnosticismo após a guerra judaica) e vê em Judas “<strong>um avivamento do pensamento apocalíptico<\/strong>”, talvez para restabelecer um paulinismo autêntico contra o gnosticismo antinomista.", "Carson: devemos ver <strong>com suspeita<\/strong> a ideia de gnosticismo por trás de um escrito do NT: o gnosticismo pleno é uma série de sistemas do <strong>séc. 2 avançado<\/strong>. Alguns ensinos isolados existiam no séc. 1, mas é exagero chamá-los de “gnosticismo”. <strong>Nada em Judas comprova<\/strong> que foi escrito quando o gnosticismo florescia.", "Há pensamento apocalíptico em Judas, mas também em <strong>Paulo e no Apocalipse<\/strong>: pode ser simplesmente o <strong>pensamento apocalíptico normal dos primeiros cristãos<\/strong>, não um “avivamento”."], "paragrafoIds": ["j-4-0", "j-4-1", "j-4-2"]}, {"subtitulo": "A contribuição de Judas (p. 514-515)", "paragrafos": ["Judas se interessa pela <strong>salvação comum<\/strong> e pela <strong>fé entregue uma vez por todas aos santos<\/strong> (3). Mas a carta <strong>não é uma apresentação sistemática da fé<\/strong>: ela chama os leitores a considerar o que acontece quando quem professa seguir a Cristo <strong>nega a fé no ensino e na vida<\/strong> (4).", "Ele <strong>não refuta a heresia ponto por ponto<\/strong>: basta que os leitores considerem o tipo de vida dos hereges. Enfatiza que o <strong>juízo divino é certo<\/strong>: quem vive como eles sofrerá castigo eterno. Childs: a carta dá “uma <strong>descrição teológica do fenômeno da heresia<\/strong>” em vez de atacar uma forma histórica específica de erro.", "<strong>Não há nada de novo<\/strong> nas atitudes erradas: os incrédulos libertos do Egito, os anjos pecadores, Sodoma e Gomorra (5-7); Caim, Balaão e Coré (11). Os apóstolos já haviam advertido que surgiriam hereges (17-19). Os leitores <strong>não deviam se surpreender, mas também não podiam ser complacentes<\/strong>: devem opor-se resolutamente aos ensinos e práticas que se dizem cristãos mas negam a essência da fé.", "<strong>Para hoje:<\/strong> a tolerância é importante; há variedade legítima de expressões do cristianismo, e não devemos nos pôr como juízes em questões menores. Mas <strong>existem limites<\/strong>: é possível remodelar o evangelho a ponto de ele <strong>perder sua essência<\/strong>, e reinterpretar a vida cristã até ela não se distinguir da do mundo. As advertências de Judas têm <strong>importância permanente<\/strong>."], "paragrafoIds": ["j-5-0", "j-5-1", "j-5-2", "j-5-3"]}]}, {"numero": 6, "rotulo": "Carson, Moo & Morris", "titulo": "Apocalipse — Conteúdo e estrutura (início)", "fonte": "CARSON, D. A.; MOO, D. J.; MORRIS, L. Introdução ao Novo Testamento. São Paulo: Vida Nova, 1997, p. 516 (última página do PDF; o professor não comentou este trecho).", "secoes": [{"subtitulo": "Estrutura de Apocalipse", "paragrafos": ["A estrutura é objeto de acirrados debates, porque as conclusões influenciam a compreensão dos referentes históricos e da escatologia. Há consenso de que <strong>1.1-20 (ou 1.1-8)<\/strong> é o prólogo, <strong>22.6-11<\/strong> o epílogo, e que as <strong>cartas às sete igrejas (caps. 2–3)<\/strong> são uma unidade à parte.", "Base possível em <strong>1.19<\/strong>: “as coisas que viste” (visão do cap. 1), “as que são” (cartas, caps. 2–3) e “as que hão de acontecer depois destas” (caps. 4ss).", "Para 4.1–22.5 há muitas propostas: três partes marcadas pelo convite “vem e vê”; duas metades (12–22 repetindo 1–11, Swete); uma peça em <strong>sete atos com sete cenas<\/strong> (Bowman); ou um <strong>quiasmo<\/strong> (Fiorenza)."], "paragrafoIds": ["r-0-0", "r-0-1", "r-0-2"]}]}];
+
+const QMAP = {};
+QUESTOES.forEach(q => { QMAP[q.id] = q; });
+const DMAP = {};
+DISSERTATIVAS.forEach(d => { DMAP[d.numero] = d; });
+const STORAGE_KEY = 'simulado-epistolas-gerais-av2-v1';
+
+let view = 'home';
+let simKey = null;        // 's0'…'s6', 'topico:<chave>' ou 'aleatorio'
+let respostas = {};       // { [id da questão]: letra } e { ['d_'+n]: texto }
+let corrigido = false;
+let currentLicao = 0;
+let returnTo = null;      // { view: 'simulado'|'dissertativas' }
+let progresso = carregarProgresso(); // { [simKey]: { respostas, corrigido, ids?, diss? } }
+let dissRespostas = progresso.__diss || {};
+
+const ICON_RESET = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 .49-9.36L1 10"></path></svg>';
+const ICON_CHECK = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+const ICON_X = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+const ICON_ARROW = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+const ICON_ARROW_LEFT = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>';
+
+// ===== PERSISTÊNCIA (só conveniência: o site funciona sem ela) =====
+function carregarProgresso() {
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch (e) { return {}; }
+}
+function gravarProgresso() {
+  try {
+    progresso.__diss = dissRespostas;
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(progresso));
+  } catch (e) { /* armazenamento indisponível */ }
+}
+
+function ring(pct, size) {
+  size = size || 34;
+  const r = (size - 4) / 2;
+  const c = 2 * Math.PI * r;
+  const offset = c - (pct / 100) * c;
+  return `<div class="ring-wrap" style="width:${size}px;height:${size}px">
+    <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
+      <circle class="ring-bg" cx="${size/2}" cy="${size/2}" r="${r}"></circle>
+      <circle class="ring-fg" cx="${size/2}" cy="${size/2}" r="${r}" stroke-dasharray="${c}" stroke-dashoffset="${offset}"></circle>
+    </svg>
+    <span class="ring-label">${Math.round(pct)}%</span>
+  </div>`;
+}
+
+function escapeAttr(s) { return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+
+// ===== SIMULADOS =====
+function getSim(key) {
+  if (!key) return null;
+  if (key[0] === 's' && !key.includes(':')) {
+    const i = Number(key.slice(1));
+    const s = SIMULADOS[i];
+    if (!s) return null;
+    return { titulo: 'Simulado ' + s.numero, eyebrow: `Simulado ${s.numero} de ${SIMULADOS.length} · formato da prova`, ids: s.ids, diss: s.diss, idx: i };
+  }
+  if (key.startsWith('topico:')) {
+    const t = key.slice(7);
+    if (!TOPICOS[t]) return null;
+    return { titulo: TOPICOS[t], eyebrow: 'Treino por tópico', ids: QUESTOES.filter(q => q.topico === t).map(q => q.id), diss: [] };
+  }
+  if (key === 'aleatorio') {
+    const salvo = progresso[key];
+    const prova = salvo && salvo.ids ? { ids: salvo.ids.filter(id => QMAP[id]), diss: (salvo.diss || []).filter(n => DMAP[n]) } : sortearProva();
+    return { titulo: 'Prova aleatória', eyebrow: '7 objetivas + 2 discursivas sorteadas', ids: prova.ids, diss: prova.diss };
+  }
+  return null;
+}
+
+function embaralhar(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+// Sorteia uma prova no formato real: MOLDE de objetivas + 2 discursivas
+// (uma sobre a autoria de 2 Pedro e outra sobre Judas em estudos recentes).
+function sortearProva() {
+  const usados = new Set();
+  const ids = [];
+  MOLDE.forEach(t => {
+    const opcoes = embaralhar(QUESTOES.filter(q => (t === 'livre' ? TOPICOS_LIVRE.includes(q.topico) : q.topico === t) && !usados.has(q.id)));
+    if (opcoes.length) { usados.add(opcoes[0].id); ids.push(opcoes[0].id); }
+  });
+  const destaque = DISSERTATIVAS.filter(d => d.destaque);
+  const d1 = embaralhar(destaque.filter(d => d.topico === DISS_TOPICOS[0]))[0];
+  const d2 = embaralhar(destaque.filter(d => d.topico === DISS_TOPICOS[1]))[0];
+  return { ids: embaralhar(ids), diss: [d1, d2].filter(Boolean).map(d => d.numero) };
+}
+
+function salvarProgressoAtual() {
+  if (view === 'simulado' && simKey) {
+    const sim = getSim(simKey);
+    progresso[simKey] = { respostas: { ...respostas }, corrigido, ids: sim ? sim.ids : undefined, diss: sim ? sim.diss : undefined };
+    gravarProgresso();
+  }
+}
+
+function startSim(key) {
+  salvarProgressoAtual();
+  view = 'simulado';
+  simKey = String(key);
+  returnTo = null;
+  const salvo = progresso[simKey];
+  if (salvo) {
+    respostas = { ...(salvo.respostas || {}) };
+    corrigido = !!salvo.corrigido;
+  } else {
+    respostas = {};
+    corrigido = false;
+    if (simKey === 'aleatorio') progresso.aleatorio = { respostas: {}, corrigido: false, ...sortearProva() };
+  }
+  renderSim();
+  window.scrollTo({ top: 0 });
+}
+
+function novoAleatorio() {
+  delete progresso.aleatorio;
+  gravarProgresso();
+  view = 'home';
+  startSim('aleatorio');
+}
+
+function reiniciarSimulado() {
+  if (!window.confirm('Isso vai apagar suas respostas deste simulado. Tem certeza que quer recomeçar do zero?')) return;
+  const salvo = simKey === 'aleatorio' && progresso.aleatorio ? progresso.aleatorio : {};
+  respostas = {};
+  corrigido = false;
+  progresso[simKey] = { respostas: {}, corrigido: false, ids: salvo.ids, diss: salvo.diss };
+  gravarProgresso();
+  renderSim();
+}
+
+function escolher(id, letra) {
+  if (corrigido) return;
+  respostas[id] = letra;
+  salvarProgressoAtual();
+  renderSim(true);
+}
+
+function setSimDiss(n, val) {
+  respostas['d_' + n] = val;
+  salvarProgressoAtual();
+}
+
+function corrigir() {
+  corrigido = true;
+  salvarProgressoAtual();
+  renderSim();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function calcScore(sim, resp) {
+  let ok = 0;
+  sim.ids.forEach(id => { if (resp[id] && resp[id] === QMAP[id].correta) ok++; });
+  return { ok, total: sim.ids.length };
+}
+
+function scorePorTopico(sim) {
+  const out = {};
+  sim.ids.forEach(id => {
+    const q = QMAP[id];
+    out[q.topico] = out[q.topico] || { ok: 0, total: 0 };
+    out[q.topico].total++;
+    if (respostas[id] === q.correta) out[q.topico].ok++;
+  });
+  return out;
+}
+
+// ===== HOME =====
+function renderHome() {
+  salvarProgressoAtual();
+  view = 'home';
+  returnTo = null;
+  const chips = SIMULADOS.map((s, i) => {
+    const p = progresso['s' + i];
+    let extra = '';
+    let cls = '';
+    if (p && p.corrigido) {
+      const sc = calcScore({ ids: s.ids }, p.respostas || {});
+      extra = `<small>${sc.ok}/${sc.total}</small>`;
+      cls = 'done';
+    }
+    return `<button class="sim-chip ${cls}" onclick="startSim('s${i}')">${s.numero}${extra}</button>`;
+  }).join('');
+
+  const topicos = Object.keys(TOPICOS).map(t => {
+    const n = QUESTOES.filter(q => q.topico === t).length;
+    const star = PROVA_TOPICOS.includes(t) ? '<span class="star">★</span>' : '';
+    return `<button class="topico-btn" onclick="startSim('topico:${t}')"><span>${star}${TOPICOS[t]}</span><span class="n">${n} questões</span></button>`;
+  }).join('');
+
+  document.getElementById('root').innerHTML = `
+    <div class="home">
+      <div class="home-inner">
+        <span class="home-badge">FABAT · Epístolas Gerais</span>
+        <h1 class="home-title">Simulados<br><span>AV2</span></h1>
+        <p class="home-sub">Tiago 5.13-18, 1 e 2 Pedro e Judas · no formato da prova: 7 objetivas + 2 discursivas</p>
+        <div class="format-pills">
+          <span class="pill">${QUESTOES.length} objetivas</span>
+          <span class="pill">${DISSERTATIVAS.length} discursivas</span>
+          <span class="pill">Comentário em cada questão</span>
+        </div>
+        <div class="home-nav">
+          <button class="home-nav-btn primary" onclick="renderLicao(0)">🎯&nbsp;&nbsp;O que cai na prova</button>
+          <button class="home-nav-btn secondary" onclick="startSim('aleatorio')">🎲&nbsp;&nbsp;Prova aleatória (7 + 2)</button>
+          <button class="home-nav-btn secondary" onclick="renderDissertativas()">📝&nbsp;&nbsp;Questões Dissertativas</button>
+          <button class="home-nav-btn secondary" onclick="renderMateriaIndex()">📖&nbsp;&nbsp;Material de Estudo</button>
+        </div>
+        <p class="home-grid-label">ou escolha um simulado fixo (7 + 2)</p>
+        <div class="sim-grid" style="margin-bottom:1.8rem">${chips}</div>
+        <p class="home-grid-label">ou treine por tópico <span style="color:var(--amber)">★</span> = tópico indicado pelo professor</p>
+        <div class="topico-list">${topicos}</div>
+        <p class="footer-note">A prova sai do material da AV2: o artigo “Tiago 5.13-18: uma análise exegética” (Carreiro, <em>Revista Batista Pioneira</em>, 2021) e os capítulos de 1 Pedro, 2 Pedro e Judas de Carson, Moo &amp; Morris, <em>Introdução ao Novo Testamento</em>. Os simulados seguem as orientações do professor. Suas respostas ficam salvas só neste navegador.</p>
+      </div>
+    </div>`;
+}
+
+// ===== SIMULADO =====
+function renderSim(keepScroll) {
+  const sim = getSim(simKey);
+  if (!sim) return renderHome();
+  const y = window.scrollY;
+  const answered = sim.ids.filter(id => respostas[id]).length;
+  const total = sim.ids.length;
+  const pct = total ? answered / total * 100 : 0;
+  const isFixo = sim.idx !== undefined;
+
+  let html = `<div class="topbar">
+    <div class="topbar-left">
+      ${!corrigido ? `<span id="progress-ring-container">${ring(pct, 30)}</span>` : `<div class="completed-badge">${ICON_CHECK}</div>`}
+      <span class="topbar-title">${sim.titulo}</span>
+    </div>
+    <div class="topbar-right">
+      ${isFixo ? `<select class="select-pill" onchange="startSim(this.value)">
+        ${SIMULADOS.map((s, i) => `<option value="s${i}" ${i === sim.idx ? 'selected' : ''}>Simulado ${s.numero}</option>`).join('')}
+      </select>` : ''}
+      <button class="btn-pill" onclick="reiniciarSimulado()" title="Apagar respostas e recomeçar">${ICON_RESET} Reiniciar</button>
+      <button class="btn-pill" onclick="renderHome()">Início</button>
+    </div>
+  </div>`;
+
+  html += '<div class="wrap">';
+
+  if (corrigido) {
+    const sc = calcScore(sim, respostas);
+    const porTopico = scorePorTopico(sim);
+    html += `<div class="placar">
+      <div class="placar-top">
+        <div class="placar-icon">${ICON_CHECK}</div>
+        <div>
+          <div class="placar-titulo">Objetivas: ${sc.ok} de ${sc.total}</div>
+          <div class="placar-sub">Leia o comentário de cada questão${sim.diss && sim.diss.length ? ' e confira as discursivas no fim da página' : ''}.</div>
+        </div>
+      </div>
+      ${Object.keys(porTopico).map(t => {
+        const r = porTopico[t];
+        const p = Math.round(r.ok / r.total * 100);
+        return `<div class="placar-row">
+          <span class="placar-row-label">${TOPICOS[t]}</span>
+          <div class="placar-bar-wrap"><div class="placar-bar bar-mult" style="width:${p}%"></div></div>
+          <span class="placar-score">${r.ok}<small>/${r.total}</small></span>
+        </div>`;
+      }).join('')}
+      <div class="placar-total">
+        <span class="placar-total-label">Aproveitamento</span>
+        <span class="placar-total-value">${Math.round(sc.ok / sc.total * 100)}%</span>
+      </div>
+    </div>`;
+  } else {
+    html += `<div class="page-head">
+      <span class="page-eyebrow">${sim.eyebrow}</span>
+      <h1 class="page-title">Múltipla escolha</h1>
+      <p class="page-sub">${answered} de ${total} questões respondidas · marque uma alternativa por questão</p>
+    </div>`;
+  }
+
+  sim.ids.forEach((id, n) => {
+    const q = QMAP[id];
+    const sel = respostas[id];
+    let cardCls = '';
+    if (corrigido) cardCls = sel === q.correta ? 'correct' : 'incorrect';
+    html += `<div class="card ${cardCls}">
+      <div class="q-head">
+        <span class="q-num">${n + 1}</span>
+        <div style="flex:1">
+          <span class="q-tag">${TOPICOS[q.topico]}</span>
+          <p class="q-enunciado">${q.enunciado}</p>
+        </div>
+      </div>
+      <div class="alt-list">
+        ${q.alternativas.map(alt => {
+          let cls = sel === alt.letra ? 'sel' : '';
+          let badge = '';
+          if (corrigido) {
+            if (alt.letra === q.correta && sel === alt.letra) { cls = 'acerto'; badge = `<span class="alt-badge" style="color:var(--green)">${ICON_CHECK}</span>`; }
+            else if (alt.letra === q.correta) { cls = 'perdida'; badge = `<span class="alt-badge" style="color:var(--amber)">${ICON_ARROW}</span>`; }
+            else if (sel === alt.letra) { cls = 'errada'; badge = `<span class="alt-badge" style="color:var(--red)">${ICON_X}</span>`; }
+            else cls = '';
+          }
+          return `<button class="alt ${cls}" onclick="escolher('${q.id}','${alt.letra}')" ${corrigido ? 'style="cursor:default"' : ''}>
+            <span class="alt-letra">${alt.letra}</span>
+            <span class="alt-texto">${alt.texto}</span>
+            ${badge}
+          </button>`;
+        }).join('')}
+      </div>
+      ${corrigido ? `<div class="coment-box">
+        <span class="gab-label">${sel === q.correta ? 'Correto' : (sel ? 'Resposta certa: ' + q.correta : 'Não respondida · certa: ' + q.correta)}</span>${q.comentario}
+        ${q.fonte && q.fonte.length ? `<br><button class="btn-fonte" onclick="showFonteModal('${q.fonte.join(',')}')">📖 Ver no material</button>` : ''}
+      </div>` : ''}
+    </div>`;
+  });
+
+  if (sim.diss && sim.diss.length) {
+    html += `<div class="section-label">Discursivas <span class="count">${sim.diss.length}</span></div>
+      <p class="section-hint">${corrigido ? 'Compare sua resposta com o gabarito.' : 'Escreva sua resposta. O gabarito aparece depois de corrigir.'}</p>`;
+    sim.diss.forEach((num, k) => {
+      const d = DMAP[num];
+      const val = respostas['d_' + num] || '';
+      html += `<div class="card">
+        <div class="q-head">
+          <span class="q-num">${total + k + 1}</span>
+          <div style="flex:1">
+            <span class="q-tag">${TOPICOS[d.topico]}</span>
+            <p class="q-enunciado">${d.enunciado}</p>
+          </div>
+        </div>
+        <textarea class="q-textarea" rows="4" placeholder="Sua resposta…" oninput="setSimDiss(${num}, this.value)">${escapeAttr(val)}</textarea>
+        ${corrigido ? `<div class="gab-box visible">
+          <span class="gab-label">Gabarito</span>${d.gabarito}
+          ${d.fonte && d.fonte.length ? `<br><button class="btn-fonte" onclick="showFonteModal('${d.fonte.join(',')}')">📖 Ver no material</button>` : ''}
+        </div>` : ''}
+      </div>`;
+    });
+  }
+
+  if (!corrigido) {
+    html += `<div class="action-card">
+      <p>${answered < total ? `Faltam ${total - answered} questões para concluir.` : 'Tudo respondido. Hora de corrigir!'}</p>
+      <button class="btn-block btn-success" onclick="corrigir()">Corrigir simulado</button>
+    </div>`;
+  } else {
+    let next = '';
+    if (isFixo && sim.idx < SIMULADOS.length - 1) next = `<button class="btn-block btn-primary" onclick="startSim('s${sim.idx + 1}')">Próximo simulado →</button>`;
+    if (simKey === 'aleatorio') next = `<button class="btn-block btn-primary" onclick="novoAleatorio()">🎲 Sortear outra prova</button>`;
+    html += `<div class="action-card">
+      <div class="action-row">
+        ${next}
+        <button class="btn-block btn-ghost" onclick="renderHome()">Voltar ao início</button>
+      </div>
+    </div>`;
+  }
+
+  html += '</div>';
+  document.getElementById('root').innerHTML = html;
+  if (keepScroll) window.scrollTo({ top: y });
+}
+
+// ===== DISSERTATIVAS =====
+function setDiss(n, val) {
+  dissRespostas['d_' + n] = val;
+  gravarProgresso();
+}
+
+function toggleGab(num) {
+  const box = document.getElementById('gab_' + num);
+  if (box) box.classList.toggle('visible');
+}
+
+function renderDissertativas() {
+  salvarProgressoAtual();
+  view = 'dissertativas';
+  returnTo = null;
+  let html = `<div class="topbar">
+    <div class="topbar-left"><span class="topbar-title">Questões Dissertativas</span></div>
+    <div class="topbar-right">
+      <button class="btn-pill" onclick="renderHome()">← Início</button>
+    </div>
+  </div>`;
+
+  html += '<div class="wrap">';
+  html += `<div class="page-head">
+    <span class="page-eyebrow">${DISSERTATIVAS.length} questões · treino</span>
+    <h1 class="page-title">Dissertativas</h1>
+    <p class="page-sub">Na prova caem 2 discursivas: uma sobre a autoria de 2 Pedro (refutar uma das objeções) e outra sobre Judas em estudos recentes (p. 512-513). Responda com suas palavras e depois compare com o gabarito.</p>
+  </div>`;
+
+  const grupos = [{ titulo: '★ Seguem a orientação do professor', qs: DISSERTATIVAS.filter(q => q.destaque) }];
+  Object.keys(TOPICOS).forEach(t => {
+    const qs = DISSERTATIVAS.filter(q => !q.destaque && q.topico === t);
+    if (qs.length) grupos.push({ titulo: 'Treino extra · ' + TOPICOS[t], qs });
+  });
+  grupos.forEach(g => {
+    html += `<div class="section-label diss-group">${g.titulo} <span class="count">${g.qs.length}</span></div>`;
+    g.qs.forEach(q => {
+      const val = dissRespostas['d_' + q.numero] || '';
+      html += `<div class="card">
+        <div class="q-head">
+          <span class="q-num">${q.numero}</span>
+          <div style="flex:1"><span class="q-tag">${TOPICOS[q.topico]}</span><p class="q-enunciado">${q.enunciado}</p></div>
+        </div>
+        <textarea class="q-textarea" rows="3" placeholder="Sua resposta…" oninput="setDiss(${q.numero}, this.value)">${escapeAttr(val)}</textarea>
+        <button class="btn-gab" onclick="toggleGab('d${q.numero}')">Ver gabarito</button>
+        <div class="gab-box" id="gab_d${q.numero}">
+          <span class="gab-label">Gabarito</span>${q.gabarito}
+          ${q.fonte && q.fonte.length ? `<br><button class="btn-fonte" onclick="showFonteModal('${q.fonte.join(',')}')">📖 Ver no material</button>` : ''}
+        </div>
+      </div>`;
+    });
+  });
+
+  html += '</div>';
+  document.getElementById('root').innerHTML = html;
+}
+
+// ===== FONTE / MODAL =====
+function findParagrafo(pid) {
+  for (let li = 0; li < MATERIA.length; li++) {
+    const licao = MATERIA[li];
+    for (const secao of licao.secoes) {
+      const idx = secao.paragrafoIds.indexOf(pid);
+      if (idx !== -1) return { licaoIdx: li, licao, subtitulo: secao.subtitulo, texto: secao.paragrafos[idx] };
+    }
+  }
+  return null;
+}
+
+function showFonteModal(idsStr) {
+  closeFonteModal();
+  const ids = idsStr.split(',');
+  const trechos = ids.map(findParagrafo).filter(Boolean);
+  if (!trechos.length) return;
+  const partes = [...new Set(trechos.map(t => t.licao.rotulo + ' — ' + t.licao.titulo))];
+
+  const container = document.createElement('div');
+  container.id = 'fonte-modal-container';
+  container.innerHTML = `<div class="modal-overlay" onclick="if(event.target===this) closeFonteModal()">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div>
+          <div class="modal-header-text">Trecho do material de estudo</div>
+          <div class="modal-header-sub">${partes.join(' · ')}</div>
+        </div>
+        <button class="modal-close" onclick="closeFonteModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        ${trechos.map(t => `<p class="modal-paragrafo"><strong style="color:var(--teal)">${t.subtitulo}</strong><br>${t.texto}</p>`).join('')}
+      </div>
+      <div class="modal-footer">
+        <button class="modal-link-btn" onclick="goToFonteInMaterial('${idsStr}')">Abrir no material →</button>
+      </div>
+    </div>
+  </div>`;
+  document.body.appendChild(container);
+}
+
+function closeFonteModal() {
+  const el = document.getElementById('fonte-modal-container');
+  if (el) el.remove();
+}
+
+function goToFonteInMaterial(idsStr) {
+  closeFonteModal();
+  const ids = idsStr.split(',');
+  const first = findParagrafo(ids[0]);
+  if (!first) return;
+  if (view === 'simulado') { salvarProgressoAtual(); returnTo = { view: 'simulado' }; }
+  else if (view === 'dissertativas') returnTo = { view: 'dissertativas' };
+  renderLicao(first.licaoIdx, ids);
+  setTimeout(() => {
+    const el = document.getElementById(ids[0]);
+    if (el && el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 80);
+}
+
+function voltarParaOrigem() {
+  if (!returnTo) return renderHome();
+  const destino = returnTo;
+  returnTo = null;
+  if (destino.view === 'simulado') { view = 'simulado'; renderSim(); }
+  else if (destino.view === 'dissertativas') renderDissertativas();
+  else renderHome();
+}
+
+// ===== MATERIAL DE ESTUDO =====
+function renderMateriaIndex() {
+  salvarProgressoAtual();
+  view = 'materia-index';
+  let html = `<div class="topbar">
+    <div class="topbar-left"><span class="topbar-title">Material de Estudo</span></div>
+    <div class="topbar-right">
+      <button class="btn-pill" onclick="renderHome()">← Início</button>
+    </div>
+  </div>`;
+
+  html += '<div class="wrap">';
+  html += `<div class="page-head">
+    <span class="page-eyebrow">Matéria da AV2</span>
+    <h1 class="page-title">Material de Estudo</h1>
+    <p class="page-sub">Resumo das fontes da prova. As questões apontam para os trechos daqui.</p>
+  </div>`;
+
+  html += '<div class="materia-toc">';
+  MATERIA.forEach((licao, idx) => {
+    html += `<button class="materia-toc-item" onclick="renderLicao(${idx})">
+      <span class="materia-toc-num">
+        <span class="materia-toc-num-label">Parte</span>
+        <span class="materia-toc-num-value">${licao.numero}</span>
+      </span>
+      <span class="materia-toc-text">
+        <span class="materia-toc-titulo">${licao.titulo}</span>
+        <span class="materia-fonte" style="display:block;margin-top:.1rem">${licao.rotulo}</span>
+      </span>
+      <span class="materia-toc-arrow">${ICON_ARROW}</span>
+    </button>`;
+  });
+  html += '</div></div>';
+  document.getElementById('root').innerHTML = html;
+}
+
+function renderLicao(idx, highlightIds) {
+  view = 'licao';
+  currentLicao = idx;
+  const licao = MATERIA[idx];
+  if (!licao) return renderMateriaIndex();
+
+  let html = `<div class="topbar">
+    <div class="topbar-left"><span class="topbar-title">${licao.titulo}</span></div>
+    <div class="topbar-right">
+      ${returnTo ? `<button class="btn-pill accent" onclick="voltarParaOrigem()">${ICON_ARROW_LEFT} Voltar à questão</button>` : ''}
+      <button class="btn-pill" onclick="renderMateriaIndex()">📖 Material</button>
+      <button class="btn-pill" onclick="renderHome()">Início</button>
+    </div>
+  </div>`;
+
+  html += '<div class="wrap">';
+  html += '<div class="licao-nav">';
+  MATERIA.forEach((l, i) => {
+    html += `<button class="licao-nav-btn ${i === idx ? 'active' : ''}" onclick="renderLicao(${i})">${l.numero}. ${l.rotulo}</button>`;
+  });
+  html += '</div>';
+
+  html += `<div class="page-head">
+    <span class="page-eyebrow">Parte ${licao.numero} · ${licao.rotulo}</span>
+    <h1 class="page-title">${licao.titulo}</h1>
+    <p class="materia-fonte">${licao.fonte}</p>
+  </div>`;
+
+  licao.secoes.forEach(secao => {
+    html += `<div class="licao-secao">
+      <h3 class="licao-subtitulo">${secao.subtitulo}</h3>
+      ${secao.paragrafos.map((p, pIdx) => {
+        const pid = secao.paragrafoIds[pIdx];
+        const hl = highlightIds && highlightIds.includes(pid);
+        return `<p class="licao-paragrafo ${hl ? 'highlighted' : ''}" id="${pid}">${p}</p>`;
+      }).join('')}
+    </div>`;
+  });
+
+  const prevIdx = idx - 1, nextIdx = idx + 1;
+  const hasPrev = prevIdx >= 0, hasNext = nextIdx < MATERIA.length;
+  html += `<div class="licao-footer-nav">
+    <button class="licao-footer-btn" onclick="renderLicao(${prevIdx})" ${!hasPrev ? 'disabled' : ''}>← ${hasPrev ? 'Parte ' + MATERIA[prevIdx].numero : 'Anterior'}</button>
+    <button class="licao-footer-btn" onclick="renderLicao(${nextIdx})" ${!hasNext ? 'disabled' : ''}>${hasNext ? 'Parte ' + MATERIA[nextIdx].numero : 'Próxima'} →</button>
+  </div>`;
+
+  html += '</div>';
+  document.getElementById('root').innerHTML = html;
+  if (!highlightIds) window.scrollTo({ top: 0 });
+}
+
+renderHome();
+</script>
+</body>
+</html>

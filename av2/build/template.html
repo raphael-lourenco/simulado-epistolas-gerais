@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulados AV2 — Epístolas Gerais</title>
+<meta name="description" content="Simulados para a AV2 de Epístolas Gerais (FABAT): Tiago 5.13-18, 1 e 2 Pedro e Judas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/*__BASE_CSS__*/
+
+/* ===== AJUSTES DO SITE DE EPÍSTOLAS GERAIS ===== */
+:root{
+  --teal:#1E4A7A;
+  --teal-soft:#2F639B;
+  --teal-bg:#E9F0F8;
+}
+.btn-primary{box-shadow:0 4px 14px rgba(30,74,122,.3)}
+.home-nav-btn.primary{box-shadow:0 6px 20px rgba(30,74,122,.28)}
+.home{
+  background:
+    radial-gradient(circle at 15% 0%, rgba(30,74,122,0.08), transparent 50%),
+    radial-gradient(circle at 85% 100%, rgba(188,90,60,0.06), transparent 50%),
+    var(--bg);
+}
+.home-inner{max-width:520px}
+
+.q-tag{
+  display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.03em;text-transform:uppercase;
+  color:var(--ink-soft);background:var(--surface-soft);border:1px solid var(--border);
+  padding:.15rem .5rem;border-radius:999px;margin-bottom:.45rem;
+}
+.coment-box{
+  margin-top:.8rem;padding:.75rem .95rem;border-radius:var(--radius-sm);
+  font-size:.86rem;line-height:1.55;background:var(--teal-bg);
+  border-left:3px solid var(--teal);color:var(--ink);
+}
+.coment-box .gab-label{margin-bottom:.15rem}
+
+.sim-chip{position:relative;flex-direction:column;gap:.1rem}
+.sim-chip small{font-size:.62rem;font-weight:700;opacity:.85}
+.sim-chip.done{background:var(--green-bg);border-color:var(--green);color:var(--green)}
+.sim-chip.done:hover{background:var(--terracotta);border-color:var(--terracotta);color:#fff}
+
+.topico-list{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.8rem;text-align:left}
+.topico-btn{
+  display:flex;align-items:center;justify-content:space-between;gap:.8rem;width:100%;
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);
+  padding:.7rem .95rem;font-family:inherit;font-size:.88rem;font-weight:700;color:var(--ink);
+  cursor:pointer;box-shadow:var(--shadow-sm);transition:all .12s;text-align:left;
+}
+.topico-btn:hover{border-color:var(--teal-soft);transform:translateX(2px)}
+.topico-btn .star{color:var(--amber);margin-right:.3rem}
+.topico-btn .n{font-size:.72rem;font-weight:700;color:var(--ink-faint);white-space:nowrap}
+
+.diss-group{margin-top:2rem}
+.diss-group:first-of-type{margin-top:0}
+
+.materia-fonte{font-size:.8rem;color:var(--ink-soft);margin-top:.4rem;font-style:italic}
+
+.footer-note{font-size:.72rem;color:var(--ink-faint);margin-top:2rem;line-height:1.5}
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script>
+const TOPICOS = /*__TOPICOS__*/;
+const PROVA_TOPICOS = /*__PROVA_TOPICOS__*/;
+const MOLDE = /*__MOLDE__*/;
+const TOPICOS_LIVRE = /*__TOPICOS_LIVRE__*/;
+const DISS_TOPICOS = /*__DISS_TOPICOS__*/;
+const QUESTOES = /*__QUESTOES__*/;
+const SIMULADOS = /*__SIMULADOS__*/;
+const DISSERTATIVAS = /*__DISSERTATIVAS__*/;
+const MATERIA = /*__MATERIA__*/;
+
+const QMAP = {};
+QUESTOES.forEach(q => { QMAP[q.id] = q; });
+const DMAP = {};
+DISSERTATIVAS.forEach(d => { DMAP[d.numero] = d; });
+const STORAGE_KEY = 'simulado-epistolas-gerais-av2-v1';
+
+let view = 'home';
+let simKey = null;        // 's0'…'s6', 'topico:<chave>' ou 'aleatorio'
+let respostas = {};       // { [id da questão]: letra } e { ['d_'+n]: texto }
+let corrigido = false;
+let currentLicao = 0;
+let returnTo = null;      // { view: 'simulado'|'dissertativas' }
+let progresso = carregarProgresso(); // { [simKey]: { respostas, corrigido, ids?, diss? } }
+let dissRespostas = progresso.__diss || {};
+
+const ICON_RESET = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 .49-9.36L1 10"></path></svg>';
+const ICON_CHECK = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+const ICON_X = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+const ICON_ARROW = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+const ICON_ARROW_LEFT = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>';
+
+// ===== PERSISTÊNCIA (só conveniência: o site funciona sem ela) =====
+function carregarProgresso() {
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch (e) { return {}; }
+}
+function gravarProgresso() {
+  try {
+    progresso.__diss = dissRespostas;
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(progresso));
+  } catch (e) { /* armazenamento indisponível */ }
+}
+
+function ring(pct, size) {
+  size = size || 34;
+  const r = (size - 4) / 2;
+  const c = 2 * Math.PI * r;
+  const offset = c - (pct / 100) * c;
+  return `<div class="ring-wrap" style="width:${size}px;height:${size}px">
+    <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
+      <circle class="ring-bg" cx="${size/2}" cy="${size/2}" r="${r}"></circle>
+      <circle class="ring-fg" cx="${size/2}" cy="${size/2}" r="${r}" stroke-dasharray="${c}" stroke-dashoffset="${offset}"></circle>
+    </svg>
+    <span class="ring-label">${Math.round(pct)}%</span>
+  </div>`;
+}
+
+function escapeAttr(s) { return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+
+// ===== SIMULADOS =====
+function getSim(key) {
+  if (!key) return null;
+  if (key[0] === 's' && !key.includes(':')) {
+    const i = Number(key.slice(1));
+    const s = SIMULADOS[i];
+    if (!s) return null;
+    return { titulo: 'Simulado ' + s.numero, eyebrow: `Simulado ${s.numero} de ${SIMULADOS.length} · formato da prova`, ids: s.ids, diss: s.diss, idx: i };
+  }
+  if (key.startsWith('topico:')) {
+    const t = key.slice(7);
+    if (!TOPICOS[t]) return null;
+    return { titulo: TOPICOS[t], eyebrow: 'Treino por tópico', ids: QUESTOES.filter(q => q.topico === t).map(q => q.id), diss: [] };
+  }
+  if (key === 'aleatorio') {
+    const salvo = progresso[key];
+    const prova = salvo && salvo.ids ? { ids: salvo.ids.filter(id => QMAP[id]), diss: (salvo.diss || []).filter(n => DMAP[n]) } : sortearProva();
+    return { titulo: 'Prova aleatória', eyebrow: '7 objetivas + 2 discursivas sorteadas', ids: prova.ids, diss: prova.diss };
+  }
+  return null;
+}
+
+function embaralhar(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+// Sorteia uma prova no formato real: MOLDE de objetivas + 2 discursivas
+// (uma sobre a autoria de 2 Pedro e outra sobre Judas em estudos recentes).
+function sortearProva() {
+  const usados = new Set();
+  const ids = [];
+  MOLDE.forEach(t => {
+    const opcoes = embaralhar(QUESTOES.filter(q => (t === 'livre' ? TOPICOS_LIVRE.includes(q.topico) : q.topico === t) && !usados.has(q.id)));
+    if (opcoes.length) { usados.add(opcoes[0].id); ids.push(opcoes[0].id); }
+  });
+  const destaque = DISSERTATIVAS.filter(d => d.destaque);
+  const d1 = embaralhar(destaque.filter(d => d.topico === DISS_TOPICOS[0]))[0];
+  const d2 = embaralhar(destaque.filter(d => d.topico === DISS_TOPICOS[1]))[0];
+  return { ids: embaralhar(ids), diss: [d1, d2].filter(Boolean).map(d => d.numero) };
+}
+
+function salvarProgressoAtual() {
+  if (view === 'simulado' && simKey) {
+    const sim = getSim(simKey);
+    progresso[simKey] = { respostas: { ...respostas }, corrigido, ids: sim ? sim.ids : undefined, diss: sim ? sim.diss : undefined };
+    gravarProgresso();
+  }
+}
+
+function startSim(key) {
+  salvarProgressoAtual();
+  view = 'simulado';
+  simKey = String(key);
+  returnTo = null;
+  const salvo = progresso[simKey];
+  if (salvo) {
+    respostas = { ...(salvo.respostas || {}) };
+    corrigido = !!salvo.corrigido;
+  } else {
+    respostas = {};
+    corrigido = false;
+    if (simKey === 'aleatorio') progresso.aleatorio = { respostas: {}, corrigido: false, ...sortearProva() };
+  }
+  renderSim();
+  window.scrollTo({ top: 0 });
+}
+
+function novoAleatorio() {
+  delete progresso.aleatorio;
+  gravarProgresso();
+  view = 'home';
+  startSim('aleatorio');
+}
+
+function reiniciarSimulado() {
+  if (!window.confirm('Isso vai apagar suas respostas deste simulado. Tem certeza que quer recomeçar do zero?')) return;
+  const salvo = simKey === 'aleatorio' && progresso.aleatorio ? progresso.aleatorio : {};
+  respostas = {};
+  corrigido = false;
+  progresso[simKey] = { respostas: {}, corrigido: false, ids: salvo.ids, diss: salvo.diss };
+  gravarProgresso();
+  renderSim();
+}
+
+function escolher(id, letra) {
+  if (corrigido) return;
+  respostas[id] = letra;
+  salvarProgressoAtual();
+  renderSim(true);
+}
+
+function setSimDiss(n, val) {
+  respostas['d_' + n] = val;
+  salvarProgressoAtual();
+}
+
+function corrigir() {
+  corrigido = true;
+  salvarProgressoAtual();
+  renderSim();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function calcScore(sim, resp) {
+  let ok = 0;
+  sim.ids.forEach(id => { if (resp[id] && resp[id] === QMAP[id].correta) ok++; });
+  return { ok, total: sim.ids.length };
+}
+
+function scorePorTopico(sim) {
+  const out = {};
+  sim.ids.forEach(id => {
+    const q = QMAP[id];
+    out[q.topico] = out[q.topico] || { ok: 0, total: 0 };
+    out[q.topico].total++;
+    if (respostas[id] === q.correta) out[q.topico].ok++;
+  });
+  return out;
+}
+
+// ===== HOME =====
+function renderHome() {
+  salvarProgressoAtual();
+  view = 'home';
+  returnTo = null;
+  const chips = SIMULADOS.map((s, i) => {
+    const p = progresso['s' + i];
+    let extra = '';
+    let cls = '';
+    if (p && p.corrigido) {
+      const sc = calcScore({ ids: s.ids }, p.respostas || {});
+      extra = `<small>${sc.ok}/${sc.total}</small>`;
+      cls = 'done';
+    }
+    return `<button class="sim-chip ${cls}" onclick="startSim('s${i}')">${s.numero}${extra}</button>`;
+  }).join('');
+
+  const topicos = Object.keys(TOPICOS).map(t => {
+    const n = QUESTOES.filter(q => q.topico === t).length;
+    const star = PROVA_TOPICOS.includes(t) ? '<span class="star">★</span>' : '';
+    return `<button class="topico-btn" onclick="startSim('topico:${t}')"><span>${star}${TOPICOS[t]}</span><span class="n">${n} questões</span></button>`;
+  }).join('');
+
+  document.getElementById('root').innerHTML = `
+    <div class="home">
+      <div class="home-inner">
+        <span class="home-badge">FABAT · Epístolas Gerais</span>
+        <h1 class="home-title">Simulados<br><span>AV2</span></h1>
+        <p class="home-sub">Tiago 5.13-18, 1 e 2 Pedro e Judas · no formato da prova: 7 objetivas + 2 discursivas</p>
+        <div class="format-pills">
+          <span class="pill">${QUESTOES.length} objetivas</span>
+          <span class="pill">${DISSERTATIVAS.length} discursivas</span>
+          <span class="pill">Comentário em cada questão</span>
+        </div>
+        <div class="home-nav">
+          <button class="home-nav-btn primary" onclick="renderLicao(0)">🎯&nbsp;&nbsp;O que cai na prova</button>
+          <button class="home-nav-btn secondary" onclick="startSim('aleatorio')">🎲&nbsp;&nbsp;Prova aleatória (7 + 2)</button>
+          <button class="home-nav-btn secondary" onclick="renderDissertativas()">📝&nbsp;&nbsp;Questões Dissertativas</button>
+          <button class="home-nav-btn secondary" onclick="renderMateriaIndex()">📖&nbsp;&nbsp;Material de Estudo</button>
+        </div>
+        <p class="home-grid-label">ou escolha um simulado fixo (7 + 2)</p>
+        <div class="sim-grid" style="margin-bottom:1.8rem">${chips}</div>
+        <p class="home-grid-label">ou treine por tópico <span style="color:var(--amber)">★</span> = tópico indicado pelo professor</p>
+        <div class="topico-list">${topicos}</div>
+        <p class="footer-note">A prova sai do material da AV2: o artigo “Tiago 5.13-18: uma análise exegética” (Carreiro, <em>Revista Batista Pioneira</em>, 2021) e os capítulos de 1 Pedro, 2 Pedro e Judas de Carson, Moo &amp; Morris, <em>Introdução ao Novo Testamento</em>. Os simulados seguem as orientações do professor. Suas respostas ficam salvas só neste navegador.</p>
+      </div>
+    </div>`;
+}
+
+// ===== SIMULADO =====
+function renderSim(keepScroll) {
+  const sim = getSim(simKey);
+  if (!sim) return renderHome();
+  const y = window.scrollY;
+  const answered = sim.ids.filter(id => respostas[id]).length;
+  const total = sim.ids.length;
+  const pct = total ? answered / total * 100 : 0;
+  const isFixo = sim.idx !== undefined;
+
+  let html = `<div class="topbar">
+    <div class="topbar-left">
+      ${!corrigido ? `<span id="progress-ring-container">${ring(pct, 30)}</span>` : `<div class="completed-badge">${ICON_CHECK}</div>`}
+      <span class="topbar-title">${sim.titulo}</span>
+    </div>
+    <div class="topbar-right">
+      ${isFixo ? `<select class="select-pill" onchange="startSim(this.value)">
+        ${SIMULADOS.map((s, i) => `<option value="s${i}" ${i === sim.idx ? 'selected' : ''}>Simulado ${s.numero}</option>`).join('')}
+      </select>` : ''}
+      <button class="btn-pill" onclick="reiniciarSimulado()" title="Apagar respostas e recomeçar">${ICON_RESET} Reiniciar</button>
+      <button class="btn-pill" onclick="renderHome()">Início</button>
+    </div>
+  </div>`;
+
+  html += '<div class="wrap">';
+
+  if (corrigido) {
+    const sc = calcScore(sim, respostas);
+    const porTopico = scorePorTopico(sim);
+    html += `<div class="placar">
+      <div class="placar-top">
+        <div class="placar-icon">${ICON_CHECK}</div>
+        <div>
+          <div class="placar-titulo">Objetivas: ${sc.ok} de ${sc.total}</div>
+          <div class="placar-sub">Leia o comentário de cada questão${sim.diss && sim.diss.length ? ' e confira as discursivas no fim da página' : ''}.</div>
+        </div>
+      </div>
+      ${Object.keys(porTopico).map(t => {
+        const r = porTopico[t];
+        const p = Math.round(r.ok / r.total * 100);
+        return `<div class="placar-row">
+          <span class="placar-row-label">${TOPICOS[t]}</span>
+          <div class="placar-bar-wrap"><div class="placar-bar bar-mult" style="width:${p}%"></div></div>
+          <span class="placar-score">${r.ok}<small>/${r.total}</small></span>
+        </div>`;
+      }).join('')}
+      <div class="placar-total">
+        <span class="placar-total-label">Aproveitamento</span>
+        <span class="placar-total-value">${Math.round(sc.ok / sc.total * 100)}%</span>
+      </div>
+    </div>`;
+  } else {
+    html += `<div class="page-head">
+      <span class="page-eyebrow">${sim.eyebrow}</span>
+      <h1 class="page-title">Múltipla escolha</h1>
+      <p class="page-sub">${answered} de ${total} questões respondidas · marque uma alternativa por questão</p>
+    </div>`;
+  }
+
+  sim.ids.forEach((id, n) => {
+    const q = QMAP[id];
+    const sel = respostas[id];
+    let cardCls = '';
+    if (corrigido) cardCls = sel === q.correta ? 'correct' : 'incorrect';
+    html += `<div class="card ${cardCls}">
+      <div class="q-head">
+        <span class="q-num">${n + 1}</span>
+        <div style="flex:1">
+          <span class="q-tag">${TOPICOS[q.topico]}</span>
+          <p class="q-enunciado">${q.enunciado}</p>
+        </div>
+      </div>
+      <div class="alt-list">
+        ${q.alternativas.map(alt => {
+          let cls = sel === alt.letra ? 'sel' : '';
+          let badge = '';
+          if (corrigido) {
+            if (alt.letra === q.correta && sel === alt.letra) { cls = 'acerto'; badge = `<span class="alt-badge" style="color:var(--green)">${ICON_CHECK}</span>`; }
+            else if (alt.letra === q.correta) { cls = 'perdida'; badge = `<span class="alt-badge" style="color:var(--amber)">${ICON_ARROW}</span>`; }
+            else if (sel === alt.letra) { cls = 'errada'; badge = `<span class="alt-badge" style="color:var(--red)">${ICON_X}</span>`; }
+            else cls = '';
+          }
+          return `<button class="alt ${cls}" onclick="escolher('${q.id}','${alt.letra}')" ${corrigido ? 'style="cursor:default"' : ''}>
+            <span class="alt-letra">${alt.letra}</span>
+            <span class="alt-texto">${alt.texto}</span>
+            ${badge}
+          </button>`;
+        }).join('')}
+      </div>
+      ${corrigido ? `<div class="coment-box">
+        <span class="gab-label">${sel === q.correta ? 'Correto' : (sel ? 'Resposta certa: ' + q.correta : 'Não respondida · certa: ' + q.correta)}</span>${q.comentario}
+        ${q.fonte && q.fonte.length ? `<br><button class="btn-fonte" onclick="showFonteModal('${q.fonte.join(',')}')">📖 Ver no material</button>` : ''}
+      </div>` : ''}
+    </div>`;
+  });
+
+  if (sim.diss && sim.diss.length) {
+    html += `<div class="section-label">Discursivas <span class="count">${sim.diss.length}</span></div>
+      <p class="section-hint">${corrigido ? 'Compare sua resposta com o gabarito.' : 'Escreva sua resposta. O gabarito aparece depois de corrigir.'}</p>`;
+    sim.diss.forEach((num, k) => {
+      const d = DMAP[num];
+      const val = respostas['d_' + num] || '';
+      html += `<div class="card">
+        <div class="q-head">
+          <span class="q-num">${total + k + 1}</span>
+          <div style="flex:1">
+            <span class="q-tag">${TOPICOS[d.topico]}</span>
+            <p class="q-enunciado">${d.enunciado}</p>
+          </div>
+        </div>
+        <textarea class="q-textarea" rows="4" placeholder="Sua resposta…" oninput="setSimDiss(${num}, this.value)">${escapeAttr(val)}</textarea>
+        ${corrigido ? `<div class="gab-box visible">
+          <span class="gab-label">Gabarito</span>${d.gabarito}
+          ${d.fonte && d.fonte.length ? `<br><button class="btn-fonte" onclick="showFonteModal('${d.fonte.join(',')}')">📖 Ver no material</button>` : ''}
+        </div>` : ''}
+      </div>`;
+    });
+  }
+
+  if (!corrigido) {
+    html += `<div class="action-card">
+      <p>${answered < total ? `Faltam ${total - answered} questões para concluir.` : 'Tudo respondido. Hora de corrigir!'}</p>
+      <button class="btn-block btn-success" onclick="corrigir()">Corrigir simulado</button>
+    </div>`;
+  } else {
+    let next = '';
+    if (isFixo && sim.idx < SIMULADOS.length - 1) next = `<button class="btn-block btn-primary" onclick="startSim('s${sim.idx + 1}')">Próximo simulado →</button>`;
+    if (simKey === 'aleatorio') next = `<button class="btn-block btn-primary" onclick="novoAleatorio()">🎲 Sortear outra prova</button>`;
+    html += `<div class="action-card">
+      <div class="action-row">
+        ${next}
+        <button class="btn-block btn-ghost" onclick="renderHome()">Voltar ao início</button>
+      </div>
+    </div>`;
+  }
+
+  html += '</div>';
+  document.getElementById('root').innerHTML = html;
+  if (keepScroll) window.scrollTo({ top: y });
+}
+
+// ===== DISSERTATIVAS =====
+function setDiss(n, val) {
+  dissRespostas['d_' + n] = val;
+  gravarProgresso();
+}
+
+function toggleGab(num) {
+  const box = document.getElementById('gab_' + num);
+  if (box) box.classList.toggle('visible');
+}
+
+function renderDissertativas() {
+  salvarProgressoAtual();
+  view = 'dissertativas';
+  returnTo = null;
+  let html = `<div class="topbar">
+    <div class="topbar-left"><span class="topbar-title">Questões Dissertativas</span></div>
+    <div class="topbar-right">
+      <button class="btn-pill" onclick="renderHome()">← Início</button>
+    </div>
+  </div>`;
+
+  html += '<div class="wrap">';
+  html += `<div class="page-head">
+    <span class="page-eyebrow">${DISSERTATIVAS.length} questões · treino</span>
+    <h1 class="page-title">Dissertativas</h1>
+    <p class="page-sub">Na prova caem 2 discursivas: uma sobre a autoria de 2 Pedro (refutar uma das objeções) e outra sobre Judas em estudos recentes (p. 512-513). Responda com suas palavras e depois compare com o gabarito.</p>
+  </div>`;
+
+  const grupos = [{ titulo: '★ Seguem a orientação do professor', qs: DISSERTATIVAS.filter(q => q.destaque) }];
+  Object.keys(TOPICOS).forEach(t => {
+    const qs = DISSERTATIVAS.filter(q => !q.destaque && q.topico === t);
+    if (qs.length) grupos.push({ titulo: 'Treino extra · ' + TOPICOS[t], qs });
+  });
+  grupos.forEach(g => {
+    html += `<div class="section-label diss-group">${g.titulo} <span class="count">${g.qs.length}</span></div>`;
+    g.qs.forEach(q => {
+      const val = dissRespostas['d_' + q.numero] || '';
+      html += `<div class="card">
+        <div class="q-head">
+          <span class="q-num">${q.numero}</span>
+          <div style="flex:1"><span class="q-tag">${TOPICOS[q.topico]}</span><p class="q-enunciado">${q.enunciado}</p></div>
+        </div>
+        <textarea class="q-textarea" rows="3" placeholder="Sua resposta…" oninput="setDiss(${q.numero}, this.value)">${escapeAttr(val)}</textarea>
+        <button class="btn-gab" onclick="toggleGab('d${q.numero}')">Ver gabarito</button>
+        <div class="gab-box" id="gab_d${q.numero}">
+          <span class="gab-label">Gabarito</span>${q.gabarito}
+          ${q.fonte && q.fonte.length ? `<br><button class="btn-fonte" onclick="showFonteModal('${q.fonte.join(',')}')">📖 Ver no material</button>` : ''}
+        </div>
+      </div>`;
+    });
+  });
+
+  html += '</div>';
+  document.getElementById('root').innerHTML = html;
+}
+
+// ===== FONTE / MODAL =====
+function findParagrafo(pid) {
+  for (let li = 0; li < MATERIA.length; li++) {
+    const licao = MATERIA[li];
+    for (const secao of licao.secoes) {
+      const idx = secao.paragrafoIds.indexOf(pid);
+      if (idx !== -1) return { licaoIdx: li, licao, subtitulo: secao.subtitulo, texto: secao.paragrafos[idx] };
+    }
+  }
+  return null;
+}
+
+function showFonteModal(idsStr) {
+  closeFonteModal();
+  const ids = idsStr.split(',');
+  const trechos = ids.map(findParagrafo).filter(Boolean);
+  if (!trechos.length) return;
+  const partes = [...new Set(trechos.map(t => t.licao.rotulo + ' — ' + t.licao.titulo))];
+
+  const container = document.createElement('div');
+  container.id = 'fonte-modal-container';
+  container.innerHTML = `<div class="modal-overlay" onclick="if(event.target===this) closeFonteModal()">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div>
+          <div class="modal-header-text">Trecho do material de estudo</div>
+          <div class="modal-header-sub">${partes.join(' · ')}</div>
+        </div>
+        <button class="modal-close" onclick="closeFonteModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        ${trechos.map(t => `<p class="modal-paragrafo"><strong style="color:var(--teal)">${t.subtitulo}</strong><br>${t.texto}</p>`).join('')}
+      </div>
+      <div class="modal-footer">
+        <button class="modal-link-btn" onclick="goToFonteInMaterial('${idsStr}')">Abrir no material →</button>
+      </div>
+    </div>
+  </div>`;
+  document.body.appendChild(container);
+}
+
+function closeFonteModal() {
+  const el = document.getElementById('fonte-modal-container');
+  if (el) el.remove();
+}
+
+function goToFonteInMaterial(idsStr) {
+  closeFonteModal();
+  const ids = idsStr.split(',');
+  const first = findParagrafo(ids[0]);
+  if (!first) return;
+  if (view === 'simulado') { salvarProgressoAtual(); returnTo = { view: 'simulado' }; }
+  else if (view === 'dissertativas') returnTo = { view: 'dissertativas' };
+  renderLicao(first.licaoIdx, ids);
+  setTimeout(() => {
+    const el = document.getElementById(ids[0]);
+    if (el && el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 80);
+}
+
+function voltarParaOrigem() {
+  if (!returnTo) return renderHome();
+  const destino = returnTo;
+  returnTo = null;
+  if (destino.view === 'simulado') { view = 'simulado'; renderSim(); }
+  else if (destino.view === 'dissertativas') renderDissertativas();
+  else renderHome();
+}
+
+// ===== MATERIAL DE ESTUDO =====
+function renderMateriaIndex() {
+  salvarProgressoAtual();
+  view = 'materia-index';
+  let html = `<div class="topbar">
+    <div class="topbar-left"><span class="topbar-title">Material de Estudo</span></div>
+    <div class="topbar-right">
+      <button class="btn-pill" onclick="renderHome()">← Início</button>
+    </div>
+  </div>`;
+
+  html += '<div class="wrap">';
+  html += `<div class="page-head">
+    <span class="page-eyebrow">Matéria da AV2</span>
+    <h1 class="page-title">Material de Estudo</h1>
+    <p class="page-sub">Resumo das fontes da prova. As questões apontam para os trechos daqui.</p>
+  </div>`;
+
+  html += '<div class="materia-toc">';
+  MATERIA.forEach((licao, idx) => {
+    html += `<button class="materia-toc-item" onclick="renderLicao(${idx})">
+      <span class="materia-toc-num">
+        <span class="materia-toc-num-label">Parte</span>
+        <span class="materia-toc-num-value">${licao.numero}</span>
+      </span>
+      <span class="materia-toc-text">
+        <span class="materia-toc-titulo">${licao.titulo}</span>
+        <span class="materia-fonte" style="display:block;margin-top:.1rem">${licao.rotulo}</span>
+      </span>
+      <span class="materia-toc-arrow">${ICON_ARROW}</span>
+    </button>`;
+  });
+  html += '</div></div>';
+  document.getElementById('root').innerHTML = html;
+}
+
+function renderLicao(idx, highlightIds) {
+  view = 'licao';
+  currentLicao = idx;
+  const licao = MATERIA[idx];
+  if (!licao) return renderMateriaIndex();
+
+  let html = `<div class="topbar">
+    <div class="topbar-left"><span class="topbar-title">${licao.titulo}</span></div>
+    <div class="topbar-right">
+      ${returnTo ? `<button class="btn-pill accent" onclick="voltarParaOrigem()">${ICON_ARROW_LEFT} Voltar à questão</button>` : ''}
+      <button class="btn-pill" onclick="renderMateriaIndex()">📖 Material</button>
+      <button class="btn-pill" onclick="renderHome()">Início</button>
+    </div>
+  </div>`;
+
+  html += '<div class="wrap">';
+  html += '<div class="licao-nav">';
+  MATERIA.forEach((l, i) => {
+    html += `<button class="licao-nav-btn ${i === idx ? 'active' : ''}" onclick="renderLicao(${i})">${l.numero}. ${l.rotulo}</button>`;
+  });
+  html += '</div>';
+
+  html += `<div class="page-head">
+    <span class="page-eyebrow">Parte ${licao.numero} · ${licao.rotulo}</span>
+    <h1 class="page-title">${licao.titulo}</h1>
+    <p class="materia-fonte">${licao.fonte}</p>
+  </div>`;
+
+  licao.secoes.forEach(secao => {
+    html += `<div class="licao-secao">
+      <h3 class="licao-subtitulo">${secao.subtitulo}</h3>
+      ${secao.paragrafos.map((p, pIdx) => {
+        const pid = secao.paragrafoIds[pIdx];
+        const hl = highlightIds && highlightIds.includes(pid);
+        return `<p class="licao-paragrafo ${hl ? 'highlighted' : ''}" id="${pid}">${p}</p>`;
+      }).join('')}
+    </div>`;
+  });
+
+  const prevIdx = idx - 1, nextIdx = idx + 1;
+  const hasPrev = prevIdx >= 0, hasNext = nextIdx < MATERIA.length;
+  html += `<div class="licao-footer-nav">
+    <button class="licao-footer-btn" onclick="renderLicao(${prevIdx})" ${!hasPrev ? 'disabled' : ''}>← ${hasPrev ? 'Parte ' + MATERIA[prevIdx].numero : 'Anterior'}</button>
+    <button class="licao-footer-btn" onclick="renderLicao(${nextIdx})" ${!hasNext ? 'disabled' : ''}>${hasNext ? 'Parte ' + MATERIA[nextIdx].numero : 'Próxima'} →</button>
+  </div>`;
+
+  html += '</div>';
+  document.getElementById('root').innerHTML = html;
+  if (!highlightIds) window.scrollTo({ top: 0 });
+}
+
+renderHome();
+</script>
+</body>
+</html>

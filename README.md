@@ -28,3 +28,7 @@ O build confere se todas as referências ao material existem e sorteia, com seme
 ## Publicação
 
 O site é publicado pelo GitHub Pages a partir da raiz da branch `main`.
+
+## AV2
+
+Os simulados da AV2 (Tiago 5.13-18, 1 e 2 Pedro e Judas) estão na pasta `av2/`, publicados em https://raphael-lourenco.github.io/simulado-epistolas-gerais/av2/. Build: `python3 av2/build/build.py`.
