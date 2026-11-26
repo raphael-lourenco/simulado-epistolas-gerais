@@ -86,7 +86,8 @@ def montar_simulados(questoes, dissertativas, rng):
     sobra = [qid for t in TOPICOS_LIVRE for qid in pools[t]]
     rng.shuffle(sobra)
     for n, sim in enumerate(simulados):
-        sim["ids"].append(sobra[n])
+        if "livre" in MOLDE_OBJETIVAS:
+            sim["ids"].append(sobra[n])
         rng.shuffle(sim["ids"])
     return simulados
 

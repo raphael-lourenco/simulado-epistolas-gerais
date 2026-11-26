@@ -4,9 +4,10 @@
 #   - 7 objetivas + 2 discursivas.
 #   - Discursivas: (1) autoria de 2 Pedro, explicando a refutação de UMA das objeções;
 #                  (2) Judas em estudos recentes (Carson, p. 512-513).
-#   - Objetivas: 3 do artigo de Tg 5.13-18 (estilo/organização temática; presbíteros; oração e cura);
-#                as demais de pontos do material (contribuição — "assinale a que NÃO é";
-#                1 Pedro em estudos recentes; autoria de 2 Pedro também em múltipla escolha).
+#   - Objetivas (confirmado com o professor): 4 do artigo de Tg 5.13-18 (estilo e organização
+#                temática da carta; delimitação e tema da perícope; presbíteros; oração e cura)
+#                + 3 do Carson (contribuição — "assinale a que NÃO é"; 1 Pedro em estudos
+#                recentes; autoria de 2 Pedro também em múltipla escolha).
 #
 # As alternativas erradas são, sempre que possível, posições reais citadas no material
 # mas atribuídas a outra pessoa, tiradas do contexto ou levemente distorcidas.
@@ -15,7 +16,8 @@
 # A posição da correta é sorteada (com semente fixa) no build.
 
 TOPICOS = {
-    "tg_estrutura": "Tiago: estilo, estrutura e tema",
+    "tg_estilo": "Tiago: estilo e organização temática",
+    "tg_tema": "Tg 5.13-18: delimitação e tema",
     "tg_presbiteros": "Tg 5.14: os presbíteros",
     "tg_oracao": "Tg 5.13-18: oração e cura",
     "contribuicao": "Contribuição de Judas e de 1 Pedro",
@@ -29,13 +31,14 @@ TOPICOS = {
 }
 
 # Tópicos que o professor indicou para a prova (aparecem com ★).
-PROVA_TOPICOS = ["tg_estrutura", "tg_presbiteros", "tg_oracao", "contribuicao", "pe1_recentes", "pe2_autoria", "judas_recentes"]
+PROVA_TOPICOS = ["tg_estilo", "tg_tema", "tg_presbiteros", "tg_oracao", "contribuicao", "pe1_recentes", "pe2_autoria", "judas_recentes"]
 
-# Tópicos que podem ocupar a vaga livre dos simulados.
-TOPICOS_LIVRE = ["judas_recentes", "tg_metodo", "pe2_judas", "canon", "pe1_recentes", "pe2_autoria", "tg_oracao"]
+# Sem vaga livre: o professor confirmou que as 7 objetivas são 4 do artigo de Tiago
+# + contribuição + 1 Pedro em estudos recentes + autoria de 2 Pedro.
+TOPICOS_LIVRE = []
 
-# Formato da prova: 7 objetivas e 2 discursivas ("livre" = sorteada entre TOPICOS_LIVRE).
-MOLDE_OBJETIVAS = ["tg_estrutura", "tg_presbiteros", "tg_oracao", "contribuicao", "pe1_recentes", "pe2_autoria", "livre"]
+# Formato da prova: 7 objetivas e 2 discursivas.
+MOLDE_OBJETIVAS = ["tg_estilo", "tg_tema", "tg_presbiteros", "tg_oracao", "contribuicao", "pe1_recentes", "pe2_autoria"]
 
 # Temas das duas discursivas da prova, nesta ordem.
 DISS_TOPICOS = ["pe2_autoria", "judas_recentes"]
@@ -43,8 +46,8 @@ DISS_TOPICOS = ["pe2_autoria", "judas_recentes"]
 AFIRMATIVAS = "Analise as afirmativas:"
 
 MULTIPLA = [
-    # ===== TIAGO: ESTILO, ESTRUTURA E TEMA =====
-    ("tg_estrutura",
+    # ===== TIAGO: ESTILO E ORGANIZAÇÃO TEMÁTICA (carta) / DELIMITAÇÃO E TEMA (perícope) =====
+    ("tg_estilo",
      "Segundo o artigo de Carreiro, como Carson caracteriza a organização da carta de Tiago?",
      "Como uma coleção de homilias sem estrutura sistemática aparente, na qual ainda assim se discernem cinco seções gerais",
      ["Como uma carta de estrutura rigorosamente sistemática, organizada em quiasmo",
@@ -52,7 +55,7 @@ MULTIPLA = [
       "Como uma carta paulina típica, com saudação, ação de graças, corpo doutrinário e parênese"],
      "Konnings sugere uma reunião de homilias; Carson também fala de coleção de homilias, mas discerne 5 seções. A “homilia batismal” é a hipótese de Perdelwitz para 1 Pedro.",
      ["t-3-0", "t-3-1"]),
-    ("tg_estrutura",
+    ("tg_estilo",
      "Qual destas é uma característica do estilo da carta de Tiago destacada no artigo?",
      "O grande número de hapax legomena (63) e o uso de “palavras-gancho” para ligar os temas",
      ["A maior proporção de hapax legomena de todo o Novo Testamento, segundo Bauckham",
@@ -60,7 +63,7 @@ MULTIPLA = [
       "A citação frequente das cartas de Paulo como Escritura"],
      "63 hapax legomena (Vouga) e palavras-gancho (Konnings). A “maior proporção de hapax de todo o NT” é o que Bauckham diz de 2 Pedro.",
      ["t-3-2"]),
-    ("tg_estrutura",
+    ("tg_estilo",
      "Segundo o artigo, que consequência tem o uso de “palavras-gancho” em Tiago?",
      "Pode dificultar a delimitação de grandes trechos da carta",
      ["Facilita a divisão da carta em capítulos temáticos bem definidos",
@@ -68,7 +71,7 @@ MULTIPLA = [
       "Indica que a carta é uma liturgia batismal"],
      "As palavras-gancho conectam os diversos temas, e por isso é difícil delimitar grandes trechos.",
      ["t-3-2"]),
-    ("tg_estrutura",
+    ("tg_estilo",
      "Na divisão de Carson citada no artigo, em qual seção está a perícope de Tg 5.13-18?",
      "Exortações finais (5.12-20)",
      ["Implicações de uma conduta cristã (4.13–5.11)",
@@ -76,7 +79,7 @@ MULTIPLA = [
       "O cristianismo verdadeiro e as obras (1.19–2.26)"],
      "As 5 seções: Provações e maturidade (1.1-18); Cristianismo verdadeiro e obras (1.19–2.26); Cisões (3.1–4.12); Conduta cristã (4.13–5.11); Exortações finais (5.12-20).",
      ["t-3-1", "t-4-0"]),
-    ("tg_estrutura",
+    ("tg_tema",
      "Segundo o artigo, qual é o principal assunto de Tiago 5.13-18?",
      "A oração",
      ["A unção com óleo",
@@ -84,7 +87,7 @@ MULTIPLA = [
       "O dom de cura"],
      "Unção com óleo e confissão de pecados aparecem, mas o principal assunto e foco é a oração (a palavra aparece sete vezes).",
      ["t-0-1", "t-4-1"]),
-    ("tg_estrutura",
+    ("tg_tema",
      "Que dado do texto, segundo o artigo, mostra claramente a ênfase de Tg 5.13-18?",
      "A palavra “oração” é usada sete vezes nesses versículos",
      ["A expressão “em nome do Senhor” é repetida em todos os versículos",
@@ -92,7 +95,7 @@ MULTIPLA = [
       "O texto cita literalmente a oração de Elias registrada em 1 Reis"],
      "Sete ocorrências de “oração” em 5.13-18. E a oração de Elias não é mencionada no AT.",
      ["t-4-1", "t-10-2"]),
-    ("tg_estrutura",
+    ("tg_tema",
      "Quais são os três temas que, segundo o artigo, encerram a carta de Tiago (5.12-20)?",
      "Os juramentos (5.12), a oração (5.13-18) e a conversão dos que se desviaram (5.19-20)",
      ["A paciência (5.7-11), a oração (5.13-18) e a saudação final",
@@ -100,13 +103,13 @@ MULTIPLA = [
       "Os juramentos (5.12), a confissão (5.16) e a volta de Cristo (5.20)"],
      "Os três temas finais vêm de Brown, Fitzmyer e Murphy.",
      ["t-4-0"]),
-    ("tg_estrutura",
+    ("tg_estilo",
      AFIRMATIVAS + "<br><br>I. A carta de Tiago não tem um início “epistolar” nem organização sistemática.<br>II. Konnings sugere que a carta seja uma reunião de homilias do autor.<br>III. Por não ter estrutura sistemática, Carson desiste de propor qualquer divisão para a carta.<br><br>Segundo o artigo, está correto o que se afirma em:",
      "I e II, apenas",
      ["I, apenas", "II e III, apenas", "I, II e III"],
      "III é falsa: mesmo sem estrutura sistemática aparente, Carson discerne cinco seções gerais.",
      ["t-3-0", "t-3-1"]),
-    ("tg_estrutura",
+    ("tg_tema",
      "Como o artigo descreve o movimento do texto de Tg 5.13-18?",
      "Exortação à oração em todas as circunstâncias; acolhida da oração por Deus; perdão e confissão de pecados; e, de novo, a oração com o exemplo de Elias",
      ["Instrução sobre juramentos; unção com óleo; conversão dos desviados",
@@ -114,6 +117,71 @@ MULTIPLA = [
       "Crítica aos ricos; paciência diante do sofrimento; vinda do Senhor"],
      "v. 13-14 oração em todas as circunstâncias; v. 15a acolhida; v. 15b-16 perdão e confissão; v. 17-18 Elias. Por isso Vouga delimita 13-18.",
      ["t-4-2"]),
+
+    ("tg_estilo",
+     "Segundo Carson, citado no artigo, o que o grego da carta de Tiago tem em comum com Atos 15.13-21?",
+     "Semelhança com o grego usado na fala atribuída a Tiago, irmão de Jesus, nesse trecho de Atos",
+     ["É idêntico ao grego de 1 Pedro, o que mostra o mesmo secretário",
+      "Tem a mesma proporção de hapax legomena de 2 Pedro",
+      "Ambos foram escritos originalmente em latim"],
+     "É um dos argumentos de Carson para a autoria de Tiago, irmão do Senhor.",
+     ["t-2-0"]),
+    ("tg_estilo",
+     "Quem, segundo o artigo, sugere que a carta de Tiago seja uma reunião de homilias do autor?",
+     "Konnings",
+     ["Vouga", "Kistemaker", "Moo"],
+     "Konnings sugere a reunião de homilias e aponta as palavras-gancho; Carson também fala de coleção de homilias. Vouga é quem conta os 63 hapax legomena.",
+     ["t-3-0", "t-3-2"]),
+    ("tg_estilo",
+     "Por que, segundo o artigo, Konnings sugere que Tiago seja uma reunião de homilias?",
+     "Porque a carta não tem início “epistolar” nem organização sistemática",
+     ["Porque o autor se apresenta como pregador da sinagoga",
+      "Porque a carta termina com uma liturgia batismal",
+      "Porque a carta é toda dirigida a uma única igreja local"],
+     "Carson concorda que é uma coleção de homilias sem estrutura sistemática aparente, mas ainda discerne 5 seções.",
+     ["t-3-0"]),
+    ("tg_estilo",
+     "Na divisão de Carson citada no artigo, qual seção corresponde a Tg 3.1–4.12?",
+     "Cisões dentro da comunidade",
+     ["Provações e maturidade cristã",
+      "O cristianismo verdadeiro e as obras",
+      "Implicações de uma conduta cristã"],
+     "1.1-18 Provações e maturidade; 1.19–2.26 Cristianismo verdadeiro e obras; 3.1–4.12 Cisões; 4.13–5.11 Conduta cristã; 5.12-20 Exortações finais.",
+     ["t-3-1"]),
+    ("tg_estilo",
+     "Quantas seções gerais Carson consegue discernir na carta de Tiago, segundo o artigo?",
+     "Cinco",
+     ["Três", "Sete", "Doze"],
+     "Mesmo considerando a carta uma coleção de homilias sem estrutura sistemática aparente.",
+     ["t-3-1"]),
+    ("tg_tema",
+     "Segundo o artigo, onde o tema da oração já havia sido introduzido na carta de Tiago antes de 5.13-18?",
+     "Em 1.5-8",
+     ["Em 2.14-26", "Em 3.1-12", "Em 4.13-17"],
+     "Em 5.13-18 o assunto é retomado.",
+     ["t-4-1"]),
+    ("tg_tema",
+     "Segundo o artigo, quem delimita a perícope em Tg 5.13-18, opção que o autor considera correta?",
+     "Vouga",
+     ["Kistemaker", "Champlin", "Keener"],
+     "Pelo movimento do texto: começa e termina com a oração (exemplo de Elias).",
+     ["t-4-2"]),
+    ("tg_tema",
+     "No movimento de Tg 5.13-18 descrito no artigo, que temática nova é introduzida nos v. 15b-16?",
+     "O perdão e a confissão de pecados, embora mesmo no v. 16 ainda apareça o tema da oração",
+     ["A unção de reis e sacerdotes",
+      "Os juramentos",
+      "A conversão dos que se desviaram"],
+     "Juramentos (5.12) e conversão dos desviados (5.19-20) são os temas vizinhos da perícope.",
+     ["t-4-2"]),
+    ("tg_tema",
+     "Segundo o resumo e a introdução do artigo, como se relacionam os temas de Tg 5.13-18?",
+     "Os versículos falam de unção com óleo e confissão de pecados, mas têm como principal assunto e foco a oração",
+     ["O foco é a unção com óleo; a oração é um tema secundário",
+      "O foco é a confissão pública; a oração só aparece no exemplo de Elias",
+      "A perícope não tem tema principal, por ser uma reunião de homilias"],
+     "As considerações finais repetem: o principal assunto tratado pelo autor foi a oração.",
+     ["t-0-1", "t-11-2"]),
 
     # ===== TG 5.14: OS PRESBÍTEROS =====
     ("tg_presbiteros",
@@ -796,7 +864,7 @@ DISSERTATIVAS = [
      "Como o artigo interpreta a relação entre oração, unção com óleo e cura em Tg 5.14-15?",
      "A <strong>ênfase está na oração, e não no óleo</strong> (Kistemaker): não há imposição de mãos nem busca de alguém com dom de cura. A unção é <strong>ato físico com significado simbólico</strong> (Moo: <em>aleiphō</em>), separando o doente para a atenção de Deus; “em nome do Senhor” mostra conotação espiritual, contra o uso medicinal. A oração da fé “curará” (<em>sózō</em>, aqui no sentido de <strong>restaurar a saúde</strong>), e <strong>é o Senhor quem levanta o doente</strong> em resposta à oração. O “se” mostra que nem toda doença vem do pecado.",
      ["t-7-3", "t-7-4", "t-8-0", "t-8-2", "t-8-3", "t-8-4"], False),
-    ("tg_estrutura",
+    ("tg_estilo",
      "Descreva o estilo e a organização temática da carta de Tiago segundo o artigo de Carreiro.",
      "Tiago não tem início epistolar nem organização sistemática: Konnings e Carson a veem como <strong>coleção de homilias</strong>. Mesmo assim, Carson discerne <strong>5 seções</strong> (1.1-18; 1.19–2.26; 3.1–4.12; 4.13–5.11; 5.12-20). O estilo tem <strong>63 hapax legomena</strong> e usa <strong>palavras-gancho</strong>, o que dificulta a delimitação. A perícope 5.13-18 está nas exortações finais, entre os juramentos (5.12) e a conversão dos desviados (5.19-20), e seu tema principal é a <strong>oração</strong> (sete ocorrências).",
      ["t-3-0", "t-3-1", "t-3-2", "t-4-0", "t-4-1"], False),

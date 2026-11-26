@@ -16,7 +16,7 @@ MATERIA = [
         "secoes": [
             ("Estrutura da prova", [
                 "A avaliação tem <strong>7 questões de múltipla escolha</strong> e <strong>2 discursivas</strong>. O professor já disse quais são os <strong>dois temas das discursivas</strong>: autoria de 2 Pedro e Judas em estudos recentes.",
-                "As objetivas são “bem tranquilas”: <strong>três saem do artigo sobre Tiago 5.13-18</strong> e as demais são extraídas de pontos do material do Carson (1 Pedro, 2 Pedro e Judas).",
+                "As objetivas são “bem tranquilas”. <strong>Confirmado com o professor: 4 saem do artigo sobre Tiago 5.13-18</strong> e <strong>3 do Carson</strong>: a da contribuição (“assinale a que NÃO é”), a de 1 Pedro em estudos recentes e a de autoria de 2 Pedro. São essas 7.",
             ]),
             ("Discursiva 1 — Autoria de 2 Pedro", [
                 "Ele vai perguntar sobre a <strong>autoria de 2 Pedro</strong> e a defesa da <strong>autoria tradicional</strong> (Pedro como autor). Você precisa <strong>explicar os argumentos a favor da posição tradicional</strong>.",
@@ -28,14 +28,15 @@ MATERIA = [
                 "A segunda discursiva sai da seção <strong>“Judas em estudos recentes”</strong>, nas <strong>páginas 512 e 513</strong> do Carson. Ele vai extrair uma pergunta desse trecho.",
                 "<em>Complemento:</em> os pontos principais do trecho são: Judas como <strong>o livro mais negligenciado do NT</strong> (Rowston; Bauckham); a visão de Judas como <strong>defensor dogmático e intolerante</strong> (“há mais do que dogmatismo em Judas”); o <strong>“catolicismo primitivo”</strong> e seus três aspectos, que não se veem em Judas; e a alegação de que Judas combate o <strong>gnosticismo</strong>.",
             ]),
-            ("Múltipla escolha — o artigo de Tiago 5.13-18", [
-                "<strong>Três questões objetivas</strong> saem do artigo do início do PDF (Carreiro). Elas não são sobre a autoria de Tiago, mas sobre:",
-                "<strong>1. Estilo e organização temática:</strong> logo no início o autor fala do <strong>estilo grego</strong> da carta e da sua <strong>organização temática</strong> (coleção de homilias; as 5 seções de Carson; 63 hapax legomena; “palavras-gancho”) e de <strong>sobre o que a perícope trata</strong> (o tema principal é a oração).",
-                "<strong>2. Os presbíteros (v. 14):</strong> como ele interpreta a expressão <strong>“presbíteros”/“anciãos”</strong>: os responsáveis pela igreja local, posição de autoridade, não pessoas idosas.",
-                "<strong>3. Oração e cura:</strong> como ele interpreta o tema da <strong>oração e da cura</strong> no texto: a ênfase está na oração, não no óleo nem num dom de cura.",
+            ("Múltipla escolha — o artigo de Tiago 5.13-18 (4 questões)", [
+                "<strong>Quatro questões objetivas</strong> saem do artigo do início do PDF (Carreiro). Elas não são sobre a autoria de Tiago, mas sobre:",
+                "<strong>1. Estilo e organização temática da carta:</strong> logo no início o autor fala do <strong>estilo grego</strong> da carta (semelhante ao da fala de Tiago em At 15.13-21; 63 hapax legomena; “palavras-gancho”) e da sua <strong>organização temática</strong> (coleção de homilias; as 5 seções de Carson).",
+                "<strong>2. Delimitação e tema da perícope:</strong> <strong>sobre o que o texto trata</strong>: o tema principal é a <strong>oração</strong> (sete ocorrências), entre os juramentos (5.12) e a conversão dos desviados (5.19-20).",
+                "<strong>3. Os presbíteros (v. 14):</strong> como ele interpreta a expressão <strong>“presbíteros”/“anciãos”</strong>: os responsáveis pela igreja local, posição de autoridade, não pessoas idosas.",
+                "<strong>4. Oração e cura:</strong> como ele interpreta o tema da <strong>oração e da cura</strong> no texto: a ênfase está na oração, não no óleo nem num dom de cura.",
                 "O professor chamou o artigo de texto “leve”: é uma exegese no sentido de comentário (o autor reúne o que vários comentaristas dizem e chega a conclusões), não uma exegese completa.",
             ]),
-            ("Múltipla escolha — os outros pontos do material", [
+            ("Múltipla escolha — as 3 do Carson", [
                 "<strong>Contribuição (alternativa que NÃO é):</strong> haverá uma questão em que você deve marcar a alternativa que <strong>não traz uma contribuição</strong> do texto (o professor citou o texto sobre a contribuição de Judas). Leia as contribuições para reconhecê-las e perceber quando uma alternativa é diferente do que o texto diz.",
                 "<strong>1 Pedro em estudos recentes:</strong> pseudepigrafia, perseguições e a hipótese da homilia/liturgia batismal.",
                 "<strong>Autoria de 2 Pedro também em múltipla escolha.</strong> Dica do professor: o fato de haver uma objetiva sobre o tema perto da discursiva <strong>não significa que ela te dá a resposta da discursiva</strong>. Pense com cuidado no que cada uma pede.",
